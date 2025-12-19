@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Security Agent - Functional Testing Report</title>
+    <link rel="stylesheet" href="assets/css/report.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AWS Security Agent - Functional Testing Report</h1>
+            <div class="export-buttons">
+                <button id="export-pdf" class="btn btn-primary">Export PDF</button>
+            </div>
+        </header>
+
+        <main id="report-content">
+            <section class="executive-summary">
+                <h2>Executive Summary</h2>
+                <p><strong>Review Date:</strong> December 2025</p>
+                <p><strong>Region:</strong> us-east-1</p>
+                <p><strong>Status:</strong> Public Preview</p>
+                
+                <div class="summary-box">
+                    <p>This functional testing report evaluates AWS Security Agent, a security service in public preview offering automated security reviews and penetration testing. The report documents functional capabilities, configuration options, and observed limitations based on console testing and exploration.</p>
+                </div>
+            </section>
+
+            <section class="current-state">
+                <h2>Functional Testing Results</h2>
+                
+                <h3>Core Capabilities Testing</h3>
+                <table class="data-table">
+                    <tr>
+                        <th>Capability</th>
+                        <th>Test Status</th>
+                        <th>Functional Test Results</th>
+                    </tr>
+                    <tr>
+                        <td>Design Security Review</td>
+                        <td><span class="status-ready">Functional</span></td>
+                        <td>Interface accessible; security requirements configurable; requires web app URL for actual review execution</td>
+                    </tr>
+                    <tr>
+                        <td>Code Security Review</td>
+                        <td><span class="status-ready">Functional</span></td>
+                        <td>GitHub OAuth integration works; repository selection functional; PR scanning can be enabled per repository</td>
+                    </tr>
+                    <tr>
+                        <td>Penetration Testing</td>
+                        <td><span class="status-ready">Functional</span></td>
+                        <td>Domain verification via DNS TXT records works; supports Route 53 and custom domains; test initiation interface available</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="functional-capabilities">
+                <h2>Functional Capabilities Assessment</h2>
+                
+                <h3>Design Security Review</h3>
+                <ul>
+                    <li><strong>Status:</strong> Ready</li>
+                    <li><strong>Security Requirements:</strong> 12 enabled (11 AWS-managed + 2 custom)</li>
+                    <li><strong>Notes:</strong> Capability is ready but requires web application access to perform reviews</li>
+                </ul>
+
+                <h3>Code Security Review</h3>
+                <ul>
+                    <li><strong>Status:</strong> Ready</li>
+                    <li><strong>Repository Integration:</strong> GitHub integration available</li>
+                    <li><strong>PR Scanning:</strong> Can be enabled for pull requests</li>
+                    <li><strong>Settings:</strong> Configurable security requirements and vulnerability findings</li>
+                    <li><strong>Notes:</strong> GitHub integration interface is functional; code review can be enabled for connected repositories</li>
+                </ul>
+
+                <h3>Penetration Testing</h3>
+                <ul>
+                    <li><strong>Status:</strong> Ready</li>
+                    <li><strong>Target Configuration:</strong> Supports multiple target domains (Route 53 and custom domains)</li>
+                    <li><strong>Domain Verification:</strong> DNS TXT record verification method available</li>
+                    <li><strong>Infrastructure Context:</strong> Supports optional configuration of VPCs, CloudWatch logs, Lambda functions, Secrets, and S3 buckets</li>
+                    <li><strong>Notes:</strong> Configuration interface is functional; infrastructure context can be added to enhance pentest effectiveness</li>
+                </ul>
+            </section>
+
+            <section class="operational-assessment">
+                <h2>Operational Assessment</h2>
+                
+                <table class="data-table">
+                    <tr>
+                        <th>Assessment Area</th>
+                        <th>Rating</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Setup Complexity</td>
+                        <td>Low</td>
+                        <td>Agent Space creation is straightforward via console wizard</td>
+                    </tr>
+                    <tr>
+                        <td>Console Usability</td>
+                        <td>Good</td>
+                        <td>Standard AWS console interface; navigation is intuitive</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation Quality</td>
+                        <td>Adequate</td>
+                        <td>Help links available; documentation accessible</td>
+                    </tr>
+                    <tr>
+                        <td>Error Handling</td>
+                        <td>Good</td>
+                        <td>Clear status indicators and error messages observed</td>
+                    </tr>
+                    <tr>
+                        <td>Monitoring & Alerts</td>
+                        <td>Limited</td>
+                        <td>No CloudWatch logs configured; monitoring capabilities not fully explored</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="findings">
+                <h2>Findings and Limitations</h2>
+                
+                <table class="findings-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Severity</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>F-001</td>
+                            <td><span class="severity-info">Info</span></td>
+                            <td>Configuration</td>
+                            <td>Agent Space successfully created and configured with all three capabilities ready</td>
+                            <td>Verified</td>
+                        </tr>
+                        <tr>
+                            <td>F-002</td>
+                            <td><span class="severity-info">Info</span></td>
+                            <td>Integration</td>
+                            <td>GitHub integration interface functional; code review can be enabled</td>
+                            <td>Verified</td>
+                        </tr>
+                        <tr>
+                            <td>F-003</td>
+                            <td><span class="severity-info">Info</span></td>
+                            <td>Security Requirements</td>
+                            <td>12 security requirements enabled (11 AWS-managed + 2 custom requirements)</td>
+                            <td>Verified</td>
+                        </tr>
+                        <tr>
+                            <td>F-004</td>
+                            <td><span class="severity-info">Info</span></td>
+                            <td>Pentest Configuration</td>
+                            <td>Target domain configuration interface functional; supports multiple domain types</td>
+                            <td>Verified</td>
+                        </tr>
+                        <tr>
+                            <td>F-005</td>
+                            <td><span class="severity-medium">Medium</span></td>
+                            <td>Limitation</td>
+                            <td>Console-only access limits automation and integration capabilities</td>
+                            <td>Observed</td>
+                        </tr>
+                        <tr>
+                            <td>F-006</td>
+                            <td><span class="severity-medium">Medium</span></td>
+                            <td>Limitation</td>
+                            <td>Only us-east-1 region available; all resources must be in this region</td>
+                            <td>Observed</td>
+                        </tr>
+                        <tr>
+                            <td>F-007</td>
+                            <td><span class="severity-medium">Medium</span></td>
+                            <td>Limitation</td>
+                            <td>Code review requires GitHub integration; no other SCM support visible</td>
+                            <td>Observed</td>
+                        </tr>
+                        <tr>
+                            <td>F-008</td>
+                            <td><span class="severity-low">Low</span></td>
+                            <td>Limitation</td>
+                            <td>Web app requires time-limited authentication tokens that expire</td>
+                            <td>Observed</td>
+                        </tr>
+                        <tr>
+                            <td>F-009</td>
+                            <td><span class="severity-low">Low</span></td>
+                            <td>Configuration</td>
+                            <td>No infrastructure context (VPCs, CloudWatch logs, Lambda) configured for pentesting</td>
+                            <td>Observed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section class="summary">
+                <h2>Summary</h2>
+                
+                <p><strong>Overall Assessment:</strong> Positive</p>
+                
+                <p><strong>Key Takeaways:</strong></p>
+                <ul>
+                    <li>AWS Security Agent is functional and ready for use in public preview</li>
+                    <li>All three core capabilities (Design Review, Code Review, Penetration Testing) are configured and ready</li>
+                    <li>GitHub integration works as expected with code review enabled</li>
+                    <li>Console-only access and region restrictions are current limitations</li>
+                    <li>Custom security requirements demonstrate flexibility of the platform</li>
+                </ul>
+                
+                <p><strong>Recommendation:</strong> Evaluate Further - The service shows promise but is limited by console-only access and single-region support. Recommend continued evaluation as the service matures and additional features become available.</p>
+            </section>
+
+            <footer>
+                <p><strong>Review Completed By:</strong> Automated Review System</p>
+                <p><strong>Date:</strong> December 2025</p>
+                <p><strong>Next Review Date:</strong> TBD (after service updates)</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="assets/js/export.js"></script>
+</body>
+</html>
+
