@@ -132,6 +132,7 @@ body {
     page-break-inside: avoid;
     display: inline-block;
     width: 100%;
+    -webkit-column-break-inside: avoid;
 }
 
 .section h2 {
@@ -140,9 +141,12 @@ body {
     margin: 25px 0 15px 0;
     text-align: left;
     page-break-after: avoid;
+    page-break-before: auto;
     column-span: all;
     break-after: avoid;
+    break-before: auto;
     display: block;
+    -webkit-column-break-after: avoid;
 }
 
 .section h3 {
@@ -190,11 +194,14 @@ body {
     margin: 20px 0;
     font-size: 9pt;
     page-break-inside: avoid;
-    column-span: all;
     break-inside: avoid;
+    column-span: all;
     display: table;
     margin-left: 0;
     margin-right: 0;
+    -webkit-column-break-inside: avoid;
+    page-break-before: auto;
+    page-break-after: auto;
 }
 
 .academic-table caption {
@@ -203,6 +210,21 @@ body {
     text-align: left;
     font-size: 9pt;
     column-span: all;
+    page-break-after: avoid;
+}
+
+.academic-table thead {
+    display: table-header-group;
+}
+
+.academic-table tbody {
+    display: table-row-group;
+}
+
+.academic-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
 }
 
 .academic-table thead {
@@ -325,12 +347,46 @@ body {
 
 /* PDF Export Styles - Applied when exporting */
 .exporting .paper-container {
-    padding: 20mm;
+    padding: 0;
     max-width: 100%;
+    box-shadow: none;
 }
 
 .exporting .paper {
     width: 100%;
+    padding: 0;
+}
+
+.exporting .paper-content {
+    column-count: 2;
+    column-gap: 24px;
+}
+
+/* Ensure full document is captured and tables don't break */
+#report-content.exporting {
+    min-height: 100%;
+    overflow: visible;
+}
+
+#report-content.exporting .academic-table {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-column-break-inside: avoid !important;
+    display: table !important;
+}
+
+#report-content.exporting .academic-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-column-break-inside: avoid !important;
+}
+
+#report-content.exporting .academic-table thead {
+    display: table-header-group !important;
+}
+
+#report-content.exporting .academic-table tbody {
+    display: table-row-group !important;
 }
 
 /* Responsive for smaller screens */
