@@ -35,15 +35,16 @@ function exportToPDF() {
         const margin = 25;      // Margin on all sides in mm
         const contentWidth = pageWidth - (margin * 2);  // Available width (160mm)
         
-        // Get element dimensions
-        const elementWidth = element.offsetWidth || 800; // Use fixed width for consistency
-        const elementHeight = element.scrollHeight;
-        
-        // Calculate optimal scale for readability
-        // Target: content should fit in 160mm width
-        // At 96dpi: 1mm = 3.779527559px
-        const targetWidthPx = contentWidth * 3.779527559; // ~605px
-        const scale = Math.min(2, Math.max(1.5, targetWidthPx / elementWidth));
+    // Get element dimensions - use actual rendered width
+    const elementWidth = element.offsetWidth || element.scrollWidth || 1000;
+    const elementHeight = element.scrollHeight;
+    
+    // Calculate optimal scale to preserve layout
+    // Target: content should fit in 160mm width (210mm - 50mm margins)
+    // At 96dpi: 1mm = 3.779527559px
+    const targetWidthPx = contentWidth * 3.779527559; // ~605px
+    // Scale to fit the actual element width into the PDF width
+    const scale = Math.min(3, Math.max(1.5, (targetWidthPx / elementWidth) * 1.2));
         
         html2canvas(element, {
             scale: scale,
