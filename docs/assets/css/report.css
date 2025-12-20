@@ -345,48 +345,90 @@ body {
     }
 }
 
-/* PDF Export Styles - Applied when exporting */
-.exporting .paper-container {
+/* PDF Export Styles - Convert to single column for better readability */
+body.pdf-exporting .paper-container {
     padding: 0;
-    max-width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     box-shadow: none;
 }
 
-.exporting .paper {
+body.pdf-exporting .paper {
     width: 100%;
-    padding: 0;
+    padding: 20px;
+    font-size: 11pt;
 }
 
-.exporting .paper-content {
-    column-count: 2;
-    column-gap: 24px;
+body.pdf-exporting .paper-content {
+    column-count: 1 !important;
+    column-gap: 0;
+    width: 100%;
 }
 
-/* Ensure full document is captured and tables don't break */
-#report-content.exporting {
-    min-height: 100%;
-    overflow: visible;
+body.pdf-exporting .section {
+    margin: 20px 0;
+    width: 100%;
 }
 
-#report-content.exporting .academic-table {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    -webkit-column-break-inside: avoid !important;
-    display: table !important;
+body.pdf-exporting .section h2 {
+    font-size: 14pt;
+    margin: 30px 0 15px 0;
+    column-span: none;
 }
 
-#report-content.exporting .academic-table tr {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    -webkit-column-break-inside: avoid !important;
+body.pdf-exporting .section h3 {
+    font-size: 12pt;
+    margin: 20px 0 10px 0;
 }
 
-#report-content.exporting .academic-table thead {
-    display: table-header-group !important;
+body.pdf-exporting .section p {
+    font-size: 11pt;
+    line-height: 1.7;
+    margin: 12px 0;
 }
 
-#report-content.exporting .academic-table tbody {
-    display: table-row-group !important;
+body.pdf-exporting .academic-table {
+    width: 100%;
+    font-size: 9pt;
+    margin: 20px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: table;
+    column-span: none;
+}
+
+body.pdf-exporting .academic-table caption {
+    font-size: 10pt;
+    margin-bottom: 10px;
+}
+
+body.pdf-exporting .academic-table th,
+body.pdf-exporting .academic-table td {
+    padding: 8px 10px;
+    font-size: 9pt;
+}
+
+body.pdf-exporting .abstract {
+    font-size: 11pt;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+body.pdf-exporting .paper-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+}
+
+body.pdf-exporting .paper-title {
+    font-size: 18pt;
+}
+
+body.pdf-exporting .references {
+    column-count: 1;
+}
+
+body.pdf-exporting .references ol {
+    column-count: 1;
 }
 
 /* Responsive for smaller screens */

@@ -9,15 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function exportToPDF() {
+    const { jsPDF } = window.jspdf;
     const element = document.getElementById('report-content');
     
     if (!element) {
         console.error('Report content element not found');
-        return;
-    }
-    
-    if (typeof html2pdf === 'undefined') {
-        alert('PDF export library not loaded. Please refresh the page.');
         return;
     }
     
@@ -27,60 +23,103 @@ function exportToPDF() {
     btn.textContent = 'Generating PDF...';
     btn.disabled = true;
     
-    // Temporarily add class to element for export styling
+    // Add exporting class to body for CSS changes
+    document.body.classList.add('pdf-exporting');
     element.classList.add('exporting');
     
-    // Wait a moment for styles to apply
+    // Wait for styles to apply
     setTimeout(() => {
-        // Configure PDF options
-        const opt = {
-            margin: [20, 20, 20, 20], // Top, Right, Bottom, Left in mm
-            filename: 'AWS-Security-Agent-Functional-Testing-Report.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { 
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                backgroundColor: '#ffffff',
-                letterRendering: true,
-                allowTaint: false,
-                width: element.scrollWidth,
-                height: element.scrollHeight,
-                windowWidth: element.scrollWidth,
-                windowHeight: element.scrollHeight
-            },
-            jsPDF: { 
-                unit: 'mm', 
-                format: 'a4', 
-                orientation: 'portrait',
-                compress: true
-            },
-            pagebreak: { 
-                mode: ['avoid-all', 'css', 'legacy'],
-                before: '.section',
-                after: ['.academic-table', '.paper-footer', '.references'],
-                avoid: ['.academic-table', 'table', 'thead', 'tbody', 'tr', 'h2', 'h3']
-            }
-        };
+        // PDF page dimensions in mm (A4)
+        const pageWidth = 210;  // A4 width in mm
+        const pageHeight = 297; // A4 height in mm
+        const margin = 25;      // Margin on all sides in mm
+        const contentWidth = pageWidth - (margin * 2);  // Available width (160mm)
         
-        // Generate PDF
-        html2pdf()
-            .set(opt)
-            .from(element)
-            .save()
-            .then(() => {
-                // Remove export class
-                element.classList.remove('exporting');
-                // Restore button
-                btn.textContent = originalText;
-                btn.disabled = false;
-            })
-            .catch((error) => {
-                console.error('Error generating PDF:', error);
-                element.classList.remove('exporting');
-                alert('Error generating PDF. Please try again.');
-                btn.textContent = originalText;
-                btn.disabled = false;
-            });
-    }, 100);
+        // Get element dimensions
+        const elementWidth = element.offsetWidth || 800; // Use fixed width for consistency
+        const elementHeight = element.scrollHeight;
+        
+        // Calculate optimal scale for readability
+        // Target: content should fit in 160mm width
+        // At 96dpi: 1mm = 3.779527559px
+        const targetWidthPx = contentWidth * 3.779527559; // ~605px
+        const scale = Math.min(2, Math.max(1.5, targetWidthPx / elementWidth));
+        
+        html2canvas(element, {
+            scale: scale,
+            useCORS: true,
+            logging: false,
+            backgroundColor: '#ffffff',
+            width: elementWidth,
+            height: elementHeight,
+            windowWidth: element.scrollWidth,
+            windowHeight: element.scrollHeight,
+            removeContainer: false,
+            letterRendering: true,
+            allowTaint: false
+        }).then(canvas => {
+            const imgData = canvas.toDataURL('image/png', 1.0);
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            
+            // Calculate image dimensions to fit within margins
+            const imgWidth = contentWidth; // 160mm
+            const imgHeight = (canvas.height / canvas.width) * imgWidth; // Maintain aspect ratio
+            
+            let heightLeft = imgHeight;
+            let position = margin;
+            let pageNum = 0;
+            const contentHeight = pageHeight - (margin * 2); // 247mm per page
+
+            // Add first page
+            if (heightLeft <= contentHeight) {
+                // Fits on one page
+                pdf.addImage(imgData, 'PNG', margin, margin, imgWidth, imgHeight);
+            } else {
+                // Multiple pages needed
+                while (heightLeft > 0.5) { // Small threshold to avoid floating point issues
+                    if (pageNum > 0) {
+                        pdf.addPage();
+                    }
+                    
+                    const segmentHeight = Math.min(heightLeft, contentHeight);
+                    const sourceY = (imgHeight - heightLeft) * (canvas.height / imgHeight);
+                    const sourceHeight = segmentHeight * (canvas.height / imgHeight);
+                    
+                    // Create temporary canvas for this page segment
+                    const pageCanvas = document.createElement('canvas');
+                    pageCanvas.width = canvas.width;
+                    pageCanvas.height = Math.ceil(sourceHeight);
+                    const ctx = pageCanvas.getContext('2d');
+                    
+                    // Draw the segment
+                    ctx.drawImage(
+                        canvas,
+                        0, sourceY, canvas.width, sourceHeight,
+                        0, 0, canvas.width, sourceHeight
+                    );
+                    
+                    const pageImgData = pageCanvas.toDataURL('image/png', 1.0);
+                    pdf.addImage(pageImgData, 'PNG', margin, margin, imgWidth, segmentHeight);
+                    
+                    heightLeft -= contentHeight;
+                    pageNum++;
+                }
+            }
+
+            pdf.save('AWS-Security-Agent-Functional-Testing-Report.pdf');
+            
+            // Clean up
+            document.body.classList.remove('pdf-exporting');
+            element.classList.remove('exporting');
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }).catch(error => {
+            console.error('Error generating PDF:', error);
+            document.body.classList.remove('pdf-exporting');
+            element.classList.remove('exporting');
+            alert('Error generating PDF. Please try again.');
+            btn.textContent = originalText;
+            btn.disabled = false;
+        });
+    }, 200);
 }
