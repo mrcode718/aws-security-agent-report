@@ -12,10 +12,16 @@ function exportToPDF() {
     const { jsPDF } = window.jspdf;
     const element = document.getElementById('report-content');
     
+    if (!element) {
+        console.error('Report content element not found');
+        return;
+    }
+    
     html2canvas(element, {
         scale: 2,
         useCORS: true,
-        logging: false
+        logging: false,
+        backgroundColor: '#ffffff'
     }).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'mm', 'a4');
@@ -35,7 +41,10 @@ function exportToPDF() {
             heightLeft -= pageHeight;
         }
 
-        pdf.save('AWS-Security-Agent-Review-Report.pdf');
+        pdf.save('AWS-Security-Agent-Functional-Testing-Report.pdf');
+    }).catch(error => {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try again.');
     });
 }
 
