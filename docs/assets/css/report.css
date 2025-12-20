@@ -10,15 +10,17 @@
 
 body {
     font-family: 'Latin Modern Roman', 'Computer Modern Serif', 'Times New Roman', Times, serif;
-    font-size: 11pt;
+    font-size: 10pt;
     line-height: 1.6;
     color: #000;
     background-color: #f9f9f9;
     padding: 20px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 .paper-container {
-    max-width: 650px;
+    max-width: 1000px;
     margin: 0 auto;
     background-color: #fff;
     padding: 72px 90px;
@@ -53,12 +55,22 @@ body {
     text-align: justify;
 }
 
+/* Two-column layout for main content */
+.paper-content {
+    column-count: 2;
+    column-gap: 24px;
+    column-fill: balance;
+    text-align: justify;
+    margin: 25px 0;
+}
+
 /* Paper Header */
 .paper-header {
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 1px solid #000;
+    column-span: all;
 }
 
 .paper-title {
@@ -90,12 +102,13 @@ body {
     font-size: 10pt;
 }
 
-/* Abstract */
+/* Abstract - Full width */
 .abstract {
     margin: 25px 0;
     padding: 15px;
     background-color: #f9f9f9;
     border-left: 3px solid #000;
+    column-span: all;
 }
 
 .abstract h2 {
@@ -114,7 +127,11 @@ body {
 
 /* Sections */
 .section {
-    margin: 25px 0;
+    margin: 20px 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
 }
 
 .section h2 {
@@ -123,53 +140,69 @@ body {
     margin: 25px 0 15px 0;
     text-align: left;
     page-break-after: avoid;
+    column-span: all;
+    break-after: avoid;
+    display: block;
 }
 
 .section h3 {
     font-size: 11pt;
     font-weight: 700;
-    margin: 20px 0 12px 0;
+    margin: 18px 0 10px 0;
     text-align: left;
     page-break-after: avoid;
+    break-after: avoid;
+    display: block;
 }
 
 .section p {
-    margin: 12px 0;
+    margin: 10px 0;
     text-align: justify;
     text-indent: 0;
     line-height: 1.6;
+    orphans: 3;
+    widows: 3;
+    hyphens: auto;
 }
 
 .section ul,
 .section ol {
     margin: 12px 0 12px 25px;
     padding-left: 0;
+    break-inside: avoid;
 }
 
 .section li {
     margin: 8px 0;
     text-align: justify;
     line-height: 1.6;
+    break-inside: avoid;
 }
 
 .section li::marker {
     font-weight: 700;
 }
 
-/* Academic Tables */
+/* Academic Tables - Span full width across both columns */
 .academic-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 10pt;
+    font-size: 9pt;
     page-break-inside: avoid;
+    column-span: all;
+    break-inside: avoid;
+    display: table;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .academic-table caption {
     font-weight: 700;
     margin-bottom: 8px;
     text-align: left;
-    font-size: 10pt;
+    font-size: 9pt;
+    column-span: all;
 }
 
 .academic-table thead {
@@ -208,11 +241,12 @@ body {
     padding: 6px 8px;
 }
 
-/* References */
+/* References - Can use two columns or full width */
 .references {
     margin: 30px 0;
     padding-top: 20px;
     border-top: 1px solid #000;
+    column-span: all;
 }
 
 .references h2 {
@@ -221,17 +255,21 @@ body {
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    column-span: all;
 }
 
 .references ol {
     margin-left: 0;
     padding-left: 25px;
+    column-count: 2;
+    column-gap: 20px;
 }
 
 .references li {
     margin: 10px 0;
     text-align: left;
     line-height: 1.6;
+    break-inside: avoid;
 }
 
 /* Footer */
@@ -243,6 +281,7 @@ body {
     font-size: 9pt;
     color: #666;
     font-style: italic;
+    column-span: all;
 }
 
 .paper-footer p {
@@ -284,6 +323,16 @@ body {
     }
 }
 
+/* PDF Export Styles - Applied when exporting */
+.exporting .paper-container {
+    padding: 20mm;
+    max-width: 100%;
+}
+
+.exporting .paper {
+    width: 100%;
+}
+
 /* Responsive for smaller screens */
 @media (max-width: 900px) {
     .paper-container {
@@ -298,6 +347,10 @@ body {
         margin-bottom: 20px;
         text-align: center;
     }
+    
+    .paper-content {
+        column-count: 1;
+    }
 }
 
 @media (max-width: 600px) {
@@ -307,6 +360,10 @@ body {
     
     .paper-title {
         font-size: 14pt;
+    }
+    
+    .paper-content {
+        column-count: 1;
     }
     
     .academic-table {
