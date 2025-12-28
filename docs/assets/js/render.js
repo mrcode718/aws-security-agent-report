@@ -197,13 +197,14 @@ function processCitations(text, references) {
         // Remove duplicates while preserving order
         const uniqueRefIds = [...new Set(refIds)];
         
-        // Create citation links
-        const citationLinks = uniqueRefIds.map(refId => {
+        // Create citation links - keep original numbers in text but link to unified references
+        const citationLinks = numbers.map(num => {
+            const refId = citationToRefMap[num] || num;
             const ref = references.find(r => (typeof r === 'object' ? r.id : null) === refId);
             if (ref) {
-                return `<a href="#ref-${refId}" class="citation-link" title="${escapeHtml(ref.title || ref.description || '')}" onclick="event.preventDefault(); document.getElementById('ref-${refId}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${refId}</a>`;
+                return `<a href="#ref-${refId}" class="citation-link" title="${escapeHtml(ref.title || ref.description || '')}" onclick="event.preventDefault(); document.getElementById('ref-${refId}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${num}</a>`;
             }
-            return `<a href="#ref-${refId}" class="citation-link" onclick="event.preventDefault(); document.getElementById('ref-${refId}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${refId}</a>`;
+            return `<a href="#ref-${refId}" class="citation-link" onclick="event.preventDefault(); document.getElementById('ref-${refId}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${num}</a>`;
         });
         
         // Join multiple citations with commas
