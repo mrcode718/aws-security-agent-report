@@ -310,12 +310,16 @@ body {
     color: #003366;
 }
 
-/* References - Can use two columns or full width */
+/* References - Part of main content flow with double columns */
 .references {
     margin: 30px 0;
     padding-top: 20px;
     border-top: 1px solid #000;
-    column-span: all;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    -webkit-column-break-inside: avoid;
 }
 
 .references h2 {
@@ -325,13 +329,17 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     column-span: all;
+    page-break-after: avoid;
+    break-after: avoid;
+    display: block;
+    -webkit-column-break-after: avoid;
 }
 
 .references ol {
     margin-left: 0;
     padding-left: 25px;
-    column-count: 2;
-    column-gap: 20px;
+    column-count: 1;
+    column-gap: 0;
 }
 
 .references li {
@@ -547,14 +555,24 @@ body.pdf-exporting .references {
     margin: 30px 0;
     padding-top: 20px;
     border-top: 1px solid #000;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+}
+
+body.pdf-exporting .references h2 {
     column-span: all;
+    page-break-after: avoid;
+    break-after: avoid;
+    display: block;
 }
 
 body.pdf-exporting .references ol {
     margin-left: 0;
     padding-left: 25px;
-    column-count: 2;
-    column-gap: 20px;
+    column-count: 1;
+    column-gap: 0;
 }
 
 body.pdf-exporting .citation {

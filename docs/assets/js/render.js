@@ -37,14 +37,14 @@ function renderReport(content) {
 
         <div class="paper-content">
             ${content.sections.map(section => renderSection(section, content.references)).join('')}
-        </div>
 
-        <section class="references" id="references">
-            <h2>References</h2>
-            <ol>
-                ${content.references.map(ref => renderReference(ref)).join('')}
-            </ol>
-        </section>
+            <section class="references" id="references">
+                <h2>References</h2>
+                <ol>
+                    ${content.references.map(ref => renderReference(ref)).join('')}
+                </ol>
+            </section>
+        </div>
 
         <footer class="paper-footer">
             <p><em>Review completed: ${escapeHtml(content.metadata.date)} | Region: ${escapeHtml(content.metadata.region)} | Status: ${escapeHtml(content.metadata.status)}</em></p>
