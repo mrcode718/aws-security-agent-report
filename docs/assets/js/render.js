@@ -48,7 +48,13 @@ function renderReport(content) {
 function renderSection(section, references) {
     // Check if section has tables
     const hasTable = !!(section.table || section.tables);
-    const sectionClass = hasTable ? 'section section-with-table' : 'section';
+    let sectionClass = hasTable ? 'section section-with-table' : 'section';
+    // Sections 6 and 7 need special handling to flow across columns
+    if (section.number === 6) {
+        sectionClass += ' section-conclusion';
+    } else if (section.number === 7) {
+        sectionClass += ' section-references';
+    }
     
     let html = `<section class="${sectionClass}">
         <h2>${section.number}. ${escapeHtml(section.title)}</h2>`;
