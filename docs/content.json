@@ -7,7 +7,7 @@
     "status": "Draft",
     "region": "us-east-1 preview"
   },
-  "abstract": "The AWS Security Agent is an AI‑powered service that integrates design review, code review and on‑demand penetration testing into the software development lifecycle. It evaluates an application's design documents, source code and live deployments against organizational security requirements and common vulnerabilities. This report analyses the functionality of AWS Security Agent based on expert testing and publicly available information. It maps the observations back to officially documented features where possible, identifies limitations and gaps, and assesses the extent to which the tool addresses the OWASP Top 10 web‑application risks. The study found that AWS Security Agent offers context‑aware multi‑step penetration testing, real‑time pull‑request analysis, and automated design reviews, but it currently operates only through a web console in the US East (N. Virginia) preview and has important limitations. It partially covers several OWASP Top 10 categories but does not provide full coverage without additional controls.",
+  "abstract": "The AWS Security Agent is an AI‑powered service that integrates design review, code review and on‑demand penetration testing into the software development lifecycle. It evaluates an application's design documents, source code and live deployments against organizational security requirements and common vulnerabilities. This report analyses the functionality of AWS Security Agent based on expert testing and publicly available information. It maps the observations back to officially documented features where possible, identifies limitations and gaps, and assesses the extent to which the tool addresses the OWASP Top 10 web‑application risks. The study found that AWS Security Agent offers context‑aware multi‑step penetration testing, real‑time pull‑request analysis, and automated design reviews, but it currently operates only through a web console in the US East (N. Virginia) preview and has important limitations. It partially covers several OWASP Top 10 categories but does not provide full coverage without additional controls. Note: A Medium Q&A article was initially reviewed but was found to contain unverified claims and appears to be AI-generated content spreading potentially false information. All information from that source has been removed from this report, as modern information sources require precise verification against official documentation.",
   "sections": [
     {
       "number": 1,
@@ -31,7 +31,7 @@
           "number": "2.2",
           "title": "Code Security Review",
           "paragraphs": [
-            "Code review analyses pull requests in source control repositories against security requirements and the OWASP Top 10. The official AWS documentation states that AWS Security Agent proactively secures applications by analyzing pull requests against organizational security requirements and common vulnerabilities like missing input validation and SQL injection risks [7]. Developers receive remediation guidance directly in their GitHub workflow [7]. The official AWS documentation for reviewing code security findings in GitHub confirms that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and that draft pull requests are not analyzed [15]. The AWS News Feed article notes that the agent's code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [5]. A Medium Q&A article claims that the service supports multiple source control systems (GitHub, AWS CodeCommit, GitLab, Bitbucket) via API integrations [2], but the official AWS documentation only mentions GitHub integration [15]. The expert observed that the public preview integrates only with GitHub via a GitHub App, supports up to 20 private repositories per integration [14] and does not scan public repositories. Pull requests are the only unit of analysis—full repository scans are not supported. Remediation guidance and suggested fixes are posted directly in the developer's workflow, but customizing the checks beyond the defined security requirements is limited."
+            "Code review analyses pull requests in source control repositories against security requirements and the OWASP Top 10. The official AWS documentation states that AWS Security Agent proactively secures applications by analyzing pull requests against organizational security requirements and common vulnerabilities like missing input validation and SQL injection risks [7]. Developers receive remediation guidance directly in their GitHub workflow [7]. The official AWS documentation for reviewing code security findings in GitHub confirms that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and that draft pull requests are not analyzed [15]. The AWS News Feed article notes that the agent's code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [5]. The official AWS documentation only mentions GitHub integration [15]. The expert observed that the public preview integrates only with GitHub via a GitHub App, supports up to 20 private repositories per integration [14] and does not scan public repositories. Pull requests are the only unit of analysis—full repository scans are not supported. Remediation guidance and suggested fixes are posted directly in the developer's workflow, but customizing the checks beyond the defined security requirements is limited."
           ]
         },
         {
@@ -338,20 +338,6 @@
       "title": "New AWS Security Agent secures applications proactively from design to deployment (preview)",
       "url": "https://aws.amazon.com/blogs/aws/new-aws-security-agent-secures-applications-proactively-from-design-to-deployment-preview/",
       "description": "Official AWS News Blog post announcing AWS Security Agent in preview, describing capabilities including design review, code review, multi‑step penetration testing, realistic attack simulations, prioritized remediation guidance, and context-aware security testing"
-    },
-    {
-      "id": 2,
-      "citations": [
-        4,
-        6,
-        7,
-        10,
-        11,
-        13
-      ],
-      "title": "What is AWS Security Agent? Frontier Agent for Proactive APPSEC",
-      "url": "https://medium.com/@tahirbalarabe2/what-is-aws-security-agent-frontier-agent-for-proactive-appsec-f7597d4a9ece",
-      "description": "Medium Q&A article (NOTE: This source contains unverified claims and appears to be AI-generated content spreading potentially false information. Modern information sources require precise verification. Many claims in this article cannot be verified against official AWS documentation and may be inaccurate.) covering how the agent reads design documents and identifies violations, service capabilities, multi‑step attack chains, enforcement of organizational security standards, support for multiple source control systems (GitHub, AWS CodeCommit, GitLab, Bitbucket) via API integrations, integration via webhooks/APIs/plug‑ins for CI/CD tools, triggering reviews on pull requests/design document updates/deployment events, and findings export to Security Hub/Jira/ServiceNow"
     },
     {
       "id": 3,
