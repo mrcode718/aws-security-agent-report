@@ -90,46 +90,44 @@
       "paragraphs": [
         "The following tables summarise limitations identified during testing and map them to available documentation where possible. Table 1 lists limitations mentioned in official AWS sources (blogs, builder posts or Q&A) and confirmed through testing. Table 2 lists limitations observed during testing that are not mentioned in the sources reviewed."
       ],
-      "table": {
-        "caption": "Table 1 – Documented limitations corroborated by testing",
-        "headers": ["Limitation", "Documented evidence", "Observed behaviour"],
-        "rows": [
-          [
-            "Service is in preview and available only in US East (N. Virginia)",
-            "AWS News Feed notes that AWS Security Agent is free during the preview and available only in the US East (N. Virginia) region aws-news.com.",
-            "The expert was only able to create an agent space in us‑east‑1; other regions were not available."
-          ],
-          [
-            "Access is through a web‑based interface with no CLI",
-            "Builder documentation emphasises a centralized web‑based interface for managing design, code and penetration tests builder.aws.com.",
-            "Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support."
-          ],
-          [
-            "Design review requires manual upload of documents",
-            "AWS posts describe design review as analyzing architectural documents uploaded through a centralized web interface builder.aws.com.",
-            "Design files must be uploaded via the UI; there is no API to automate document submission, making CI/CD integration difficult."
-          ],
-          [
-            "Code review analyses GitHub pull requests rather than full repositories",
-            "AWS News Feed states that code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations aws-news.com.",
-            "The preview only reviews pull requests on private repositories; it does not scan entire codebases."
-          ],
-          [
-            "Multi‑step penetration testing simulates realistic attacks",
-            "Builder documentation notes that the agent performs realistic multi‑step attack simulations to identify verified vulnerabilities builder.aws.com.",
-            "The penetration testing feature created validators that exploited vulnerabilities and provided exploit paths, reducing false positives."
-          ],
-          [
-            "Integrates organisational security requirements",
-            "Medium Q&A article explains that teams define organisational requirements and the agent enforces them across design and code medium.com.",
-            "Custom policies were applied consistently in design and code review; tests with Star Wars and Harry Potter terms triggered the custom rule."
+      "tables": [
+        {
+          "caption": "Table 1 – Documented limitations corroborated by testing",
+          "headers": ["Limitation", "Documented evidence", "Observed behaviour"],
+          "rows": [
+            [
+              "Service is in preview and available only in US East (N. Virginia)",
+              "AWS News Feed notes that AWS Security Agent is free during the preview and available only in the US East (N. Virginia) region aws-news.com.",
+              "The expert was only able to create an agent space in us‑east‑1; other regions were not available."
+            ],
+            [
+              "Access is through a web‑based interface with no CLI",
+              "Builder documentation emphasises a centralized web‑based interface for managing design, code and penetration tests builder.aws.com.",
+              "Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support."
+            ],
+            [
+              "Design review requires manual upload of documents",
+              "AWS posts describe design review as analyzing architectural documents uploaded through a centralized web interface builder.aws.com.",
+              "Design files must be uploaded via the UI; there is no API to automate document submission, making CI/CD integration difficult."
+            ],
+            [
+              "Code review analyses GitHub pull requests rather than full repositories",
+              "AWS News Feed states that code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations aws-news.com.",
+              "The preview only reviews pull requests on private repositories; it does not scan entire codebases."
+            ],
+            [
+              "Multi‑step penetration testing simulates realistic attacks",
+              "Builder documentation notes that the agent performs realistic multi‑step attack simulations to identify verified vulnerabilities builder.aws.com.",
+              "The penetration testing feature created validators that exploited vulnerabilities and provided exploit paths, reducing false positives."
+            ],
+            [
+              "Integrates organisational security requirements",
+              "Medium Q&A article explains that teams define organisational requirements and the agent enforces them across design and code medium.com.",
+              "Custom policies were applied consistently in design and code review; tests with Star Wars and Harry Potter terms triggered the custom rule."
+            ]
           ]
-        ]
-      },
-      "paragraphsAfter": [
-        "Table 2 summarises limitations observed in the preview that are not mentioned in the documentation reviewed."
-      ],
-      "table": {
+        },
+        {
         "caption": "Table 2 – Limitations observed in the preview not documented in sources",
         "headers": ["Observed limitation/issue", "Impact"],
         "rows": [
@@ -182,7 +180,11 @@
             "Behaviour may change over time; results may not be reproducible and cannot be tuned for determinism."
           ]
         ]
-      }
+        }
+      ],
+      "paragraphsAfter": [
+        "Table 2 summarises limitations observed in the preview that are not mentioned in the documentation reviewed."
+      ]
     },
     {
       "number": 5,
