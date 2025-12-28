@@ -108,35 +108,35 @@
               "Only GitHub integration available for code review. Official AWS documentation for reviewing code security findings in GitHub states that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and only GitHub is mentioned throughout the documentation [15]. The documentation does not mention support for other source control systems. The preview only supports GitHub integration; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available."
             ],
             [
-              "DL-006",
+              "DL-005",
               "Limit of 20 integrated resources per integration. Official AWS documentation on Service Quotas specifies that integrated resources per integration are limited to 20 per integration, and this quota is not adjustable [14]. Large organizations may have more repositories than allowed and must manage multiple integrations or agent spaces."
             ],
             [
-              "DL-007",
+              "DL-006",
               "Limit of 20 integrations per account per region. Official AWS documentation on Service Quotas specifies that integrations are limited to 20 per account per region, and this quota is not adjustable [14]. Organizations with many repositories may need to create multiple agent spaces or request quota increases."
             ],
             [
-              "DL-008",
+              "DL-007",
               "Limit of 20 custom security requirements per account per region. Official AWS documentation on Service Quotas specifies that custom security requirements are limited to 20 per account per region, and this quota is not adjustable [14]. Organizations with extensive security policies may need to prioritize which requirements to configure."
             ],
             [
-              "DL-009",
+              "DL-008",
               "Concurrent pentest runs limited to 5 per account per region. Official AWS documentation on Service Quotas specifies that concurrent pentest runs are limited to 5 per account per region, though this quota is adjustable [14]. Multiple penetration tests can run simultaneously, but the limit may require scheduling for organizations with high testing needs."
             ],
             [
-              "DL-010",
+              "DL-009",
               "Only verified domains can be included in penetration tests. Official AWS documentation for creating penetration tests explicitly states that only verified domains can be included in penetration tests and that the URL must match a domain previously verified in AWS Security Agent [16]. Domain verification is a prerequisite for penetration testing, adding setup overhead."
             ],
             [
-              "DL-011",
+              "DL-010",
               "Public repositories unsupported. Official AWS documentation on security best practices explicitly states that \"AWS Security Agent does not provide code security guidance for public repositories. It will not comment on public repositories or open-source projects where security findings would be publicly visible\" [17]. Only private repositories can be scanned, preventing open-source projects from using the service."
             ],
             [
-              "DL-012",
+              "DL-011",
               "VPC CIDR range 10.0.0.0/16 not supported. Official AWS documentation on connecting agent to private VPC resources explicitly states that \"For VPC penetration tests, VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported\" [19]. Common corporate VPC ranges conflict with the agent; penetration tests using VPCs with this CIDR range will fail."
             ],
             [
-              "DL-013",
+              "DL-012",
               "VPC must have outbound internet connectivity. Official AWS documentation on infrastructure security states that \"AWS Security Agent requires internet access to perform penetration testing on target applications and for control plane operations\" [20]. Penetration tests inside a VPC fail if there is no outbound connectivity."
             ]
           ]
@@ -149,23 +149,23 @@
           ],
           "rows": [
             [
-              "UL-002",
+              "UL-001",
               "Design review and code review rely on manual uploads and cannot fetch from VPC or internal file shares. Organizations with strict egress controls or blocked uploads cannot use the feature; files must be manually uploaded to an external web app."
             ],
             [
-              "UL-004",
+              "UL-002",
               "Only HTTP/HTTPS targets supported; custom ports unsupported. Applications listening on non‑standard ports or protocols cannot be tested; specifying a port in the URL causes the test to hang or fail without clear error messages."
             ],
             [
-              "UL-006",
+              "UL-003",
               "Risk of hallucinated vulnerabilities when additional exploit code is provided. The agent may misattribute vulnerabilities (e.g., marking CVE‑2021‑21311 validated using proof for CVE‑2018‑7667), reducing confidence in findings."
             ],
             [
-              "UL-007",
+              "UL-004",
               "Complex exploitation scenarios requiring custom tooling or local services unsupported. \"Hard\" vulnerability exploitation cannot be validated; local or external attack tools cannot be executed within the agent's environment."
             ],
             [
-              "UL-008",
+              "UL-005",
               "Underlying language model and its updates are not exposed. Behaviour may change over time; results may not be reproducible and cannot be tuned for determinism."
             ]
           ]
