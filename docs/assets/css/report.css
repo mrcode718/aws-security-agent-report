@@ -134,6 +134,8 @@ body {
     margin: 20px 0;
     break-inside: avoid;
     page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
     -webkit-column-break-inside: avoid;
 }
 
@@ -192,11 +194,7 @@ body {
 .section ol {
     margin: 12px 0 12px 25px;
     padding-left: 0;
-}
-
-.section .references-list {
-    margin: 12px 0 12px 25px;
-    padding-left: 0;
+    break-inside: avoid;
 }
 
 .section li {
@@ -459,6 +457,8 @@ body.pdf-exporting .section {
     margin: 20px 0;
     break-inside: avoid;
     page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
 }
 
 body.pdf-exporting .section-with-table {
