@@ -92,83 +92,83 @@
           ],
           "rows": [
             [
-              "L-001",
+              "DL-001",
               "Service is in preview and available only in US East (N. Virginia) [5]"
             ],
             [
-              "L-002",
+              "DL-002",
               "Access is through a web‑based interface with no CLI"
             ],
             [
-              "L-003",
+              "DL-003",
               "Design review requires manual upload of documents"
             ],
             [
-              "L-004",
+              "DL-004",
               "Code review analyzes GitHub pull requests rather than full repositories [5]"
             ],
             [
-              "L-005",
+              "DL-005",
               "Multi‑step penetration testing simulates realistic attacks [7]"
             ],
             [
-              "L-006",
+              "DL-006",
               "Integrates organisational security requirements [7]"
             ],
             [
-              "L-007",
+              "DL-007",
               "On-demand accessibility for security reviews [7]"
             ],
             [
-              "L-008",
+              "DL-008",
               "Actionable fixes with pull requests for confirmed vulnerabilities [7]"
             ],
             [
-              "L-009",
+              "DL-009",
               "Only GitHub integration available for code review [15]"
             ],
             [
-              "L-010",
+              "DL-010",
               "Draft pull requests are not analyzed [15]"
             ],
             [
-              "L-011",
+              "DL-011",
               "Limit of 20 integrated resources per integration [14]"
             ],
             [
-              "L-012",
+              "DL-012",
               "Limit of 20 integrations per account per region [14]"
             ],
             [
-              "L-013",
+              "DL-013",
               "Limit of 20 custom security requirements per account per region [14]"
             ],
             [
-              "L-014",
+              "DL-014",
               "Concurrent pentest runs limited to 5 per account per region [14]"
             ],
             [
-              "L-015",
+              "DL-015",
               "Only verified domains can be included in penetration tests [16]"
             ],
             [
-              "L-016",
+              "DL-016",
               "VPC configuration required only for private applications [16]"
             ],
             [
-              "L-017",
+              "DL-017",
               "Public repositories unsupported [17]"
             ],
             [
-              "L-018",
+              "DL-018",
               "No public APIs or ability to schedule penetration test runs [18]"
             ],
             [
-              "L-019",
+              "DL-019",
               "VPC CIDR range 10.0.0.0/16 not supported [19]"
             ],
             [
-              "L-020",
+              "DL-020",
               "VPC must have outbound internet connectivity [20]"
             ]
           ]
@@ -181,35 +181,35 @@
           ],
           "rows": [
             [
-              "L-021",
+              "UL-001",
               "No documented list of required IAM permissions; error messages sometimes ambiguous. Administrators must experiment with permissions; deployment scripts or automation cannot easily determine the minimal set."
             ],
             [
-              "L-022",
+              "UL-002",
               "Design review and code review rely on manual uploads and cannot fetch from VPC or internal file shares. Organizations with strict egress controls or blocked uploads cannot use the feature; files must be manually uploaded to an external web app."
             ],
             [
-              "L-023",
+              "UL-003",
               "Domain verification often fails via Route53; manual DNS TXT record creation required. Adds friction to setup and requires DNS access; automatic verification appears unreliable."
             ],
             [
-              "L-024",
+              "UL-004",
               "Only HTTP/HTTPS targets supported; custom ports unsupported. Applications listening on non‑standard ports or protocols cannot be tested; specifying a port in the URL causes the test to hang or fail without clear error messages."
             ],
             [
-              "L-025",
+              "UL-005",
               "CloudWatch log group naming conventions undocumented; pre‑created log groups rejected. Users must allow the agent to create log groups automatically; otherwise configuration errors occur."
             ],
             [
-              "L-026",
+              "UL-006",
               "Risk of hallucinated vulnerabilities when additional exploit code is provided. The agent may misattribute vulnerabilities (e.g., marking CVE‑2021‑21311 validated using proof for CVE‑2018‑7667), reducing confidence in findings."
             ],
             [
-              "L-027",
+              "UL-007",
               "Complex exploitation scenarios requiring custom tooling or local services unsupported. \"Hard\" vulnerability exploitation cannot be validated; local or external attack tools cannot be executed within the agent's environment."
             ],
             [
-              "L-028",
+              "UL-008",
               "Underlying language model and its updates are not exposed. Behaviour may change over time; results may not be reproducible and cannot be tuned for determinism."
             ]
           ]
