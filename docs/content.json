@@ -87,130 +87,130 @@
         {
           "caption": "Table 1 – Documented limitations",
           "headers": [
-            "Limitation",
-            "Documented evidence"
+            "ID",
+            "Description"
           ],
           "rows": [
             [
-              "Service is in preview and available only in US East (N. Virginia)",
-              "AWS News Feed notes that AWS Security Agent is free during the preview and available only in the US East (N. Virginia) region [5]."
+              "L-001",
+              "Service is in preview and available only in US East (N. Virginia) [5]"
             ],
             [
-              "Access is through a web‑based interface with no CLI",
-              "The service provides a centralized web‑based interface for managing design, code and penetration tests."
+              "L-002",
+              "Access is through a web‑based interface with no CLI"
             ],
             [
-              "Design review requires manual upload of documents",
-              "Design review analyzes architectural documents uploaded through a centralized web interface."
+              "L-003",
+              "Design review requires manual upload of documents"
             ],
             [
-              "Code review analyzes GitHub pull requests rather than full repositories",
-              "AWS News Feed states that code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [5]."
+              "L-004",
+              "Code review analyzes GitHub pull requests rather than full repositories [5]"
             ],
             [
-              "Multi‑step penetration testing simulates realistic attacks",
-              "Official AWS documentation confirms that AWS Security Agent delivers on-demand penetration testing by deploying specialized AI agents through tailored multi-step attack scenarios [7]."
+              "L-005",
+              "Multi‑step penetration testing simulates realistic attacks [7]"
             ],
             [
-              "Integrates organisational security requirements",
-              "Official AWS documentation states that security teams define organizational security requirements once in the AWS Console, and AWS Security Agent automatically enforces these requirements throughout development [7]."
+              "L-006",
+              "Integrates organisational security requirements [7]"
             ],
             [
-              "On-demand accessibility for security reviews",
-              "Official AWS documentation confirms that AWS Security Agent provides immediate access to security expertise, enabling teams to run design reviews, code analyses, and penetration tests on-demand whenever needed [7]."
+              "L-007",
+              "On-demand accessibility for security reviews [7]"
             ],
             [
-              "Actionable fixes with pull requests for confirmed vulnerabilities",
-              "Official AWS documentation states that AWS Security Agent validates security findings through proof-based exploitation and creates pull requests with ready-to-implement fixes in developer-friendly language [7]."
+              "L-008",
+              "Actionable fixes with pull requests for confirmed vulnerabilities [7]"
             ],
             [
-              "Only GitHub integration available for code review",
-              "Official AWS documentation for reviewing code security findings in GitHub states that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and only GitHub is mentioned throughout the documentation [15]. The documentation does not mention support for other source control systems."
+              "L-009",
+              "Only GitHub integration available for code review [15]"
             ],
             [
-              "Draft pull requests are not analyzed",
-              "Official AWS documentation explicitly states that draft pull requests are not analyzed by AWS Security Agent [15]."
+              "L-010",
+              "Draft pull requests are not analyzed [15]"
             ],
             [
-              "Limit of 20 integrated resources per integration",
-              "Official AWS documentation on Service Quotas specifies that integrated resources per integration are limited to 20 per integration, and this quota is not adjustable [14]."
+              "L-011",
+              "Limit of 20 integrated resources per integration [14]"
             ],
             [
-              "Limit of 20 integrations per account per region",
-              "Official AWS documentation on Service Quotas specifies that integrations are limited to 20 per account per region, and this quota is not adjustable [14]."
+              "L-012",
+              "Limit of 20 integrations per account per region [14]"
             ],
             [
-              "Limit of 20 custom security requirements per account per region",
-              "Official AWS documentation on Service Quotas specifies that custom security requirements are limited to 20 per account per region, and this quota is not adjustable [14]."
+              "L-013",
+              "Limit of 20 custom security requirements per account per region [14]"
             ],
             [
-              "Concurrent pentest runs limited to 5 per account per region",
-              "Official AWS documentation on Service Quotas specifies that concurrent pentest runs are limited to 5 per account per region, though this quota is adjustable [14]."
+              "L-014",
+              "Concurrent pentest runs limited to 5 per account per region [14]"
             ],
             [
-              "Only verified domains can be included in penetration tests",
-              "Official AWS documentation for creating penetration tests explicitly states that only verified domains can be included in penetration tests and that the URL must match a domain previously verified in AWS Security Agent [16]."
+              "L-015",
+              "Only verified domains can be included in penetration tests [16]"
             ],
             [
-              "VPC configuration required only for private applications",
-              "Official AWS documentation for creating penetration tests states that VPC configuration is only required for testing private applications hosted within an Amazon Virtual Private Cloud, and that this step should be skipped if target domains are publicly accessible [16]."
+              "L-016",
+              "VPC configuration required only for private applications [16]"
             ],
             [
-              "Public repositories unsupported",
-              "Official AWS documentation on security best practices explicitly states that \"AWS Security Agent does not provide code security guidance for public repositories. It will not comment on public repositories or open-source projects where security findings would be publicly visible\" [17]."
+              "L-017",
+              "Public repositories unsupported [17]"
             ],
             [
-              "No public APIs or ability to schedule penetration test runs",
-              "Official AWS documentation on security considerations explicitly states that \"AWS Security Agent does not have public APIs or the ability to schedule the pen test runs\" [18]."
+              "L-018",
+              "No public APIs or ability to schedule penetration test runs [18]"
             ],
             [
-              "VPC CIDR range 10.0.0.0/16 not supported",
-              "Official AWS documentation on connecting agent to private VPC resources explicitly states that \"For VPC penetration tests, VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported\" [19]."
+              "L-019",
+              "VPC CIDR range 10.0.0.0/16 not supported [19]"
             ],
             [
-              "VPC must have outbound internet connectivity",
-              "Official AWS documentation on infrastructure security states that \"AWS Security Agent requires internet access to perform penetration testing on target applications and for control plane operations\" [20]."
+              "L-020",
+              "VPC must have outbound internet connectivity [20]"
             ]
           ]
         },
         {
           "caption": "Table 2 – Limitations observed in the preview not documented in sources",
           "headers": [
-            "Observed limitation/issue",
-            "Impact"
+            "ID",
+            "Description"
           ],
           "rows": [
             [
-              "No documented list of required IAM permissions; error messages sometimes ambiguous",
-              "Administrators must experiment with permissions; deployment scripts or automation cannot easily determine the minimal set."
+              "L-021",
+              "No documented list of required IAM permissions; error messages sometimes ambiguous. Administrators must experiment with permissions; deployment scripts or automation cannot easily determine the minimal set."
             ],
             [
-              "Design review and code review rely on manual uploads and cannot fetch from VPC or internal file shares",
-              "Organizations with strict egress controls or blocked uploads cannot use the feature; files must be manually uploaded to an external web app."
+              "L-022",
+              "Design review and code review rely on manual uploads and cannot fetch from VPC or internal file shares. Organizations with strict egress controls or blocked uploads cannot use the feature; files must be manually uploaded to an external web app."
             ],
             [
-              "Domain verification often fails via Route53; manual DNS TXT record creation required",
-              "Adds friction to setup and requires DNS access; automatic verification appears unreliable."
+              "L-023",
+              "Domain verification often fails via Route53; manual DNS TXT record creation required. Adds friction to setup and requires DNS access; automatic verification appears unreliable."
             ],
             [
-              "Only HTTP/HTTPS targets supported; custom ports unsupported",
-              "Applications listening on non‑standard ports or protocols cannot be tested; specifying a port in the URL causes the test to hang or fail without clear error messages."
+              "L-024",
+              "Only HTTP/HTTPS targets supported; custom ports unsupported. Applications listening on non‑standard ports or protocols cannot be tested; specifying a port in the URL causes the test to hang or fail without clear error messages."
             ],
             [
-              "CloudWatch log group naming conventions undocumented; pre‑created log groups rejected",
-              "Users must allow the agent to create log groups automatically; otherwise configuration errors occur."
+              "L-025",
+              "CloudWatch log group naming conventions undocumented; pre‑created log groups rejected. Users must allow the agent to create log groups automatically; otherwise configuration errors occur."
             ],
             [
-              "Risk of hallucinated vulnerabilities when additional exploit code is provided",
-              "The agent may misattribute vulnerabilities (e.g., marking CVE‑2021‑21311 validated using proof for CVE‑2018‑7667), reducing confidence in findings."
+              "L-026",
+              "Risk of hallucinated vulnerabilities when additional exploit code is provided. The agent may misattribute vulnerabilities (e.g., marking CVE‑2021‑21311 validated using proof for CVE‑2018‑7667), reducing confidence in findings."
             ],
             [
-              "Complex exploitation scenarios requiring custom tooling or local services unsupported",
-              "\"Hard\" vulnerability exploitation cannot be validated; local or external attack tools cannot be executed within the agent's environment."
+              "L-027",
+              "Complex exploitation scenarios requiring custom tooling or local services unsupported. \"Hard\" vulnerability exploitation cannot be validated; local or external attack tools cannot be executed within the agent's environment."
             ],
             [
-              "Underlying language model and its updates are not exposed",
-              "Behaviour may change over time; results may not be reproducible and cannot be tuned for determinism."
+              "L-028",
+              "Underlying language model and its updates are not exposed. Behaviour may change over time; results may not be reproducible and cannot be tuned for determinism."
             ]
           ]
         }
