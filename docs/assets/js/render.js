@@ -48,8 +48,8 @@ function renderReport(content) {
 function renderSection(section, references) {
     // Check if section has tables
     const hasTable = !!(section.table || section.tables);
-    // Sections 6 and 7 should use full width (no columns) like sections with tables
-    const useFullWidth = hasTable || section.number === 6 || section.number === 7;
+    // Sections with tables should use full width (no columns)
+    const useFullWidth = hasTable;
     const sectionClass = useFullWidth ? 'section section-with-table' : 'section';
     
     let html = `<section class="${sectionClass}">
