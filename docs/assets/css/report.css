@@ -150,6 +150,21 @@ body {
     -webkit-column-break-inside: avoid;
 }
 
+/* References section - allow breaking across columns */
+.section-references {
+    break-inside: auto;
+    page-break-inside: auto;
+    display: block;
+    -webkit-column-break-inside: auto;
+}
+
+/* Allow references list to break across columns */
+.section-references .references-list {
+    break-inside: auto;
+    page-break-inside: auto;
+    -webkit-column-break-inside: auto;
+}
+
 /* Ensure tables in sections with tables are full width */
 .section-with-table .academic-table {
     width: 100%;
@@ -460,6 +475,19 @@ body.pdf-exporting .section {
     page-break-inside: avoid;
     display: inline-block;
     width: 100%;
+}
+
+body.pdf-exporting .section-references {
+    break-inside: auto;
+    page-break-inside: auto;
+    display: block;
+    -webkit-column-break-inside: auto;
+}
+
+body.pdf-exporting .section-references .references-list {
+    break-inside: auto;
+    page-break-inside: auto;
+    -webkit-column-break-inside: auto;
 }
 
 body.pdf-exporting .section-with-table {

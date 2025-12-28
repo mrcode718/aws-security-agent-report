@@ -50,7 +50,12 @@ function renderSection(section, references) {
     const hasTable = !!(section.table || section.tables);
     // Sections with tables should use full width (no columns)
     const useFullWidth = hasTable;
-    const sectionClass = useFullWidth ? 'section section-with-table' : 'section';
+    // Section 7 (References) should be breakable across columns
+    const isReferences = section.references === true;
+    let sectionClass = useFullWidth ? 'section section-with-table' : 'section';
+    if (isReferences) {
+        sectionClass += ' section-references';
+    }
     
     let html = `<section class="${sectionClass}">
         <h2>${section.number}. ${escapeHtml(section.title)}</h2>`;
