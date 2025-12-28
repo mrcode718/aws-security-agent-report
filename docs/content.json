@@ -227,7 +227,7 @@
           [
             "A04: Cryptographic Failures",
             "Weak or missing encryption, insecure random number generation",
-            "Limited",
+            "Partial",
             "Organizational requirements can include \"Trusted Cryptography\" policies, but the agent does not automatically analyse cryptographic primitives or detect insecure algorithms beyond TLS configuration checks."
           ],
           [
@@ -251,7 +251,7 @@
           [
             "A08: Software or Data Integrity Failures",
             "Deserialization flaws, untrusted data propagation",
-            "Limited",
+            "Partial",
             "The agent's penetration tests may detect local file inclusion or path traversal but do not analyse deserialization or update mechanisms. Integrity protection is partly covered by organizational policies."
           ],
           [
