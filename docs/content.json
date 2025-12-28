@@ -85,112 +85,91 @@
       ],
       "tables": [
         {
-          "caption": "Table 1 – Documented limitations corroborated by testing",
+          "caption": "Table 1 – Documented limitations",
           "headers": [
             "Limitation",
-            "Documented evidence",
-            "Observed behaviour"
+            "Documented evidence"
           ],
           "rows": [
             [
               "Service is in preview and available only in US East (N. Virginia)",
-              "AWS News Feed notes that AWS Security Agent is free during the preview and available only in the US East (N. Virginia) region [5].",
-              "The expert was only able to create an agent space in us‑east‑1; other regions were not available."
+              "AWS News Feed notes that AWS Security Agent is free during the preview and available only in the US East (N. Virginia) region [5]."
             ],
             [
               "Access is through a web‑based interface with no CLI",
-              "The service provides a centralized web‑based interface for managing design, code and penetration tests.",
-              "Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support."
+              "The service provides a centralized web‑based interface for managing design, code and penetration tests."
             ],
             [
               "Design review requires manual upload of documents",
-              "Design review analyzes architectural documents uploaded through a centralized web interface.",
-              "Design files must be uploaded via the UI; there is no API to automate document submission, making CI/CD integration difficult."
+              "Design review analyzes architectural documents uploaded through a centralized web interface."
             ],
             [
               "Code review analyzes GitHub pull requests rather than full repositories",
-              "AWS News Feed states that code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [5].",
-              "The preview only reviews pull requests on private repositories; it does not scan entire codebases."
+              "AWS News Feed states that code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [5]."
             ],
             [
               "Multi‑step penetration testing simulates realistic attacks",
-              "Official AWS documentation confirms that AWS Security Agent delivers on-demand penetration testing by deploying specialized AI agents through tailored multi-step attack scenarios [7].",
-              "The penetration testing feature created validators that exploited vulnerabilities and provided exploit paths, reducing false positives."
+              "Official AWS documentation confirms that AWS Security Agent delivers on-demand penetration testing by deploying specialized AI agents through tailored multi-step attack scenarios [7]."
             ],
             [
               "Integrates organisational security requirements",
-              "Official AWS documentation states that security teams define organizational security requirements once in the AWS Console, and AWS Security Agent automatically enforces these requirements throughout development [7].",
-              "Custom policies were applied consistently in design and code review; tests with Star Wars and Harry Potter terms triggered the custom rule."
+              "Official AWS documentation states that security teams define organizational security requirements once in the AWS Console, and AWS Security Agent automatically enforces these requirements throughout development [7]."
             ],
             [
               "On-demand accessibility for security reviews",
-              "Official AWS documentation confirms that AWS Security Agent provides immediate access to security expertise, enabling teams to run design reviews, code analyses, and penetration tests on-demand whenever needed [7].",
-              "The expert was able to trigger design reviews, code reviews, and penetration tests immediately through the web interface without scheduling delays."
+              "Official AWS documentation confirms that AWS Security Agent provides immediate access to security expertise, enabling teams to run design reviews, code analyses, and penetration tests on-demand whenever needed [7]."
             ],
             [
               "Actionable fixes with pull requests for confirmed vulnerabilities",
-              "Official AWS documentation states that AWS Security Agent validates security findings through proof-based exploitation and creates pull requests with ready-to-implement fixes in developer-friendly language [7].",
-              "The expert observed that penetration test findings included detailed exploit paths and remediation guidance, though the pull request creation feature was not tested in the preview."
+              "Official AWS documentation states that AWS Security Agent validates security findings through proof-based exploitation and creates pull requests with ready-to-implement fixes in developer-friendly language [7]."
             ],
             [
               "Only GitHub integration available for code review",
-              "Official AWS documentation for reviewing code security findings in GitHub states that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and only GitHub is mentioned throughout the documentation [15]. The documentation does not mention support for other source control systems.",
-              "The preview only supports GitHub integration; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available, contradicting marketing claims of multi-SCM support."
+              "Official AWS documentation for reviewing code security findings in GitHub states that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and only GitHub is mentioned throughout the documentation [15]. The documentation does not mention support for other source control systems."
             ],
             [
               "Draft pull requests are not analyzed",
-              "Official AWS documentation explicitly states that draft pull requests are not analyzed by AWS Security Agent [15].",
-              "Code review only triggers when pull requests are marked as \"Ready for review\"; draft pull requests are ignored."
+              "Official AWS documentation explicitly states that draft pull requests are not analyzed by AWS Security Agent [15]."
             ],
             [
               "Limit of 20 integrated resources per integration",
-              "Official AWS documentation on Service Quotas specifies that integrated resources per integration are limited to 20 per integration, and this quota is not adjustable [14].",
-              "Large organizations may have more repositories than allowed and must manage multiple integrations or agent spaces."
+              "Official AWS documentation on Service Quotas specifies that integrated resources per integration are limited to 20 per integration, and this quota is not adjustable [14]."
             ],
             [
               "Limit of 20 integrations per account per region",
-              "Official AWS documentation on Service Quotas specifies that integrations are limited to 20 per account per region, and this quota is not adjustable [14].",
-              "Organizations with many repositories may need to create multiple agent spaces or request quota increases."
+              "Official AWS documentation on Service Quotas specifies that integrations are limited to 20 per account per region, and this quota is not adjustable [14]."
             ],
             [
               "Limit of 20 custom security requirements per account per region",
-              "Official AWS documentation on Service Quotas specifies that custom security requirements are limited to 20 per account per region, and this quota is not adjustable [14].",
-              "Organizations with extensive security policies may need to prioritize which requirements to configure."
+              "Official AWS documentation on Service Quotas specifies that custom security requirements are limited to 20 per account per region, and this quota is not adjustable [14]."
             ],
             [
               "Concurrent pentest runs limited to 5 per account per region",
-              "Official AWS documentation on Service Quotas specifies that concurrent pentest runs are limited to 5 per account per region, though this quota is adjustable [14].",
-              "Multiple penetration tests can run simultaneously, but the limit may require scheduling for organizations with high testing needs."
+              "Official AWS documentation on Service Quotas specifies that concurrent pentest runs are limited to 5 per account per region, though this quota is adjustable [14]."
             ],
             [
               "Only verified domains can be included in penetration tests",
-              "Official AWS documentation for creating penetration tests explicitly states that only verified domains can be included in penetration tests and that the URL must match a domain previously verified in AWS Security Agent [16].",
-              "Domain verification is a prerequisite for penetration testing, adding setup overhead."
+              "Official AWS documentation for creating penetration tests explicitly states that only verified domains can be included in penetration tests and that the URL must match a domain previously verified in AWS Security Agent [16]."
             ],
             [
               "VPC configuration required only for private applications",
-              "Official AWS documentation for creating penetration tests states that VPC configuration is only required for testing private applications hosted within an Amazon Virtual Private Cloud, and that this step should be skipped if target domains are publicly accessible [16].",
-              "Private applications require additional VPC, subnet, and security group configuration, while public applications do not."
+              "Official AWS documentation for creating penetration tests states that VPC configuration is only required for testing private applications hosted within an Amazon Virtual Private Cloud, and that this step should be skipped if target domains are publicly accessible [16]."
             ],
             [
               "Public repositories unsupported",
-              "Official AWS documentation on security best practices explicitly states that \"AWS Security Agent does not provide code security guidance for public repositories. It will not comment on public repositories or open-source projects where security findings would be publicly visible\" [17].",
-              "Only private repositories can be scanned, preventing open-source projects from using the service."
+              "Official AWS documentation on security best practices explicitly states that \"AWS Security Agent does not provide code security guidance for public repositories. It will not comment on public repositories or open-source projects where security findings would be publicly visible\" [17]."
             ],
             [
               "No public APIs or ability to schedule penetration test runs",
-              "Official AWS documentation on security considerations explicitly states that \"AWS Security Agent does not have public APIs or the ability to schedule the pen test runs\" [18].",
-              "Tests must be triggered manually via the console; cannot integrate penetration tests into CI/CD pipelines or scheduled assessments."
+              "Official AWS documentation on security considerations explicitly states that \"AWS Security Agent does not have public APIs or the ability to schedule the pen test runs\" [18]."
             ],
             [
               "VPC CIDR range 10.0.0.0/16 not supported",
-              "Official AWS documentation on connecting agent to private VPC resources explicitly states that \"For VPC penetration tests, VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported\" [19].",
-              "Common corporate VPC ranges conflict with the agent; penetration tests using VPCs with this CIDR range will fail."
+              "Official AWS documentation on connecting agent to private VPC resources explicitly states that \"For VPC penetration tests, VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported\" [19]."
             ],
             [
               "VPC must have outbound internet connectivity",
-              "Official AWS documentation on infrastructure security states that \"AWS Security Agent requires internet access to perform penetration testing on target applications and for control plane operations\" [20].",
-              "Penetration tests inside a VPC fail if there is no outbound connectivity."
+              "Official AWS documentation on infrastructure security states that \"AWS Security Agent requires internet access to perform penetration testing on target applications and for control plane operations\" [20]."
             ]
           ]
         },
