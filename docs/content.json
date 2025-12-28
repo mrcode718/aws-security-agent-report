@@ -97,7 +97,7 @@
             ],
             [
               "DL-002",
-              "Access is through a web‑based interface. Official AWS documentation states that the agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface [7]. Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support."
+              "Access is through a web‑based interface with no CLI, API, or scheduling capabilities. Official AWS documentation states that the agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface [7]. Official AWS documentation on security considerations explicitly states that \"AWS Security Agent does not have public APIs or the ability to schedule the pen test runs\" [18]. Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support. Tests must be triggered manually via the console; cannot integrate penetration tests into CI/CD pipelines or scheduled assessments."
             ],
             [
               "DL-003",
@@ -133,22 +133,14 @@
             ],
             [
               "DL-011",
-              "VPC configuration required only for private applications. Official AWS documentation for creating penetration tests states that VPC configuration is only required for testing private applications hosted within an Amazon Virtual Private Cloud, and that this step should be skipped if target domains are publicly accessible [16]. Private applications require additional VPC, subnet, and security group configuration, while public applications do not."
-            ],
-            [
-              "DL-012",
               "Public repositories unsupported. Official AWS documentation on security best practices explicitly states that \"AWS Security Agent does not provide code security guidance for public repositories. It will not comment on public repositories or open-source projects where security findings would be publicly visible\" [17]. Only private repositories can be scanned, preventing open-source projects from using the service."
             ],
             [
-              "DL-013",
-              "No public APIs or ability to schedule penetration test runs. Official AWS documentation on security considerations explicitly states that \"AWS Security Agent does not have public APIs or the ability to schedule the pen test runs\" [18]. Tests must be triggered manually via the console; cannot integrate penetration tests into CI/CD pipelines or scheduled assessments."
-            ],
-            [
-              "DL-014",
+              "DL-012",
               "VPC CIDR range 10.0.0.0/16 not supported. Official AWS documentation on connecting agent to private VPC resources explicitly states that \"For VPC penetration tests, VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported\" [19]. Common corporate VPC ranges conflict with the agent; penetration tests using VPCs with this CIDR range will fail."
             ],
             [
-              "DL-015",
+              "DL-013",
               "VPC must have outbound internet connectivity. Official AWS documentation on infrastructure security states that \"AWS Security Agent requires internet access to perform penetration testing on target applications and for control plane operations\" [20]. Penetration tests inside a VPC fail if there is no outbound connectivity."
             ]
           ]
