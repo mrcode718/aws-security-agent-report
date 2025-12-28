@@ -290,9 +290,9 @@
         2,
         3
       ],
-      "title": "Embedding Security Into the Dev Lifecycle with AWS Security Agent",
-      "url": "https://builder.aws.com/content/36YhVrhe1D91HKGI6d1yUYEpSkM/embedding-security-into-the-dev-lifecycle-with-aws-security-agent",
-      "description": "AWS Builder Center article describing AWS Security Agent capabilities including design review, code review, multi‑step penetration testing, realistic attack simulations, prioritized remediation guidance, operation across AWS/hybrid/multi‑cloud environments, and centralized findings management"
+      "title": "New AWS Security Agent secures applications proactively from design to deployment (preview)",
+      "url": "https://aws.amazon.com/blogs/aws/new-aws-security-agent-secures-applications-proactively-from-design-to-deployment-preview/",
+      "description": "Official AWS News Blog post announcing AWS Security Agent in preview, describing capabilities including design review, code review, multi‑step penetration testing, realistic attack simulations, prioritized remediation guidance, and context-aware security testing"
     },
     {
       "id": 2,
