@@ -139,6 +139,23 @@ body {
     -webkit-column-break-inside: avoid;
 }
 
+/* Sections with tables - full page width, break out of column layout */
+.section-with-table {
+    column-span: all;
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+}
+
+/* Ensure tables in sections with tables are full width */
+.section-with-table .academic-table {
+    width: 100%;
+    max-width: 100%;
+}
+
 .section h2 {
     font-size: 12pt;
     font-weight: 700;
@@ -434,6 +451,20 @@ body.pdf-exporting .section {
     page-break-inside: avoid;
     display: inline-block;
     width: 100%;
+}
+
+body.pdf-exporting .section-with-table {
+    column-span: all;
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+body.pdf-exporting .section-with-table .academic-table {
+    width: 100%;
+    max-width: 100%;
 }
 
 body.pdf-exporting .section h2 {

@@ -53,7 +53,11 @@ function renderReport(content) {
 }
 
 function renderSection(section, references) {
-    let html = `<section class="section">
+    // Check if section has tables
+    const hasTable = !!(section.table || section.tables);
+    const sectionClass = hasTable ? 'section section-with-table' : 'section';
+    
+    let html = `<section class="${sectionClass}">
         <h2>${section.number}. ${escapeHtml(section.title)}</h2>`;
     
     // Render paragraphs
