@@ -132,3 +132,17 @@ For A records, use these IPs:
 | Apex (example.com) | A (4 records) | GitHub IPs (see above) |
 | Apex (example.com) | ALIAS | Point to CNAME or use CloudFront |
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
