@@ -285,42 +285,61 @@
   "references": [
     {
       "id": 1,
-      "citations": [1, 2, 3],
+      "citations": [
+        1,
+        2,
+        3
+      ],
       "title": "Embedding Security Into the Dev Lifecycle with AWS Security Agent",
       "url": "https://builder.aws.com/content/36YhVrhe1D91HKGI6d1yUYEpSkM/embedding-security-into-the-dev-lifecycle-with-aws-security-agent",
       "description": "AWS Builder Center article describing AWS Security Agent capabilities including design review, code review, multi‑step penetration testing, realistic attack simulations, prioritized remediation guidance, operation across AWS/hybrid/multi‑cloud environments, and centralized findings management"
     },
     {
       "id": 2,
-      "citations": [4, 6, 7, 10, 11, 13],
+      "citations": [
+        4,
+        6,
+        7,
+        10,
+        11,
+        13
+      ],
       "title": "What is AWS Security Agent? Frontier Agent for Proactive APPSEC",
       "url": "https://medium.com/@tahirbalarabe2/what-is-aws-security-agent-frontier-agent-for-proactive-appsec-f7597d4a9ece",
       "description": "Medium Q&A article covering how the agent reads design documents and identifies violations, service capabilities, multi‑step attack chains, enforcement of organizational security standards, support for multiple source control systems (GitHub, AWS CodeCommit, GitLab, Bitbucket) via API integrations, integration via webhooks/APIs/plug‑ins for CI/CD tools, triggering reviews on pull requests/design document updates/deployment events, and findings export to Security Hub/Jira/ServiceNow"
     },
     {
       "id": 3,
-      "citations": [5],
+      "citations": [
+        5
+      ],
       "title": "New AWS Security Agent secures applications proactively from design to deployment (preview)",
-      "url": "https://aws-news.com/article/2025-12-02-new-aws-security-agent-secures-applications-proactively-from-design-to-deployment-preview",
+      "url": "https://aws-news.com/article/019adfcb-f2b3-bf69-cc72-c986ef35d284",
       "description": "AWS News Feed post summarising features including automated design, code and penetration tests, context awareness and OWASP Top 10 code checks"
     },
     {
       "id": 4,
-      "citations": [8],
+      "citations": [
+        8
+      ],
       "title": "AWS Debuts Security Agent for Automated Code-Level Protection",
       "url": "https://nationalcioreview.com/articles-insights/extra-bytes/aws-debuts-security-agent-for-automated-code-level-protection/",
       "description": "National CIO Review article noting that AWS Security Agent automates penetration testing tailored to application design and code"
     },
     {
       "id": 5,
-      "citations": [9],
+      "citations": [
+        9
+      ],
       "title": "AWS targets vulnerable code with security agent",
       "url": "https://www.computerweekly.com/news/366635619/AWS-targets-vulnerable-code-with-security-agent",
       "description": "ComputerWeekly report highlighting that AWS Security Agent continuously scans for security violations, conducts on‑demand penetration tests and ties security across the development lifecycle"
     },
     {
       "id": 6,
-      "citations": [12],
+      "citations": [
+        12
+      ],
       "title": "OWASP Top 10:2025",
       "url": "https://owasp.org/Top10/2025/",
       "description": "OWASP Top 10:2025 list of application security risks"
