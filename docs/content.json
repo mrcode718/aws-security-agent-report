@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "AWS Security Agent Functional Testing Report",
-    "author": "Security Analysis",
-    "affiliation": "Independent researcher",
+    "author": "Ivan Bylina",
+    "affiliation": "GenAI Security Research",
     "date": "2025-12-28",
     "status": "Draft",
     "region": "us-east-1 preview"
@@ -108,10 +108,6 @@
               "Only GitHub integration available for code review. Official AWS documentation for reviewing code security findings in GitHub states that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and only GitHub is mentioned throughout the documentation [15]. The documentation does not mention support for other source control systems. The preview only supports GitHub integration; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available."
             ],
             [
-              "DL-005",
-              "Draft pull requests are not analyzed. Official AWS documentation explicitly states that draft pull requests are not analyzed by AWS Security Agent [15]. Code review only triggers when pull requests are marked as \"Ready for review\"; draft pull requests are ignored."
-            ],
-            [
               "DL-006",
               "Limit of 20 integrated resources per integration. Official AWS documentation on Service Quotas specifies that integrated resources per integration are limited to 20 per integration, and this quota is not adjustable [14]. Large organizations may have more repositories than allowed and must manage multiple integrations or agent spaces."
             ],
@@ -153,24 +149,12 @@
           ],
           "rows": [
             [
-              "UL-001",
-              "No documented list of required IAM permissions; error messages sometimes ambiguous. Administrators must experiment with permissions; deployment scripts or automation cannot easily determine the minimal set."
-            ],
-            [
               "UL-002",
               "Design review and code review rely on manual uploads and cannot fetch from VPC or internal file shares. Organizations with strict egress controls or blocked uploads cannot use the feature; files must be manually uploaded to an external web app."
             ],
             [
-              "UL-003",
-              "Domain verification often fails via Route53; manual DNS TXT record creation required. Adds friction to setup and requires DNS access; automatic verification appears unreliable."
-            ],
-            [
               "UL-004",
               "Only HTTP/HTTPS targets supported; custom ports unsupported. Applications listening on non‑standard ports or protocols cannot be tested; specifying a port in the URL causes the test to hang or fail without clear error messages."
-            ],
-            [
-              "UL-005",
-              "CloudWatch log group naming conventions undocumented; pre‑created log groups rejected. Users must allow the agent to create log groups automatically; otherwise configuration errors occur."
             ],
             [
               "UL-006",
