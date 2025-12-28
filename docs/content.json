@@ -97,7 +97,7 @@
             ],
             [
               "DL-002",
-              "Access is through a web‑based interface with no CLI. The service provides a centralized web‑based interface for managing design, code and penetration tests. Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support."
+              "Access is through a web‑based interface. Official AWS documentation states that the agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface [7]. Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support."
             ],
             [
               "DL-003",
@@ -338,10 +338,12 @@
     },
     {
       "id": 7,
-      "citations": [],
+      "citations": [
+        7
+      ],
       "title": "What is AWS Security Agent? - AWS Security Agent",
       "url": "https://docs.aws.amazon.com/securityagent/latest/userguide/what-is.html",
-      "description": "Official AWS Security Agent documentation describing key capabilities (design security review, code security review, penetration testing), benefits (on-demand accessibility, automatic validation of organizational requirements, scalable security expertise, actionable fixes, multi and hybrid cloud support), and how the service operates across the development lifecycle"
+      "description": "Official AWS Security Agent documentation describing key capabilities (design security review, code security review, penetration testing), benefits (on-demand accessibility, automatic validation of organizational requirements, scalable security expertise, actionable fixes, multi and hybrid cloud support), and how the service operates across the development lifecycle. The documentation states that the agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface."
     },
     {
       "id": 8,
