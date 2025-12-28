@@ -31,14 +31,14 @@
           "number": "2.2",
           "title": "Code Security Review",
           "paragraphs": [
-            "Code review analyses pull requests in source control repositories against security requirements and the OWASP Top 10. The official AWS documentation states that AWS Security Agent proactively secures applications by analyzing pull requests against organizational security requirements and common vulnerabilities like missing input validation and SQL injection risks [7]. Developers receive remediation guidance directly in their GitHub workflow [7]. The AWS News Feed article notes that the agent's code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [5]. A Medium Q&A article clarifies that AWS Security Agent is an AI‑powered service that automates security reviews and penetration testing throughout the software development lifecycle and executes multi‑step attack chains like a human pen tester [6]. It states that design documents, code and architecture are analysed to enforce organizational security standards [6] and that the service supports multiple source control systems (GitHub, AWS CodeCommit, GitLab, Bitbucket) via API integrations [2]. The expert, however, observed that the public preview integrates only with GitHub via a GitHub App, supports up to 20 private repositories and does not scan public repositories. Pull requests are the only unit of analysis—full repository scans are not supported. Remediation guidance and suggested fixes are posted directly in the developer's workflow, but customizing the checks beyond the defined security requirements is limited."
+            "Code review analyses pull requests in source control repositories against security requirements and the OWASP Top 10. The official AWS documentation states that AWS Security Agent proactively secures applications by analyzing pull requests against organizational security requirements and common vulnerabilities like missing input validation and SQL injection risks [7]. Developers receive remediation guidance directly in their GitHub workflow [7]. The official AWS documentation for reviewing code security findings in GitHub confirms that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and that draft pull requests are not analyzed [15]. The AWS News Feed article notes that the agent's code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [3]. A Medium Q&A article claims that the service supports multiple source control systems (GitHub, AWS CodeCommit, GitLab, Bitbucket) via API integrations [2], but the official AWS documentation only mentions GitHub integration [15]. The expert observed that the public preview integrates only with GitHub via a GitHub App, supports up to 20 private repositories per integration [14] and does not scan public repositories. Pull requests are the only unit of analysis—full repository scans are not supported. Remediation guidance and suggested fixes are posted directly in the developer's workflow, but customizing the checks beyond the defined security requirements is limited."
           ]
         },
         {
           "number": "2.3",
           "title": "On‑Demand Penetration Testing",
           "paragraphs": [
-            "AWS Security Agent's penetration testing capability performs multi‑step attack simulations on web applications. The official AWS documentation confirms that AWS Security Agent delivers on-demand penetration testing by deploying specialized AI agents to discover, validate, report and remediate security vulnerabilities through tailored multi-step attack scenarios [7]. The agent understands the application's context by analyzing source code and documentation to identify and exploit vulnerabilities that automated security scanning tools cannot find [7]. It documents findings with impact analysis, reproducible attack paths, and creates pull requests with ready-to-implement code fixes [7]. It is promoted as automating context‑aware penetration tests that scale across many applications [2]. The National CIO Review notes that the agent continuously scans workloads for vulnerabilities and performs penetration testing tailored to the application's structure and intended behavior, eliminating the need to wait for human‑led assessments [8]. The ComputerWeekly report adds that the agent understands the design, code and security requirements of a workload and can create a customised attack plan to expose vulnerabilities before an application reaches production [9]. During testing, the expert noted that penetration tests require a verified domain (with DNS TXT record) or a private VPC and can include contextual artifacts such as API documentation, threat models, source code archives and GitHub repositories. Only HTTP/HTTPS targets are supported; custom ports and other protocols are not. The agent creates multiple action groups (information disclosure, business logic vulnerabilities, unrestricted resource consumption, authentication bypass, etc.), uses static analysis tasks to inspect the source, and then launches validators that exploit vulnerabilities to minimise false positives. The risk categories available for testing include arbitrary file upload, code injection, command injection, cross‑site scripting (XSS), insecure direct object references, JSON Web Token vulnerabilities, local file inclusion, path traversal, privilege escalation, server‑side request forgery (SSRF), server‑side template injection, SQL injection and XML external entity attacks."
+            "AWS Security Agent's penetration testing capability performs multi‑step attack simulations on web applications. The official AWS documentation confirms that AWS Security Agent delivers on-demand penetration testing by deploying specialized AI agents to discover, validate, report and remediate security vulnerabilities through tailored multi-step attack scenarios [7]. The agent understands the application's context by analyzing source code and documentation to identify and exploit vulnerabilities that automated security scanning tools cannot find [7]. It documents findings with impact analysis, reproducible attack paths, and creates pull requests with ready-to-implement code fixes [7]. The official AWS documentation for creating penetration tests specifies that only verified domains can be included in penetration tests and that VPC configuration is only required for testing private applications hosted within an Amazon Virtual Private Cloud [16]. It is promoted as automating context‑aware penetration tests that scale across many applications [2]. The National CIO Review notes that the agent continuously scans workloads for vulnerabilities and performs penetration testing tailored to the application's structure and intended behavior, eliminating the need to wait for human‑led assessments [4]. The ComputerWeekly report adds that the agent understands the design, code and security requirements of a workload and can create a customised attack plan to expose vulnerabilities before an application reaches production [5]. During testing, the expert noted that penetration tests require a verified domain (with DNS TXT record) or a private VPC [16] and can include contextual artifacts such as API documentation, threat models, source code archives and GitHub repositories. Only HTTP/HTTPS targets are supported; custom ports and other protocols are not. The agent creates multiple action groups (information disclosure, business logic vulnerabilities, unrestricted resource consumption, authentication bypass, etc.), uses static analysis tasks to inspect the source, and then launches validators that exploit vulnerabilities to minimise false positives. The risk categories available for testing include arbitrary file upload, code injection, command injection, cross‑site scripting (XSS), insecure direct object references, JSON Web Token vulnerabilities, local file inclusion, path traversal, privilege escalation, server‑side request forgery (SSRF), server‑side template injection, SQL injection and XML external entity attacks."
           ]
         },
         {
@@ -138,6 +138,46 @@
               "Actionable fixes with pull requests for confirmed vulnerabilities",
               "Official AWS documentation states that AWS Security Agent validates security findings through proof-based exploitation and creates pull requests with ready-to-implement fixes in developer-friendly language [7].",
               "The expert observed that penetration test findings included detailed exploit paths and remediation guidance, though the pull request creation feature was not tested in the preview."
+            ],
+            [
+              "Only GitHub integration available for code review",
+              "Official AWS documentation for reviewing code security findings in GitHub states that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and only GitHub is mentioned throughout the documentation [15]. The documentation does not mention support for other source control systems.",
+              "The preview only supports GitHub integration; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available, contradicting marketing claims of multi-SCM support."
+            ],
+            [
+              "Draft pull requests are not analyzed",
+              "Official AWS documentation explicitly states that draft pull requests are not analyzed by AWS Security Agent [15].",
+              "Code review only triggers when pull requests are marked as \"Ready for review\"; draft pull requests are ignored."
+            ],
+            [
+              "Limit of 20 integrated resources per integration",
+              "Official AWS documentation on Service Quotas specifies that integrated resources per integration are limited to 20 per integration, and this quota is not adjustable [14].",
+              "Large organizations may have more repositories than allowed and must manage multiple integrations or agent spaces."
+            ],
+            [
+              "Limit of 20 integrations per account per region",
+              "Official AWS documentation on Service Quotas specifies that integrations are limited to 20 per account per region, and this quota is not adjustable [14].",
+              "Organizations with many repositories may need to create multiple agent spaces or request quota increases."
+            ],
+            [
+              "Limit of 20 custom security requirements per account per region",
+              "Official AWS documentation on Service Quotas specifies that custom security requirements are limited to 20 per account per region, and this quota is not adjustable [14].",
+              "Organizations with extensive security policies may need to prioritize which requirements to configure."
+            ],
+            [
+              "Concurrent pentest runs limited to 5 per account per region",
+              "Official AWS documentation on Service Quotas specifies that concurrent pentest runs are limited to 5 per account per region, though this quota is adjustable [14].",
+              "Multiple penetration tests can run simultaneously, but the limit may require scheduling for organizations with high testing needs."
+            ],
+            [
+              "Only verified domains can be included in penetration tests",
+              "Official AWS documentation for creating penetration tests explicitly states that only verified domains can be included in penetration tests and that the URL must match a domain previously verified in AWS Security Agent [16].",
+              "Domain verification is a prerequisite for penetration testing, adding setup overhead."
+            ],
+            [
+              "VPC configuration required only for private applications",
+              "Official AWS documentation for creating penetration tests states that VPC configuration is only required for testing private applications hosted within an Amazon Virtual Private Cloud, and that this step should be skipped if target domains are publicly accessible [16].",
+              "Private applications require additional VPC, subnet, and security group configuration, while public applications do not."
             ]
           ]
         },
@@ -153,12 +193,8 @@
               "Administrators must experiment with permissions; deployment scripts or automation cannot easily determine the minimal set."
             ],
             [
-              "Only GitHub integration available; other SCM systems and public repositories unsupported",
-              "Official AWS documentation does not specify which source control systems are supported in the preview. Contradicts marketing claims of multi‑SCM support; restricts adoption for teams using GitLab, Bitbucket or CodeCommit and prevents open‑source projects from using the service."
-            ],
-            [
-              "Limit of 20 repositories per agent space and only private repositories",
-              "Large organizations may have more repositories than allowed and must manage multiple agent spaces; public repositories cannot be scanned."
+              "Public repositories unsupported",
+              "Official AWS documentation only mentions GitHub integration and does not specify whether public repositories are supported [15]. The expert observed that only private repositories can be scanned, preventing open-source projects from using the service."
             ],
             [
               "Lack of scheduling or API for running tests",
@@ -360,6 +396,33 @@
       "title": "What is AWS Security Agent? - AWS Security Agent",
       "url": "https://docs.aws.amazon.com/securityagent/latest/userguide/what-is.html",
       "description": "Official AWS Security Agent documentation describing key capabilities (design security review, code security review, penetration testing), benefits (on-demand accessibility, automatic validation of organizational requirements, scalable security expertise, actionable fixes, multi and hybrid cloud support), and how the service operates across the development lifecycle"
+    },
+    {
+      "id": 8,
+      "citations": [
+        14
+      ],
+      "title": "Service Quotas - AWS Security Agent",
+      "url": "https://docs.aws.amazon.com/securityagent/latest/userguide/quotas.html",
+      "description": "Official AWS Security Agent documentation listing service quotas including operations quotas (pentest hours: 80/month, design reviews: 200/month, code reviews: 1,000/month) and configuration quotas (integrations: 20 per account per region, integrated resources per integration: 20, custom security requirements: 20 per account per region, concurrent pentest runs: 5 per account per region)"
+    },
+    {
+      "id": 9,
+      "citations": [
+        15
+      ],
+      "title": "Review code security findings in GitHub - AWS Security Agent",
+      "url": "https://docs.aws.amazon.com/securityagent/latest/userguide/review-code-findings-github.html",
+      "description": "Official AWS Security Agent documentation explaining how code review works in GitHub, including that code review is triggered when a pull request is marked as \"Ready for review\" and that draft pull requests are not analyzed"
+    },
+    {
+      "id": 10,
+      "citations": [
+        16
+      ],
+      "title": "Create a penetration test - AWS Security Agent",
+      "url": "https://docs.aws.amazon.com/securityagent/latest/userguide/perform-penetration-test.html",
+      "description": "Official AWS Security Agent documentation describing how to create penetration tests, including prerequisites, configuration of test scope, target domains (only verified domains can be tested), VPC resources (only required for private applications), authentication credentials, and additional resources"
     }
   ]
 }
