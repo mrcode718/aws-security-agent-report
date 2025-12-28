@@ -146,11 +146,22 @@ function renderReference(ref) {
         // Legacy format - plain string
         return `<li>${escapeHtml(ref)}</li>`;
     } else {
-        // New format - object with id, title, url, description
+        // New format - object with id, title, url, description, citations
         const url = ref.url || '#';
         const title = ref.title || '';
         const description = ref.description || '';
-        return `<li id="ref-${ref.id}"><a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-link">${escapeHtml(title)}</a>. ${escapeHtml(description)} <a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-url">${escapeHtml(url)}</a></li>`;
+        // Show all citation numbers that map to this reference
+        let citationNumbers = '';
+        if (ref.citations && ref.citations.length > 0) {
+            if (ref.citations.length === 1) {
+                citationNumbers = `[${ref.citations[0]}]`;
+            } else {
+                citationNumbers = `[${ref.citations.join(', ')}]`;
+            }
+        } else {
+            citationNumbers = `[${ref.id}]`;
+        }
+        return `<li id="ref-${ref.id}"><span class="reference-number">${citationNumbers}</span> <a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-link">${escapeHtml(title)}</a>. ${escapeHtml(description)} <a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-url">${escapeHtml(url)}</a></li>`;
     }
 }
 
@@ -158,6 +169,20 @@ function processCitations(text, references) {
     if (!references || references.length === 0) {
         return text;
     }
+    
+    // Create a mapping from old citation numbers to new unified reference IDs
+    const citationToRefMap = {};
+    references.forEach(ref => {
+        if (typeof ref === 'object' && ref.citations) {
+            // Map all old citation numbers to the new unified reference ID
+            ref.citations.forEach(oldNum => {
+                citationToRefMap[oldNum] = ref.id;
+            });
+        } else if (typeof ref === 'object' && ref.id) {
+            // Fallback: if no citations array, map ID to itself
+            citationToRefMap[ref.id] = ref.id;
+        }
+    });
     
     // Pattern to match citations: [1], [2], [1,2], [1-3], [1, 2, 3], etc.
     // This regex matches [ followed by numbers, commas, spaces, and hyphens, then ]
@@ -167,13 +192,18 @@ function processCitations(text, references) {
         // Parse citation numbers (handle ranges like 1-3, lists like 1,2,3, etc.)
         const numbers = citationNumbers.split(/[,\s-]+/).map(n => parseInt(n.trim())).filter(n => !isNaN(n));
         
+        // Map old citation numbers to new unified reference IDs
+        const refIds = numbers.map(num => citationToRefMap[num] || num);
+        // Remove duplicates while preserving order
+        const uniqueRefIds = [...new Set(refIds)];
+        
         // Create citation links
-        const citationLinks = numbers.map(num => {
-            const ref = references.find(r => (typeof r === 'object' ? r.id : null) === num);
+        const citationLinks = uniqueRefIds.map(refId => {
+            const ref = references.find(r => (typeof r === 'object' ? r.id : null) === refId);
             if (ref) {
-                return `<a href="#ref-${num}" class="citation-link" title="${escapeHtml(ref.title || ref.description || '')}" onclick="event.preventDefault(); document.getElementById('ref-${num}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${num}</a>`;
+                return `<a href="#ref-${refId}" class="citation-link" title="${escapeHtml(ref.title || ref.description || '')}" onclick="event.preventDefault(); document.getElementById('ref-${refId}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${refId}</a>`;
             }
-            return `<a href="#ref-${num}" class="citation-link" onclick="event.preventDefault(); document.getElementById('ref-${num}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${num}</a>`;
+            return `<a href="#ref-${refId}" class="citation-link" onclick="event.preventDefault(); document.getElementById('ref-${refId}').scrollIntoView({behavior: 'smooth', block: 'center'}); return false;">${refId}</a>`;
         });
         
         // Join multiple citations with commas
