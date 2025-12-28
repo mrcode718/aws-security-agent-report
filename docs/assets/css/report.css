@@ -170,29 +170,6 @@ body {
     -webkit-column-break-after: avoid;
 }
 
-/* Section 6 (Conclusion) - force column break before to use both columns */
-.section-conclusion h2 {
-    break-before: column;
-    -webkit-column-break-before: column;
-}
-
-.section-conclusion {
-    break-inside: auto;
-    -webkit-column-break-inside: auto;
-}
-
-/* Section 7 (References) - force column break before to use both columns */
-.section-references h2 {
-    break-before: column;
-    -webkit-column-break-before: column;
-}
-
-/* Section 7 (References) - force column break before to use both columns */
-.section-references h2 {
-    break-before: column;
-    -webkit-column-break-before: column;
-}
-
 .section h3 {
     font-size: 11pt;
     font-weight: 700;
@@ -220,24 +197,6 @@ body {
     break-inside: avoid;
 }
 
-/* References list - allow flow across columns */
-.section .references-list {
-    margin: 12px 0 12px 25px;
-    padding-left: 0;
-    break-inside: auto;
-    -webkit-column-break-inside: auto;
-}
-
-/* Section 7 (References) - allow content to flow across columns */
-.section-references {
-    break-inside: auto;
-    -webkit-column-break-inside: auto;
-}
-
-.section-references .references-list li {
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-}
 
 .section li {
     margin: 8px 0;

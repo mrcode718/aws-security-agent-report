@@ -48,13 +48,9 @@ function renderReport(content) {
 function renderSection(section, references) {
     // Check if section has tables
     const hasTable = !!(section.table || section.tables);
-    let sectionClass = hasTable ? 'section section-with-table' : 'section';
-    // Sections 6 and 7 need special handling to flow across columns
-    if (section.number === 6) {
-        sectionClass += ' section-conclusion';
-    } else if (section.number === 7) {
-        sectionClass += ' section-references';
-    }
+    // Sections 6 and 7 should use full width (no columns) like sections with tables
+    const useFullWidth = hasTable || section.number === 6 || section.number === 7;
+    const sectionClass = useFullWidth ? 'section section-with-table' : 'section';
     
     let html = `<section class="${sectionClass}">
         <h2>${section.number}. ${escapeHtml(section.title)}</h2>`;
