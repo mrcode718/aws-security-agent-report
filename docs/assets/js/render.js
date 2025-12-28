@@ -37,13 +37,6 @@ function renderReport(content) {
 
         <div class="paper-content">
             ${content.sections.map(section => renderSection(section, content.references)).join('')}
-
-            <section class="references" id="references">
-                <h2>References</h2>
-                <ol>
-                    ${content.references.map(ref => renderReference(ref)).join('')}
-                </ol>
-            </section>
         </div>
 
         <footer class="paper-footer">
@@ -88,6 +81,11 @@ function renderSection(section, references) {
     // Render paragraphs after lists
     if (section.paragraphsAfter) {
         html += section.paragraphsAfter.map(p => `<p>${processCitations(escapeHtml(p), references)}</p>`).join('');
+    }
+    
+    // Render references if this section is the references section
+    if (section.references && references) {
+        html += `<ol class="references-list">${references.map(ref => renderReference(ref)).join('')}</ol>`;
     }
     
     html += '</section>';
