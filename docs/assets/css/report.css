@@ -325,26 +325,26 @@ body {
 .references h2 {
     font-size: 12pt;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin: 25px 0 15px 0;
+    text-align: left;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     column-span: all;
     page-break-after: avoid;
     break-after: avoid;
+    break-before: auto;
     display: block;
     -webkit-column-break-after: avoid;
 }
 
 .references ol {
-    margin-left: 0;
-    padding-left: 25px;
-    column-count: 1;
-    column-gap: 0;
+    margin: 12px 0 12px 25px;
+    padding-left: 0;
 }
 
 .references li {
-    margin: 10px 0;
-    text-align: left;
+    margin: 8px 0;
+    text-align: justify;
     line-height: 1.6;
     break-inside: avoid;
     padding-right: 5px;
@@ -562,17 +562,29 @@ body.pdf-exporting .references {
 }
 
 body.pdf-exporting .references h2 {
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 25px 0 15px 0;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     column-span: all;
     page-break-after: avoid;
     break-after: avoid;
+    break-before: auto;
     display: block;
 }
 
 body.pdf-exporting .references ol {
-    margin-left: 0;
-    padding-left: 25px;
-    column-count: 1;
-    column-gap: 0;
+    margin: 12px 0 12px 25px;
+    padding-left: 0;
+}
+
+body.pdf-exporting .references li {
+    margin: 8px 0;
+    text-align: justify;
+    line-height: 1.6;
+    break-inside: avoid;
 }
 
 body.pdf-exporting .citation {
