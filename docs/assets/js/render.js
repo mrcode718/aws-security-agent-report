@@ -48,10 +48,22 @@ function renderReport(content) {
 function renderSection(section, references) {
     // Check if section has tables
     const hasTable = !!(section.table || section.tables);
-    const sectionClass = hasTable ? 'section section-with-table' : 'section';
+    // Sections 6 and 7 should span both columns
+    const isFullWidth = section.number === 6 || section.number === 7;
+    let sectionClass = 'section';
+    if (hasTable) {
+        sectionClass = 'section section-with-table';
+    } else if (isFullWidth) {
+        sectionClass = 'section section-full-width';
+    }
     
     let html = `<section class="${sectionClass}">
         <h2>${section.number}. ${escapeHtml(section.title)}</h2>`;
+    
+    // For full-width sections, wrap content in a two-column container
+    if (isFullWidth) {
+        html += '<div class="section-full-width-content">';
+    }
     
     // Render paragraphs
     if (section.paragraphs) {
@@ -86,6 +98,11 @@ function renderSection(section, references) {
     // Render references if this section is the references section
     if (section.references && references) {
         html += `<ol class="references-list">${references.map(ref => renderReference(ref)).join('')}</ol>`;
+    }
+    
+    // Close the wrapper div for full-width sections
+    if (isFullWidth) {
+        html += '</div>';
     }
     
     html += '</section>';

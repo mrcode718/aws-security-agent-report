@@ -150,6 +150,40 @@ body {
     -webkit-column-break-inside: avoid;
 }
 
+/* Sections that span both columns (e.g., Conclusion and References) */
+.section-full-width {
+    column-span: all;
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+}
+
+/* Content wrapper for full-width sections - creates two columns */
+.section-full-width-content {
+    column-count: 2;
+    column-gap: 24px;
+    column-fill: balance;
+    text-align: justify;
+}
+
+/* References list within full-width section - flows within parent columns */
+.section-full-width-content .references-list {
+    margin: 12px 0 12px 25px;
+    padding-left: 0;
+}
+
+.section-full-width-content .references-list li {
+    margin: 8px 0;
+    text-align: justify;
+    line-height: 1.6;
+    break-inside: avoid;
+    padding-right: 5px;
+    scroll-margin-top: 80px;
+}
+
 /* Ensure tables in sections with tables are full width */
 .section-with-table .academic-table {
     width: 100%;
@@ -468,6 +502,26 @@ body.pdf-exporting .section-with-table {
     margin: 30px 0;
     break-inside: avoid;
     page-break-inside: avoid;
+}
+
+body.pdf-exporting .section-full-width {
+    column-span: all;
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+body.pdf-exporting .section-full-width-content {
+    column-count: 2;
+    column-gap: 24px;
+    column-fill: balance;
+    text-align: justify;
+}
+
+body.pdf-exporting .section-full-width-content .references-list li {
+    break-inside: avoid;
 }
 
 body.pdf-exporting .section-with-table .academic-table {
