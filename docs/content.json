@@ -24,7 +24,7 @@
           "number": "2.1",
           "title": "Design Security Review",
           "paragraphs": [
-            "The design review capability allows security teams to upload design documents (architectural diagrams, system designs, data‑flow diagrams and threat models) and assess them against organizational security requirements. The official AWS documentation confirms that AWS Security Agent shifts security left by providing real-time security feedback on design documents and assessing compliance with organizational security requirements before any code is written [7]. Security teams upload documents through the web application and receive remediation guidance to prioritize findings [7]. It evaluates uploaded files through a web‑based interface and provides prioritized remediation guidance [2]. The agent supports custom security requirements—teams can define description, applicability, compliance criteria and remediation guidance for each requirement. The expert noted that custom requirements are defined through free‑text fields limited to 500 characters for descriptions and 10 000 characters for other fields, and the underlying model interprets them, which may change over time. The design review runs entirely in the external web application opened from the AWS console. Supported formats include markdown, PDF and common architectural diagram formats, but uploading is done manually; there is currently no CLI or API to automate submissions."
+            "The design review capability allows security teams to upload design documents (architectural diagrams, system designs, data‑flow diagrams and threat models) and assess them against organizational security requirements. The official AWS documentation confirms that AWS Security Agent shifts security left by providing real-time security feedback on design documents and assessing compliance with organizational security requirements before any code is written [7]. Security teams upload documents through the web application and receive remediation guidance to prioritize findings [7]. The agent supports custom security requirements—teams can define description, applicability, compliance criteria and remediation guidance for each requirement. The expert noted that custom requirements are defined through free‑text fields limited to 500 characters for descriptions and 10 000 characters for other fields, and the underlying model interprets them, which may change over time. The design review runs entirely in the external web application opened from the AWS console. Supported formats include markdown, PDF and common architectural diagram formats, but uploading is done manually; there is currently no CLI or API to automate submissions."
           ]
         },
         {
@@ -45,7 +45,7 @@
           "number": "2.4",
           "title": "Integration and Management",
           "paragraphs": [
-            "AWS Security Agent operates through a centralized web interface. The official AWS documentation confirms that security teams define organizational security requirements once in the AWS Console, and AWS Security Agent automatically enforces these security requirements throughout development, evaluating architectural documents and code against standards and providing specific guidance when it detects violations [7]. The documentation also states that AWS Security Agent operates across AWS, on-premise, hybrid, multicloud, and SaaS environments, ensuring consistent security guidance and testing regardless of infrastructure or platform choices [7]. The Q&A article emphasises that the service enforces organizational security standards and performs context‑aware testing by understanding application architecture and code [6]. The same article notes that the agent integrates via webhooks, APIs and plug‑ins for CI/CD tools and can trigger reviews on pull requests, design document updates or deployment events [2]. Findings include severity ratings, impact analysis and remediation guidance, and they can be exported to Security Hub, Jira or ServiceNow [2]. In practice, the expert observed that the preview is accessible only in the US East (N. Virginia) region and that all interactions occur via a web console—no CLI or official AWS CLI commands are currently available. Managing IAM permissions required trial‑and‑error because the documentation did not list all the required permissions. The UI is simple with separate sections for design review, code review and penetration testing, and the penetration testing workflow opens in an external web application."
+            "AWS Security Agent operates through a centralized web interface. The official AWS documentation confirms that security teams define organizational security requirements once in the AWS Console, and AWS Security Agent automatically enforces these security requirements throughout development, evaluating architectural documents and code against standards and providing specific guidance when it detects violations [7]. The documentation also states that AWS Security Agent operates across AWS, on-premise, hybrid, multicloud, and SaaS environments, ensuring consistent security guidance and testing regardless of infrastructure or platform choices [7]. The AWS News Feed article notes that the agent consolidates findings from design, code and penetration tests in one place [2]. In practice, the expert observed that the preview is accessible only in the US East (N. Virginia) region and that all interactions occur via a web console—no CLI or official AWS CLI commands are currently available. Managing IAM permissions required trial‑and‑error because the documentation did not list all the required permissions. The UI is simple with separate sections for design review, code review and penetration testing, and the penetration testing workflow opens in an external web application."
           ]
         }
       ]
@@ -333,7 +333,6 @@
       "id": 1,
       "citations": [
         1,
-        2,
         3
       ],
       "title": "New AWS Security Agent secures applications proactively from design to deployment (preview)",
@@ -352,11 +351,12 @@
       ],
       "title": "What is AWS Security Agent? Frontier Agent for Proactive APPSEC",
       "url": "https://medium.com/@tahirbalarabe2/what-is-aws-security-agent-frontier-agent-for-proactive-appsec-f7597d4a9ece",
-      "description": "Medium Q&A article covering how the agent reads design documents and identifies violations, service capabilities, multi‑step attack chains, enforcement of organizational security standards, support for multiple source control systems (GitHub, AWS CodeCommit, GitLab, Bitbucket) via API integrations, integration via webhooks/APIs/plug‑ins for CI/CD tools, triggering reviews on pull requests/design document updates/deployment events, and findings export to Security Hub/Jira/ServiceNow"
+      "description": "Medium Q&A article (NOTE: This source contains unverified claims and appears to be AI-generated content spreading potentially false information. Modern information sources require precise verification. Many claims in this article cannot be verified against official AWS documentation and may be inaccurate.) covering how the agent reads design documents and identifies violations, service capabilities, multi‑step attack chains, enforcement of organizational security standards, support for multiple source control systems (GitHub, AWS CodeCommit, GitLab, Bitbucket) via API integrations, integration via webhooks/APIs/plug‑ins for CI/CD tools, triggering reviews on pull requests/design document updates/deployment events, and findings export to Security Hub/Jira/ServiceNow"
     },
     {
       "id": 3,
       "citations": [
+        2,
         5
       ],
       "title": "New AWS Security Agent secures applications proactively from design to deployment (preview)",
