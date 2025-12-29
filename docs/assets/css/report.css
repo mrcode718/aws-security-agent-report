@@ -277,6 +277,12 @@ body {
     white-space: nowrap;
 }
 
+/* Align Examples column (2nd column) to left in Table 3 (4-column tables) */
+.academic-table:has(thead tr th:nth-child(4):last-child) th:nth-child(2),
+.academic-table:has(thead tr th:nth-child(4):last-child) td:nth-child(2) {
+    text-align: left;
+}
+
 .academic-table tbody tr:last-child td {
     border-bottom: 1px solid #000;
 }
