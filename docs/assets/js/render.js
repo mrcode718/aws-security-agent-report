@@ -94,7 +94,7 @@ function renderSection(section, references) {
     
     // Render references if this section is the references section
     if (section.references && references) {
-        html += `<ul class="references-list">${references.map(ref => renderReference(ref)).join('')}</ul>`;
+        html += `<div class="references-list">${references.map(ref => renderReference(ref)).join('')}</div>`;
     }
     
     html += '</section>';
@@ -155,7 +155,7 @@ function renderTable(table, references) {
 function renderReference(ref) {
     if (typeof ref === 'string') {
         // Legacy format - plain string
-        return `<li>${escapeHtml(ref)}</li>`;
+        return `<p>${escapeHtml(ref)}</p>`;
     } else {
         // New format - object with id, title, url, description, citations
         const url = ref.url || '#';
@@ -172,7 +172,7 @@ function renderReference(ref) {
         } else {
             citationNumbers = `[${ref.id}]`;
         }
-        return `<li id="ref-${ref.id}"><span class="reference-number">${citationNumbers}</span> <a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-link">${escapeHtml(title)}</a>. ${escapeHtml(description)} <a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-url">${escapeHtml(url)}</a></li>`;
+        return `<p id="ref-${ref.id}"><span class="reference-number">${citationNumbers}</span> <a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-link">${escapeHtml(title)}</a>. ${escapeHtml(description)} <a href="${url}" target="_blank" rel="noopener noreferrer" class="reference-url">${escapeHtml(url)}</a></p>`;
     }
 }
 
