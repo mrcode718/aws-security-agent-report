@@ -3,9 +3,7 @@
     "title": "AWS Security Agent Functional Testing Report",
     "author": "Ivan Bylina",
     "affiliation": "GenAI Security Research",
-    "date": "2025-12-28",
-    "status": "Draft",
-    "region": "us-east-1 preview"
+    "date": "2025-12-29"
   },
   "abstract": "This report presents a functional analysis of AWS Security Agent, an AI-powered security assessment service designed to integrate design review, code analysis, and penetration testing capabilities into the software development lifecycle. The evaluation was conducted through empirical testing of the preview service in the US East (N. Virginia) region, combined with systematic review of official AWS documentation and service announcements. The study examines the service's three core capabilities: design security review, code security review, and on-demand penetration testing and evaluates their implementation, limitations, and coverage of the OWASP Top 10:2025 application security risks. Findings indicate that the service provides context-aware multi-step penetration testing and real-time pull request analysis, with effective detection of injection vulnerabilities. The service operates exclusively through a web-based interface without CLI or API access, supports GitHub integration for private repositories, and enables custom security requirement definitions. Analysis reveals partial coverage of OWASP Top 10 categories, with gaps in software supply chain security, comprehensive cryptographic validation, and security logging assessment. The study maps observed limitations to documented constraints and identifies undocumented gaps, providing a comprehensive assessment of the service's current capabilities and constraints for security practitioners evaluating its integration into existing security programs.",
   "sections": [
