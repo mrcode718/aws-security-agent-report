@@ -100,7 +100,7 @@
       "number": 4,
       "title": "Limitations and Gaps",
       "paragraphs": [
-        "The following tables summarise limitations identified during testing and map them to available documentation where possible. Table 1 lists limitations mentioned in official AWS sources (blogs, builder posts or Q&A) and confirmed through testing. Table 2 lists limitations observed during testing that are not mentioned in the sources reviewed."
+        "The following tables summarise limitations identified during testing and map them to available documentation where possible. Table 1 lists limitations mentioned in official AWS sources (blogs and documentation) and confirmed through testing. Table 2 lists limitations observed during testing that are not mentioned in the sources reviewed."
       ],
       "tables": [
         {
