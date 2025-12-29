@@ -94,7 +94,7 @@ function renderSection(section, references) {
     
     // Render references if this section is the references section
     if (section.references && references) {
-        html += `<ol class="references-list">${references.map(ref => renderReference(ref)).join('')}</ol>`;
+        html += `<ul class="references-list">${references.map(ref => renderReference(ref)).join('')}</ul>`;
     }
     
     html += '</section>';
