@@ -40,7 +40,7 @@ function renderReport(content) {
         </div>
 
         <footer class="paper-footer">
-            <p><em>Review completed: ${escapeHtml(content.metadata.date)} | Region: ${escapeHtml(content.metadata.region)} | Status: ${escapeHtml(content.metadata.status)}</em></p>
+            <p><em>Review completed: ${escapeHtml(content.metadata.date)} | Status: ${escapeHtml(content.metadata.status)}</em></p>
         </footer>
     `;
 }
