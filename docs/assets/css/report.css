@@ -261,11 +261,10 @@ body {
     vertical-align: top;
 }
 
-/* Wider ID column for tables 1 and 2 (ID and Description columns) */
+/* ID column for tables 1 and 2 - sized to content */
 .academic-table th:first-child,
 .academic-table td:first-child {
-    width: 15%;
-    min-width: 100px;
+    width: auto;
     white-space: nowrap;
 }
 
