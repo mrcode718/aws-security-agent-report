@@ -13,12 +13,31 @@
       "number": 1,
       "title": "Introduction",
       "paragraphs": [
-        "Application security teams must secure applications as they evolve through design, coding and deployment. Traditional security reviews and penetration tests are typically manual and scheduled infrequently, leading to gaps and late findings. AWS introduced the \"Security Agent\" as a frontier AI agent designed to embed security into each stage of the software development lifecycle [7]. The agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface, aiming to make expert‑level security assessments available on demand and at scale [7]. The official documentation confirms that AWS Security Agent operates across AWS, on-premise, hybrid, multicloud, and SaaS environments [7] and consolidates findings from design, code and penetration tests in one place."
+        "Application security teams face the challenge of securing applications throughout their lifecycle, from design through coding to deployment. Traditional security assessment approaches rely heavily on manual reviews and scheduled penetration tests, which are often infrequent and may miss vulnerabilities introduced during rapid development cycles. This gap between security assessment frequency and development velocity has created demand for automated, continuous security evaluation tools that can integrate into modern software development workflows.",
+        "This report presents a functional analysis of AWS Security Agent, an AI-powered security assessment service currently in public preview. The research objective is to evaluate the service's capabilities, limitations, and practical applicability through hands-on testing and comparison against documented features. The study aims to provide security practitioners and decision-makers with an evidence-based assessment of whether AWS Security Agent can effectively address common application security challenges and integrate into existing security programs.",
+        "The research methodology combines functional testing, documentation analysis, and capability mapping to provide a comprehensive evaluation. Testing was conducted through direct interaction with the AWS Security Agent console in the US East (N. Virginia) preview region, examining each of the service's three core capabilities: design security review, code security review, and on-demand penetration testing. Observations from functional testing were cross-referenced with official AWS documentation to distinguish between documented features, undocumented limitations, and potential gaps in coverage."
+      ],
+      "subsections": [
+        {
+          "number": "1.1",
+          "title": "Research Methodology",
+          "paragraphs": [
+            "The evaluation methodology employed a multi-phase approach combining empirical testing with systematic documentation review. The research was conducted in December 2025 using the AWS Security Agent preview service in the us-east-1 region.",
+            "Phase 1: Functional Testing - An expert security practitioner performed hands-on testing of all three core capabilities (design review, code review, and penetration testing) using a read-only IAM user with gradually expanded permissions. Testing scenarios included: (1) uploading design documents with intentional security violations, (2) configuring GitHub integration and analyzing pull requests, (3) executing penetration tests against test applications with known vulnerabilities, and (4) testing custom security requirement definitions. All interactions were performed through the web console interface, as no CLI or API access was available.",
+            "Phase 2: Documentation Analysis - Official AWS documentation, blog posts, and service announcements were systematically reviewed to identify documented features, limitations, and service quotas. Sources included AWS Security Agent user guides, service quota documentation, security best practices, and official AWS News Blog announcements. Each documented feature was verified against functional testing observations.",
+            "Phase 3: Capability Mapping - The service's coverage of the OWASP Top 10:2025 application security risks was evaluated by mapping observed capabilities and documented features to each risk category. This analysis identified areas of strong coverage, partial coverage, and gaps where additional security controls would be necessary.",
+            "Phase 4: Gap Analysis - Limitations observed during testing were categorized as either documented (mentioned in official sources) or undocumented (discovered through testing but not mentioned in reviewed documentation). This distinction helps practitioners understand which limitations are officially acknowledged versus those that may represent implementation gaps or future improvement areas.",
+            "The methodology prioritizes transparency by clearly distinguishing between observations from functional testing, claims from official documentation, and inferences drawn from the analysis. Where discrepancies exist between documentation and observed behavior, these are explicitly noted."
+          ]
+        }
       ]
     },
     {
       "number": 2,
       "title": "Capabilities and Architecture",
+      "paragraphs": [
+        "AWS Security Agent is an AI-powered service designed to embed security assessment into each stage of the software development lifecycle [7]. The service provides three core capabilities: design security review, code security review, and on-demand penetration testing, all accessible through a centralized web interface. According to official documentation, AWS Security Agent aims to make expert-level security assessments available on demand and at scale, addressing the gap between infrequent manual security reviews and continuous development cycles [7]. The service operates across AWS, on-premise, hybrid, multicloud, and SaaS environments [7] and consolidates findings from design, code, and penetration tests in a single interface, enabling security teams to track and remediate vulnerabilities throughout the development process."
+      ],
       "subsections": [
         {
           "number": "2.1",
