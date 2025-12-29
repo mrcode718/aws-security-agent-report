@@ -270,17 +270,14 @@
             "The service does not test for resource exhaustion, race conditions or improper error handling; it focuses on injection and access issues."
           ]
         ]
-      },
-      "paragraphsAfter": [
-        "Overall, AWS Security Agent provides good coverage for injection‑related vulnerabilities (A05) and some aspects of access control and security misconfiguration. It partially addresses insecure design and authentication issues through design and code review policies. However, the service does not currently address software supply chain failures, cryptographic failures beyond TLS checks, logging and alerting issues or mishandling of exceptional conditions. Organizations relying on AWS Security Agent should augment it with additional tools and processes (e.g., dependency scanning, secrets management, infrastructure‑as‑code security, and runtime monitoring) to achieve comprehensive OWASP Top 10 coverage."
-      ]
+      }
     },
     {
       "number": 6,
       "title": "Conclusion and Recommendations",
       "paragraphs": [
         "AWS Security Agent represents a shift toward continuous, embedded application security. It automates design and code reviews, runs realistic multi‑step penetration tests and centralizes findings, enabling teams to identify issues earlier and reduce manual effort. The service's context‑aware approach, custom security requirements and multi‑step attack simulations are valuable features.",
-        "However, the preview version has notable limitations: it is available only in one region, requires manual configuration through a web interface, supports only private GitHub repositories, lacks scheduling and API automation (scheduled testing is explicitly documented as unavailable [18]), and cannot handle complex exploitation scenarios or non‑HTTP protocols. Only GitHub integration is supported; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available [15]. Additionally, the tool covers injection vulnerabilities well but provides limited or no coverage for several OWASP Top 10 categories such as supply chain, cryptographic and logging failures. To fully secure their applications, organizations should use AWS Security Agent as a complementary control alongside other security tools (SCA, SAST/DAST scanners, infrastructure security checks) and maintain human expertise for nuanced assessments."
+        "However, the preview version has notable limitations: it is available only in one region, requires manual configuration through a web interface, supports only private GitHub repositories, lacks scheduling and API automation (scheduled testing is explicitly documented as unavailable [18]), and cannot handle complex exploitation scenarios or non‑HTTP protocols. Only GitHub integration is supported; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available [15]. Regarding OWASP Top 10 coverage, AWS Security Agent provides good coverage for injection vulnerabilities (A05) and partial coverage for access control, security misconfiguration, insecure design, and authentication issues. However, it does not address software supply chain failures, cryptographic failures beyond TLS checks, logging and alerting issues, or mishandling of exceptional conditions. To fully secure their applications, organizations should use AWS Security Agent as a complementary control alongside additional tools and processes (e.g., dependency scanning, secrets management, infrastructure‑as‑code security, and runtime monitoring) and maintain human expertise for nuanced assessments."
       ]
     },
     {
