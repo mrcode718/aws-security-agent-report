@@ -279,7 +279,7 @@
       "description": "Official AWS News Blog post announcing AWS Security Agent in preview, describing capabilities including design review, code review, multi‑step penetration testing, realistic attack simulations, prioritized remediation guidance, and context-aware security testing"
     },
     {
-      "id": 3,
+      "id": 2,
       "citations": [
         2,
         5
@@ -289,7 +289,7 @@
       "description": "AWS News Feed post summarising features including automated design, code and penetration tests, context awareness and OWASP Top 10 code checks"
     },
     {
-      "id": 4,
+      "id": 3,
       "citations": [
         8
       ],
@@ -298,7 +298,7 @@
       "description": "National CIO Review article noting that AWS Security Agent automates penetration testing tailored to application design and code"
     },
     {
-      "id": 5,
+      "id": 4,
       "citations": [
         9
       ],
@@ -307,7 +307,7 @@
       "description": "ComputerWeekly report highlighting that AWS Security Agent continuously scans for security violations, conducts on‑demand penetration tests and ties security across the development lifecycle"
     },
     {
-      "id": 6,
+      "id": 5,
       "citations": [
         12
       ],
@@ -316,7 +316,7 @@
       "description": "OWASP Top 10:2025 list of application security risks"
     },
     {
-      "id": 7,
+      "id": 6,
       "citations": [
         7
       ],
@@ -325,7 +325,7 @@
       "description": "Official AWS Security Agent documentation describing key capabilities (design security review, code security review, penetration testing), benefits (on-demand accessibility, automatic validation of organizational requirements, scalable security expertise, actionable fixes, multi and hybrid cloud support), and how the service operates across the development lifecycle. The documentation states that the agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface."
     },
     {
-      "id": 8,
+      "id": 7,
       "citations": [
         14
       ],
@@ -334,7 +334,7 @@
       "description": "Official AWS Security Agent documentation listing service quotas including operations quotas (pentest hours: 80/month, design reviews: 200/month, code reviews: 1,000/month) and configuration quotas (integrations: 20 per account per region, integrated resources per integration: 20, custom security requirements: 20 per account per region, concurrent pentest runs: 5 per account per region)"
     },
     {
-      "id": 9,
+      "id": 8,
       "citations": [
         15
       ],
@@ -343,7 +343,7 @@
       "description": "Official AWS Security Agent documentation explaining how code review works in GitHub, including that code review is triggered when a pull request is marked as \"Ready for review\" and that draft pull requests are not analyzed"
     },
     {
-      "id": 10,
+      "id": 9,
       "citations": [
         16
       ],
@@ -352,7 +352,7 @@
       "description": "Official AWS Security Agent documentation describing how to create penetration tests, including prerequisites, configuration of test scope, target domains (only verified domains can be tested), VPC resources (only required for private applications), authentication credentials, and additional resources"
     },
     {
-      "id": 11,
+      "id": 10,
       "citations": [
         17
       ],
@@ -361,7 +361,7 @@
       "description": "Official AWS Security Agent documentation on security best practices, including code repository access limitations stating that AWS Security Agent does not provide code security guidance for public repositories"
     },
     {
-      "id": 12,
+      "id": 11,
       "citations": [
         18
       ],
@@ -370,7 +370,7 @@
       "description": "Official AWS Security Agent documentation on security considerations, explicitly stating that AWS Security Agent does not have public APIs or the ability to schedule penetration test runs"
     },
     {
-      "id": 13,
+      "id": 12,
       "citations": [
         19
       ],
@@ -379,7 +379,7 @@
       "description": "Official AWS Security Agent documentation on connecting the agent to private VPC resources, explicitly stating that VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported for VPC penetration tests"
     },
     {
-      "id": 14,
+      "id": 13,
       "citations": [
         20
       ],
