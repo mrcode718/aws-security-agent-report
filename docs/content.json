@@ -174,10 +174,11 @@
       "number": 5,
       "title": "OWASP Top 10 Coverage Evaluation",
       "paragraphs": [
-        "AWS Security Agent claims to detect OWASP Top Ten vulnerabilities in its code review and penetration testing features [4]. The OWASP Top 10:2025 lists the most critical web‑application security risks, including Broken Access Control (A01), Security Misconfiguration (A02), Software Supply Chain Failures (A03), Cryptographic Failures (A04), Injection (A05), Insecure Design (A06), Authentication Failures (A07), Software or Data Integrity Failures (A08), Security Logging and Alerting Failures (A09) and Mishandling of Exceptional Conditions (A10) [13]. Table 3 evaluates coverage of these categories based on the documented and observed capabilities of AWS Security Agent. Where coverage is partial or absent, additional controls are recommended. The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research."
+        "AWS Security Agent claims to detect OWASP Top Ten vulnerabilities in its code review and penetration testing features [4]. The OWASP Top 10:2025 lists the most critical web‑application security risks, including Broken Access Control (A01), Security Misconfiguration (A02), Software Supply Chain Failures (A03), Cryptographic Failures (A04), Injection (A05), Insecure Design (A06), Authentication Failures (A07), Software or Data Integrity Failures (A08), Security Logging and Alerting Failures (A09) and Mishandling of Exceptional Conditions (A10) [13]. Table 3 evaluates coverage of these categories based on the documented and observed capabilities of AWS Security Agent. Where coverage is partial or absent, additional controls are recommended."
       ],
       "table": {
-        "caption": "Table 3 – OWASP Top 10 (2025) coverage by AWS Security Agent",
+        "caption": "Table 3* – OWASP Top 10 (2025) coverage by AWS Security Agent",
+        "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
         "headers": [
           "OWASP category",
           "Examples",

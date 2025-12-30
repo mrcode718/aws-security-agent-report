@@ -149,6 +149,9 @@ function renderTable(table, references) {
             ).join('')}
         </tbody>
     </table>`;
+    if (table.note) {
+        html += `<p class="table-note">${processCitations(escapeHtml(table.note), references)}</p>`;
+    }
     return html;
 }
 

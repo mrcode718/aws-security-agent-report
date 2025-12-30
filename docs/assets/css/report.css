@@ -291,6 +291,17 @@ body {
     background-color: transparent;
 }
 
+.table-note {
+    font-size: 8.5pt;
+    font-style: italic;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    text-align: left;
+    color: #333;
+    line-height: 1.5;
+    column-span: all;
+}
+
 .findings-table {
     font-size: 9pt;
 }
