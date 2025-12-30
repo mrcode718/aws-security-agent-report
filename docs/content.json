@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "An Initial Functional and Security Coverage Analysis of AWS Security Agent, a GenAI-Enabled AWS-Managed Service, against the OWASP Top 10 (2025)",
+    "title": "An Initial Functional and Security Coverage Analysis of AWS Security Agent Against the OWASP Top 10 (2025)",
     "author": "Ivan Bylina",
     "affiliation": "GenAI Security Research",
     "date": "2025-12-29",
@@ -12,7 +12,7 @@
       "number": 1,
       "title": "Introduction",
       "paragraphs": [
-        "Application security teams must secure applications as they evolve through design, coding and deployment. Traditional security reviews and penetration tests are typically manual and scheduled infrequently, leading to gaps and late findings. AWS introduced the \"Security Agent\" as a frontier AI agent designed to embed security into each stage of the software development lifecycle [1]. The agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface, aiming to make expert‑level security assessments available on demand and at scale [1]. The official documentation confirms that AWS Security Agent operates across AWS, on-premise, hybrid, multicloud, and SaaS environments [1] and consolidates findings from design, code and penetration tests in one place."
+        "Application security teams must secure applications as they evolve through design, coding and deployment. Traditional security reviews and penetration tests are typically manual and scheduled infrequently, leading to gaps and late findings. AWS introduced the \"Security Agent\" as a AI agent designed to embed security into each stage of the software development lifecycle [1]. The agent provides design reviews, code security reviews and multi‑step penetration testing within a centralized web interface, aiming to make expert‑level security assessments available on demand and at scale [1]. The official documentation confirms that AWS Security Agent operates across AWS, on-premise, hybrid, multicloud, and SaaS environments [1] and consolidates findings from design, code and penetration tests in one place."
       ]
     },
     {
