@@ -188,8 +188,8 @@
           [
             "A01: Broken Access Control",
             "Unauthorized access, privilege escalation, IDOR",
-            "Partial",
-            "Penetration testing checks for insecure direct object references and privilege escalation. Design and code review can enforce authorization and privileged access requirements, but the tool does not perform comprehensive access‑control testing on running services or APIs."
+            "Covered",
+            "The service conducts authenticated runtime testing to identify common Broken Access Control vulnerabilities, including insecure direct object references (IDOR), unauthorized parameter manipulation, HTTP method tampering, and baseline role-based access enforcement. Testing verifies that authorization decisions are consistently enforced at runtime, bound to server-side session context rather than user-supplied identifiers, and that unauthenticated or unauthorized requests are reliably rejected. To enable comprehensive authorization assurance and systematic privilege boundary validation, it is important to provide the agent with access to application source code, complete API documentation with full endpoint coverage, and detailed authentication and role-mapping information. Without this context, validation of complex authorization logic, multi-role privilege escalation paths, and conditional access controls remains inherently limited."
           ],
           [
             "A02: Security Misconfiguration",
