@@ -124,18 +124,14 @@
             ],
             [
               "DL-009",
-              "Only verified domains can be included in penetration tests. Official AWS documentation for creating penetration tests explicitly states that only verified domains can be included in penetration tests and that the URL must match a domain previously verified in AWS Security Agent [5]. Domain verification is a prerequisite for penetration testing, adding setup overhead."
-            ],
-            [
-              "DL-010",
               "Public repositories unsupported. Official AWS documentation on security best practices explicitly states that \"AWS Security Agent does not provide code security guidance for public repositories. It will not comment on public repositories or open-source projects where security findings would be publicly visible\" [9]. Only private repositories can be scanned, preventing open-source projects from using the service."
             ],
             [
-              "DL-011",
+              "DL-010",
               "VPC CIDR range 10.0.0.0/16 not supported. Official AWS documentation on connecting agent to private VPC resources explicitly states that \"For VPC penetration tests, VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported\" [10]. Common corporate VPC ranges conflict with the agent; penetration tests using VPCs with this CIDR range will fail."
             ],
             [
-              "DL-012",
+              "DL-011",
               "VPC must have outbound internet connectivity. Official AWS documentation on infrastructure security states that \"AWS Security Agent requires internet access to perform penetration testing on target applications and for control plane operations\" [11]. Penetration tests inside a VPC fail if there is no outbound connectivity."
             ]
           ]
