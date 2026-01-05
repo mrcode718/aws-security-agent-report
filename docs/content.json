@@ -544,7 +544,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "you do not carefully track the versions of all components that you use (both client-side and server-side). This includes components you directly use as well as nested (transitive) dependencies.",
+            "You do not carefully track the versions of all components that you use (both client-side and server-side). This includes components you directly use as well as nested (transitive) dependencies.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -562,7 +562,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "the software is vulnerable, unsupported, or out of date. This includes the OS, web/application server, database management system (DBMS), applications, APIs and all components, runtime environments, and libraries.",
+            "The software is vulnerable, unsupported, or out of date. This includes the OS, web/application server, database management system (DBMS), applications, APIs and all components, runtime environments, and libraries.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -580,7 +580,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "you do not scan for vulnerabilities regularly and subscribe to security bulletins related to the components you use.",
+            "You do not scan for vulnerabilities regularly and subscribe to security bulletins related to the components you use.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -598,7 +598,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "you do not fix or upgrade the underlying platform, frameworks, and dependencies in a risk-based, timely fashion. This commonly happens in environments when patching is a monthly or quarterly task under change control, leaving organizations open to days or months of unnecessary exposure before fixing vulnerabilities.",
+            "You do not fix or upgrade the underlying platform, frameworks, and dependencies in a risk-based, timely fashion. This commonly happens in environments when patching is a monthly or quarterly task under change control, leaving organizations open to days or months of unnecessary exposure before fixing vulnerabilities.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -616,7 +616,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "you have not hardened every part of your supply chain, with a special focus on access control and the application of least privilege.",
+            "You have not hardened every part of your supply chain, with a special focus on access control and the application of least privilege.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -634,7 +634,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "components from untrusted sources, across any part of the tech stack, are used in or can impact on production environments.",
+            "Components from untrusted sources, across any part of the tech stack, are used in or can impact on production environments.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -652,7 +652,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "you do not have a change management process or tracking of changes within your supply chain, including tracking IDEs, IDE extensions and updates, changes to your organization's code repository, sandboxes, image and library repositories, the way artifacts are created and stored, etc. Every part of your supply chain should be documented, especially changes.",
+            "You do not have a change management process or tracking of changes within your supply chain, including tracking IDEs, IDE extensions and updates, changes to your organization's code repository, sandboxes, image and library repositories, the way artifacts are created and stored, etc. Every part of your supply chain should be documented, especially changes.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -670,7 +670,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "your supply chain systems do not have any separation of duty. No single person should be able to write code and promote it all the way to production without oversight from another human being.",
+            "Your supply chain systems do not have any separation of duty. No single person should be able to write code and promote it all the way to production without oversight from another human being.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -688,7 +688,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "software developers do not test the compatibility of updated, upgraded, or patched libraries.",
+            "Software developers do not test the compatibility of updated, upgraded, or patched libraries.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -706,7 +706,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "you do not secure the configurations of every part of your system (see A02:2025-Security Misconfiguration).",
+            "You do not secure the configurations of every part of your system (see A02:2025-Security Misconfiguration).",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -724,7 +724,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "your CI/CD pipeline has weaker security than the systems it builds and deploys, especially if it is complex.",
+            "Your CI/CD pipeline has weaker security than the systems it builds and deploys, especially if it is complex.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
