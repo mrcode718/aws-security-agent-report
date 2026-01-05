@@ -72,6 +72,16 @@ function renderSection(section, references) {
         html += section.lists.map(list => renderList(list, references)).join('');
     }
     
+    // Render subsections before tables
+    if (section.subsections) {
+        html += section.subsections.map(subsection => renderSubsection(subsection, references)).join('');
+    }
+    
+    // Render chart if present (section-level chart)
+    if (section.chart) {
+        html += renderChart(section.chart);
+    }
+    
     // Render table if present
     if (section.table) {
         html += renderTable(section.table, references);
@@ -80,16 +90,6 @@ function renderSection(section, references) {
     // Render tables array if present
     if (section.tables) {
         html += section.tables.map(table => renderTable(table, references)).join('');
-    }
-    
-    // Render chart if present
-    if (section.chart) {
-        html += renderChart(section.chart);
-    }
-    
-    // Render subsections
-    if (section.subsections) {
-        html += section.subsections.map(subsection => renderSubsection(subsection, references)).join('');
     }
     
     // Render paragraphs after lists
