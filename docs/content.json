@@ -195,13 +195,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated action groups: \"Privilege escalation\" with validator tasks. Findings include privilege escalation vulnerabilities identifying that any authenticated user can access admin functionality, violating least privilege."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information. Without this context, validation of complex authorization logic, multi-role privilege escalation paths, and conditional access controls remains inherently limited."
           ],
           [
@@ -213,13 +213,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of authentication bypass vulnerabilities demonstrating bypassing access control through parameter tampering."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information. Without this context, validation of complex authorization logic, multi-role privilege escalation paths, and conditional access controls remains inherently limited."
           ],
           [
@@ -231,13 +231,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated action groups: \"Insecure direct object reference\" with validator tasks. IDOR vulnerabilities demonstrating insecure direct object reference detection."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information. Without this context, validation of complex authorization logic, multi-role privilege escalation paths, and conditional access controls remains inherently limited."
           ],
           [
@@ -249,13 +249,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated action groups with validator tasks."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information. Without this context, validation of complex authorization logic, multi-role privilege escalation paths, and conditional access controls remains inherently limited."
           ],
           [
@@ -267,13 +267,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated action groups: \"Privilege escalation\" with validator tasks. Findings include privilege escalation vulnerabilities identifying that any authenticated user can access admin functionality, violating least privilege."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information. Without this context, validation of complex authorization logic, multi-role privilege escalation paths, and conditional access controls remains inherently limited."
           ],
           [
@@ -285,13 +285,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated action groups with validator tasks."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information. Without this context, validation of complex authorization logic, multi-role privilege escalation paths, and conditional access controls remains inherently limited."
           ],
           [
@@ -303,13 +303,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates dedicated action groups for metadata manipulation testing."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: Comprehensive testing of all metadata manipulation vectors (cookie tampering, hidden field manipulation, JWT invalidation abuse) may be limited without full application context, as the service requires knowledge of all authentication mechanisms and token formats used by the application. To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information."
           ],
           [
@@ -321,13 +321,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service may detect CORS misconfigurations through network scanning and TLS/SSL validation tools (testssl.sh version 3.2.2) in the \"Network scanner\" action group."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: Comprehensive CORS testing requires specific validation of cross-origin access controls, including testing of allowed origins, credentials handling, and preflight request validation, which may not be explicitly tested in all scenarios without dedicated CORS-specific test cases. To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information."
           ],
           [
@@ -339,13 +339,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from multiple penetration test runs demonstrates comprehensive coverage: Detection of missing security headers (Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Strict-Transport-Security, Referrer-Policy, X-XSS-Protection, Permissions-Policy) using testssl.sh (version 3.2.2) with direct HTTP validation."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement."
           ],
           [
@@ -357,13 +357,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from multiple penetration test runs demonstrates detection of missing account existence validation and unhandled error exposure."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement."
           ],
           [
@@ -375,13 +375,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from multiple penetration test runs demonstrates identification of Flask debug mode enabled in production and missing CSRF protection configuration in Flask-WTF applications through framework-specific analysis."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: Explicit detection of disabled security features in upgraded systems requires historical comparison of security feature configurations before and after upgrades, which is not clearly demonstrated. The service focuses on identifying active misconfigurations in the current state rather than assessing whether security features were intentionally disabled during system upgrades or whether backward compatibility decisions led to insecure configurations."
           ],
           [
@@ -393,13 +393,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from multiple penetration test runs demonstrates static analysis of Dockerfile configurations identifying root user execution, embedded database files, and insecure network binding."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement."
           ],
           [
@@ -411,13 +411,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from multiple penetration test runs demonstrates comprehensive coverage through static analysis and framework-specific analysis."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement."
           ],
           [
@@ -429,13 +429,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of default credentials testing found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not explicitly test for default accounts and unchanged passwords, and does not evaluate backward compatibility decisions."
           ],
           [
@@ -447,13 +447,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of cloud permissions assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess cloud service permissions (e.g., IAM policies, S3 bucket permissions, security groups, VPC configurations). This limitation means that cloud-native security misconfigurations at the infrastructure layer are not evaluated, requiring organizations to use dedicated IaC security scanning tools alongside AWS Security Agent."
           ],
           [
@@ -465,13 +465,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of infrastructure as code validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess infrastructure as code (IaC) files (e.g., Terraform, CloudFormation, Ansible) or cloud service permissions (e.g., IAM policies, S3 bucket permissions, security groups, VPC configurations). This limitation means that cloud-native security misconfigurations at the infrastructure layer are not evaluated, requiring organizations to use dedicated IaC security scanning tools alongside AWS Security Agent."
           ],
           [
@@ -483,13 +483,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: Empirical validation from multiple penetration test runs confirms that code scanner tasks analyze frameworks, important flows, and business logic patterns but do not scan dependency manifest files. No findings related to dependency vulnerabilities, outdated packages, or supply chain risks were identified in any examined pentest runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
           ],
           [
@@ -501,13 +501,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: Empirical validation from multiple penetration test runs confirms that code scanner tasks do not check versions against vulnerability databases. The service identifies framework types (e.g., Flask, Werkzeug) through static analysis but does not validate versions."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
           ],
           [
@@ -519,13 +519,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: Empirical validation from multiple penetration test runs confirms that code scanner tasks do not generate SBOMs. Code review analyzes pull requests for security vulnerabilities in code patterns but does not validate SBOMs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
           ],
           [
@@ -537,13 +537,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: Empirical validation from multiple penetration test runs confirms that the service identifies framework types (e.g., Flask, Werkzeug) through static analysis but does not check for known CVEs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
           ],
           [
@@ -555,13 +555,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: Design reviews assess application security requirements but do not include supply chain security policies."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
           ],
           [
@@ -573,13 +573,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of trusted repository consumption validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
           ],
           [
@@ -591,13 +591,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: The service validates TLS/SSL configurations using testssl.sh (version 3.2.2), which checks for weak protocol versions (e.g., SSL 2.0, SSL 3.0, TLS 1.0, TLS 1.1) and weak cipher suites."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: Design review can enforce \"Trusted Cryptography Best Practices\" organizational requirements."
           ],
           [
@@ -609,13 +609,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service can enforce cryptographic policies through design review (\"Trusted Cryptography Best Practices\" organizational requirements) and validates TLS/SSL configurations using testssl.sh (version 3.2.2), which checks for weak protocol versions and weak cipher suites. However, the service does not automatically detect weak cryptographic algorithms in application code (e.g., DES, RC4, MD5, SHA1 used in application logic, not just TLS)."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not automatically detect weak cryptographic algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code). The code scanner analyzes source code patterns but does not specifically analyze cryptographic primitives or algorithm choices in application code beyond TLS/SSL configuration.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -627,13 +627,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: The code scanner analyzes source code patterns but does not specifically analyze cryptographic primitives or algorithm choices in application code beyond TLS/SSL configuration."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -645,13 +645,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of initialization vector validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -663,13 +663,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of encryption mode validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -681,13 +681,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of deprecated hash function detection found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -699,13 +699,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of cryptographic randomness assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -717,13 +717,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of plaintext password storage (Critical severity) through static code analysis, identifying that administrator passwords are stored without cryptographic hashing or encryption. Code scanner detects plaintext credentials in source code."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: Code scanner detects plaintext credentials in source code but does not specifically scan for hardcoded cryptographic keys."
           ],
           [
@@ -735,13 +735,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: Code scanner detects plaintext credentials in source code but does not specifically scan for hardcoded cryptographic keys."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -753,13 +753,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service validates TLS/SSL protocol versions through the TLS scanner, which may detect protocol downgrade attacks (e.g., TLS 1.2 being downgraded to TLS 1.0). However, it does not validate application-level cryptographic algorithm downgrade or bypass vulnerabilities."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not validate application-level cryptographic algorithm downgrade or bypass vulnerabilities (e.g., applications that allow weaker encryption algorithms to be selected through negotiation, or applications that can bypass cryptographic controls through parameter manipulation). The service focuses on transport-layer cryptography (TLS/SSL) rather than application-layer cryptographic implementation details.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
           ],
           [
@@ -771,13 +771,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks: \"Sql injection\". Findings include SQL injection vulnerabilities demonstrating unsanitized user input in SQL queries."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified.\n\nAdditional Notes: The service successfully detects SQL injection vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
           ],
           [
@@ -789,13 +789,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks: \"Command injection\". Findings include command injection vulnerabilities where user input is directly passed to system commands without validation."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified.\n\nAdditional Notes: The service successfully detects command injection vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
           ],
           [
@@ -807,13 +807,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks: \"Code injection\"."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified.\n\nAdditional Notes: The service successfully detects code injection vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
           ],
           [
@@ -825,13 +825,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks: \"Cross site scripting\"."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified.\n\nAdditional Notes: The service successfully detects XSS vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
           ],
           [
@@ -843,13 +843,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks: \"Server side template injection\"."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified.\n\nAdditional Notes: The service successfully detects server-side template injection vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
           ],
           [
@@ -861,13 +861,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified.\n\nAdditional Notes: The service successfully detects XXE vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
           ],
           [
@@ -879,13 +879,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service provides design review capabilities that assess uploaded architectural documents against security requirements (e.g., Secure by Default Best Practices, Tenant Isolation Best Practices, Authorization Best Practices), enabling validation of requirements gathering practices."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: Coverage is dependent on design documents being manually uploaded by users. If the upload process is skipped or documents are not provided, the service cannot assess requirements gathering or resource management practices. Additionally, the service may not detect complex insecure designs if security requirements are incomplete or if architectural flaws are not explicitly documented in the uploaded design documents.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -897,13 +897,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service provides design review capabilities that assess uploaded architectural documents against security requirements (e.g., Secure by Default Best Practices, Tenant Isolation Best Practices, Authorization Best Practices), enabling validation of resource management practices."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: Coverage is dependent on design documents being manually uploaded by users. If the upload process is skipped or documents are not provided, the service cannot assess requirements gathering or resource management practices. Additionally, the service may not detect complex insecure designs if security requirements are incomplete or if architectural flaws are not explicitly documented in the uploaded design documents.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -915,13 +915,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from design reviews demonstrates assessment of security requirements including Secure by Default Best Practices, Tenant Isolation Best Practices, Authorization Best Practices, Authentication Best Practices, and Privileged Access Best Practices. The service assesses architectural documents against security requirements through design reviews and can enforce secure-by-default patterns (e.g., Secure by Default Best Practices, Tenant Isolation Best Practices)."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: Design reviews can only assess secure design patterns if design documents are uploaded. Complex insecure designs may not be detected if requirements are incomplete or if architectural flaws are not explicitly documented.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -933,13 +933,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including missing transaction limits and velocity controls, insufficient balance validation, negative balance exploitation, self-transfer business logic flaws, registration atomicity failures, float precision errors in monetary calculations, transaction history denial of service, missing transaction confirmation controls, lack of step-up authentication, and missing account status controls. Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns (e.g., missing transaction limits, insufficient validation, atomicity failures)."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -951,13 +951,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including missing transaction limits and velocity controls."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -969,13 +969,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including insufficient balance validation, negative balance exploitation."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -987,13 +987,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including registration atomicity failures. Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns (e.g., atomicity failures)."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -1005,13 +1005,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: The service supports secure development lifecycle practices through design reviews (early assessment of architectural documents), code review integration (continuous assessment via GitHub pull request scanning), and penetration testing (runtime validation). However, the service does not explicitly assess whether organizations follow a secure development lifecycle (SDLC) methodology."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs. It provides security assessment tools but does not validate SDLC processes, threat modeling practices, or security training programs. The service enables secure development practices but does not verify that organizations have established SDLC methodologies or that teams follow secure development processes.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -1023,13 +1023,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs. It provides security assessment tools but does not validate SDLC processes, threat modeling practices, or security training programs.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -1041,13 +1041,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs. It provides security assessment tools but does not validate SDLC processes, threat modeling practices, or security training programs.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
@@ -1059,13 +1059,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of authentication bypass vulnerabilities (Critical severity)."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service successfully detects authentication bypass vulnerabilities through both static code analysis and authenticated runtime testing."
           ],
           [
@@ -1077,13 +1077,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of missing rate limiting on authentication endpoints (Critical severity) identifying unlimited consecutive authentication attempts without restriction."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service successfully detects rate limiting issues through penetration testing."
           ],
           [
@@ -1095,13 +1095,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of session fixation vulnerabilities (High severity) detecting session identifier reuse after successful login; missing logout functionality (Medium severity)."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: Comprehensive testing of all session identifier exposure vectors (URLs, hidden fields, client-side storage) may require full application context to identify all session management mechanisms used by the application.\n\nAdditional Notes: The service detects session management vulnerabilities including session fixation (High severity), which demonstrates detection of session identifier reuse after successful login. While the specific finding relates to session regeneration rather than session identifier exposure in URLs, the service's session management testing would likely detect insecure session identifier storage."
           ],
           [
@@ -1113,13 +1113,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of plaintext password storage (Critical severity) through static code analysis."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service successfully detects password storage security issues through static code analysis."
           ],
           [
@@ -1131,13 +1131,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: Design reviews can enforce MFA requirements through \"Authentication Best Practices\" policies, which include \"Implement MFA for sensitive operations\" as a compliance criterion. Penetration tests detect missing step-up authentication for high-value operations (Medium severity), which is related to MFA requirements for risk-based authentication."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not explicitly test for MFA implementation or effectiveness during runtime penetration testing. The service can assess MFA requirements at the design level but does not validate that MFA is properly implemented, configured, or functioning correctly in the running application. The service does not perform MFA fallback testing or credential scope/audience validation.\n\nAdditional Notes: The service can assess MFA requirements at the design level but does not validate that MFA is properly implemented, configured, or functioning correctly in the running application."
           ],
           [
@@ -1149,13 +1149,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of password spraying detection found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not perform advanced authentication attack testing such as password spraying."
           ],
           [
@@ -1167,13 +1167,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of account lockout testing found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: Design reviews can enforce \"Authentication Best Practices\" including account lockout mechanisms, but the service does not validate account lockout functionality during runtime penetration testing."
           ],
           [
@@ -1185,13 +1185,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of credential stuffing validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not perform advanced authentication attack testing such as credential stuffing."
           ],
           [
@@ -1203,13 +1203,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of default credential testing found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not perform default credential testing."
           ],
           [
@@ -1221,13 +1221,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of breached credential validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not perform breached credential validation."
           ],
           [
@@ -1239,13 +1239,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of credential recovery testing found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not perform credential recovery testing."
           ],
           [
@@ -1257,13 +1257,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service detects session management vulnerabilities including session fixation (High severity), which demonstrates detection of session identifier reuse after successful login."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: While the specific finding relates to session regeneration rather than session identifier exposure in URLs, the service's session management testing would likely detect insecure session identifier storage. However, comprehensive testing of all session identifier exposure vectors (URLs, hidden fields, client-side storage) may require full application context to identify all session management mechanisms used by the application.\n\nAdditional Notes: The service detects session management vulnerabilities including session fixation (High severity), which demonstrates detection of session identifier reuse after successful login. However, comprehensive testing of all session identifier exposure vectors (URLs, hidden fields, client-side storage) may require full application context to identify all session management mechanisms used by the application."
           ],
           [
@@ -1275,13 +1275,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive file-based integrity vulnerability testing through dedicated action groups."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service successfully detects local file inclusion vulnerabilities through dedicated action groups with validator tasks."
           ],
           [
@@ -1293,13 +1293,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates comprehensive file-based integrity vulnerability testing through dedicated action groups."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service successfully detects path traversal vulnerabilities through dedicated action groups with validator tasks."
           ],
           [
@@ -1311,13 +1311,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of deserialization vulnerability analysis found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: The service focuses on file-based integrity vulnerabilities (local file inclusion, path traversal) but does not analyze deserialization vulnerabilities."
           ],
           [
@@ -1329,13 +1329,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of digital signature verification found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: The service focuses on file-based integrity vulnerabilities (local file inclusion, path traversal) but does not verify digital signatures or tampering detection mechanisms."
           ],
           [
@@ -1347,13 +1347,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of tampering detection mechanism verification found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: The service focuses on file-based integrity vulnerabilities (local file inclusion, path traversal) but does not verify digital signatures or tampering detection mechanisms."
           ],
           [
@@ -1365,13 +1365,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of CI/CD pipeline integrity assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: CI/CD pipeline integrity assessment overlaps with Software Supply Chain Failures (A03) requirements."
           ],
           [
@@ -1383,13 +1383,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of trusted repository consumption validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: Trusted repository consumption validation overlaps with Software Supply Chain Failures (A03) requirements."
           ],
           [
@@ -1401,13 +1401,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of serialized data validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: The service focuses on file-based integrity vulnerabilities (local file inclusion, path traversal) but does not analyze deserialization or validate serialized data."
           ],
           [
@@ -1419,13 +1419,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service provides code review capabilities that scan pull requests for security vulnerabilities through GitHub integration, enabling security assessment during the development process. Design reviews assess architectural documents against security requirements (e.g., controls including Secure by Default Best Practices, Authorization Best Practices, Authentication Best Practices). Findings include detailed remediation guidance and can generate pull requests for code fixes, supporting secure development practices."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not explicitly validate that organizations have mandatory review processes in place or enforce separation of duty in the review workflow. The service provides security assessment tools but does not verify that code changes must go through mandatory security reviews before being merged, or that reviewers have appropriate security expertise. The service enables code review but does not assess whether organizations have established mandatory review processes or that reviews are consistently applied to all code and configuration changes.\n\nAdditional Notes: The service focuses on file-based integrity vulnerabilities (local file inclusion, path traversal) and provides code review capabilities, but does not validate organizational review processes."
           ],
           [
@@ -1437,13 +1437,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service detects missing or inadequate audit logging for auditable events (logins, failed logins, high-value transactions) through static code analysis and penetration testing. Evidence from penetration test runs demonstrates detection of missing or inadequate audit logging through findings identifying missing authentication event logging, authorization decision logging, administrative action logging, and missing transaction metadata required for forensics."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not actively test whether applications log these events consistently or validate log completeness. The service identifies that logging is missing but does not verify that logging works correctly when implemented. The service does not assess whether applications generate sufficient security logs.\n\nAdditional Notes: The service detects missing or inadequate audit logging through static code analysis and penetration testing, but does not validate that logging works correctly when implemented."
           ],
           [
@@ -1455,13 +1455,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service indirectly detects inadequate error logging through findings related to error handling and audit logging deficiencies, which indicate errors are exposed via HTTP responses rather than being properly logged."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not specifically test whether warnings and errors generate adequate or clear log messages. The service detects that error handling is inadequate but does not validate the quality or completeness of log messages. The service does not assess whether applications generate sufficient security logs.\n\nAdditional Notes: The service indirectly detects inadequate error logging through findings related to error handling and audit logging deficiencies, which indicate errors are exposed via HTTP responses rather than being properly logged."
           ],
           [
@@ -1473,13 +1473,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service indirectly detects sensitive information leakage through error handling findings and access control testing (A01), which would detect if logging events are visible to unauthorized users."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not specifically test whether sensitive information (PII, PHI) is inappropriately logged or whether logging events are visible to unauthorized users. The service detects information disclosure through errors but does not validate that sensitive data is not logged or that log access is properly restricted. The service does not assess whether applications generate sufficient security logs.\n\nAdditional Notes: The service indirectly detects sensitive information leakage through error handling findings and access control testing (A01), which would detect if logging events are visible to unauthorized users."
           ],
           [
@@ -1491,13 +1491,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of log integrity protection assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess whether log integrity is protected, whether logs are backed up, whether alerting is configured or effective, whether logs are monitored for suspicious activity, whether alerting thresholds are appropriate, whether penetration testing triggers alerts, whether real-time attack detection works, or whether alert use cases and playbooks are adequate.\n\nAdditional Notes: The service sets up CloudWatch logging infrastructure (log groups, log streams, S3) for pentest execution, but this is for the pentest itself, not for assessing whether the target application protects log integrity."
           ],
           [
@@ -1509,13 +1509,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: The service sets up CloudWatch logging infrastructure (log groups, log streams, S3) for pentest execution during the \"Setup infrastructure\" phase, demonstrating its capability to send logs to CloudWatch. However, this is for the pentest itself, not for assessing whether the target application generates or backs up logs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess whether log integrity is protected, whether logs are backed up, whether alerting is configured or effective, whether logs are monitored for suspicious activity, whether alerting thresholds are appropriate, whether penetration testing triggers alerts, whether real-time attack detection works, or whether alert use cases and playbooks are adequate.\n\nAdditional Notes: The service sets up CloudWatch logging infrastructure for pentest execution, but this is for the pentest itself, not for assessing whether the target application generates or backs up logs."
           ],
           [
@@ -1527,13 +1527,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of alerting configuration and effectiveness assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess whether alerting is configured or effective, whether logs are monitored for suspicious activity, whether alerting thresholds are appropriate, whether penetration testing triggers alerts, whether real-time attack detection works, or whether alert use cases and playbooks are adequate.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess alerting configuration or effectiveness."
           ],
           [
@@ -1545,13 +1545,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of log monitoring assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess whether logs are monitored for suspicious activity, whether alerting thresholds are appropriate, whether penetration testing triggers alerts, whether real-time attack detection works, or whether alert use cases and playbooks are adequate.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess log monitoring capabilities."
           ],
           [
@@ -1563,13 +1563,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of alerting threshold validation found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess whether alerting thresholds are appropriate, whether penetration testing triggers alerts, whether real-time attack detection works, or whether alert use cases and playbooks are adequate.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess alerting threshold configuration."
           ],
           [
@@ -1581,13 +1581,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of real-time attack detection assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess whether real-time attack detection works, whether penetration testing triggers alerts, or whether alert use cases and playbooks are adequate.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess real-time attack detection capabilities."
           ],
           [
@@ -1599,13 +1599,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of alert use cases and playbooks assessment found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not assess whether alert use cases and playbooks are adequate, whether penetration testing triggers alerts, or whether real-time attack detection works.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess alert use cases or playbooks."
           ],
           [
@@ -1617,13 +1617,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of improper error handling through findings identifying exceptions that are not handled close to where they occur."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, testing invalid inputs and exception scenarios through multiple action groups."
           ],
           [
@@ -1635,13 +1635,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of improper error handling through findings identifying error responses that leak sensitive information or enable enumeration."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, testing invalid inputs and exception scenarios."
           ],
           [
@@ -1653,13 +1653,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of resource exhaustion vulnerabilities (Medium severity) identifying unbounded queries causing denial of service; dedicated action groups for unrestricted resource consumption testing."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, testing invalid inputs and exception scenarios through multiple action groups."
           ],
           [
@@ -1671,13 +1671,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of registration atomicity failures (Medium severity) identifying failures that do not leave applications in secure states."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, testing invalid inputs and exception scenarios."
           ],
           [
@@ -1689,13 +1689,13 @@
           [
             "",
             "",
-            "Covered",
+            "",
             "Evidence: Evidence from penetration test runs demonstrates detection of data boundary condition issues (Medium severity) in currency calculations."
           ],
           [
             "",
             "",
-            "Covered",
+            "",
             "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, testing invalid inputs and exception scenarios."
           ],
           [
@@ -1707,13 +1707,13 @@
           [
             "",
             "",
-            "Partial",
+            "",
             "Evidence: The service indirectly detects missing input validation and sanitization through injection vulnerability findings (A05), which demonstrate that user input is not properly validated or sanitized, allowing injection attacks. Multiple injection findings (SQL injection, command injection, code injection, XSS) indicate missing input validation and sanitization."
           ],
           [
             "",
             "",
-            "Partial",
+            "",
             "Limitations: The service does not specifically test whether inputs are validated for type, length, range, format, encoding, and allowed values at all system boundaries (UI/API/files/webhooks/queues). The service detects injection vulnerabilities that result from missing validation but does not comprehensively test all input validation requirements (type checking, length limits, range validation, format validation, encoding validation, allowed value lists) across all system entry points.\n\nAdditional Notes: The service indirectly detects missing input validation and sanitization through injection vulnerability findings (A05), which demonstrate that user input is not properly validated or sanitized, allowing injection attacks. However, the service does not specifically test whether inputs are validated for type, length, range, format, encoding, and allowed values at all system boundaries."
           ],
           [
@@ -1725,13 +1725,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of race condition testing found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not test for race conditions or concurrency issues, validate input sanitization at all system boundaries (covered indirectly through injection findings), test dependency/network failure handling, validate authentication/authorization under error conditions, test adverse environmental states, perform fault injection (dependency outages/timeouts, fuzzing), assess operational readiness for exceptional conditions, or assess whether applications define or inventory exceptional conditions.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, but does not test for race conditions or concurrency issues."
           ],
           [
@@ -1743,13 +1743,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of concurrency issue detection found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not test for race conditions or concurrency issues, validate input sanitization at all system boundaries (covered indirectly through injection findings), test dependency/network failure handling, validate authentication/authorization under error conditions, test adverse environmental states, perform fault injection (dependency outages/timeouts, fuzzing), assess operational readiness for exceptional conditions, or assess whether applications define or inventory exceptional conditions.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, but does not test for race conditions or concurrency issues."
           ],
           [
@@ -1761,13 +1761,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of dependency/network failure handling testing found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not test for race conditions or concurrency issues, validate input sanitization at all system boundaries (covered indirectly through injection findings), test dependency/network failure handling, validate authentication/authorization under error conditions, test adverse environmental states, perform fault injection (dependency outages/timeouts, fuzzing), assess operational readiness for exceptional conditions, or assess whether applications define or inventory exceptional conditions.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, but does not simulate dependency outages/timeouts or perform fault injection."
           ],
           [
@@ -1779,13 +1779,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: No evidence of authentication/authorization validation under error conditions found in penetration test runs."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not test for race conditions or concurrency issues, validate input sanitization at all system boundaries (covered indirectly through injection findings), test dependency/network failure handling, validate authentication/authorization under error conditions, test adverse environmental states, perform fault injection (dependency outages/timeouts, fuzzing), assess operational readiness for exceptional conditions, or assess whether applications define or inventory exceptional conditions.\n\nAdditional Notes: The service performs negative-path testing through penetration testing and static code analysis, but does not validate authentication/authorization under error conditions."
           ],
           [
@@ -1797,13 +1797,13 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: The service performs negative-path testing through penetration testing and static code analysis, testing invalid inputs and exception scenarios through multiple action groups (SQL injection, command injection, code injection, XSS, business logic vulnerabilities). Code scanner tasks (\"Code scanner [frameworks]\", \"Code scanner [important flows]\", \"Code scanner [business logic]\") analyze code for vulnerabilities. However, the service does not simulate dependency outages/timeouts or perform fuzzing."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not test for race conditions or concurrency issues, validate input sanitization at all system boundaries (covered indirectly through injection findings), test dependency/network failure handling, validate authentication/authorization under error conditions, test adverse environmental states, perform fault injection (dependency outages/timeouts, fuzzing), assess operational readiness for exceptional conditions, or assess whether applications define or inventory exceptional conditions.\n\nAdditional Notes: The service tests for invalid inputs and exceptions but does not perform fault injection (e.g., simulating database connection failures, network timeouts, dependency service outages) or comprehensive fuzzing to discover edge cases in input parsing, deserialization, or file upload handling."
           ],
           [
@@ -1815,15 +1815,108 @@
           [
             "",
             "",
-            "Not covered",
+            "",
             "Evidence: The service performs negative-path testing through penetration testing and static code analysis, testing invalid inputs and exception scenarios through multiple action groups. However, the service does not perform fuzzing of parsers/deserializers/uploads."
           ],
           [
             "",
             "",
-            "Not covered",
+            "",
             "Limitations: The service does not test for race conditions or concurrency issues, validate input sanitization at all system boundaries (covered indirectly through injection findings), test dependency/network failure handling, validate authentication/authorization under error conditions, test adverse environmental states, perform fault injection (dependency outages/timeouts, fuzzing), assess operational readiness for exceptional conditions, or assess whether applications define or inventory exceptional conditions.\n\nAdditional Notes: The service tests for invalid inputs and exceptions but does not perform comprehensive fuzzing to discover edge cases in input parsing, deserialization, or file upload handling."
           ]
+        ],
+        "separatorRows": [
+          2,
+          5,
+          8,
+          11,
+          14,
+          17,
+          20,
+          23,
+          26,
+          29,
+          32,
+          35,
+          38,
+          41,
+          44,
+          47,
+          50,
+          53,
+          56,
+          59,
+          62,
+          65,
+          68,
+          71,
+          74,
+          77,
+          80,
+          83,
+          86,
+          89,
+          92,
+          95,
+          98,
+          101,
+          104,
+          107,
+          110,
+          113,
+          116,
+          119,
+          122,
+          125,
+          128,
+          131,
+          134,
+          137,
+          140,
+          143,
+          146,
+          149,
+          152,
+          155,
+          158,
+          161,
+          164,
+          167,
+          170,
+          173,
+          176,
+          179,
+          182,
+          185,
+          188,
+          191,
+          194,
+          197,
+          200,
+          203,
+          206,
+          209,
+          212,
+          215,
+          218,
+          221,
+          224,
+          227,
+          230,
+          233,
+          236,
+          239,
+          242,
+          245,
+          248,
+          251,
+          254,
+          257,
+          260,
+          263,
+          266,
+          269,
+          272
         ]
       }
     },
