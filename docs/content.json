@@ -249,7 +249,7 @@
         "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
         "headers": [
           "OWASP category",
-          "Requirement",
+          "Vulnerability",
           "Coverage by AWS Security Agent",
           "Comments"
         ],
