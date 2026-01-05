@@ -176,6 +176,74 @@
       "paragraphs": [
         "AWS Security Agent claims to detect OWASP Top Ten vulnerabilities in its code review and penetration testing features [4]. The OWASP Top 10:2025 lists the most critical web‑application security risks, including Broken Access Control (A01), Security Misconfiguration (A02), Software Supply Chain Failures (A03), Cryptographic Failures (A04), Injection (A05), Insecure Design (A06), Authentication Failures (A07), Software or Data Integrity Failures (A08), Security Logging and Alerting Failures (A09) and Mishandling of Exceptional Conditions (A10) [13]. Table 3 evaluates coverage of these categories based on the documented and observed capabilities of AWS Security Agent. Where coverage is partial or absent, additional controls are recommended."
       ],
+      "subsections": [
+        {
+          "number": "5.1",
+          "title": "Coverage Visualization",
+          "paragraphs": [
+            "Figure 1 presents an area chart visualizing the OWASP Top 10 coverage percentages across all risk categories, illustrating the significant variation in coverage from complete coverage in injection vulnerabilities to no coverage in software supply chain failures."
+          ],
+          "chart": {
+            "type": "line",
+            "caption": "Figure 1 – OWASP Top 10 (2025) Coverage by AWS Security Agent",
+            "labels": [
+              "A01: Broken Access Control",
+              "A02: Security Misconfiguration",
+              "A03: Software Supply Chain Failures",
+              "A04: Cryptographic Failures",
+              "A05: Injection",
+              "A06: Insecure Design",
+              "A07: Authentication Failures",
+              "A08: Software or Data Integrity Failures",
+              "A09: Security Logging and Alerting Failures",
+              "A10: Mishandling of Exceptional Conditions"
+            ],
+            "datasets": [
+              {
+                "label": "Coverage Percentage",
+                "data": [
+                  87.5,
+                  62.5,
+                  0.0,
+                  30.0,
+                  100.0,
+                  60.0,
+                  41.7,
+                  27.8,
+                  15.0,
+                  45.8
+                ],
+                "borderColor": "rgb(75, 192, 192)",
+                "backgroundColor": "rgba(75, 192, 192, 0.2)",
+                "fill": true,
+                "tension": 0.4
+              }
+            ],
+            "options": {
+              "scales": {
+                "y": {
+                  "max": 100,
+                  "title": {
+                    "display": true,
+                    "text": "Coverage Percentage (%)"
+                  }
+                },
+                "x": {
+                  "ticks": {
+                    "maxRotation": 45,
+                    "minRotation": 45
+                  }
+                }
+              },
+              "plugins": {
+                "legend": {
+                  "display": false
+                }
+              }
+            }
+          }
+        }
+      ],
       "table": {
         "caption": "Table 3 – OWASP Top 10 (2025) coverage by AWS Security Agent*",
         "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
@@ -310,7 +378,7 @@
             "",
             "",
             "",
-            "Limitations: Comprehensive testing of all metadata manipulation vectors (cookie tampering, hidden field manipulation, JWT invalidation abuse) may be limited without full application context, as the service requires knowledge of all authentication mechanisms and token formats used by the application. To enable comprehensive authorization assurance and complete privilege boundary validation, it is important to provide the agent with access to application source code, authentication information, API documentation with full endpoint and role-mapping information."
+            "Limitations: The service provides comprehensive testing capabilities for all metadata manipulation vectors (cookie tampering, hidden field manipulation, JWT invalidation abuse) when provided with full application context. To enable comprehensive authorization assurance and complete privilege boundary validation, the service can utilize application source code, authentication information, and API documentation with full endpoint and role-mapping information when provided. The \"Partial\" status reflects that comprehensive testing requires providing this context information through the service's available functionality."
           ],
           [
             "A01: Broken Access Control",
@@ -387,7 +455,7 @@
           [
             "A02: Security Misconfiguration",
             "Container hardening",
-            "Covered",
+            "Partial",
             "Description: The service conducts static analysis and penetration tests that include dedicated \"Security Misconfiguration\" action groups."
           ],
           [
@@ -400,7 +468,7 @@
             "",
             "",
             "",
-            "Limitations: None identified for this specific requirement."
+            "Limitations: The service can inspect Dockerfile configurations through static analysis, but cannot detect configuration drift or validate the actual configuration of the running application. This limitation exists because the service only has access to the application over HTTP/HTTPS and cannot directly inspect container runtime configurations, environment variables, or verify that the running container matches the Dockerfile specifications."
           ],
           [
             "A02: Security Misconfiguration",
@@ -1918,75 +1986,7 @@
           269,
           272
         ]
-      },
-      "subsections": [
-        {
-          "number": "5.1",
-          "title": "Coverage Visualization",
-          "paragraphs": [
-            "Figure 1 presents an area chart visualizing the OWASP Top 10 coverage percentages across all risk categories, illustrating the significant variation in coverage from complete coverage in injection vulnerabilities to no coverage in software supply chain failures."
-          ],
-          "chart": {
-            "type": "line",
-            "caption": "Figure 1 – OWASP Top 10 (2025) Coverage by AWS Security Agent",
-            "labels": [
-              "A01: Broken Access Control",
-              "A02: Security Misconfiguration",
-              "A03: Software Supply Chain Failures",
-              "A04: Cryptographic Failures",
-              "A05: Injection",
-              "A06: Insecure Design",
-              "A07: Authentication Failures",
-              "A08: Software or Data Integrity Failures",
-              "A09: Security Logging and Alerting Failures",
-              "A10: Mishandling of Exceptional Conditions"
-            ],
-            "datasets": [
-              {
-                "label": "Coverage Percentage",
-                "data": [
-                  87.5,
-                  62.5,
-                  0.0,
-                  30.0,
-                  100.0,
-                  60.0,
-                  41.7,
-                  27.8,
-                  15.0,
-                  45.8
-                ],
-                "borderColor": "rgb(75, 192, 192)",
-                "backgroundColor": "rgba(75, 192, 192, 0.2)",
-                "fill": true,
-                "tension": 0.4
-              }
-            ],
-            "options": {
-              "scales": {
-                "y": {
-                  "max": 100,
-                  "title": {
-                    "display": true,
-                    "text": "Coverage Percentage (%)"
-                  }
-                },
-                "x": {
-                  "ticks": {
-                    "maxRotation": 45,
-                    "minRotation": 45
-                  }
-                }
-              },
-              "plugins": {
-                "legend": {
-                  "display": false
-                }
-              }
-            }
-          }
-        }
-      ]
+      }
     },
     {
       "number": 6,
