@@ -6,7 +6,7 @@
     "date": "2025-12-29",
     "status": "Draft"
   },
-  "abstract": "This study presents an initial functional and security coverage analysis of AWS Security Agent, a newly introduced AWS-managed, GenAI-enabled security assessment service designed to support design review, code analysis, and penetration testing within the software development lifecycle. The evaluation is based on empirical testing of the service, supplemented by a systematic review of publicly available AWS documentation. The study examines three core capabilities: design security review, code security review and on-demand penetration testing, evaluates their implementation characteristics, operational limitations, and coverage of the OWASP Top 10 (2025) application security risks. Results indicate support for context-aware, multi-step penetration testing and real-time pull-request analysis, with effective detection of injection vulnerabilities. OWASP Top 10 coverage analysis reveals significant variation across risk categories: Injection (A05) achieves 100% coverage, Broken Access Control (A01) 87.5%, Security Misconfiguration (A02) 62.5%, Insecure Design (A06) 60.0%, Mishandling of Exceptional Conditions (A10) 45.8%, Authentication Failures (A07) 41.7%, Cryptographic Failures (A04) 30.0%, Software or Data Integrity Failures (A08) 27.8%, Security Logging and Alerting Failures (A09) 15.0%, and Software Supply Chain Failures (A03) 0.0%. However, the service is limited to a web-based interface, lacks CLI or API access, and exhibits partial OWASP coverage overall, with significant gaps in software supply chain security, cryptographic validation, and security logging. This work provides an objective, practitioner-focused assessment of current capabilities and limitations and does not constitute a security certification or endorsement of the service.",
+  "abstract": "This study presents an initial functional and security coverage analysis of AWS Security Agent, a newly introduced AWS-managed, GenAI-enabled security assessment service designed to support design review, code analysis, and penetration testing within the software development lifecycle. The evaluation is based on empirical testing of the service, supplemented by a systematic review of publicly available AWS documentation. The study examines three core capabilities: design security review, code security review and on-demand penetration testing, evaluates their implementation characteristics, operational limitations, and coverage of the OWASP Top 10 (2025) application security risks. Results indicate support for context-aware, multi-step penetration testing and real-time pull-request analysis, with effective detection of injection vulnerabilities. OWASP Top 10 coverage analysis reveals significant variation across risk categories, with strongest coverage in injection vulnerabilities and access control, moderate coverage in security misconfiguration and insecure design, and weakest coverage in software supply chain security, cryptographic validation beyond TLS checks, and security logging. However, the service is limited to a web-based interface, lacks CLI or API access, and exhibits partial OWASP coverage overall, with significant gaps in software supply chain security, cryptographic validation, and security logging. This work provides an objective, practitioner-focused assessment of current capabilities and limitations and does not constitute a security certification or endorsement of the service.",
   "sections": [
     {
       "number": 1,
@@ -1918,7 +1918,75 @@
           269,
           272
         ]
-      }
+      },
+      "subsections": [
+        {
+          "number": "5.1",
+          "title": "Coverage Visualization",
+          "paragraphs": [
+            "Figure 1 presents an area chart visualizing the OWASP Top 10 coverage percentages across all risk categories, illustrating the significant variation in coverage from complete coverage in injection vulnerabilities to no coverage in software supply chain failures."
+          ],
+          "chart": {
+            "type": "line",
+            "caption": "Figure 1 – OWASP Top 10 (2025) Coverage by AWS Security Agent",
+            "labels": [
+              "A01: Broken Access Control",
+              "A02: Security Misconfiguration",
+              "A03: Software Supply Chain Failures",
+              "A04: Cryptographic Failures",
+              "A05: Injection",
+              "A06: Insecure Design",
+              "A07: Authentication Failures",
+              "A08: Software or Data Integrity Failures",
+              "A09: Security Logging and Alerting Failures",
+              "A10: Mishandling of Exceptional Conditions"
+            ],
+            "datasets": [
+              {
+                "label": "Coverage Percentage",
+                "data": [
+                  87.5,
+                  62.5,
+                  0.0,
+                  30.0,
+                  100.0,
+                  60.0,
+                  41.7,
+                  27.8,
+                  15.0,
+                  45.8
+                ],
+                "borderColor": "rgb(75, 192, 192)",
+                "backgroundColor": "rgba(75, 192, 192, 0.2)",
+                "fill": true,
+                "tension": 0.4
+              }
+            ],
+            "options": {
+              "scales": {
+                "y": {
+                  "max": 100,
+                  "title": {
+                    "display": true,
+                    "text": "Coverage Percentage (%)"
+                  }
+                },
+                "x": {
+                  "ticks": {
+                    "maxRotation": 45,
+                    "minRotation": 45
+                  }
+                }
+              },
+              "plugins": {
+                "legend": {
+                  "display": false
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "number": 6,

@@ -510,3 +510,22 @@ body {
         padding: 4px 6px;
     }
 }
+
+/* Chart Styles */
+.chart-container {
+    margin: 20px 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.chart-caption {
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 9pt;
+}

@@ -82,6 +82,11 @@ function renderSection(section, references) {
         html += section.tables.map(table => renderTable(table, references)).join('');
     }
     
+    // Render chart if present
+    if (section.chart) {
+        html += renderChart(section.chart);
+    }
+    
     // Render subsections
     if (section.subsections) {
         html += section.subsections.map(subsection => renderSubsection(subsection, references)).join('');
@@ -114,6 +119,10 @@ function renderSubsection(subsection, references) {
     
     if (subsection.table) {
         html += renderTable(subsection.table, references);
+    }
+    
+    if (subsection.chart) {
+        html += renderChart(subsection.chart);
     }
     
     return html;
@@ -156,6 +165,82 @@ function renderTable(table, references) {
         html += `<p class="table-note">${processCitations(escapeHtml(table.note), references)}</p>`;
     }
     return html;
+}
+
+function renderChart(chart) {
+    const chartId = `chart-${Math.random().toString(36).substr(2, 9)}`;
+    const canvas = `<canvas id="${chartId}"></canvas>`;
+    const caption = chart.caption ? `<p class="chart-caption">${escapeHtml(chart.caption)}</p>` : '';
+    
+    // Store chart config for initialization after DOM is ready
+    setTimeout(() => {
+        const ctx = document.getElementById(chartId);
+        if (ctx && typeof Chart !== 'undefined') {
+            // Merge default options with chart-specific options
+            const defaultOptions = {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: chart.type === 'line' ? {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                } : undefined,
+                plugins: {
+                    legend: {
+                        display: chart.showLegend !== false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                }
+            };
+            
+            // Deep merge options
+            const mergedOptions = chart.options ? deepMerge(defaultOptions, chart.options) : defaultOptions;
+            
+            new Chart(ctx, {
+                type: chart.type || 'line',
+                data: {
+                    labels: chart.labels || [],
+                    datasets: chart.datasets || []
+                },
+                options: mergedOptions
+            });
+        }
+    }, 100);
+    
+    return `<div class="chart-container">${canvas}${caption}</div>`;
+}
+
+function deepMerge(target, source) {
+    const output = Object.assign({}, target);
+    if (isObject(target) && isObject(source)) {
+        Object.keys(source).forEach(key => {
+            if (isObject(source[key])) {
+                if (!(key in target))
+                    Object.assign(output, { [key]: source[key] });
+                else
+                    output[key] = deepMerge(target[key], source[key]);
+            } else {
+                Object.assign(output, { [key]: source[key] });
+            }
+        });
+    }
+    return output;
+}
+
+function isObject(item) {
+    return item && typeof item === 'object' && !Array.isArray(item);
 }
 
 function renderReference(ref) {
