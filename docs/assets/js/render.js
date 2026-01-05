@@ -136,6 +136,7 @@ function renderList(list, references) {
 
 function renderTable(table, references) {
     const tableClass = table.class ? ` class="${table.class}"` : '';
+    const separatorRows = table.separatorRows || [];
     let html = `<table class="academic-table${table.class ? ' ' + table.class : ''}">
         <caption>${escapeHtml(table.caption)}</caption>
         <thead>
@@ -144,9 +145,11 @@ function renderTable(table, references) {
             </tr>
         </thead>
         <tbody>
-            ${table.rows.map(row => 
-                `<tr>${row.map(cell => `<td>${processCitations(escapeHtml(cell), references)}</td>`).join('')}</tr>`
-            ).join('')}
+            ${table.rows.map((row, index) => {
+                const hasSeparator = separatorRows.includes(index);
+                const rowClass = hasSeparator ? ' class="row-separator"' : '';
+                return `<tr${rowClass}>${row.map(cell => `<td>${processCitations(escapeHtml(cell), references)}</td>`).join('')}</tr>`;
+            }).join('')}
         </tbody>
     </table>`;
     if (table.note) {
