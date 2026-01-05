@@ -182,68 +182,68 @@
           "title": "Coverage Visualization",
           "paragraphs": [
             "Figure 1 presents an area chart visualizing the OWASP Top 10 coverage percentages across all risk categories, illustrating the significant variation in coverage from complete coverage in injection vulnerabilities to no coverage in software supply chain failures."
-          ],
-          "chart": {
-            "type": "line",
-            "caption": "Figure 1 – OWASP Top 10 (2025) Coverage by AWS Security Agent",
-            "labels": [
-              "A01: Broken Access Control",
-              "A02: Security Misconfiguration",
-              "A03: Software Supply Chain Failures",
-              "A04: Cryptographic Failures",
-              "A05: Injection",
-              "A06: Insecure Design",
-              "A07: Authentication Failures",
-              "A08: Software or Data Integrity Failures",
-              "A09: Security Logging and Alerting Failures",
-              "A10: Mishandling of Exceptional Conditions"
+          ]
+        }
+      ],
+      "chart": {
+        "type": "line",
+        "caption": "Figure 1 – OWASP Top 10 (2025) Coverage by AWS Security Agent",
+        "labels": [
+          "A01: Broken Access Control",
+          "A02: Security Misconfiguration",
+          "A03: Software Supply Chain Failures",
+          "A04: Cryptographic Failures",
+          "A05: Injection",
+          "A06: Insecure Design",
+          "A07: Authentication Failures",
+          "A08: Software or Data Integrity Failures",
+          "A09: Security Logging and Alerting Failures",
+          "A10: Mishandling of Exceptional Conditions"
+        ],
+        "datasets": [
+          {
+            "label": "Coverage Percentage",
+            "data": [
+              87.5,
+              62.5,
+              0.0,
+              30.0,
+              100.0,
+              60.0,
+              41.7,
+              27.8,
+              15.0,
+              45.8
             ],
-            "datasets": [
-              {
-                "label": "Coverage Percentage",
-                "data": [
-                  87.5,
-                  62.5,
-                  0.0,
-                  30.0,
-                  100.0,
-                  60.0,
-                  41.7,
-                  27.8,
-                  15.0,
-                  45.8
-                ],
-                "borderColor": "rgb(75, 192, 192)",
-                "backgroundColor": "rgba(75, 192, 192, 0.2)",
-                "fill": true,
-                "tension": 0.4
+            "borderColor": "rgb(75, 192, 192)",
+            "backgroundColor": "rgba(75, 192, 192, 0.2)",
+            "fill": true,
+            "tension": 0.4
+          }
+        ],
+        "options": {
+          "scales": {
+            "y": {
+              "max": 100,
+              "title": {
+                "display": true,
+                "text": "Coverage Percentage (%)"
               }
-            ],
-            "options": {
-              "scales": {
-                "y": {
-                  "max": 100,
-                  "title": {
-                    "display": true,
-                    "text": "Coverage Percentage (%)"
-                  }
-                },
-                "x": {
-                  "ticks": {
-                    "maxRotation": 45,
-                    "minRotation": 45
-                  }
-                }
-              },
-              "plugins": {
-                "legend": {
-                  "display": false
-                }
+            },
+            "x": {
+              "ticks": {
+                "maxRotation": 45,
+                "minRotation": 45
               }
+            }
+          },
+          "plugins": {
+            "legend": {
+              "display": false
             }
           }
         }
-      ],
+      },
       "table": {
         "caption": "Table 3 – OWASP Top 10 (2025) coverage by AWS Security Agent*",
         "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
