@@ -257,12 +257,17 @@ body {
 
 .academic-table td {
     padding: 8px 12px;
-    border-bottom: none;
+    border-bottom: 1px solid #ccc;
     vertical-align: top;
 }
 
-/* Only show borders on rows with separator class */
-.academic-table tbody tr.row-separator td {
+/* Table 3 (4-column tables) - remove default borders, only show on separator rows */
+.academic-table:has(thead tr th:nth-child(4):last-child) td {
+    border-bottom: none;
+}
+
+/* Only show borders on rows with separator class in Table 3 */
+.academic-table:has(thead tr th:nth-child(4):last-child) tbody tr.row-separator td {
     border-bottom: 1px solid #ccc;
 }
 
@@ -290,6 +295,11 @@ body {
 
 /* Last row always has a border */
 .academic-table tbody tr:last-child td {
+    border-bottom: 1px solid #000 !important;
+}
+
+/* Table 3 last row - ensure it has a border even if it's not a separator row */
+.academic-table:has(thead tr th:nth-child(4):last-child) tbody tr:last-child td {
     border-bottom: 1px solid #000 !important;
 }
 
