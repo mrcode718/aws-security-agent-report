@@ -256,7 +256,7 @@
         "rows": [
           [
             "A01: Broken Access Control",
-            "Least privilege enforcement",
+            "Violation of the principle of least privilege, commonly known as deny by default, where access should only be granted for particular capabilities, roles, or users, but is available to anyone.",
             "Covered",
             "Description: The service conducts authenticated runtime testing to verify that authorization decisions are consistently enforced at runtime, bound to server-side session context rather than user-supplied identifiers. The service verifies that unauthenticated or unauthorized requests are reliably rejected."
           ],
@@ -274,7 +274,7 @@
           ],
           [
             "A01: Broken Access Control",
-            "Access control bypass prevention",
+            "Bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool that modifies API requests.",
             "Covered",
             "Description: The service conducts authenticated runtime testing to identify access control bypass vulnerabilities through unauthorized parameter manipulation and HTTP method tampering."
           ],
@@ -292,7 +292,7 @@
           ],
           [
             "A01: Broken Access Control",
-            "IDOR protection",
+            "Permitting viewing or editing someone else's account by providing its unique identifier (insecure direct object references)",
             "Covered",
             "Description: The service conducts authenticated runtime testing to identify insecure direct object references (IDOR) vulnerabilities."
           ],
@@ -310,7 +310,7 @@
           ],
           [
             "A01: Broken Access Control",
-            "Missing access controls detection",
+            "An accessible API with missing access controls for POST, PUT, and DELETE.",
             "Covered",
             "Description: The service conducts authenticated runtime testing to identify missing access controls and baseline role-based access enforcement."
           ],
@@ -328,7 +328,7 @@
           ],
           [
             "A01: Broken Access Control",
-            "Privilege escalation prevention",
+            "Elevation of privilege. Acting as a user without being logged in or or gaining privileges beyond those expected of the logged in user (e.g. admin access).",
             "Covered",
             "Description: The service conducts authenticated runtime testing to identify privilege escalation vulnerabilities."
           ],
@@ -346,7 +346,7 @@
           ],
           [
             "A01: Broken Access Control",
-            "Force browsing protection",
+            "Force browsing (guessing URLs) to authenticated pages as an unauthenticated user or to privileged pages as a standard user.",
             "Covered",
             "Description: The service conducts authenticated runtime testing to identify force browsing vulnerabilities where unauthorized access to resources is possible."
           ],
@@ -364,7 +364,7 @@
           ],
           [
             "A01: Broken Access Control",
-            "Metadata manipulation testing (JWT, cookies, hidden fields)",
+            "Metadata manipulation, such as replaying or tampering with a JSON Web Token (JWT) access control token, a cookie or hidden field manipulated to elevate privileges, or abusing JWT invalidation.",
             "Partial",
             "Description: The service tests for metadata manipulation through dedicated \"Json web token vulnerabilities\" action groups and session manipulation tests (e.g., session fixation vulnerabilities)."
           ],
@@ -382,7 +382,7 @@
           ],
           [
             "A01: Broken Access Control",
-            "CORS misconfiguration detection",
+            "CORS misconfiguration allows API access from unauthorized or untrusted origins.",
             "Partial",
             "Description: The service may detect CORS misconfigurations through network scanning and TLS/SSL validation tools."
           ],
@@ -400,7 +400,7 @@
           ],
           [
             "A02: Security Misconfiguration",
-            "Security headers validation",
+            "The server does not send security headers or directives, or they are not set to secure values.",
             "Covered",
             "Description: The service conducts static analysis and penetration tests that include dedicated \"Security Misconfiguration\" action groups. The agent executes a dedicated Security Misconfiguration action group with validator tasks."
           ],
@@ -418,7 +418,7 @@
           ],
           [
             "A02: Security Misconfiguration",
-            "Error message handling",
+            "A lack of central configuration for intercepting excessive error messages. Error handling reveals stack traces or other overly informative error messages to users.",
             "Covered",
             "Description: The service conducts static analysis and penetration tests that include dedicated \"Security Misconfiguration\" action groups."
           ],
@@ -436,7 +436,7 @@
           ],
           [
             "A02: Security Misconfiguration",
-            "Framework settings validation",
+            "The security settings in the application servers, application frameworks (e.g., Struts, Spring, ASP.NET), libraries, databases, etc., are not set to secure values.",
             "Covered",
             "Description: The service conducts static analysis and penetration tests that include dedicated \"Security Misconfiguration\" action groups."
           ],
@@ -454,7 +454,7 @@
           ],
           [
             "A02: Security Misconfiguration",
-            "Container hardening",
+            "It is missing appropriate security hardening across any part of the application stack or improperly configured permissions on cloud services.",
             "Partial",
             "Description: The service conducts static analysis and penetration tests that include dedicated \"Security Misconfiguration\" action groups."
           ],
@@ -472,7 +472,7 @@
           ],
           [
             "A02: Security Misconfiguration",
-            "Unnecessary features detection",
+            "Unnecessary features are enabled or installed (e.g., unnecessary ports, services, pages, accounts, testing frameworks, or privileges).",
             "Covered",
             "Description: The service conducts static analysis and penetration tests that include dedicated \"Security Misconfiguration\" action groups."
           ],
@@ -490,7 +490,7 @@
           ],
           [
             "A02: Security Misconfiguration",
-            "Default credentials testing",
+            "Default accounts and their passwords are still enabled and unchanged.",
             "Not covered",
             "Description: The service conducts static analysis and penetration tests that include dedicated \"Security Misconfiguration\" action groups, but does not explicitly test for default accounts and unchanged passwords."
           ],
@@ -544,7 +544,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "Dependency manifest file scanning",
+            "you do not carefully track the versions of all components that you use (both client-side and server-side). This includes components you directly use as well as nested (transitive) dependencies.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -562,7 +562,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "Version validation against vulnerability databases",
+            "the software is vulnerable, unsupported, or out of date. This includes the OS, web/application server, database management system (DBMS), applications, APIs and all components, runtime environments, and libraries.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -580,7 +580,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "SBOM generation and validation",
+            "you do not scan for vulnerabilities regularly and subscribe to security bulletins related to the components you use.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -598,7 +598,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "CVE checking for dependencies",
+            "you do not fix or upgrade the underlying platform, frameworks, and dependencies in a risk-based, timely fashion. This commonly happens in environments when patching is a monthly or quarterly task under change control, leaving organizations open to days or months of unnecessary exposure before fixing vulnerabilities.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -616,7 +616,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "Supply chain security policy enforcement",
+            "you have not hardened every part of your supply chain, with a special focus on access control and the application of least privilege.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -634,7 +634,7 @@
           ],
           [
             "A03: Software Supply Chain Failures",
-            "Trusted repository consumption validation",
+            "components from untrusted sources, across any part of the tech stack, are used in or can impact on production environments.",
             "Not covered",
             "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
           ],
@@ -651,8 +651,98 @@
             "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
           ],
           [
+            "A03: Software Supply Chain Failures",
+            "you do not have a change management process or tracking of changes within your supply chain, including tracking IDEs, IDE extensions and updates, changes to your organization's code repository, sandboxes, image and library repositories, the way artifacts are created and stored, etc. Every part of your supply chain should be documented, especially changes.",
+            "Not covered",
+            "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of change management process or tracking of changes within supply chain found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
+          ],
+          [
+            "A03: Software Supply Chain Failures",
+            "your supply chain systems do not have any separation of duty. No single person should be able to write code and promote it all the way to production without oversight from another human being.",
+            "Not covered",
+            "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of separation of duty validation found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
+          ],
+          [
+            "A03: Software Supply Chain Failures",
+            "software developers do not test the compatibility of updated, upgraded, or patched libraries.",
+            "Not covered",
+            "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of compatibility testing validation found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
+          ],
+          [
+            "A03: Software Supply Chain Failures",
+            "you do not secure the configurations of every part of your system (see A02:2025-Security Misconfiguration).",
+            "Not covered",
+            "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of configuration security validation found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
+          ],
+          [
+            "A03: Software Supply Chain Failures",
+            "your CI/CD pipeline has weaker security than the systems it builds and deploys, especially if it is complex.",
+            "Not covered",
+            "Description: AWS Security Agent does not inspect third‑party dependencies or SBOMs. It focuses on design documents, pull requests and runtime behaviour rather than supply‑chain risks."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of CI/CD pipeline security assessment found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not scan dependency manifest files, check versions against vulnerability databases, generate SBOMs, or validate dependency versions against known CVEs.\n\nAdditional Notes: Organizations should use dedicated Software Composition Analysis (SCA) tools alongside AWS Security Agent to address Software Supply Chain Failures requirements."
+          ],
+          [
             "A04: Cryptographic Failures",
-            "TLS/SSL configuration validation",
+            "Is the received server certificate and the trust chain properly validated?",
             "Covered",
             "Description: AWS Security Agent provides coverage for TLS/SSL configuration validation. The service includes a dedicated TLS scanner using testssl.sh (version 3.2.2) that validates TLS/SSL protocol versions, cipher suites, server certificates, and trust chains."
           ],
@@ -670,7 +760,7 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Weak cryptographic algorithm detection",
+            "Are any old or weak cryptographic algorithms or protocols used either by default or in older code?",
             "Partial",
             "Description: AWS Security Agent provides partial coverage for weak cryptographic algorithm detection."
           ],
@@ -688,15 +778,15 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Cryptographic primitive analysis",
+            "Are default crypto keys in use, are weak crypto keys generated, are keys re-used, or is proper key management and rotation missing?",
             "Not covered",
-            "Description: AWS Security Agent does not automatically analyze cryptographic primitives."
+            "Description: AWS Security Agent does not automatically analyze cryptographic key management."
           ],
           [
             "",
             "",
             "",
-            "Evidence: The code scanner analyzes source code patterns but does not specifically analyze cryptographic primitives or algorithm choices in application code beyond TLS/SSL configuration."
+            "Evidence: The code scanner analyzes source code patterns but does not specifically analyze cryptographic key management, key rotation, or key reuse."
           ],
           [
             "",
@@ -706,7 +796,43 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Initialization vector validation",
+            "Are passwords being used as cryptographic keys in the absence of a password based key derivation function?",
+            "Not covered",
+            "Description: AWS Security Agent does not automatically analyze password-based key derivation."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: The code scanner analyzes source code patterns but does not specifically analyze whether passwords are used as cryptographic keys without proper key derivation functions."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
+          ],
+          [
+            "A04: Cryptographic Failures",
+            "Are cryptographic error messages or side channel information exploitable, for example in the form of padding oracle attacks?",
+            "Not covered",
+            "Description: AWS Security Agent does not automatically analyze cryptographic error messages or side channel vulnerabilities."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: The code scanner analyzes source code patterns but does not specifically analyze cryptographic error messages or side channel vulnerabilities."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not automatically analyze cryptographic primitives, detect insecure algorithms beyond TLS checks (e.g., DES, RC4, MD5, SHA1 in application code), validate initialization vectors or encryption modes, check for deprecated hash functions, assess cryptographic randomness, or analyze cryptographic error messages and side channel vulnerabilities.\n\nAdditional Notes: Organizations should use dedicated cryptographic analysis tools alongside AWS Security Agent to address requirements related to encryption implementation details, hash function validation, and cryptographic randomness."
+          ],
+          [
+            "A04: Cryptographic Failures",
+            "Are initialization vectors ignored, reused, or not generated sufficiently secure for the cryptographic mode of operation? Is an insecure mode of operation such as ECB in use? Is encryption used when authenticated encryption is more appropriate?",
             "Not covered",
             "Description: AWS Security Agent does not validate initialization vectors."
           ],
@@ -724,7 +850,7 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Encryption mode validation",
+            "Is encryption not enforced, e.g., are any HTTP headers (browser) security directives or headers missing?",
             "Not covered",
             "Description: AWS Security Agent does not validate encryption modes."
           ],
@@ -742,7 +868,7 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Deprecated hash function detection",
+            "Are deprecated hash functions such as MD5 or SHA1 in use, or are non-cryptographic hash functions used when cryptographic hash functions are needed?",
             "Not covered",
             "Description: AWS Security Agent does not check for deprecated hash functions."
           ],
@@ -760,7 +886,7 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Cryptographic randomness assessment",
+            "Is randomness used that was not designed to meet cryptographic requirements? Even if the correct function is chosen, does it need to be seeded by the developer, and if not, has the developer over-written the strong seeding functionality built into it with a seed that lacks sufficient entropy/unpredictability?",
             "Not covered",
             "Description: AWS Security Agent does not assess cryptographic randomness."
           ],
@@ -796,7 +922,7 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Hardcoded cryptographic key detection",
+            "Are crypto keys checked into source code repositories?",
             "Not covered",
             "Description: AWS Security Agent does not specifically scan for hardcoded cryptographic keys."
           ],
@@ -814,7 +940,7 @@
           ],
           [
             "A04: Cryptographic Failures",
-            "Cryptographic algorithm downgrade prevention",
+            "Can the cryptographic algorithm be downgraded or bypassed?",
             "Partial",
             "Description: AWS Security Agent provides partial coverage for cryptographic algorithm downgrade prevention."
           ],
@@ -832,7 +958,7 @@
           ],
           [
             "A05: Injection",
-            "SQL injection detection",
+            "User-supplied data is not validated, filtered, or sanitized by the application.",
             "Covered",
             "Description: Penetration tests explicitly target SQL injection attacks. Code review checks for OWASP Top 10 vulnerabilities including injection flaws."
           ],
@@ -850,7 +976,7 @@
           ],
           [
             "A05: Injection",
-            "Command injection detection",
+            "Dynamic queries or non-parameterized calls without context-aware escaping are used directly in the interpreter.",
             "Covered",
             "Description: Penetration tests explicitly target command injection attacks. Code review checks for OWASP Top 10 vulnerabilities including injection flaws."
           ],
@@ -868,7 +994,7 @@
           ],
           [
             "A05: Injection",
-            "Code injection detection",
+            "Unsanitized data is used within object-relational mapping (ORM) search parameters to extract additional, sensitive records.",
             "Covered",
             "Description: Penetration tests explicitly target code injection attacks. Code review checks for OWASP Top 10 vulnerabilities including injection flaws."
           ],
@@ -886,7 +1012,7 @@
           ],
           [
             "A05: Injection",
-            "Cross-site scripting (XSS) detection",
+            "Potentially hostile data is directly used or concatenated. The SQL or command contains the structure and malicious data in dynamic queries, commands, or stored procedure",
             "Covered",
             "Description: Penetration tests explicitly target cross-site scripting (XSS) attacks. Code review checks for OWASP Top 10 vulnerabilities including injection flaws."
           ],
@@ -903,44 +1029,8 @@
             "Limitations: None identified.\n\nAdditional Notes: The service successfully detects XSS vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
           ],
           [
-            "A05: Injection",
-            "Server-side template injection detection",
-            "Covered",
-            "Description: Penetration tests explicitly target server‑side template injection attacks. Code review checks for OWASP Top 10 vulnerabilities including injection flaws."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks: \"Server side template injection\"."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: None identified.\n\nAdditional Notes: The service successfully detects server-side template injection vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
-          ],
-          [
-            "A05: Injection",
-            "XML external entity (XXE) attack detection",
-            "Covered",
-            "Description: Penetration tests explicitly target XML external entity (XXE) attacks. Code review checks for OWASP Top 10 vulnerabilities including injection flaws."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: Evidence from penetration test runs demonstrates comprehensive coverage through dedicated injection action groups with validator tasks."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: None identified.\n\nAdditional Notes: The service successfully detects XXE vulnerabilities through both static code analysis and authenticated runtime testing, providing detailed proof-of-concept demonstrations and remediation guidance."
-          ],
-          [
             "A06: Insecure Design",
-            "Requirements gathering validation",
+            "Gathering Requirements and Resource Management",
             "Partial",
             "Description: Design review assesses architectural documents against security requirements. The service supports secure development lifecycle practices through early design reviews, continuous code reviews, and runtime penetration testing."
           ],
@@ -958,8 +1048,8 @@
           ],
           [
             "A06: Insecure Design",
-            "Resource management assessment",
-            "Partial",
+            "Creating a Secure Design",
+            "Covered",
             "Description: Design review assesses architectural documents against security requirements. The service supports secure development lifecycle practices through early design reviews, continuous code reviews, and runtime penetration testing."
           ],
           [
@@ -976,8 +1066,8 @@
           ],
           [
             "A06: Insecure Design",
-            "Secure design pattern enforcement",
-            "Covered",
+            "Having a Secure Development Lifecycle",
+            "Not covered",
             "Description: Design review assesses architectural documents against security requirements and can enforce secure‑by‑default patterns. The service supports secure development lifecycle practices through early design reviews, continuous code reviews, and runtime penetration testing."
           ],
           [
@@ -993,135 +1083,9 @@
             "Limitations: Design reviews can only assess secure design patterns if design documents are uploaded. Complex insecure designs may not be detected if requirements are incomplete or if architectural flaws are not explicitly documented.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
           ],
           [
-            "A06: Insecure Design",
-            "Business logic vulnerability detection",
-            "Covered",
-            "Description: Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns. The service supports secure development lifecycle practices through early design reviews, continuous code reviews, and runtime penetration testing."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including missing transaction limits and velocity controls, insufficient balance validation, negative balance exploitation, self-transfer business logic flaws, registration atomicity failures, float precision errors in monetary calculations, transaction history denial of service, missing transaction confirmation controls, lack of step-up authentication, and missing account status controls. Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns (e.g., missing transaction limits, insufficient validation, atomicity failures)."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
-          ],
-          [
-            "A06: Insecure Design",
-            "Transaction limits and velocity controls",
-            "Covered",
-            "Description: Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including missing transaction limits and velocity controls."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
-          ],
-          [
-            "A06: Insecure Design",
-            "Balance validation",
-            "Covered",
-            "Description: Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including insufficient balance validation, negative balance exploitation."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
-          ],
-          [
-            "A06: Insecure Design",
-            "Atomicity enforcement",
-            "Covered",
-            "Description: Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: Evidence from penetration test runs demonstrates detection of business logic vulnerabilities indicating insecure design, including registration atomicity failures. Penetration tests and static code analysis detect business logic vulnerabilities that reveal insecure design patterns (e.g., atomicity failures)."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: Complex insecure designs may not be detected if requirements are incomplete or if the upload process is skipped.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
-          ],
-          [
-            "A06: Insecure Design",
-            "SDLC methodology assessment",
-            "Not covered",
-            "Description: The service supports secure development lifecycle practices through design reviews, code review integration, and penetration testing. However, the service does not explicitly assess whether organizations follow SDLC methodologies."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: The service supports secure development lifecycle practices through design reviews (early assessment of architectural documents), code review integration (continuous assessment via GitHub pull request scanning), and penetration testing (runtime validation). However, the service does not explicitly assess whether organizations follow a secure development lifecycle (SDLC) methodology."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs. It provides security assessment tools but does not validate SDLC processes, threat modeling practices, or security training programs. The service enables secure development practices but does not verify that organizations have established SDLC methodologies or that teams follow secure development processes.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
-          ],
-          [
-            "A06: Insecure Design",
-            "Threat modeling validation",
-            "Not covered",
-            "Description: The service supports secure development lifecycle practices through design reviews, code review integration, and penetration testing. However, the service does not explicitly assess threat modeling practices."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs. It provides security assessment tools but does not validate SDLC processes, threat modeling practices, or security training programs.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
-          ],
-          [
-            "A06: Insecure Design",
-            "Security training program assessment",
-            "Not covered",
-            "Description: The service supports secure development lifecycle practices through design reviews, code review integration, and penetration testing. However, the service does not explicitly assess security training programs."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: The service does not explicitly assess whether organizations follow SDLC methodologies, threat modeling practices, or security training programs. It provides security assessment tools but does not validate SDLC processes, threat modeling practices, or security training programs.\n\nAdditional Notes: The service focuses on detecting implemented insecure designs through runtime testing rather than preventing insecure designs during the design phase."
-          ],
-          [
             "A07: Authentication Failures",
-            "Authentication bypass detection",
-            "Covered",
+            "Permits automated attacks such as credential stuffing, where the attacker has a breached list of valid usernames and passwords. More recently this type of attack has been expanded to include hybrid password attacks credential stuffing (also known as password spray attacks), where the attacker uses variations or increments of spilled credentials to gain access, for instance trying Password1!, Password2!, Password3! and so on.",
+            "Not covered",
             "Description: Penetration tests include authentication bypass validators in static analysis. Design reviews can enforce \"Authentication Best Practices\" including secure password policies."
           ],
           [
@@ -1138,7 +1102,7 @@
           ],
           [
             "A07: Authentication Failures",
-            "Rate limiting enforcement",
+            "Permits brute force or other automated, scripted attacks that are not quickly blocked.",
             "Covered",
             "Description: Penetration tests detect missing rate limiting on authentication endpoints. Design reviews can enforce \"Authentication Best Practices\" including secure password policies."
           ],
@@ -1156,7 +1120,7 @@
           ],
           [
             "A07: Authentication Failures",
-            "Session management validation",
+            "Reuses the same session identifier after successful login.",
             "Covered",
             "Description: Penetration tests detect session management flaws. Design reviews can enforce \"Authentication Best Practices\" including secure password policies."
           ],
@@ -1174,7 +1138,7 @@
           ],
           [
             "A07: Authentication Failures",
-            "Password storage security",
+            "Uses plain text, encrypted, or weakly hashed passwords data stores (see A04:2025-Cryptographic Failures).",
             "Covered",
             "Description: Penetration tests detect plaintext password storage. Design reviews can enforce \"Authentication Best Practices\" including secure password policies."
           ],
@@ -1192,7 +1156,7 @@
           ],
           [
             "A07: Authentication Failures",
-            "MFA implementation and effectiveness testing",
+            "Has missing or ineffective multi-factor authentication.",
             "Partial",
             "Description: Design reviews can enforce \"Authentication Best Practices\" including MFA requirements. However, the service does not explicitly test for MFA implementation or effectiveness during runtime penetration testing."
           ],
@@ -1210,44 +1174,26 @@
           ],
           [
             "A07: Authentication Failures",
-            "Password spraying detection",
+            "Allows use of weak or ineffective fallbacks if multi-factor authentication is not available.",
             "Not covered",
-            "Description: The service does not perform password spraying tests."
+            "Description: The service does not test for MFA fallback mechanisms."
           ],
           [
             "",
             "",
             "",
-            "Evidence: No evidence of password spraying detection found in penetration test runs."
+            "Evidence: No evidence of MFA fallback testing found in penetration test runs."
           ],
           [
             "",
             "",
             "",
-            "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not perform advanced authentication attack testing such as password spraying."
+            "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not perform MFA fallback testing."
           ],
           [
             "A07: Authentication Failures",
-            "Account lockout testing",
-            "Not covered",
-            "Description: The service does not perform account lockout tests. Design reviews can enforce \"Authentication Best Practices\" including account lockout mechanisms, but runtime testing is not performed."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: No evidence of account lockout testing found in penetration test runs."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: Design reviews can enforce \"Authentication Best Practices\" including account lockout mechanisms, but the service does not validate account lockout functionality during runtime penetration testing."
-          ],
-          [
-            "A07: Authentication Failures",
-            "Credential stuffing validation",
-            "Not covered",
+            "Exposes session identifier in the URL, a hidden field, or another insecure location that is accessible to the client.",
+            "Partial",
             "Description: The service does not perform credential stuffing validation."
           ],
           [
@@ -1264,7 +1210,7 @@
           ],
           [
             "A07: Authentication Failures",
-            "Default credential testing",
+            "Permits default, weak, or well-known passwords, such as \"Password1\" or \"admin\" username with an \"admin\" password.",
             "Not covered",
             "Description: The service does not perform default credential testing."
           ],
@@ -1282,7 +1228,7 @@
           ],
           [
             "A07: Authentication Failures",
-            "Breached credential validation",
+            "Allows users to create new accounts with already known-breached credentials.",
             "Not covered",
             "Description: The service does not perform breached credential validation."
           ],
@@ -1300,7 +1246,7 @@
           ],
           [
             "A07: Authentication Failures",
-            "Credential recovery testing",
+            "Allows use of weak or ineffective credential recovery and forgot-password processes, such as \"knowledge-based answers,\" which cannot be made safe.",
             "Not covered",
             "Description: The service does not perform credential recovery testing."
           ],
@@ -1318,79 +1264,43 @@
           ],
           [
             "A07: Authentication Failures",
-            "Session identifier exposure prevention",
-            "Partial",
-            "Description: The service detects session management vulnerabilities including session fixation, which demonstrates detection of session identifier reuse after successful login."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: The service detects session management vulnerabilities including session fixation (High severity), which demonstrates detection of session identifier reuse after successful login."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: While the specific finding relates to session regeneration rather than session identifier exposure in URLs, the service's session management testing would likely detect insecure session identifier storage. However, comprehensive testing of all session identifier exposure vectors (URLs, hidden fields, client-side storage) may require full application context to identify all session management mechanisms used by the application.\n\nAdditional Notes: The service detects session management vulnerabilities including session fixation (High severity), which demonstrates detection of session identifier reuse after successful login. However, comprehensive testing of all session identifier exposure vectors (URLs, hidden fields, client-side storage) may require full application context to identify all session management mechanisms used by the application."
-          ],
-          [
-            "A08: Software or Data Integrity Failures",
-            "Local file inclusion detection",
+            "Does not correctly invalidate user sessions or authentication tokens (mainly single sign-on (SSO) tokens) during logout or a period of inactivity.",
             "Covered",
-            "Description: The agent's penetration tests detect local file inclusion vulnerabilities through dedicated action groups."
+            "Description: Penetration tests detect session management flaws including missing logout functionality."
           ],
           [
             "",
             "",
             "",
-            "Evidence: Evidence from penetration test runs demonstrates comprehensive file-based integrity vulnerability testing through dedicated action groups."
+            "Evidence: Evidence from penetration test runs demonstrates detection of missing logout functionality (Medium severity)."
           ],
           [
             "",
             "",
             "",
-            "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service successfully detects local file inclusion vulnerabilities through dedicated action groups with validator tasks."
+            "Limitations: Comprehensive testing of all session invalidation scenarios may require full application context to identify all session management mechanisms used by the application.\n\nAdditional Notes: The service detects session management vulnerabilities including missing logout functionality."
           ],
           [
-            "A08: Software or Data Integrity Failures",
-            "Path traversal detection",
-            "Covered",
-            "Description: The agent's penetration tests detect path traversal vulnerabilities through dedicated action groups."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: Evidence from penetration test runs demonstrates comprehensive file-based integrity vulnerability testing through dedicated action groups."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: None identified for this specific requirement.\n\nAdditional Notes: The service successfully detects path traversal vulnerabilities through dedicated action groups with validator tasks."
-          ],
-          [
-            "A08: Software or Data Integrity Failures",
-            "Deserialization vulnerability analysis",
+            "A07: Authentication Failures",
+            "Does not correctly assert the scope and intended audience of the provided credentials.",
             "Not covered",
-            "Description: The service does not analyze deserialization vulnerabilities."
+            "Description: The service does not validate credential scope or audience."
           ],
           [
             "",
             "",
             "",
-            "Evidence: No evidence of deserialization vulnerability analysis found in penetration test runs."
+            "Evidence: No evidence of credential scope or audience validation found in penetration test runs."
           ],
           [
             "",
             "",
             "",
-            "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: The service focuses on file-based integrity vulnerabilities (local file inclusion, path traversal) but does not analyze deserialization vulnerabilities."
+            "Limitations: The service does not perform password spraying, account lockout tests, credential stuffing validation, default credential testing, breached credential validation, credential recovery testing, MFA fallback testing, or credential scope/audience validation.\n\nAdditional Notes: The service focuses on detecting authentication bypass, rate limiting, session management, and password storage issues but does not validate credential scope or audience."
           ],
           [
             "A08: Software or Data Integrity Failures",
-            "Digital signature verification",
+            "Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered.",
             "Not covered",
             "Description: The service does not verify digital signatures."
           ],
@@ -1408,25 +1318,7 @@
           ],
           [
             "A08: Software or Data Integrity Failures",
-            "Tampering detection mechanisms",
-            "Not covered",
-            "Description: The service does not verify tampering detection mechanisms."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Evidence: No evidence of tampering detection mechanism verification found in penetration test runs."
-          ],
-          [
-            "",
-            "",
-            "",
-            "Limitations: The service does not analyze deserialization vulnerabilities, verify digital signatures or tampering detection mechanisms, assess CI/CD pipeline integrity (overlaps with A03), validate trusted repository consumption (overlaps with A03), or test for unsigned or unencrypted serialized data from untrusted clients.\n\nAdditional Notes: The service focuses on file-based integrity vulnerabilities (local file inclusion, path traversal) but does not verify digital signatures or tampering detection mechanisms."
-          ],
-          [
-            "A08: Software or Data Integrity Failures",
-            "CI/CD pipeline integrity assessment",
+            "Ensure that your CI/CD pipeline has proper segregation, configuration, and access control to ensure the integrity of the code flowing through the build and deploy processes.",
             "Not covered",
             "Description: The service does not assess CI/CD pipeline integrity."
           ],
@@ -1444,7 +1336,7 @@
           ],
           [
             "A08: Software or Data Integrity Failures",
-            "Trusted repository consumption validation",
+            "Ensure libraries and dependencies, such as npm or Maven, are only consuming trusted repositories. If you have a higher risk profile, consider hosting an internal known-good repository that's vetted.",
             "Not covered",
             "Description: The service does not validate trusted repository consumption."
           ],
@@ -1462,7 +1354,7 @@
           ],
           [
             "A08: Software or Data Integrity Failures",
-            "Serialized data validation",
+            "Ensure that unsigned or unencrypted serialized data is not received from untrusted clients and subsequently used without some form of integrity check or digital signature to detect tampering or replay of the serialized data.",
             "Not covered",
             "Description: The service does not test for unsigned or unencrypted serialized data from untrusted clients."
           ],
@@ -1480,7 +1372,7 @@
           ],
           [
             "A08: Software or Data Integrity Failures",
-            "Code and configuration change review process validation",
+            "Ensure that there is a review process for code and configuration changes to minimize the chance that malicious code or configuration could be introduced into your software pipeline.",
             "Partial",
             "Description: Code review capabilities scan pull requests for security vulnerabilities, and design reviews assess architectural documents against security requirements, providing partial coverage for code and configuration change review processes."
           ],
@@ -1498,7 +1390,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Auditable events logging (logins, failed logins, high-value transactions)",
+            "Auditable events, such as logins, failed logins, and high-value transactions, are not logged or logged inconsistently (for instance, only logging successful logins, but not failed attempts).",
             "Partial",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures. The service can enforce \"Audit Logging Best Practices\" through design reviews."
           ],
@@ -1516,7 +1408,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Warning and error log message generation",
+            "Warnings and errors generate no, inadequate, or unclear log messages.",
             "Partial",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures. The service can enforce \"Audit Logging Best Practices\" through design reviews."
           ],
@@ -1534,7 +1426,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Sensitive information in logs prevention",
+            "You are vulnerable to sensitive information leakage by making logging and alerting events visible to a user or an attacker (see A01:2025-Broken Access Control), or by logging sensitive information that should not be logged (such as PII or PHI).",
             "Partial",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures. The service can enforce \"Log Protection Best Practices\" through design reviews."
           ],
@@ -1552,7 +1444,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Log integrity protection",
+            "The integrity of logs is not properly protected from tampering.",
             "Not covered",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures. The service can enforce \"Log Protection Best Practices\" through design reviews."
           ],
@@ -1570,7 +1462,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Log backup validation",
+            "Logs are only stored locally, and not properly backedup.",
             "Not covered",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures. The service sets up CloudWatch logging infrastructure (log groups, log streams, S3) for pentest execution."
           ],
@@ -1588,7 +1480,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Alerting configuration and effectiveness",
+            "Appropriate alerting thresholds and response escalation processes are not in place or effective. Alerts are not received or reviewed within a reasonable amount of time.",
             "Not covered",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
           ],
@@ -1606,7 +1498,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Log monitoring for suspicious activity",
+            "Logs of applications and APIs are not monitored for suspicious activity.",
             "Not covered",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
           ],
@@ -1624,7 +1516,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Alerting threshold validation",
+            "Penetration testing and scans by dynamic application security testing (DAST) tools (such as Burp or ZAP) do not trigger alerts.",
             "Not covered",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
           ],
@@ -1642,7 +1534,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Real-time attack detection",
+            "The application cannot detect, escalate, or alert for active attacks in real-time or near real-time.",
             "Not covered",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
           ],
@@ -1660,7 +1552,7 @@
           ],
           [
             "A09: Security Logging and Alerting Failures",
-            "Alert use cases and playbooks adequacy",
+            "Detected alerts cannot be processed correctly because the playbook for the use case is incomplete, out of date, or missing.",
             "Not covered",
             "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
           ],
@@ -1677,8 +1569,80 @@
             "Limitations: The service does not assess whether alert use cases and playbooks are adequate, whether penetration testing triggers alerts, or whether real-time attack detection works.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess alert use cases or playbooks."
           ],
           [
+            "A09: Security Logging and Alerting Failures",
+            "You are vulnerable to injections or attacks on the logging or monitoring systems if log data is not correctly encoded.",
+            "Not covered",
+            "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of log data encoding validation found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not assess whether log data is correctly encoded to prevent injection attacks on logging or monitoring systems.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess log data encoding."
+          ],
+          [
+            "A09: Security Logging and Alerting Failures",
+            "The application is missing or mishandling errors and other exceptional conditions, such that the system is unaware there was an error, and is therefore unable to log there was a problem.",
+            "Partial",
+            "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: The service indirectly detects missing or mishandled errors through findings related to error handling and audit logging deficiencies."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not specifically test whether applications properly handle errors to enable logging. The service detects that error handling is inadequate but does not validate that errors are properly logged when they occur.\n\nAdditional Notes: The service indirectly detects missing or mishandled errors through findings related to error handling."
+          ],
+          [
+            "A09: Security Logging and Alerting Failures",
+            "Adequate 'use cases' for issuing alerts are missing or outdated to recognize a special situation.",
+            "Not covered",
+            "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of alert use case assessment found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not assess whether alert use cases are adequate or up-to-date.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess alert use cases."
+          ],
+          [
+            "A09: Security Logging and Alerting Failures",
+            "Too many false positive alerts make it impossible to distinguish important alerts from unimportant ones, resulting in them being recognized too late or not at all (physical overload of the SOC team).",
+            "Not covered",
+            "Description: The service provides minimal coverage for Security Logging and Alerting Failures."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of false positive alert assessment found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not assess whether false positive alerts are manageable or whether alert quality is sufficient.\n\nAdditional Notes: The service focuses on detecting missing logging but does not assess false positive alert rates."
+          ],
+          [
             "A10: Mishandling of Exceptional Conditions",
-            "Exception handling validation",
+            "Handle exceptions close to where they occur and consistently across modules/services (avoid relying only on late/global catch-alls; ensure controlled error propagation and standardized error mapping).",
             "Covered",
             "Description: AWS Security Agent provides coverage for exception handling validation. The service performs negative-path testing through penetration testing and static code analysis."
           ],
@@ -1696,7 +1660,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Error response leakage prevention",
+            "Ensure error responses don't leak sensitive/internal details and don't enable enumeration (no stack traces/paths/config/secrets; consistent user-facing errors; debug/verbose modes disabled in production).",
             "Covered",
             "Description: AWS Security Agent provides coverage for error response leakage prevention. The service performs negative-path testing through penetration testing and static code analysis."
           ],
@@ -1714,7 +1678,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Resource exhaustion prevention",
+            "Manage resources safely on success and failure paths (close/release files, sockets, DB connections, locks; enforce timeouts/quotas; backpressure to prevent cascading failures).",
             "Covered",
             "Description: AWS Security Agent provides coverage for resource exhaustion prevention. The service performs negative-path testing through penetration testing and static code analysis."
           ],
@@ -1732,7 +1696,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Failures in secure state handling",
+            "Ensure failures leave the application in a secure, known-good state (atomic transactions or compensating actions; no partial commits; idempotency for retries; security decisions fail closed when outcomes are uncertain).",
             "Covered",
             "Description: AWS Security Agent provides coverage for failures in secure state handling. The service performs negative-path testing through penetration testing and static code analysis."
           ],
@@ -1750,7 +1714,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Data boundary condition validation",
+            "Validate data boundary conditions to prevent overflows/underflows/rounding and parsing edge cases (currency math, counters, pagination limits, deep nesting, large payloads).",
             "Covered",
             "Description: AWS Security Agent provides coverage for data boundary condition validation. The service performs negative-path testing through penetration testing and static code analysis."
           ],
@@ -1768,7 +1732,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Input validation and sanitization at all system boundaries",
+            "Validate and sanitize all external inputs at system boundaries (UI/API/files/webhooks/queues) for type, length, range, format, encoding, and allowed values, enforcing rules server-side (not relying on client validation).",
             "Partial",
             "Description: AWS Security Agent provides partial coverage for input validation and sanitization at all system boundaries. The service performs negative-path testing through penetration testing and static code analysis."
           ],
@@ -1786,7 +1750,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Race condition testing",
+            "Protect against concurrency and race-condition edge cases (proper locking/isolation or optimistic concurrency; prevent double-spend/double-action and state inconsistencies under parallel requests).",
             "Not covered",
             "Description: AWS Security Agent does not test for race conditions."
           ],
@@ -1804,7 +1768,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Concurrency issue detection",
+            "Make dependency/network failure handling safe and bounded (explicit timeouts; limited retries with backoff/jitter; circuit breakers; safe degradation that never bypasses auth/authz).",
             "Not covered",
             "Description: AWS Security Agent does not detect concurrency issues."
           ],
@@ -1822,7 +1786,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Dependency/network failure handling",
+            "Ensure authentication and authorization remain correct under error conditions (no \"allow on error\" paths; token validation failures deny; permission checks cannot be skipped due to exception paths).",
             "Not covered",
             "Description: AWS Security Agent does not test dependency/network failure handling."
           ],
@@ -1840,7 +1804,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Authentication/authorization under error conditions",
+            "Prove coverage with negative-path testing and fault injection (unit/integration tests for invalid inputs and exceptions; simulate dependency outages/timeouts; fuzz parsers/deserializers/uploads; validate fixes for SAST/DAST findings).",
             "Not covered",
             "Description: AWS Security Agent does not validate authentication/authorization under error conditions."
           ],
@@ -1858,7 +1822,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Fault injection testing",
+            "Define and inventory exceptional conditions per critical workflow (auth, transactions, data updates, admin actions) so \"unusual/unpredictable\" scenarios are explicitly known and covered.",
             "Not covered",
             "Description: AWS Security Agent does not perform fault injection testing."
           ],
@@ -1876,7 +1840,7 @@
           ],
           [
             "A10: Mishandling of Exceptional Conditions",
-            "Fuzzing of parsers/deserializers/uploads",
+            "Prevent unhandled exceptions from crashing or corrupting state in any execution context (request handlers, async/background jobs, message consumers) by using top-level guards and poison-message handling.",
             "Not covered",
             "Description: AWS Security Agent does not perform fuzzing of parsers/deserializers/uploads."
           ],
@@ -1891,6 +1855,60 @@
             "",
             "",
             "Limitations: The service does not test for race conditions or concurrency issues, validate input sanitization at all system boundaries (covered indirectly through injection findings), test dependency/network failure handling, validate authentication/authorization under error conditions, test adverse environmental states, perform fault injection (dependency outages/timeouts, fuzzing), assess operational readiness for exceptional conditions, or assess whether applications define or inventory exceptional conditions.\n\nAdditional Notes: The service tests for invalid inputs and exceptions but does not perform comprehensive fuzzing to discover edge cases in input parsing, deserialization, or file upload handling."
+          ],
+          [
+            "A10: Mishandling of Exceptional Conditions",
+            "Implement strong detection and observability for exceptional conditions (structured logs with correlation IDs; alerting on exception spikes/timeouts/DLQ growth; redact secrets/PII from logs).",
+            "Partial",
+            "Description: AWS Security Agent provides partial coverage for detection and observability of exceptional conditions."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: The service detects missing or inadequate audit logging through static code analysis and penetration testing, which provides partial coverage for detection of exceptional conditions."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not specifically test whether applications implement structured logging with correlation IDs, alerting on exception spikes, or proper redaction of secrets/PII from logs.\n\nAdditional Notes: The service provides partial coverage through detection of missing logging but does not validate the quality or structure of logging implementations."
+          ],
+          [
+            "A10: Mishandling of Exceptional Conditions",
+            "Handle adverse environmental states safely (low memory/disk, insufficient privileges, clock skew, missing/invalid configuration) without insecure defaults or unknown states.",
+            "Not covered",
+            "Description: AWS Security Agent does not test for adverse environmental states."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of adverse environmental state testing found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not test for adverse environmental states such as low memory/disk, insufficient privileges, clock skew, or missing/invalid configuration.\n\nAdditional Notes: The service focuses on detecting implemented vulnerabilities but does not test how applications handle adverse environmental conditions."
+          ],
+          [
+            "A10: Mishandling of Exceptional Conditions",
+            "Ensure operational readiness to detect and respond to long-lived exceptional-condition vulnerabilities (runbooks, incident response steps, feature flags/rollback capability for rapid containment).",
+            "Not covered",
+            "Description: AWS Security Agent does not assess operational readiness for exceptional conditions."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Evidence: No evidence of operational readiness assessment found in penetration test runs."
+          ],
+          [
+            "",
+            "",
+            "",
+            "Limitations: The service does not assess whether organizations have operational readiness capabilities such as runbooks, incident response steps, or feature flags/rollback capability for rapid containment.\n\nAdditional Notes: The service focuses on detecting vulnerabilities but does not assess operational readiness for responding to exceptional conditions."
           ]
         ],
         "separatorRows": [
