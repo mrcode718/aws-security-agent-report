@@ -494,6 +494,11 @@
                 "Description: \nEvidence: \nLimitations: "
               ],
               [
+                "CWE-16: Configuration",
+                "",
+                "Description: \nEvidence: \nLimitations: "
+              ],
+              [
                 "CWE-260: Password in Configuration File",
                 "",
                 "Description: \nEvidence: \nLimitations: "
@@ -558,6 +563,11 @@
               "Comments"
             ],
             "rows": [
+              [
+                "CWE-1035: OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities",
+                "",
+                "Description: \nEvidence: \nLimitations: "
+              ],
               [
                 "CWE-1104: Use of Unmaintained Third Party Components",
                 "",

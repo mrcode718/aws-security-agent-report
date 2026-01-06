@@ -183,6 +183,10 @@
             "name": "External Control of System or Configuration Setting"
         },
         {
+            "id": "CWE-16",
+            "name": "Configuration"
+        },
+        {
             "id": "CWE-260",
             "name": "Password in Configuration File"
         },
@@ -224,6 +228,10 @@
         }
     ],
     "A03_Software_Supply_Chain_Failures": [
+        {
+            "id": "CWE-1035",
+            "name": "OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities"
+        },
         {
             "id": "CWE-1104",
             "name": "Use of Unmaintained Third Party Components"
