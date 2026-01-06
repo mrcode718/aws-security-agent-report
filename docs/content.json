@@ -264,7 +264,7 @@
             "",
             "",
             "",
-            "Evidence: Evidence from multiple penetration test runs demonstrates comprehensive coverage across different application types: Detection of findings identifying that \"any authenticated user—not just [REDACTED]istrators—can exploit this vulnerability\" and security finding Execution of action groups with validator tasks. Detection of findings identifying that the database management interface is deployed without any application-level authentication barrier, allowing anyone with network access to attempt database connections. The finding explicitly states \"no barrier exists between an anonymous internet user and the database credential submission form\" and security finding Detection of security findings demonstrating that administrative functions are accessible without authentication, violating least privilege principles."
+            "Evidence: Evidence from multiple penetration test runs demonstrates comprehensive coverage across different application types: Detection of findings identifying that \"any authenticated user—not just administrators—can exploit this vulnerability\" and security finding Execution of action groups with validator tasks. Detection of findings identifying that the database management interface is deployed without any application-level authentication barrier, allowing anyone with network access to attempt database connections. The finding explicitly states \"no barrier exists between an anonymous internet user and the database credential submission form\" and security finding Detection of security findings demonstrating that administrative functions are accessible without authentication, violating least privilege principles."
           ],
           [
             "",
@@ -336,7 +336,7 @@
             "",
             "",
             "",
-            "Evidence: Evidence from multiple penetration test runs demonstrates comprehensive coverage: Execution of action groups with validator tasks including security finding, security finding, and security finding Detection of findings identifying that \"any authenticated user—not just [REDACTED]istrators—can exploit this vulnerability\" and security finding Detection of findings demonstrating that unauthenticated users can gain administrative database access by submitting database credentials, effectively elevating from no privileges to full database administrator privileges. Detection of security findings demonstrating that unauthenticated users can access administrative functions and perform privileged operations."
+            "Evidence: Evidence from multiple penetration test runs demonstrates comprehensive coverage: Execution of action groups with validator tasks including security finding, security finding, and security finding Detection of findings identifying that \"any authenticated user—not just administrators—can exploit this vulnerability\" and security finding Detection of findings demonstrating that unauthenticated users can gain administrative database access by submitting database credentials, effectively elevating from no privileges to full database administrator privileges. Detection of security findings demonstrating that unauthenticated users can access administrative functions and perform privileged operations."
           ],
           [
             "",
