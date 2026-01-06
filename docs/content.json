@@ -508,39 +508,39 @@
           ],
           [
             "A02: Security Misconfiguration",
-            "Cloud permissions assessment",
-            "Not covered",
-            "Description: The service provides comprehensive coverage for application stack security hardening, including container configuration analysis. However, the service does not assess cloud service permissions."
+            "For upgraded systems, the latest security features are disabled or not configured securely.",
+            "Partial",
+            "Description: The service conducts static analysis and penetration tests that identify End-of-Life (EOL) software versions and unpatched vulnerabilities in upgraded systems, which indicates that the latest security features and patches are not configured or available. The service detects when systems are running obsolete runtime environments that no longer receive security updates."
           ],
           [
             "",
             "",
             "",
-            "Evidence: No evidence of cloud permissions assessment found in penetration test runs."
+            "Evidence: Evidence from multiple penetration test runs demonstrates detection of EOL software versions and unpatched vulnerabilities in upgraded systems: Detection of findings from adminer pentest run (pj-aa25e9a8-c688-4b48-a139-0a6b7a7f34b5, December 24, 2025). The finding \"End-of-Life PHP 7.2.15 Runtime with Unpatched Vulnerabilities\" explicitly identifies that the application is running PHP 7.2.15, which reached End-of-Life on November 30, 2020, over 5 years ago. The finding states that this version no longer receives security updates and contains multiple known unpatched vulnerabilities, including CVE-2019-11043 (PHP-FPM Remote Code Execution), CVE-2019-11039 (Buffer overflow in exif_read_data), CVE-2019-11041/11042 (Buffer overflow in EXIF image processing), CVE-2020-7059 (Out-of-bounds read in php_strip_tags_ex), CVE-2020-7060 (Global buffer-overflow in mbfl_filt_conv_big5_wchar), CVE-2020-7064 (Information disclosure in EXIF processing), CVE-2020-7066 (Silent truncation after null byte in get_headers()), and CVE-2020-7068 (Use-after-free vulnerability in WDDX parsing). The finding confirms that PHP 7.2.15 is 5.1 years (1,850 days) past End-of-Life with no security support, and that these vulnerabilities were fixed in later 7.2.x releases but remain unpatched in version 7.2.15. The service identifies the PHP version through HTTP response headers (X-Powered-By: PHP/7.2.15) and cross-references against vulnerability databases to identify documented CVEs. The finding explicitly states: \"The use of EOL software represents a critical security weakness as it guarantees the presence of known, documented, and unpatched vulnerabilities in the application's core runtime environment.\" This demonstrates that the service can detect when upgraded systems are running obsolete versions that lack the latest security features and patches."
           ],
           [
             "",
             "",
             "",
-            "Limitations: The service does not assess cloud service permissions (e.g., IAM policies, S3 bucket permissions, security groups, VPC configurations). This limitation means that cloud-native security misconfigurations at the infrastructure layer are not evaluated, requiring organizations to use dedicated IaC security scanning tools alongside AWS Security Agent."
+            "Limitations: The service identifies EOL software versions and unpatched vulnerabilities but does not explicitly assess whether security features were intentionally disabled during system upgrades or whether the latest security features are available but not configured. The service focuses on detecting obsolete versions and known CVEs rather than analyzing the upgrade history or configuration changes that may have disabled security features. Explicit detection of disabled security features in upgraded systems requires historical comparison of security feature configurations before and after upgrades, which is not clearly demonstrated. The service can identify that systems are running EOL versions without security support, but cannot determine whether newer versions with security features are available but not deployed, or whether security features in the current version were disabled during upgrades."
           ],
           [
             "A02: Security Misconfiguration",
-            "Infrastructure as code validation",
-            "Not covered",
-            "Description: The service provides comprehensive coverage for application stack security hardening, including container configuration analysis. However, the service does not assess infrastructure as code files."
+            "Excessive prioritization of backward compatibility leading to insecure configuration.",
+            "Partial",
+            "Description: The service conducts static analysis that identifies insecure configurations in Docker build configurations that may result from maintaining backward compatibility, including lack of dependency version pinning and integrity verification. The service detects when systems use mutable tags and unpinned dependencies that prioritize build compatibility over security guarantees."
           ],
           [
             "",
             "",
             "",
-            "Evidence: No evidence of infrastructure as code validation found in penetration test runs."
+            "Evidence: Evidence from multiple penetration test runs demonstrates detection of insecure configurations that may result from backward compatibility prioritization: Detection of findings from adminer pentest run (pj-aa25e9a8-c688-4b48-a139-0a6b7a7f34b5, December 24, 2025). The finding \"Lack of Dependency Version Pinning and Integrity Verification in Docker Build Configuration\" explicitly identifies that the Dockerfile uses mutable tag references (FROM php:7.2.15-apache) instead of immutable SHA256 digests, and downloads dependencies (Adminer application file) from GitHub releases without cryptographic integrity verification. The finding states that while the tag specifies a version number, Docker tags are mutable pointers that can be reassigned in the upstream registry, meaning the same docker build command executed at different times may pull different image content, and upstream repository compromise or tag reassignment can inject malicious code without detection. The finding identifies that the Dockerfile downloads the Adminer application file directly from GitHub releases (ADD https://github.com/vrana/adminer/releases/download/v4.6.2/adminer-4.6.2.php) without any cryptographic integrity verification, which does not protect against compromised CDN or distribution infrastructure, man-in-the-middle attacks, accidental file corruption during download, or verification that the downloaded file matches the official release. The finding explicitly notes supply chain risks, build non-reproducibility, and lack of SBOM tracking capabilities, stating: \"This is a build-time configuration weakness affecting the Docker image creation process... The risk materializes during the CI/CD pipeline and affects all environments where this Dockerfile is used to build images.\" The finding identifies that this configuration violates security best practices including CIS Docker Benchmark 4.1, NIST SP 800-190, and SLSA Framework Level 2, which require cryptographic verification of container image integrity. This demonstrates that the service can detect insecure configurations that prioritize build compatibility and ease of use over security guarantees, which may result from backward compatibility considerations."
           ],
           [
             "",
             "",
             "",
-            "Limitations: The service does not assess infrastructure as code (IaC) files (e.g., Terraform, CloudFormation, Ansible) or cloud service permissions (e.g., IAM policies, S3 bucket permissions, security groups, VPC configurations). This limitation means that cloud-native security misconfigurations at the infrastructure layer are not evaluated, requiring organizations to use dedicated IaC security scanning tools alongside AWS Security Agent."
+            "Limitations: The service identifies insecure configurations such as unpinned dependencies and missing integrity verification, but does not explicitly assess whether these configurations resulted from backward compatibility decisions or other factors. The service focuses on detecting active misconfigurations in the current state rather than analyzing the historical context of configuration decisions or whether security features were intentionally disabled or downgraded to maintain compatibility with older systems. Explicit detection of backward compatibility-related misconfigurations requires understanding the historical context of configuration decisions and whether security features were intentionally disabled or downgraded to maintain compatibility with older systems. The service can identify that systems use insecure configurations (unpinned dependencies, missing integrity verification) but cannot determine whether these were chosen specifically for backward compatibility reasons or due to other factors such as convenience, lack of awareness, or operational constraints."
           ],
           [
             "A03: Software Supply Chain Failures",
