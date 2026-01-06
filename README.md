@@ -17,7 +17,7 @@ The report is available as a GitHub Pages site. Update this URL with your reposi
 
 ## Report Data
 
-All findings are based on actual console exploration conducted in December 2025. The report data is stored in `report-data.json` for reference.
+All findings are based on actual console exploration conducted in December 2025.
 
 ## Repository Structure
 
@@ -34,7 +34,6 @@ All findings are based on actual console exploration conducted in December 2025.
 ├── .github/
 │   └── workflows/
 │       └── pages.yml      # GitHub Pages deployment
-├── report-data.json       # Structured report data
 └── README.md              # This file
 ```
 
