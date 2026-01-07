@@ -486,83 +486,83 @@
             "rows": [
               [
                 "CWE-1004: Sensitive Cookie Without 'HttpOnly' Flag",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes TLS scanner capabilities that systematically test for cookie security attributes including HttpOnly flag validation.\n<strong>Evidence:</strong> Penetration test findings demonstrate clear detection of cookies missing the HttpOnly flag through TLS scanner action groups."
               ],
               [
                 "CWE-11: ASP.NET Misconfiguration: Creating Debug Binary",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific analysis of debug binary creation.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios."
               ],
               [
                 "CWE-1174: ASP.NET Misconfiguration: Improper Model Validation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific model validation analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios."
               ],
               [
                 "CWE-13: ASP.NET Misconfiguration: Password in Configuration File",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes framework scanning capabilities, but explicit ASP.NET-specific configuration file password validation is not demonstrated.\n<strong>Evidence:</strong> Framework scanner tasks may fail or the tested applications may not be ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that may not be comprehensively implemented."
               ],
               [
                 "CWE-15: External Control of System or Configuration Setting",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect configuration issues through code scanner and network scanner, but does not explicitly test for external control of system or configuration settings.\n<strong>Evidence:</strong> Configuration testing occurs through general scanning approaches rather than specific validation of configuration parameter sources and validation mechanisms.\n<strong>Limitations:</strong> Explicit testing for external control of system or configuration settings requires understanding configuration parameter sources and validation mechanisms which may not be systematically tested."
               ],
               [
                 "CWE-16: Configuration",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for general configuration misconfigurations through code scanner, network scanner, and TLS scanner action groups.\n<strong>Evidence:</strong> Multi-layered scanning approach provides comprehensive configuration security testing across framework analysis, network configuration, and TLS/SSL settings."
               ],
               [
                 "CWE-260: Password in Configuration File",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for passwords in configuration files may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on important flows and framework analysis rather than comprehensive configuration file security scanning.\n<strong>Limitations:</strong> Configuration file password detection requires specific pattern matching for credentials that may not be comprehensively implemented in the code scanner."
               ],
               [
                 "CWE-315: Cleartext Storage of Sensitive Information in a Cookie",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects cleartext storage of sensitive information in cookies through TLS scanner and security header validation.\n<strong>Evidence:</strong> TLS scanner action groups validate cookie attributes and content, identifying cookies without proper security attributes that may indicate cleartext storage vulnerabilities."
               ],
               [
                 "CWE-489: Active Debug Code",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for active debug code may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive debug code detection through pattern matching for debug statements and development-only code.\n<strong>Limitations:</strong> Debug code detection requires specific pattern matching for debug statements, logging, and development-only code that may not be comprehensively implemented."
               ],
               [
                 "CWE-5: J2EE Misconfiguration: Data Transmission Without Encryption",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated TLS/SSL scanning capabilities that systematically test for data transmission without encryption.\n<strong>Evidence:</strong> TLS scanner uses industry-standard tools to validate encryption configuration, demonstrating comprehensive testing for unencrypted data transmission vulnerabilities."
               ],
               [
                 "CWE-526: Cleartext Storage of Sensitive Information in an Environment Variable",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect sensitive information through code scanner, but explicit testing for cleartext storage of sensitive information in environment variables is not systematically performed.\n<strong>Evidence:</strong> Environment variable analysis requires runtime environment analysis or specific configuration file scanning that may not be part of the standard code scanning scope.\n<strong>Limitations:</strong> Environment variables are typically accessed at runtime rather than in source code, making static analysis less effective and requiring runtime environment analysis which may be outside the scope of static code scanning."
               ],
               [
                 "CWE-547: Use of Hard-coded, Security-relevant Constants",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes static analysis through code scanner, but explicit scanning for hard-coded security-relevant constants may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive credential and constant scanning through pattern matching.\n<strong>Limitations:</strong> Hard-coded security-relevant constant detection requires specific pattern matching for credentials, API keys, and cryptographic material that may not be comprehensively implemented."
               ],
               [
                 "CWE-611: Improper Restriction of XML External Entity Reference",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include XXE testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of XXE testing, XML parsing validation, or DTD analysis in action groups, task logs, or findings.\n<strong>Limitations:</strong> XXE testing is completely absent from the tool's capabilities, requiring dedicated XML parsing validation, DTD analysis, and XXE attack simulation that are not part of the testing scope."
               ],
               [
                 "CWE-614: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects cookies transmitted over HTTPS without the Secure attribute through TLS scanner action groups.\n<strong>Evidence:</strong> TLS scanner validated HTTPS endpoints and identified missing Secure flag on cookies transmitted over HTTPS, confirming robust cookie security attribute validation capabilities."
               ],
               [
                 "CWE-776: Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include XML entity expansion testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review found no evidence of XML entity expansion or DTD recursive entity reference testing, which is closely related to XXE testing.\n<strong>Limitations:</strong> XML entity expansion testing requires XML parsing and DTD analysis capabilities that are not part of the tool's testing scope, and is related to the absence of XXE testing capabilities."
               ],
               [
                 "CWE-942: Permissive Cross-domain Security Policy with Untrusted Domains",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect CORS issues indirectly through security header validation, but does not explicitly test for permissive cross-domain security policies with untrusted domains.\n<strong>Evidence:</strong> Security header testing may include CORS-related headers, but explicit CORS policy validation and permissive cross-domain security policy testing is not demonstrated.\n<strong>Limitations:</strong> CORS misconfiguration requires specific testing of Access-Control-Allow-Origin headers and cross-origin request handling which may not be systematically performed."
               ]
             ]
           }
