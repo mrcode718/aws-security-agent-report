@@ -159,7 +159,16 @@ function renderTable(table, references) {
             ${table.rows.map((row, index) => {
                 const hasSeparator = separatorRows.includes(index);
                 const rowClass = hasSeparator ? ' class="row-separator"' : '';
-                return `<tr${rowClass}>${row.map(cell => `<td>${processCitations(escapeHtml(cell), references)}</td>`).join('')}</tr>`;
+                return `<tr${rowClass}>${row.map((cell, cellIndex) => {
+                    // Allow HTML in the last column (Comments column) for formatting
+                    const isLastColumn = cellIndex === row.length - 1;
+                    if (isLastColumn && cell.includes('<strong>')) {
+                        // Process citations but don't escape HTML for the Comments column
+                        const processedCell = processCitations(cell.replace(/\n/g, '<br>'), references);
+                        return `<td>${processedCell}</td>`;
+                    }
+                    return `<td>${processCitations(escapeHtml(cell), references)}</td>`;
+                }).join('')}</tr>`;
             }).join('')}
         </tbody>
     </table>`;
