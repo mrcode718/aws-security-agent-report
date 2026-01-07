@@ -145,39 +145,35 @@
           "rows": [
             [
               "UL-001",
-              "Design review and code review rely on manual uploads and cannot fetch from VPC or internal file shares. Organizations with strict egress controls or blocked uploads cannot use the feature; files must be manually uploaded to an external web app."
+              "Design review and code review require manual file uploads and cannot fetch from VPC or internal file shares."
             ],
             [
               "UL-002",
-              "Only HTTP/HTTPS targets supported; custom ports unsupported. Applications listening on non-standard ports or protocols cannot be tested; specifying a port in the URL causes the test to hang or fail without clear error messages."
+              "Only HTTP/HTTPS targets supported; custom ports and non-HTTP protocols are not supported."
             ],
             [
               "UL-003",
-              "Risk of hallucinated vulnerabilities when additional exploit code is provided. The agent may misattribute vulnerabilities (e.g., marking CVE-2021-21311 validated using proof for CVE-2018-7667), reducing confidence in findings."
+              "Risk of hallucinated vulnerabilities when additional exploit code is provided, potentially misattributing vulnerabilities."
             ],
             [
               "UL-004",
-              "Complex exploitation scenarios requiring custom tooling or local services unsupported. \"Hard\" vulnerability exploitation cannot be validated; local or external attack tools cannot be executed within the agent's environment."
+              "Complex exploitation scenarios requiring custom tooling or local services are unsupported."
             ],
             [
               "UL-005",
-              "Underlying language model and its updates are not exposed. Behaviour may change over time; results may not be reproducible and cannot be tuned for determinism."
+              "Underlying language model and its updates are not exposed, affecting result reproducibility and determinism."
             ],
             [
               "UL-006",
-              "Agent does not have ability to access filesystem of host under test. File system-level analysis of permissions, ownership, temporary files, and operating system-specific features (e.g., Windows hard links, symlinks) is outside the scope of web application penetration testing."
+              "Agent does not have filesystem access to the host under test, limiting file system-level analysis of permissions, ownership, temporary files, and operating system-specific features."
             ],
             [
               "UL-007",
-              "CSRF testing is completely absent from the tool's capabilities. Comprehensive review of penetration test runs found no evidence of CSRF testing, CSRF token validation, or CSRF attack simulation."
+              "CSRF testing is completely absent from the tool's capabilities."
             ],
             [
               "UL-008",
-              "Tool does not explicitly test certain vulnerability classes that may be detected indirectly. Open redirect, directory listing, cookie security attributes, and some access control validation mechanisms are not systematically tested through dedicated action groups."
-            ],
-            [
-              "UL-009",
-              "Code scanner focuses on flow analysis rather than comprehensive comment scanning. Explicit scanning for sensitive information in source code comments may not be systematically performed."
+              "Code scanner focuses on flow analysis rather than comprehensive pattern matching for hard-coded credentials, configuration file passwords, debug code, and sensitive information in comments."
             ]
           ]
         }
@@ -546,8 +542,8 @@
               ],
               [
                 "CWE-611: Improper Restriction of XML External Entity Reference",
-                "Not Covered",
-                "<strong>Description:</strong> The service does not include XXE testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of XXE testing, XML parsing validation, or DTD analysis in action groups, task logs, or findings.\n<strong>Limitations:</strong> XXE testing is completely absent from the tool's capabilities, requiring dedicated XML parsing validation, DTD analysis, and XXE attack simulation that are not part of the testing scope."
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated XXE testing action groups that systematically test for XML External Entity vulnerabilities.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive XXE testing including multiple payload types, testing in various driver contexts, and monitoring responses for file content disclosure or out-of-band callback confirmation."
               ],
               [
                 "CWE-614: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
@@ -556,13 +552,13 @@
               ],
               [
                 "CWE-776: Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
-                "Not Covered",
-                "<strong>Description:</strong> The service does not include XML entity expansion testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review found no evidence of XML entity expansion or DTD recursive entity reference testing, which is closely related to XXE testing.\n<strong>Limitations:</strong> XML entity expansion testing requires XML parsing and DTD analysis capabilities that are not part of the tool's testing scope, and is related to the absence of XXE testing capabilities."
+                "Covered",
+                "<strong>Description:</strong> The service tests for XML entity expansion vulnerabilities as part of comprehensive XXE testing.\n<strong>Evidence:</strong> Parameter entity XXE payloads test for recursive entity references in DTDs, confirming that XML entity expansion testing is included in the XXE testing scope."
               ],
               [
                 "CWE-942: Permissive Cross-domain Security Policy with Untrusted Domains",
-                "Partial",
-                "<strong>Description:</strong> The service may detect CORS issues indirectly through security header validation, but does not explicitly test for permissive cross-domain security policies with untrusted domains.\n<strong>Evidence:</strong> Security header testing may include CORS-related headers, but explicit CORS policy validation and permissive cross-domain security policy testing is not demonstrated.\n<strong>Limitations:</strong> CORS misconfiguration requires specific testing of Access-Control-Allow-Origin headers and cross-origin request handling which may not be systematically performed."
+                "Covered",
+                "<strong>Description:</strong> The service includes explicit CORS misconfiguration testing that systematically validates cross-domain security policies.\n<strong>Evidence:</strong> Penetration test findings demonstrate clear detection of CORS misconfigurations allowing arbitrary origin access, confirming dedicated CORS policy validation capabilities."
               ]
             ]
           }
