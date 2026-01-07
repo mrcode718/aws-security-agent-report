@@ -256,202 +256,202 @@
               [
                 "CWE-1275: Sensitive Cookie with Improper SameSite Attribute",
                 "Partial",
-                "**Description:** The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n**Evidence:** Network scanner action groups test TLS/SSL protocol security but do not include cookie attribute validation.\n**Limitations:** Cookie security attributes are not part of the network scanning scope."
+                "<strong>Description:</strong> The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n<strong>Evidence:</strong> Network scanner action groups test TLS/SSL protocol security but do not include cookie attribute validation.\n<strong>Limitations:</strong> Cookie security attributes are not part of the network scanning scope."
               ],
               [
                 "CWE-200: Exposure of Sensitive Information to an Unauthorized Actor",
                 "Covered",
-                "**Description:** The service detects exposure of sensitive information through information disclosure testing and IDOR findings.\n**Evidence:** Penetration test findings demonstrate detection of user enumeration and information disclosure vulnerabilities."
+                "<strong>Description:</strong> The service detects exposure of sensitive information through information disclosure testing and IDOR findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of user enumeration and information disclosure vulnerabilities."
               ],
               [
                 "CWE-201: Insertion of Sensitive Information Into Sent Data",
                 "Partial",
-                "**Description:** The service may detect sensitive information through information disclosure testing but does not explicitly test for insertion into sent data vectors.\n**Evidence:** Information disclosure action groups and static analysis may detect sensitive information indirectly.\n**Limitations:** Explicit testing for insertion of sensitive information into sent data (headers, POST data, query parameters) is not systematically performed."
+                "<strong>Description:</strong> The service may detect sensitive information through information disclosure testing but does not explicitly test for insertion into sent data vectors.\n<strong>Evidence:</strong> Information disclosure action groups and static analysis may detect sensitive information indirectly.\n<strong>Limitations:</strong> Explicit testing for insertion of sensitive information into sent data (headers, POST data, query parameters) is not systematically performed."
               ],
               [
                 "CWE-219: Storage of File with Sensitive Data Under Web Root",
                 "Partial",
-                "**Description:** The service tests for file access through path traversal but does not explicitly validate file storage locations relative to web root.\n**Evidence:** Path traversal and information disclosure action groups test for accessible files.\n**Limitations:** Explicit validation of file storage locations relative to web root directory is not systematically performed."
+                "<strong>Description:</strong> The service tests for file access through path traversal but does not explicitly validate file storage locations relative to web root.\n<strong>Evidence:</strong> Path traversal and information disclosure action groups test for accessible files.\n<strong>Limitations:</strong> Explicit validation of file storage locations relative to web root directory is not systematically performed."
               ],
               [
                 "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
                 "Covered",
-                "**Description:** The service includes dedicated path traversal testing action groups that systematically test for directory traversal vulnerabilities.\n**Evidence:** Penetration test logs demonstrate comprehensive path traversal vulnerability assessment including framework-specific bypass techniques."
+                "<strong>Description:</strong> The service includes dedicated path traversal testing action groups that systematically test for directory traversal vulnerabilities.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive path traversal vulnerability assessment including framework-specific bypass techniques."
               ],
               [
                 "CWE-23: Relative Path Traversal",
                 "Covered",
-                "**Description:** Relative path traversal is tested as part of comprehensive path traversal testing capabilities.\n**Evidence:** Path traversal action groups test for both relative and absolute path traversal vulnerabilities."
+                "<strong>Description:</strong> Relative path traversal is tested as part of comprehensive path traversal testing capabilities.\n<strong>Evidence:</strong> Path traversal action groups test for both relative and absolute path traversal vulnerabilities."
               ],
               [
                 "CWE-276: Incorrect Default Permissions",
                 "Partial",
-                "**Description:** The service tests for privilege escalation and access control violations but does not explicitly validate default permission settings.\n**Evidence:** Privilege escalation action groups test for access control issues.\n**Limitations:** Explicit validation of default permission settings for resources, files, or database objects is not systematically performed."
+                "<strong>Description:</strong> The service tests for privilege escalation and access control violations but does not explicitly validate default permission settings.\n<strong>Evidence:</strong> Privilege escalation action groups test for access control issues.\n<strong>Limitations:</strong> Explicit validation of default permission settings for resources, files, or database objects is not systematically performed."
               ],
               [
                 "CWE-281: Improper Preservation of Permissions",
                 "Not Covered",
-                "**Description:** This vulnerability requires file system-level analysis of permission preservation across file operations.\n**Evidence:** The tool focuses on web application penetration testing through HTTP/HTTPS interfaces rather than file system-level permission analysis.\n**Limitations:** File system operations are not part of the testing scope as the tool operates at the application layer."
+                "<strong>Description:</strong> This vulnerability requires file system-level analysis of permission preservation across file operations.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing through HTTP/HTTPS interfaces rather than file system-level permission analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer."
               ],
               [
                 "CWE-282: Improper Ownership Management",
                 "Not Covered",
-                "**Description:** This vulnerability requires file system-level analysis of ownership management across file operations.\n**Evidence:** The tool focuses on web application penetration testing rather than file system-level ownership analysis.\n**Limitations:** File system operations are not part of the testing scope as the tool operates at the application layer."
+                "<strong>Description:</strong> This vulnerability requires file system-level analysis of ownership management across file operations.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing rather than file system-level ownership analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer."
               ],
               [
                 "CWE-283: Unverified Ownership",
                 "Partial",
-                "**Description:** The service detects IDOR vulnerabilities which may indicate missing ownership verification but does not explicitly test ownership verification mechanisms.\n**Evidence:** IDOR action groups test for authorization bypass through user-controlled keys.\n**Limitations:** Explicit validation of ownership verification mechanisms is not systematically performed."
+                "<strong>Description:</strong> The service detects IDOR vulnerabilities which may indicate missing ownership verification but does not explicitly test ownership verification mechanisms.\n<strong>Evidence:</strong> IDOR action groups test for authorization bypass through user-controlled keys.\n<strong>Limitations:</strong> Explicit validation of ownership verification mechanisms is not systematically performed."
               ],
               [
                 "CWE-284: Improper Access Control",
                 "Covered",
-                "**Description:** The service successfully detects improper access control violations where functionality should be restricted to specific roles but is available to any authenticated user.\n**Evidence:** Penetration test findings explicitly identify improper access control including privilege escalation testing demonstrating vertical and horizontal escalation."
+                "<strong>Description:</strong> The service successfully detects improper access control violations where functionality should be restricted to specific roles but is available to any authenticated user.\n<strong>Evidence:</strong> Penetration test findings explicitly identify improper access control including privilege escalation testing demonstrating vertical and horizontal escalation."
               ],
               [
                 "CWE-285: Improper Authorization",
                 "Covered",
-                "**Description:** The service detects improper authorization through findings that demonstrate authorization bypass and privilege escalation.\n**Evidence:** Penetration test findings demonstrate authorization bypass including SQL injection-based authentication bypass and session manipulation testing."
+                "<strong>Description:</strong> The service detects improper authorization through findings that demonstrate authorization bypass and privilege escalation.\n<strong>Evidence:</strong> Penetration test findings demonstrate authorization bypass including SQL injection-based authentication bypass and session manipulation testing."
               ],
               [
                 "CWE-352: Cross-Site Request Forgery (CSRF)",
                 "Not Covered",
-                "**Description:** The service does not include CSRF testing in its standard testing scope.\n**Evidence:** Comprehensive review of penetration test runs found no evidence of CSRF testing, CSRF token validation, or CSRF attack simulation.\n**Limitations:** CSRF testing is completely absent from the tool's capabilities."
+                "<strong>Description:</strong> The service does not include CSRF testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of CSRF testing, CSRF token validation, or CSRF attack simulation.\n<strong>Limitations:</strong> CSRF testing is completely absent from the tool's capabilities."
               ],
               [
                 "CWE-359: Exposure of Private Personal Information to an Unauthorized Actor",
                 "Covered",
-                "**Description:** The service detects exposure of private personal information through IDOR and information disclosure findings.\n**Evidence:** Penetration test findings demonstrate detection of user enumeration and cross-user data access vulnerabilities."
+                "<strong>Description:</strong> The service detects exposure of private personal information through IDOR and information disclosure findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of user enumeration and cross-user data access vulnerabilities."
               ],
               [
                 "CWE-36: Absolute Path Traversal",
                 "Covered",
-                "**Description:** Absolute path traversal is tested as part of comprehensive path traversal testing capabilities.\n**Evidence:** Path traversal action groups test for both relative and absolute path traversal vulnerabilities."
+                "<strong>Description:</strong> Absolute path traversal is tested as part of comprehensive path traversal testing capabilities.\n<strong>Evidence:</strong> Path traversal action groups test for both relative and absolute path traversal vulnerabilities."
               ],
               [
                 "CWE-377: Insecure Temporary File",
                 "Not Covered",
-                "**Description:** This vulnerability requires file system-level analysis of temporary file creation and permissions.\n**Evidence:** The tool focuses on web application penetration testing through HTTP/HTTPS interfaces rather than file system-level temporary file analysis.\n**Limitations:** File system operations are not part of the testing scope as the tool operates at the application layer."
+                "<strong>Description:</strong> This vulnerability requires file system-level analysis of temporary file creation and permissions.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing through HTTP/HTTPS interfaces rather than file system-level temporary file analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer."
               ],
               [
                 "CWE-379: Creation of Temporary File in Directory with Insecure Permissions",
                 "Not Covered",
-                "**Description:** This vulnerability requires file system-level analysis of temporary file directory permissions.\n**Evidence:** The tool focuses on web application penetration testing rather than file system-level temporary file directory analysis.\n**Limitations:** File system operations are not part of the testing scope as the tool operates at the application layer."
+                "<strong>Description:</strong> This vulnerability requires file system-level analysis of temporary file directory permissions.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing rather than file system-level temporary file directory analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer."
               ],
               [
                 "CWE-402: Transmission of Private Resources into a New Sphere ('Resource Leak')",
                 "Partial",
-                "**Description:** The service may detect resource leaks indirectly through information disclosure and SSRF testing but does not explicitly test for transmission of private resources into unauthorized contexts.\n**Evidence:** Information disclosure and SSRF action groups test for resource access.\n**Limitations:** Explicit testing for transmission of private resources into unauthorized contexts is not systematically performed."
+                "<strong>Description:</strong> The service may detect resource leaks indirectly through information disclosure and SSRF testing but does not explicitly test for transmission of private resources into unauthorized contexts.\n<strong>Evidence:</strong> Information disclosure and SSRF action groups test for resource access.\n<strong>Limitations:</strong> Explicit testing for transmission of private resources into unauthorized contexts is not systematically performed."
               ],
               [
                 "CWE-424: Improper Protection of Alternate Path",
                 "Covered",
-                "**Description:** The service tests for improper protection of alternate paths through privilege escalation and IDOR testing.\n**Evidence:** Penetration test logs demonstrate comprehensive testing of alternate access paths including session manipulation, cookie tampering, and HTTP verb tampering."
+                "<strong>Description:</strong> The service tests for improper protection of alternate paths through privilege escalation and IDOR testing.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive testing of alternate access paths including session manipulation, cookie tampering, and HTTP verb tampering."
               ],
               [
                 "CWE-425: Direct Request ('Forced Browsing')",
                 "Covered",
-                "**Description:** The service tests for forced browsing through authenticated runtime testing and privilege escalation action groups.\n**Evidence:** Penetration test logs demonstrate comprehensive forced browsing testing including accessing privileged pages as standard users and systematic endpoint discovery."
+                "<strong>Description:</strong> The service tests for forced browsing through authenticated runtime testing and privilege escalation action groups.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive forced browsing testing including accessing privileged pages as standard users and systematic endpoint discovery."
               ],
               [
                 "CWE-441: Unintended Proxy or Intermediary ('Confused Deputy')",
                 "Partial",
-                "**Description:** The service may detect confused deputy issues through SSRF testing but does not explicitly test for proxy/intermediary functionality.\n**Evidence:** SSRF action groups test for server-side request forgery vulnerabilities.\n**Limitations:** Explicit validation of proxy/intermediary functionality is not systematically performed."
+                "<strong>Description:</strong> The service may detect confused deputy issues through SSRF testing but does not explicitly test for proxy/intermediary functionality.\n<strong>Evidence:</strong> SSRF action groups test for server-side request forgery vulnerabilities.\n<strong>Limitations:</strong> Explicit validation of proxy/intermediary functionality is not systematically performed."
               ],
               [
                 "CWE-497: Exposure of Sensitive System Information to an Unauthorized Control Sphere",
                 "Covered",
-                "**Description:** The service detects exposure of sensitive system information through information disclosure testing.\n**Evidence:** Information disclosure action groups and findings demonstrate detection of system information exposure."
+                "<strong>Description:</strong> The service detects exposure of sensitive system information through information disclosure testing.\n<strong>Evidence:</strong> Information disclosure action groups and findings demonstrate detection of system information exposure."
               ],
               [
                 "CWE-538: Insertion of Sensitive Information into Externally-Accessible File or Directory",
                 "Partial",
-                "**Description:** The service tests for file access through path traversal and information disclosure but does not explicitly test for insertion of sensitive information into externally-accessible locations.\n**Evidence:** Information disclosure and path traversal action groups test for accessible files.\n**Limitations:** Explicit testing for insertion of sensitive information into externally-accessible files is not systematically performed."
+                "<strong>Description:</strong> The service tests for file access through path traversal and information disclosure but does not explicitly test for insertion of sensitive information into externally-accessible locations.\n<strong>Evidence:</strong> Information disclosure and path traversal action groups test for accessible files.\n<strong>Limitations:</strong> Explicit testing for insertion of sensitive information into externally-accessible files is not systematically performed."
               ],
               [
                 "CWE-540: Inclusion of Sensitive Information in Source Code",
                 "Covered",
-                "**Description:** The service includes static analysis capabilities that detect sensitive information in source code.\n**Evidence:** Static analysis phase of penetration test runs analyzes source code for sensitive information."
+                "<strong>Description:</strong> The service includes static analysis capabilities that detect sensitive information in source code.\n<strong>Evidence:</strong> Static analysis phase of penetration test runs analyzes source code for sensitive information."
               ],
               [
                 "CWE-548: Exposure of Information Through Directory Listing",
                 "Partial",
-                "**Description:** The service may detect directory listing indirectly through path traversal testing but does not explicitly test for directory listing behavior.\n**Evidence:** Information disclosure and path traversal action groups test for file access.\n**Limitations:** Explicit validation of directory listing behavior is not systematically performed."
+                "<strong>Description:</strong> The service may detect directory listing indirectly through path traversal testing but does not explicitly test for directory listing behavior.\n<strong>Evidence:</strong> Information disclosure and path traversal action groups test for file access.\n<strong>Limitations:</strong> Explicit validation of directory listing behavior is not systematically performed."
               ],
               [
                 "CWE-552: Files or Directories Accessible to External Parties",
                 "Covered",
-                "**Description:** The service tests for files or directories accessible to external parties through path traversal and information disclosure testing.\n**Evidence:** Path traversal and information disclosure action groups test for accessible files and directories."
+                "<strong>Description:</strong> The service tests for files or directories accessible to external parties through path traversal and information disclosure testing.\n<strong>Evidence:</strong> Path traversal and information disclosure action groups test for accessible files and directories."
               ],
               [
                 "CWE-566: Authorization Bypass Through User-Controlled SQL Primary Key",
                 "Covered",
-                "**Description:** The service detects authorization bypass through user-controlled SQL primary keys via SQL injection findings.\n**Evidence:** Penetration test findings demonstrate authorization bypass through SQL injection vulnerabilities."
+                "<strong>Description:</strong> The service detects authorization bypass through user-controlled SQL primary keys via SQL injection findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate authorization bypass through SQL injection vulnerabilities."
               ],
               [
                 "CWE-59: Improper Link Resolution Before File Access ('Link Following')",
                 "Partial",
-                "**Description:** The service may detect link following issues indirectly through path traversal testing but does not explicitly test for symbolic link following.\n**Evidence:** Path traversal action groups test for file access vulnerabilities.\n**Limitations:** Explicit validation of symbolic link following is not systematically performed and may be limited by testing environment constraints."
+                "<strong>Description:</strong> The service may detect link following issues indirectly through path traversal testing but does not explicitly test for symbolic link following.\n<strong>Evidence:</strong> Path traversal action groups test for file access vulnerabilities.\n<strong>Limitations:</strong> Explicit validation of symbolic link following is not systematically performed and may be limited by testing environment constraints."
               ],
               [
                 "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')",
                 "Partial",
-                "**Description:** The service does not include dedicated open redirect testing action groups.\n**Evidence:** Business logic testing may indirectly detect redirect issues but no explicit open redirect testing was observed.\n**Limitations:** Explicit redirect validation and open redirect attack testing is not performed."
+                "<strong>Description:</strong> The service does not include dedicated open redirect testing action groups.\n<strong>Evidence:</strong> Business logic testing may indirectly detect redirect issues but no explicit open redirect testing was observed.\n<strong>Limitations:</strong> Explicit redirect validation and open redirect attack testing is not performed."
               ],
               [
                 "CWE-61: UNIX Symbolic Link (Symlink) Following",
                 "Partial",
-                "**Description:** The service may detect symlink following issues indirectly through path traversal testing but does not explicitly test for UNIX symlink following.\n**Evidence:** Path traversal action groups test for file access vulnerabilities.\n**Limitations:** Explicit validation of symlink following is not systematically performed and may be limited by testing environment constraints or application platform compatibility."
+                "<strong>Description:</strong> The service may detect symlink following issues indirectly through path traversal testing but does not explicitly test for UNIX symlink following.\n<strong>Evidence:</strong> Path traversal action groups test for file access vulnerabilities.\n<strong>Limitations:</strong> Explicit validation of symlink following is not systematically performed and may be limited by testing environment constraints or application platform compatibility."
               ],
               [
                 "CWE-615: Inclusion of Sensitive Information in Source Code Comments",
                 "Partial",
-                "**Description:** The service includes static analysis through code scanner but explicit scanning for sensitive information in source code comments may not be systematically performed.\n**Evidence:** Code scanner action groups scan code repositories focusing on important flows and framework analysis.\n**Limitations:** Code scanner focuses on flow analysis rather than comprehensive comment scanning."
+                "<strong>Description:</strong> The service includes static analysis through code scanner but explicit scanning for sensitive information in source code comments may not be systematically performed.\n<strong>Evidence:</strong> Code scanner action groups scan code repositories focusing on important flows and framework analysis.\n<strong>Limitations:</strong> Code scanner focuses on flow analysis rather than comprehensive comment scanning."
               ],
               [
                 "CWE-639: Authorization Bypass Through User-Controlled Key",
                 "Covered",
-                "**Description:** The service detects authorization bypass through user-controlled keys via IDOR findings.\n**Evidence:** Penetration test logs demonstrate comprehensive IDOR testing including parameter manipulation, session forging, and cross-user data access validation."
+                "<strong>Description:</strong> The service detects authorization bypass through user-controlled keys via IDOR findings.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive IDOR testing including parameter manipulation, session forging, and cross-user data access validation."
               ],
               [
                 "CWE-65: Windows Hard Link",
                 "Not Covered",
-                "**Description:** This vulnerability is Windows-specific and requires operating system-level analysis of hard link creation and following.\n**Evidence:** The tool focuses on web application security testing rather than operating system-specific features.\n**Limitations:** This is a Windows-specific vulnerability while the tool focuses on application-layer security testing and tested applications appear to be Linux-based."
+                "<strong>Description:</strong> This vulnerability is Windows-specific and requires operating system-level analysis of hard link creation and following.\n<strong>Evidence:</strong> The tool focuses on web application security testing rather than operating system-specific features.\n<strong>Limitations:</strong> This is a Windows-specific vulnerability while the tool focuses on application-layer security testing and tested applications appear to be Linux-based."
               ],
               [
                 "CWE-668: Exposure of Resource to Wrong Sphere",
                 "Covered",
-                "**Description:** The service detects exposure of resources to wrong sphere through IDOR and information disclosure findings.\n**Evidence:** Penetration test findings demonstrate detection of cross-user resource exposure vulnerabilities."
+                "<strong>Description:</strong> The service detects exposure of resources to wrong sphere through IDOR and information disclosure findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of cross-user resource exposure vulnerabilities."
               ],
               [
                 "CWE-732: Incorrect Permission Assignment for Critical Resource",
                 "Covered",
-                "**Description:** The service detects incorrect permission assignment for critical resources through privilege escalation findings.\n**Evidence:** Penetration test findings demonstrate detection of functionality accessible without proper authorization checks."
+                "<strong>Description:</strong> The service detects incorrect permission assignment for critical resources through privilege escalation findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of functionality accessible without proper authorization checks."
               ],
               [
                 "CWE-749: Exposed Dangerous Method or Function",
                 "Covered",
-                "**Description:** The service detects exposed dangerous methods or functions through findings that identify exposed endpoints with dangerous functionality.\n**Evidence:** Penetration test findings demonstrate detection of exposed endpoints with command execution and other dangerous functionality."
+                "<strong>Description:</strong> The service detects exposed dangerous methods or functions through findings that identify exposed endpoints with dangerous functionality.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of exposed endpoints with command execution and other dangerous functionality."
               ],
               [
                 "CWE-862: Missing Authorization",
                 "Covered",
-                "**Description:** The service successfully detects missing authorization through findings that identify functionality accessible without proper authorization checks.\n**Evidence:** Penetration test findings explicitly identify missing authorization where functionality should be restricted to specific roles."
+                "<strong>Description:</strong> The service successfully detects missing authorization through findings that identify functionality accessible without proper authorization checks.\n<strong>Evidence:</strong> Penetration test findings explicitly identify missing authorization where functionality should be restricted to specific roles."
               ],
               [
                 "CWE-863: Incorrect Authorization",
                 "Covered",
-                "**Description:** The service detects incorrect authorization through findings that demonstrate authorization bypass and privilege escalation.\n**Evidence:** Penetration test findings demonstrate authorization bypass including authentication bypass and privilege escalation vulnerabilities."
+                "<strong>Description:</strong> The service detects incorrect authorization through findings that demonstrate authorization bypass and privilege escalation.\n<strong>Evidence:</strong> Penetration test findings demonstrate authorization bypass including authentication bypass and privilege escalation vulnerabilities."
               ],
               [
                 "CWE-918: Server-Side Request Forgery (SSRF)",
                 "Covered",
-                "**Description:** The service includes dedicated SSRF testing action groups that systematically test for server-side request forgery vulnerabilities.\n**Evidence:** Penetration test logs demonstrate advanced SSRF testing including chaining with command injection and lateral movement testing."
+                "<strong>Description:</strong> The service includes dedicated SSRF testing action groups that systematically test for server-side request forgery vulnerabilities.\n<strong>Evidence:</strong> Penetration test logs demonstrate advanced SSRF testing including chaining with command injection and lateral movement testing."
               ],
               [
                 "CWE-922: Insecure Storage of Sensitive Information",
                 "Covered",
-                "**Description:** The service detects insecure storage of sensitive information through findings that identify plaintext storage of credentials and sensitive data.\n**Evidence:** Penetration test findings demonstrate detection of insecure credential storage vulnerabilities."
+                "<strong>Description:</strong> The service detects insecure storage of sensitive information through findings that identify plaintext storage of credentials and sensitive data.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of insecure credential storage vulnerabilities."
               ]
             ]
           }
@@ -471,82 +471,82 @@
               [
                 "CWE-1004: Sensitive Cookie Without 'HttpOnly' Flag",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-11: ASP.NET Misconfiguration: Creating Debug Binary",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1174: ASP.NET Misconfiguration: Improper Model Validation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-13: ASP.NET Misconfiguration: Password in Configuration File",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-15: External Control of System or Configuration Setting",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-16: Configuration",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-260: Password in Configuration File",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-315: Cleartext Storage of Sensitive Information in a Cookie",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-489: Active Debug Code",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-5: J2EE Misconfiguration: Data Transmission Without Encryption",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-526: Cleartext Storage of Sensitive Information in an Environment Variable",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-547: Use of Hard-coded, Security-relevant Constants",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-611: Improper Restriction of XML External Entity Reference",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-614: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-776: Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-942: Permissive Cross-domain Security Policy with Untrusted Domains",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -566,32 +566,32 @@
               [
                 "CWE-1035: OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1104: Use of Unmaintained Third Party Components",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1329: Reliance on Component That is Not Updateable",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1395: Dependency on Vulnerable Third-Party Component",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-447: Unimplemented or Unsupported Feature in UI",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-477: Use of Obsolete Function",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -611,162 +611,162 @@
               [
                 "CWE-1240: Use of a Cryptographic Primitive with a Risky Implementation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-261: Weak Encoding for Password",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-296: Improper Following of a Certificate's Chain of Trust",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-319: Cleartext Transmission of Sensitive Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-320: Key Management Errors",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-321: Use of Hard-coded Cryptographic Key",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-322: Key Exchange without Entity Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-323: Reusing a Nonce, Key Pair in Encryption",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-324: Use of a Key Past its Expiration Date",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-325: Missing Cryptographic Step",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-326: Inadequate Encryption Strength",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-327: Use of a Broken or Risky Cryptographic Algorithm",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-328: Use of Weak Hash",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-329: Generation of Predictable IV with CBC Mode",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-330: Use of Insufficiently Random Values",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-331: Insufficient Entropy",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-332: Insufficient Entropy in PRNG",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-334: Small Space of Random Values",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-335: Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-336: Same Seed in Pseudo-Random Number Generator (PRNG)",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-337: Predictable Seed in Pseudo-Random Number Generator (PRNG)",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-340: Generation of Predictable Numbers or Identifiers",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-342: Predictable Exact Value from Previous Values",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-347: Improper Verification of Cryptographic Signature",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-523: Unprotected Transport of Credentials",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-757: Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-759: Use of a One-Way Hash without a Salt",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-760: Use of a One-Way Hash with a Predictable Salt",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-780: Use of RSA Algorithm without OAEP",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-916: Use of Password Hash With Insufficient Computational Effort",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -786,187 +786,187 @@
               [
                 "CWE-103: Struts: Incomplete validate() Method Definition",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-104: Struts: Form Bean Does Not Extend Validation Class",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-112: Missing XML Validation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-114: Process Control",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-115: Misinterpretation of Input",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-116: Improper Encoding or Escaping of Output",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-129: Improper Validation of Array Index",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-159: Improper Handling of Invalid Use of Special Elements",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-20: Improper Input Validation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-470: Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-493: Critical Public Variable Without Final Modifier",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-500: Public Static Field Not Marked Final",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-564: SQL Injection: Hibernate",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-610: Externally Controlled Reference to a Resource in Another Sphere",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-643: Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-74: Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-76: Improper Neutralization of Equivalent Special Elements",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-80: Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-83: Improper Neutralization of Script in Attributes in a Web Page",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-86: Improper Neutralization of Invalid Characters in Identifiers in Web Pages",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-90: Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-91: XML Injection (aka Blind XPath Injection)",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-917: Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-94: Improper Control of Generation of Code ('Code Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-96: Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-97: Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-99: Improper Control of Resource Identifiers ('Resource Injection')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -986,197 +986,197 @@
               [
                 "CWE-1021: Improper Restriction of Rendered UI Layers or Frames",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1022: Use of Web Link to Untrusted Target with window.opener Access",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1125: Excessive Attack Surface",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-183: Permissive List of Allowed Inputs",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-256: Plaintext Storage of a Password",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-266: Incorrect Privilege Assignment",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-269: Improper Privilege Management",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-286: Incorrect User Management",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-311: Missing Encryption of Sensitive Data",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-312: Cleartext Storage of Sensitive Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-313: Cleartext Storage in a File or on Disk",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-316: Cleartext Storage of Sensitive Information in Memory",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-382: J2EE Bad Practices: Use of System.exit()",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-419: Unprotected Primary Channel",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-434: Unrestricted Upload of File with Dangerous Type",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-436: Interpretation Conflict",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-451: User Interface (UI) Misrepresentation of Critical Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-454: External Initialization of Trusted Variables or Data Stores",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-472: External Control of Assumed-Immutable Web Parameter",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-501: Trust Boundary Violation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-522: Insufficiently Protected Credentials",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-525: Use of Web Browser Cache Containing Sensitive Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-539: Use of Persistent Cookies Containing Sensitive Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-598: Use of GET Request Method With Sensitive Query Strings",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-602: Client-Side Enforcement of Server-Side Security",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-628: Function Call with Incorrectly Specified Arguments",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-642: External Control of Critical State Data",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-646: Reliance on File Name or Extension of Externally-Supplied File",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-653: Improper Isolation or Compartmentalization",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-656: Reliance on Security Through Obscurity",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-657: Violation of Secure Design Principles",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-676: Use of Potentially Dangerous Function",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-693: Protection Mechanism Failure",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-73: External Control of File Name or Path",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-799: Improper Control of Interaction Frequency",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-807: Reliance on Untrusted Inputs in a Security Decision",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-841: Improper Enforcement of Behavioral Workflow",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -1196,182 +1196,182 @@
               [
                 "CWE-1390: Weak Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1391: Use of Weak Credentials",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1392: Use of Default Credentials",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1393: Use of Default Password",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-258: Empty Password in Configuration File",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-259: Use of Hard-coded Password",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-287: Improper Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-288: Authentication Bypass Using an Alternate Path or Channel",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-289: Authentication Bypass by Alternate Name",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-290: Authentication Bypass by Spoofing",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-291: Reliance on IP Address for Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-293: Using Referer Field for Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-294: Authentication Bypass by Capture-replay",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-295: Improper Certificate Validation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-297: Improper Validation of Certificate with Host Mismatch",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-298: Improper Validation of Certificate Expiration",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-299: Improper Check for Certificate Revocation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-300: Channel Accessible by Non-Endpoint",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-302: Authentication Bypass by Assumed-Immutable Data",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-303: Incorrect Implementation of Authentication Algorithm",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-304: Missing Critical Step in Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-305: Authentication Bypass by Primary Weakness",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-306: Missing Authentication for Critical Function",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-307: Improper Restriction of Excessive Authentication Attempts",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-308: Use of Single-factor Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-309: Use of Password System for Primary Authentication",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-346: Origin Validation Error",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-350: Reliance on Reverse DNS Resolution for a Security-Critical Action",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-384: Session Fixation",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-521: Weak Password Requirements",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-613: Insufficient Session Expiration",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-620: Unverified Password Change",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-640: Weak Password Recovery Mechanism for Forgotten Password",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-798: Use of Hard-coded Credentials",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-940: Improper Verification of Source of a Communication Channel",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-941: Incorrectly Specified Destination in a Communication Channel",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -1391,72 +1391,72 @@
               [
                 "CWE-345: Insufficient Verification of Data Authenticity",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-353: Missing Support for Integrity Check",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-426: Untrusted Search Path",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-427: Uncontrolled Search Path Element",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-494: Download of Code Without Integrity Check",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-502: Deserialization of Untrusted Data",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-506: Embedded Malicious Code",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-509: Replicating Malicious Code (Virus or Worm)",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-565: Reliance on Cookies without Validation and Integrity Checking",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-784: Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-829: Inclusion of Functionality from Untrusted Control Sphere",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-830: Inclusion of Web Functionality from an Untrusted Source",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-915: Improperly Controlled Modification of Dynamically-Determined Object Attributes",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-926: Improper Export of Android Application Components",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -1476,27 +1476,27 @@
               [
                 "CWE-117: Improper Output Neutralization for Logs",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-221: Information Loss or Omission",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-223: Omission of Security-relevant Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-532: Insertion of Sensitive Information into Log File",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-778: Insufficient Logging",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -1516,122 +1516,122 @@
               [
                 "CWE-209: Generation of Error Message Containing Sensitive Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-215: Insertion of Sensitive Information Into Debugging Code",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-234: Failure to Handle Missing Parameter",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-235: Improper Handling of Extra Parameters",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-248: Uncaught Exception",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-252: Unchecked Return Value",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-274: Improper Handling of Insufficient Privileges",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-280: Improper Handling of Insufficient Permissions or Privileges",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-369: Divide By Zero",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-390: Detection of Error Condition Without Action",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-391: Unchecked Error Condition",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-394: Unexpected Status Code or Return Value",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-396: Declaration of Catch for Generic Exception",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-397: Declaration of Throws for Generic Exception",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-460: Improper Cleanup on Thrown Exception",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-476: NULL Pointer Dereference",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-478: Missing Default Case in Multiple Condition Expression",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-484: Omitted Break Statement in Switch",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-550: Server-generated Error Message Containing Sensitive Information",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-636: Not Failing Securely ('Failing Open')",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-703: Improper Check or Handling of Exceptional Conditions",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-754: Improper Check for Unusual or Exceptional Conditions",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-755: Improper Handling of Exceptional Conditions",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-756: Missing Custom Error Page",
                 "",
-                "**Description:** \n**Evidence:** \n**Limitations:** "
+                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
               ]
             ]
           }
