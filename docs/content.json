@@ -174,6 +174,14 @@
             [
               "UL-008",
               "Code scanner focuses on flow analysis rather than comprehensive pattern matching for hard-coded credentials, configuration file passwords, debug code, and sensitive information in comments."
+            ],
+            [
+              "UL-009",
+              "Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that may not be comprehensively implemented."
+            ],
+            [
+              "UL-010",
+              "Environment variable analysis requires runtime environment analysis which may be outside the scope of static code scanning."
             ]
           ]
         }
@@ -488,22 +496,22 @@
               [
                 "CWE-11: ASP.NET Misconfiguration: Creating Debug Binary",
                 "Not Covered",
-                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific analysis of debug binary creation.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios."
+                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific analysis of debug binary creation.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios [UL-009]."
               ],
               [
                 "CWE-1174: ASP.NET Misconfiguration: Improper Model Validation",
                 "Not Covered",
-                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific model validation analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios."
+                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific model validation analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios [UL-009]."
               ],
               [
                 "CWE-13: ASP.NET Misconfiguration: Password in Configuration File",
                 "Partial",
-                "<strong>Description:</strong> The service includes framework scanning capabilities, but explicit ASP.NET-specific configuration file password validation is not demonstrated.\n<strong>Evidence:</strong> Framework scanner tasks may fail or the tested applications may not be ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that may not be comprehensively implemented."
+                "<strong>Description:</strong> The service includes framework scanning capabilities, but explicit ASP.NET-specific configuration file password validation is not demonstrated.\n<strong>Evidence:</strong> Framework scanner tasks may fail or the tested applications may not be ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that may not be comprehensively implemented [UL-009]."
               ],
               [
                 "CWE-15: External Control of System or Configuration Setting",
                 "Partial",
-                "<strong>Description:</strong> The service may detect configuration issues through code scanner and network scanner, but does not explicitly test for external control of system or configuration settings.\n<strong>Evidence:</strong> Configuration testing occurs through general scanning approaches rather than specific validation of configuration parameter sources and validation mechanisms.\n<strong>Limitations:</strong> Explicit testing for external control of system or configuration settings requires understanding configuration parameter sources and validation mechanisms which may not be systematically tested."
+                "<strong>Description:</strong> The service may detect configuration issues through code scanner and network scanner, but does not explicitly test for external control of system or configuration settings.\n<strong>Evidence:</strong> Configuration testing occurs through general scanning approaches rather than specific validation of configuration parameter sources and validation mechanisms.\n<strong>Limitations:</strong> Explicit testing for external control of system or configuration settings requires understanding configuration parameter sources and validation mechanisms which may not be systematically tested [UL-008]."
               ],
               [
                 "CWE-16: Configuration",
@@ -513,7 +521,7 @@
               [
                 "CWE-260: Password in Configuration File",
                 "Partial",
-                "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for passwords in configuration files may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on important flows and framework analysis rather than comprehensive configuration file security scanning.\n<strong>Limitations:</strong> Configuration file password detection requires specific pattern matching for credentials that may not be comprehensively implemented in the code scanner."
+                "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for passwords in configuration files may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on important flows and framework analysis rather than comprehensive configuration file security scanning.\n<strong>Limitations:</strong> Configuration file password detection requires specific pattern matching for credentials that may not be comprehensively implemented in the code scanner [UL-008]."
               ],
               [
                 "CWE-315: Cleartext Storage of Sensitive Information in a Cookie",
@@ -523,7 +531,7 @@
               [
                 "CWE-489: Active Debug Code",
                 "Partial",
-                "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for active debug code may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive debug code detection through pattern matching for debug statements and development-only code.\n<strong>Limitations:</strong> Debug code detection requires specific pattern matching for debug statements, logging, and development-only code that may not be comprehensively implemented."
+                "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for active debug code may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive debug code detection through pattern matching for debug statements and development-only code.\n<strong>Limitations:</strong> Debug code detection requires specific pattern matching for debug statements, logging, and development-only code that may not be comprehensively implemented [UL-008]."
               ],
               [
                 "CWE-5: J2EE Misconfiguration: Data Transmission Without Encryption",
@@ -533,12 +541,12 @@
               [
                 "CWE-526: Cleartext Storage of Sensitive Information in an Environment Variable",
                 "Partial",
-                "<strong>Description:</strong> The service may detect sensitive information through code scanner, but explicit testing for cleartext storage of sensitive information in environment variables is not systematically performed.\n<strong>Evidence:</strong> Environment variable analysis requires runtime environment analysis or specific configuration file scanning that may not be part of the standard code scanning scope.\n<strong>Limitations:</strong> Environment variables are typically accessed at runtime rather than in source code, making static analysis less effective and requiring runtime environment analysis which may be outside the scope of static code scanning."
+                "<strong>Description:</strong> The service may detect sensitive information through code scanner, but explicit testing for cleartext storage of sensitive information in environment variables is not systematically performed.\n<strong>Evidence:</strong> Environment variable analysis requires runtime environment analysis or specific configuration file scanning that may not be part of the standard code scanning scope.\n<strong>Limitations:</strong> Environment variables are typically accessed at runtime rather than in source code, making static analysis less effective and requiring runtime environment analysis which may be outside the scope of static code scanning [UL-010]."
               ],
               [
                 "CWE-547: Use of Hard-coded, Security-relevant Constants",
                 "Partial",
-                "<strong>Description:</strong> The service includes static analysis through code scanner, but explicit scanning for hard-coded security-relevant constants may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive credential and constant scanning through pattern matching.\n<strong>Limitations:</strong> Hard-coded security-relevant constant detection requires specific pattern matching for credentials, API keys, and cryptographic material that may not be comprehensively implemented."
+                "<strong>Description:</strong> The service includes static analysis through code scanner, but explicit scanning for hard-coded security-relevant constants may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive credential and constant scanning through pattern matching.\n<strong>Limitations:</strong> Hard-coded security-relevant constant detection requires specific pattern matching for credentials, API keys, and cryptographic material that may not be comprehensively implemented [UL-008]."
               ],
               [
                 "CWE-611: Improper Restriction of XML External Entity Reference",
