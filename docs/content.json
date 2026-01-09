@@ -157,7 +157,7 @@
             ],
             [
               "UL-004",
-              "Complex exploitation scenarios requiring custom tooling or local services are unsupported."
+              "Complex exploitation scenarios requiring custom tooling or local services are unsupported. The agent runs from a Docker container with Kali Linux that has limited built-in tooling available, and internal guardrails reduce fluency, preventing support for advanced attack scenarios."
             ],
             [
               "UL-005",
@@ -165,23 +165,19 @@
             ],
             [
               "UL-006",
-              "Agent does not have filesystem access to the host under test, limiting file system-level analysis of permissions, ownership, temporary files, and operating system-specific features."
+              "Agent does not have access to the runtime environment of the host under test (filesystem, OS, or application runtime), limiting analysis of file system-level permissions, ownership, temporary files, operating system-specific features, and runtime memory inspection to detect cleartext storage in memory or analyze memory-based vulnerabilities."
             ],
             [
               "UL-007",
-              "CSRF testing is completely absent from the tool's capabilities."
+              "Missing specific vulnerability testing capabilities - certain vulnerability types are not explicitly tested (e.g., CSRF, CRLF injection, log injection, cookie integrity checking, MFA, file upload testing, HTTP request/response smuggling, browser cache security testing, window.opener vulnerability testing, log file content analysis)."
             ],
             [
               "UL-008",
-              "Code scanner focuses on flow analysis rather than comprehensive pattern matching for hard-coded credentials, configuration file passwords, debug code, and sensitive information in comments."
+              "Limited static code analysis scope - code scanner focuses on important flows and framework analysis rather than comprehensive static analysis (e.g., variable/field modifiers, exception handling patterns, debugging code, comment scanning, mass assignment patterns, generic exception declarations). Additionally, code scanner does not perform comprehensive analysis of cryptographic implementation details via static code analysis (e.g., IV generation, nonce reuse, key pair reuse, RSA padding selection) or runtime random number generator testing (entropy, seed validation, PRNG algorithm analysis)."
             ],
             [
               "UL-009",
-              "Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that may not be comprehensively implemented."
-            ],
-            [
-              "UL-010",
-              "Environment variable analysis requires runtime environment analysis which may be outside the scope of static code scanning."
+              "No dependency vulnerability analysis - tool scans dependency manifest files (package.json, requirements.txt, pom.xml, go.mod, composer.json) for framework identification but does not check component versions against vulnerability databases (CVE scanning, SBOM generation, transitive dependency analysis, maintenance status checking)."
             ]
           ]
         }
@@ -276,7 +272,7 @@
               [
                 "CWE-1275: Sensitive Cookie with Improper SameSite Attribute",
                 "Partial",
-                "<strong>Description:</strong> The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n<strong>Evidence:</strong> Network scanner action groups test TLS/SSL protocol security but do not include cookie attribute validation.\n<strong>Limitations:</strong> Cookie security attributes are not part of the network scanning scope [UL-008]."
+                "<strong>Description:</strong> The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n<strong>Evidence:</strong> Network scanner action groups test TLS/SSL protocol security but do not include cookie attribute validation.\n<strong>Limitations:</strong> Cookie security attributes are not part of the network scanning scope [UL-007]."
               ],
               [
                 "CWE-200: Exposure of Sensitive Information to an Unauthorized Actor",
@@ -426,7 +422,7 @@
               [
                 "CWE-615: Inclusion of Sensitive Information in Source Code Comments",
                 "Partial",
-                "<strong>Description:</strong> The service includes static analysis through code scanner but explicit scanning for sensitive information in source code comments may not be systematically performed.\n<strong>Evidence:</strong> Code scanner action groups scan code repositories focusing on important flows and framework analysis.\n<strong>Limitations:</strong> Code scanner focuses on flow analysis rather than comprehensive comment scanning [UL-009]."
+                "<strong>Description:</strong> The service includes static analysis through code scanner but explicit scanning for sensitive information in source code comments may not be systematically performed.\n<strong>Evidence:</strong> Code scanner action groups scan code repositories focusing on important flows and framework analysis.\n<strong>Limitations:</strong> Code scanner focuses on flow analysis rather than comprehensive comment scanning [UL-008]."
               ],
               [
                 "CWE-639: Authorization Bypass Through User-Controlled Key",
@@ -435,8 +431,8 @@
               ],
               [
                 "CWE-65: Windows Hard Link",
-                "Not Covered",
-                "<strong>Description:</strong> This vulnerability is Windows-specific and requires operating system-level analysis of hard link creation and following.\n<strong>Evidence:</strong> The tool focuses on web application security testing rather than operating system-specific features.\n<strong>Limitations:</strong> This is a Windows-specific vulnerability while the tool focuses on application-layer security testing and tested applications appear to be Linux-based [UL-006]."
+                "",
+                "<strong>Description:</strong> This vulnerability is Windows-specific and requires operating system-level analysis of hard link creation and following.\n<strong>Evidence:</strong> The tested applications are Linux-based web applications, making this Windows-specific vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-668: Exposure of Resource to Wrong Sphere",
@@ -495,18 +491,18 @@
               ],
               [
                 "CWE-11: ASP.NET Misconfiguration: Creating Debug Binary",
-                "Not Covered",
-                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific analysis of debug binary creation.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios [UL-009]."
+                "",
+                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific analysis of debug binary creation.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1174: ASP.NET Misconfiguration: Improper Model Validation",
-                "Not Covered",
-                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific model validation analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that are not demonstrated in the tested scenarios [UL-009]."
+                "",
+                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific model validation analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-13: ASP.NET Misconfiguration: Password in Configuration File",
-                "Partial",
-                "<strong>Description:</strong> The service includes framework scanning capabilities, but explicit ASP.NET-specific configuration file password validation is not demonstrated.\n<strong>Evidence:</strong> Framework scanner tasks may fail or the tested applications may not be ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> Framework-specific misconfiguration testing requires application framework detection and framework-specific rule sets that may not be comprehensively implemented [UL-009]."
+                "",
+                "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires ASP.NET framework analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-15: External Control of System or Configuration Setting",
@@ -541,7 +537,7 @@
               [
                 "CWE-526: Cleartext Storage of Sensitive Information in an Environment Variable",
                 "Partial",
-                "<strong>Description:</strong> The service may detect sensitive information through code scanner, but explicit testing for cleartext storage of sensitive information in environment variables is not systematically performed.\n<strong>Evidence:</strong> Environment variable analysis requires runtime environment analysis or specific configuration file scanning that may not be part of the standard code scanning scope.\n<strong>Limitations:</strong> Environment variables are typically accessed at runtime rather than in source code, making static analysis less effective and requiring runtime environment analysis which may be outside the scope of static code scanning [UL-010]."
+                "<strong>Description:</strong> The service may detect sensitive information through code scanner, but explicit testing for cleartext storage of sensitive information in environment variables is not systematically performed.\n<strong>Evidence:</strong> Environment variable analysis requires runtime environment analysis or specific configuration file scanning that may not be part of the standard code scanning scope.\n<strong>Limitations:</strong> Environment variables are typically accessed at runtime rather than in source code, making static analysis less effective and requiring runtime environment analysis which may be outside the scope of static code scanning [UL-006]."
               ],
               [
                 "CWE-547: Use of Hard-coded, Security-relevant Constants",
@@ -585,33 +581,33 @@
             "rows": [
               [
                 "CWE-1035: OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service tests for dependency version pinning and integrity verification, which indirectly helps identify when components may have known vulnerabilities by ensuring proper version tracking.\n<strong>Evidence:</strong> Improper inventory management action groups test for dependency version pinning and integrity verification in Dockerfiles and build configurations.\n<strong>Limitations:</strong> Explicit CVE scanning and vulnerability database lookups are not performed, limiting the ability to identify known vulnerabilities in components [UL-009]."
               ],
               [
                 "CWE-1104: Use of Unmaintained Third Party Components",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for unmaintained third-party components.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for component maintenance status, end-of-life dates, or deprecation notices.\n<strong>Limitations:</strong> Maintenance status checking is completely absent from the testing scope [UL-009]."
               ],
               [
                 "CWE-1329: Reliance on Component That is Not Updateable",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated testing for dependency version pinning and integrity verification that systematically identifies when components are not properly pinned.\n<strong>Evidence:</strong> Improper inventory management action groups test for Docker base image version pinning using SHA256 digest and component integrity verification through checksum validation."
               ],
               [
                 "CWE-1395: Dependency on Vulnerable Third-Party Component",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service tests for dependency version pinning and integrity verification, which helps identify when third-party components are not properly tracked.\n<strong>Evidence:</strong> Improper inventory management action groups test for dependency version pinning and integrity verification in Dockerfiles and build configurations.\n<strong>Limitations:</strong> Explicit vulnerability scanning of third-party components and checking against vulnerability databases are not performed [UL-009]."
               ],
               [
                 "CWE-447: Unimplemented or Unsupported Feature in UI",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for unimplemented or unsupported UI features.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for UI feature completeness.\n<strong>Limitations:</strong> UI feature completeness testing is not included in the testing scope [UL-007]."
               ],
               [
                 "CWE-477: Use of Obsolete Function",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for obsolete function usage.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for obsolete function usage in code.\n<strong>Limitations:</strong> Obsolete function detection is not included in the testing scope [UL-008]."
               ]
             ]
           }
@@ -640,153 +636,163 @@
               ],
               [
                 "CWE-261: Weak Encoding for Password",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects weak password encoding through static code analysis.\n<strong>Evidence:</strong> Code scanner capabilities detect plaintext password storage in database models and authentication logic."
               ],
               [
                 "CWE-296: Improper Following of a Certificate's Chain of Trust",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes a dedicated TLS scanner that validates server certificates and trust chains.\n<strong>Evidence:</strong> TLS scanner action groups perform comprehensive TLS/SSL configuration analysis including certificate validation."
               ],
               [
                 "CWE-319: Cleartext Transmission of Sensitive Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes TLS scanner capabilities that detect cleartext transmission of sensitive information by validating TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, identifying when sensitive information is transmitted over unencrypted connections."
               ],
               [
                 "CWE-320: Key Management Errors",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service tests for weak keys and hardcoded keys, but does not explicitly validate comprehensive key management practices.\n<strong>Evidence:</strong> JWT vulnerabilities action groups test for weak HMAC secrets and key management vulnerabilities, and code scanner detects hardcoded keys.\n<strong>Limitations:</strong> Explicit validation of comprehensive key management practices including key rotation, secure storage, key derivation, and lifecycle management is not systematically performed [UL-008]."
               ],
               [
                 "CWE-321: Use of Hard-coded Cryptographic Key",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes code scanner capabilities that detect hard-coded cryptographic keys through static analysis.\n<strong>Evidence:</strong> Code scanner identifies hardcoded secrets in application configuration files, and JWT testing validates key management practices."
               ],
               [
                 "CWE-322: Key Exchange without Entity Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include key exchange testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of key exchange testing or entity authentication validation during key exchange.\n<strong>Limitations:</strong> Key exchange testing is completely absent from the testing scope [UL-008]."
               ],
               [
                 "CWE-323: Reusing a Nonce, Key Pair in Encryption",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include nonce reuse testing or key pair reuse validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of nonce reuse testing or key pair reuse validation.\n<strong>Limitations:</strong> Nonce reuse testing and key pair reuse validation are not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-324: Use of a Key Past its Expiration Date",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include key expiration validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of key expiration validation.\n<strong>Limitations:</strong> Key expiration validation is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-325: Missing Cryptographic Step",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects missing hashing for passwords and validates TLS configuration, but does not explicitly validate missing cryptographic steps in encryption implementations.\n<strong>Evidence:</strong> Code scanner detects missing password hashing, and TLS scanner validates TLS/SSL configuration.\n<strong>Limitations:</strong> Explicit validation of missing cryptographic steps in encryption implementations is not systematically performed [UL-008]."
               ],
               [
                 "CWE-326: Inadequate Encryption Strength",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service validates TLS/SSL encryption strength, but does not explicitly validate encryption strength in application-level encryption implementations.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, detecting weak encryption.\n<strong>Limitations:</strong> Explicit validation of encryption strength in application-level encryption implementations is not systematically performed [UL-008]."
               ],
               [
                 "CWE-327: Use of a Broken or Risky Cryptographic Algorithm",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes TLS scanner capabilities that detect broken or risky cryptographic algorithms in TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, detecting use of broken or risky algorithms, and JWT testing validates algorithm choices for token signing."
               ],
               [
                 "CWE-328: Use of Weak Hash",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects plaintext password storage, but does not explicitly validate hash function strength when hashing is present.\n<strong>Evidence:</strong> Code scanner detects plaintext storage, but explicit validation of weak hash functions is not systematically performed.\n<strong>Limitations:</strong> Explicit validation of weak hash functions in application code is not systematically performed [UL-008]."
               ],
               [
                 "CWE-329: Generation of Predictable IV with CBC Mode",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include initialization vector testing or encryption mode validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of IV generation testing or CBC mode validation.\n<strong>Limitations:</strong> IV generation testing and encryption mode validation are not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-330: Use of Insufficiently Random Values",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include random value entropy testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of random value entropy testing or randomness validation.\n<strong>Limitations:</strong> Random value entropy testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-331: Insufficient Entropy",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include entropy measurement or validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of entropy measurement or validation.\n<strong>Limitations:</strong> Entropy measurement and validation are not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-332: Insufficient Entropy in PRNG",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include PRNG entropy testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG entropy testing or pseudo-random number generator validation.\n<strong>Limitations:</strong> PRNG entropy testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-334: Small Space of Random Values",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include random value space testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of random value space testing or validation.\n<strong>Limitations:</strong> Random value space testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-335: Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include PRNG seed testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG seed testing or seed usage validation.\n<strong>Limitations:</strong> PRNG seed testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-336: Same Seed in Pseudo-Random Number Generator (PRNG)",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include PRNG seed reuse testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG seed reuse testing or validation.\n<strong>Limitations:</strong> PRNG seed reuse testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-337: Predictable Seed in Pseudo-Random Number Generator (PRNG)",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include PRNG seed predictability testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG seed predictability testing or validation.\n<strong>Limitations:</strong> PRNG seed predictability testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include PRNG strength testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG strength testing or weak PRNG validation.\n<strong>Limitations:</strong> PRNG strength testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-340: Generation of Predictable Numbers or Identifiers",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include predictable number or identifier generation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of predictable number or identifier generation testing.\n<strong>Limitations:</strong> Predictable number or identifier generation testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-342: Predictable Exact Value from Previous Values",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include predictable value sequence testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of predictable value sequence testing or validation.\n<strong>Limitations:</strong> Predictable value sequence testing is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-347: Improper Verification of Cryptographic Signature",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes JWT vulnerability testing that validates cryptographic signature verification.\n<strong>Evidence:</strong> JWT vulnerabilities action groups test for signature manipulation vulnerabilities and signature bypass techniques."
               ],
               [
                 "CWE-523: Unprotected Transport of Credentials",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes TLS scanner capabilities that detect unprotected transport of credentials by validating TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, identifying when credentials are transmitted over unencrypted connections."
               ],
               [
                 "CWE-757: Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes TLS scanner capabilities that detect algorithm downgrade vulnerabilities in TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, detecting algorithm downgrade vulnerabilities."
               ],
               [
                 "CWE-759: Use of a One-Way Hash without a Salt",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects plaintext password storage which indicates missing hashing entirely, but does not explicitly validate salt usage when hashing is present.\n<strong>Evidence:</strong> Code scanner detects plaintext storage but does not validate salt usage in hash implementations.\n<strong>Limitations:</strong> Explicit validation of salt usage in hash implementations is not systematically performed [UL-008]."
               ],
               [
                 "CWE-760: Use of a One-Way Hash with a Predictable Salt",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects plaintext password storage, but does not explicitly validate salt predictability when hashing is implemented.\n<strong>Evidence:</strong> Code scanner detects plaintext storage but does not validate salt randomness or predictability.\n<strong>Limitations:</strong> Explicit validation of salt predictability in hash implementations is not systematically performed [UL-008]."
               ],
               [
                 "CWE-780: Use of RSA Algorithm without OAEP",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include RSA OAEP padding validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of RSA OAEP padding validation or RSA implementation testing.\n<strong>Limitations:</strong> RSA OAEP padding validation is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-916: Use of Password Hash With Insufficient Computational Effort",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects plaintext password storage which indicates missing hashing entirely, but does not explicitly validate computational effort parameters when hashing is present.\n<strong>Evidence:</strong> Code scanner detects plaintext storage but does not validate hash algorithm strength or computational effort.\n<strong>Limitations:</strong> Explicit validation of computational effort parameters in hash implementations is not systematically performed [UL-008]."
+              ],
+              [
+                "CWE-1240: Use of a Cryptographic Primitive with a Risky Implementation",
+                "Partial",
+                "<strong>Description:</strong> The service validates TLS/SSL and JWT algorithm choices, but does not explicitly validate risky cryptographic primitive implementations in application code.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL configuration and JWT vulnerabilities action groups test for algorithm confusion and signature manipulation.\n<strong>Limitations:</strong> Explicit validation of risky cryptographic primitive implementations in application code is not systematically performed [UL-008]."
+              ],
+              [
+                "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
+                "Partial",
+                "<strong>Description:</strong> The service tests for weak secrets through JWT testing, but does not explicitly validate random number generator predictability or algorithm selection.\n<strong>Evidence:</strong> JWT vulnerabilities action groups test for weak secrets and key management.\n<strong>Limitations:</strong> Explicit validation of random number generator predictability and algorithm selection is not systematically performed [UL-008]."
               ]
             ]
           }
@@ -806,187 +812,187 @@
               [
                 "CWE-103: Struts: Incomplete validate() Method Definition",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability is Struts framework-specific.\n<strong>Evidence:</strong> The tested applications do not use Struts framework, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-104: Struts: Form Bean Does Not Extend Validation Class",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability is Struts framework-specific.\n<strong>Evidence:</strong> The tested applications do not use Struts framework, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-112: Missing XML Validation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service does not include dedicated XML validation testing in its standard testing scope.\n<strong>Evidence:</strong> XXE testing action groups test for XML injection but do not explicitly test for missing XML validation.\n<strong>Limitations:</strong> Explicit XML validation testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service does not include dedicated HTTP request/response splitting testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated HTTP request/response splitting testing.\n<strong>Limitations:</strong> Explicit HTTP request/response splitting testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-114: Process Control",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service tests for process control issues through command injection testing, but does not explicitly test for process control vulnerabilities in other contexts.\n<strong>Evidence:</strong> Command injection action groups test for process control vulnerabilities where user input controls process execution.\n<strong>Limitations:</strong> Explicit process control vulnerability testing beyond command injection is not systematically performed [UL-007]."
               ],
               [
                 "CWE-115: Misinterpretation of Input",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects misinterpretation of input through comprehensive injection testing that identifies where user-supplied data is incorrectly interpreted.\n<strong>Evidence:</strong> Injection testing across multiple penetration test runs identifies misinterpretation of input where user input is incorrectly interpreted as commands, queries, or code."
               ],
               [
                 "CWE-116: Improper Encoding or Escaping of Output",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects improper encoding or escaping of output through XSS testing and comprehensive injection vulnerability assessment.\n<strong>Evidence:</strong> XSS action groups test for improper encoding or escaping of output across multiple penetration test runs."
               ],
               [
                 "CWE-129: Improper Validation of Array Index",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service does not include dedicated array index validation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated array index validation testing.\n<strong>Limitations:</strong> Explicit array index validation testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-159: Improper Handling of Invalid Use of Special Elements",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects improper handling of special elements through comprehensive injection testing that validates how applications handle special characters and injection payloads.\n<strong>Evidence:</strong> All injection action groups test for improper handling of special elements across different contexts."
               ],
               [
                 "CWE-20: Improper Input Validation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects improper input validation through comprehensive injection testing across multiple penetration test runs.\n<strong>Evidence:</strong> All injection action groups systematically test for lack of input validation by attempting various injection vectors."
               ],
               [
                 "CWE-470: Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects unsafe reflection through code injection testing that identifies where user input is used to dynamically select or execute code.\n<strong>Evidence:</strong> Code injection action groups test for unsafe reflection vulnerabilities where externally-controlled input is used to select classes or code."
               ],
               [
                 "CWE-493: Critical Public Variable Without Final Modifier",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> This vulnerability requires static code analysis of source code to identify public variables without final modifiers.\n<strong>Evidence:</strong> The tool focuses on runtime penetration testing rather than comprehensive static code analysis of variable modifiers.\n<strong>Limitations:</strong> Detailed static code analysis of variable modifiers is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-500: Public Static Field Not Marked Final",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> This vulnerability requires static code analysis of source code to identify public static fields without final modifiers.\n<strong>Evidence:</strong> The tool's code scanner focuses on important flows rather than comprehensive field modifier analysis.\n<strong>Limitations:</strong> Comprehensive static code analysis of field modifiers is not part of the testing scope [UL-008]."
               ],
               [
                 "CWE-564: SQL Injection: Hibernate",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects SQL injection vulnerabilities regardless of the underlying ORM or database framework.\n<strong>Evidence:</strong> SQL injection action groups test for SQL injection vulnerabilities including Hibernate-specific SQL injection."
               ],
               [
                 "CWE-610: Externally Controlled Reference to a Resource in Another Sphere",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects externally controlled resource references through comprehensive injection testing that identifies where user input controls resource access.\n<strong>Evidence:</strong> Resource injection testing is covered through various injection action groups including command injection and XXE testing."
               ],
               [
                 "CWE-643: Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability requires XPath query processing in the application for XML data access.\n<strong>Evidence:</strong> The tested applications process XML but do not use XPath queries, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service may detect improper neutralization of HTTP headers through comprehensive injection testing.\n<strong>Evidence:</strong> Injection testing across multiple penetration test runs includes HTTP header manipulation testing."
               ],
               [
                 "CWE-74: Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes comprehensive injection testing across multiple injection types that systematically test for improper neutralization of special elements.\n<strong>Evidence:</strong> Injection action groups across multiple penetration test runs test for improper neutralization of special elements across different injection types."
               ],
               [
                 "CWE-76: Improper Neutralization of Equivalent Special Elements",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects improper neutralization of equivalent special elements through comprehensive injection testing that attempts various encoding and obfuscation techniques.\n<strong>Evidence:</strong> All injection action groups test for improper neutralization of special elements including equivalent representations across different injection types."
               ],
               [
                 "CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated command injection testing action groups that systematically test for command injection vulnerabilities.\n<strong>Evidence:</strong> Command injection action groups across multiple penetration test runs demonstrate comprehensive command injection vulnerability assessment."
               ],
               [
                 "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects OS command injection through dedicated command injection testing.\n<strong>Evidence:</strong> Command injection testing demonstrates comprehensive OS command injection testing including system command execution and privilege verification."
               ],
               [
                 "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated XSS testing action groups that systematically test for cross-site scripting vulnerabilities.\n<strong>Evidence:</strong> XSS action groups are present across multiple penetration test runs, confirming comprehensive XSS detection capabilities."
               ],
               [
                 "CWE-80: Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> Basic XSS is tested as part of the comprehensive XSS testing capabilities.\n<strong>Evidence:</strong> XSS action groups test for basic XSS vulnerabilities as part of comprehensive XSS testing."
               ],
               [
                 "CWE-83: Improper Neutralization of Script in Attributes in a Web Page",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> Script injection in attributes is tested as part of the comprehensive XSS testing capabilities.\n<strong>Evidence:</strong> XSS action groups test for script injection in attributes as part of comprehensive XSS testing."
               ],
               [
                 "CWE-86: Improper Neutralization of Invalid Characters in Identifiers in Web Pages",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect identifier-based injection through XSS testing, but explicit testing for improper neutralization of invalid characters in identifiers is not systematically performed.\n<strong>Evidence:</strong> XSS action groups may test for invalid character handling, but explicit identifier-based injection testing is not documented.\n<strong>Limitations:</strong> Explicit testing for improper neutralization of invalid characters in identifiers is not systematically performed [UL-007]."
               ],
               [
                 "CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect argument injection through command injection testing, but explicit testing for improper neutralization of argument delimiters is not systematically performed.\n<strong>Evidence:</strong> Command injection action groups test for command injection but may not explicitly test for argument delimiter injection.\n<strong>Limitations:</strong> Explicit testing for improper neutralization of argument delimiters is not systematically performed [UL-007]."
               ],
               [
                 "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated SQL injection testing action groups that systematically test for SQL injection vulnerabilities.\n<strong>Evidence:</strong> SQL injection action groups across multiple penetration test runs demonstrate comprehensive SQL injection vulnerability assessment."
               ],
               [
                 "CWE-90: Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability requires LDAP usage in the application for authentication or directory services.\n<strong>Evidence:</strong> The tested applications do not use LDAP, making this vulnerability not applicable to the tested applications.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-91: XML Injection (aka Blind XPath Injection)",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability requires XPath query processing in the application for XML data access.\n<strong>Evidence:</strong> The tested applications process XML but do not use XPath queries, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-917: Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes server-side template injection testing which may cover some expression language injection, but explicit expression language injection testing is not systematically performed.\n<strong>Evidence:</strong> Server-side template injection action groups exist in some penetration test runs but do not explicitly test for expression language injection.\n<strong>Limitations:</strong> Explicit expression language injection testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service does not include dedicated CRLF injection testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated CRLF injection testing action groups.\n<strong>Limitations:</strong> Explicit CRLF sequence injection testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-94: Improper Control of Generation of Code ('Code Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated code injection testing action groups that systematically test for code injection vulnerabilities.\n<strong>Evidence:</strong> Code injection action groups are present across multiple penetration test runs, confirming robust code injection detection capabilities."
               ],
               [
                 "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects eval injection through code injection testing that identifies where user input is used in dynamically evaluated code contexts.\n<strong>Evidence:</strong> Code injection action groups test for eval injection vulnerabilities where user input is used in dynamically evaluated code."
               ],
               [
                 "CWE-96: Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects static code injection through code injection and template injection testing.\n<strong>Evidence:</strong> Code injection and server-side template injection action groups test for static code injection vulnerabilities."
               ],
               [
                 "CWE-97: Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability requires Server-Side Includes usage in the application.\n<strong>Evidence:</strong> The tested applications use template engines rather than SSI directives, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes local file inclusion testing but does not explicitly test for PHP remote file inclusion.\n<strong>Evidence:</strong> Local file inclusion action groups exist across multiple penetration test runs but focus on local file access rather than remote file inclusion.\n<strong>Limitations:</strong> Explicit PHP remote file inclusion testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-99: Improper Control of Resource Identifiers ('Resource Injection')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects resource injection through comprehensive injection testing that identifies where user input controls resource identifiers.\n<strong>Evidence:</strong> Resource injection is tested through various injection action groups including command injection and XXE testing."
               ]
             ]
           }
@@ -1005,198 +1011,198 @@
             "rows": [
               [
                 "CWE-1021: Improper Restriction of Rendered UI Layers or Frames",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes frame and UI layer restriction testing through X-Frame-Options header validation and CSP frame-src directive analysis.\n<strong>Evidence:</strong> Penetration test logs demonstrate X-Frame-Options header checking and CSP frame-src directive validation across multiple applications."
               ],
               [
                 "CWE-1022: Use of Web Link to Untrusted Target with window.opener Access",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include window.opener vulnerability testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of window.opener or untrusted link testing.\n<strong>Limitations:</strong> Explicit window.opener vulnerability testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-1125: Excessive Attack Surface",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects excessive attack surface through business logic vulnerability testing that identifies unbounded queries and missing resource limits.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of unbounded queries without pagination and missing resource consumption controls."
               ],
               [
                 "CWE-183: Permissive List of Allowed Inputs",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect permissive allow lists indirectly through injection and validation testing, but explicit allow list validation is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and injection testing action groups test for input validation issues but do not explicitly test for permissive allow lists.\n<strong>Limitations:</strong> Explicit allow list validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-256: Plaintext Storage of a Password",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes code scanner capabilities that detect plaintext password storage through static analysis.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of plaintext password storage in database models and authentication logic across multiple applications."
               ],
               [
                 "CWE-266: Incorrect Privilege Assignment",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects incorrect privilege assignment through privilege escalation testing and access control findings.\n<strong>Evidence:</strong> Privilege escalation action groups and findings demonstrate detection of functionality accessible without proper privilege checks."
               ],
               [
                 "CWE-269: Improper Privilege Management",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects improper privilege management through privilege escalation testing that identifies privilege management flaws.\n<strong>Evidence:</strong> Privilege escalation action groups test for improper privilege management in application design."
               ],
               [
                 "CWE-286: Incorrect User Management",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects some user management issues through business logic and privilege escalation testing, but comprehensive user management validation is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities action groups include testing for user management issues but do not comprehensively test all user management aspects.\n<strong>Limitations:</strong> Comprehensive user management validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-311: Missing Encryption of Sensitive Data",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects missing encryption for password storage, but comprehensive encryption validation for all sensitive data types and contexts is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities detect plaintext storage but do not comprehensively test for missing encryption of all sensitive data types.\n<strong>Limitations:</strong> Comprehensive encryption validation for all sensitive data types and contexts is not systematically performed [UL-007]."
               ],
               [
                 "CWE-312: Cleartext Storage of Sensitive Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects cleartext storage of sensitive information through code scanner capabilities that analyze source code.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of cleartext storage of sensitive information including passwords across multiple applications."
               ],
               [
                 "CWE-313: Cleartext Storage in a File or on Disk",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects cleartext storage in files or on disk through code scanner analysis of database models and file storage implementations.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of cleartext storage in database models and file storage patterns."
               ],
               [
                 "CWE-316: Cleartext Storage of Sensitive Information in Memory",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect cleartext storage in memory indirectly through code analysis, but explicit memory inspection and validation is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities detect cleartext storage in files and databases but do not show explicit testing for cleartext storage in memory.\n<strong>Limitations:</strong> Explicit memory inspection and validation is not systematically performed [UL-006]."
               ],
               [
                 "CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes business logic vulnerability testing that detects race conditions through atomicity failure detection.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of race conditions including registration atomicity failures and transaction synchronization problems."
               ],
               [
                 "CWE-382: J2EE Bad Practices: Use of System.exit()",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect dangerous function usage through code scanner, but J2EE-specific bad practices like System.exit() are not explicitly tested, even for Java applications.\n<strong>Evidence:</strong> Code scanner capabilities may detect dangerous function usage but do not show explicit J2EE-specific bad practices testing.\n<strong>Limitations:</strong> J2EE-specific bad practices testing is not systematically performed, even for Java applications [UL-007]."
               ],
               [
                 "CWE-419: Unprotected Primary Channel",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service scans for TLS/SSL protocol vulnerabilities but does not include explicit unprotected primary channel testing.\n<strong>Evidence:</strong> Network scanner action groups include TLS scanner that validates TLS/SSL protocol versions but do not explicitly test for unprotected primary channels.\n<strong>Limitations:</strong> Explicit unprotected primary channel testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-434: Unrestricted Upload of File with Dangerous Type",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service does not include explicit file upload testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit file upload testing action groups.\n<strong>Limitations:</strong> Explicit file upload testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-436: Interpretation Conflict",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service does not include explicit interpretation conflict testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit interpretation conflict testing.\n<strong>Limitations:</strong> Explicit interpretation conflict testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service does not include explicit HTTP request/response smuggling testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit HTTP smuggling testing action groups.\n<strong>Limitations:</strong> Explicit HTTP request/response smuggling testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-451: User Interface (UI) Misrepresentation of Critical Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes UI security testing through browser automation but explicit UI misrepresentation validation is not systematically performed.\n<strong>Evidence:</strong> Browser automation demonstrates UI security testing through form field testing and UI element discovery but does not explicitly validate that critical information is accurately represented.\n<strong>Limitations:</strong> Explicit UI misrepresentation validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-454: External Initialization of Trusted Variables or Data Stores",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect external initialization issues indirectly through code scanner and injection testing, but explicit external initialization validation is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect external initialization issues but do not show explicit external initialization validation.\n<strong>Limitations:</strong> Explicit external initialization validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-472: External Control of Assumed-Immutable Web Parameter",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect external control of assumed-immutable parameters indirectly through parameter manipulation testing, but explicit immutable parameter validation is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and injection testing action groups test for parameter manipulation but do not explicitly test for assumed-immutable parameter control.\n<strong>Limitations:</strong> Explicit immutable parameter validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-501: Trust Boundary Violation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect trust boundary violations indirectly through privilege escalation and access control testing, but explicit trust boundary validation is not systematically performed.\n<strong>Evidence:</strong> Privilege escalation and business logic testing may detect trust boundary violations but do not show explicit trust boundary validation.\n<strong>Limitations:</strong> Explicit trust boundary validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-522: Insufficiently Protected Credentials",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects insufficiently protected credentials through code scanner capabilities that identify plaintext password storage and weak credential protection mechanisms.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of insufficiently protected credentials including plaintext password storage."
               ],
               [
                 "CWE-525: Use of Web Browser Cache Containing Sensitive Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include browser cache security testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit Cache-Control header validation or cache directive testing.\n<strong>Limitations:</strong> Explicit browser cache security testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-539: Use of Persistent Cookies Containing Sensitive Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect persistent cookie issues indirectly through session token and JWT testing, but explicit persistent cookie security validation is not systematically performed.\n<strong>Evidence:</strong> Session token vulnerabilities and JWT testing action groups may detect cookie security issues but do not explicitly test for persistent cookies containing sensitive information.\n<strong>Limitations:</strong> Explicit persistent cookie security validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-598: Use of GET Request Method With Sensitive Query Strings",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect GET request method issues with sensitive query strings indirectly through information disclosure and HTTP method testing, but explicit GET method security validation is not systematically performed.\n<strong>Evidence:</strong> Information disclosure and business logic testing may detect sensitive information in query strings but do not explicitly test for GET request method usage with sensitive data.\n<strong>Limitations:</strong> Explicit GET method security validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-602: Client-Side Enforcement of Server-Side Security",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes client-side enforcement testing through CSP header validation, Content-Type header validation, and JavaScript execution verification.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive CSP policy analysis and testing including browser-based validation of client-side security policies."
               ],
               [
                 "CWE-628: Function Call with Incorrectly Specified Arguments",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service may detect function call issues indirectly through code scanner, but explicit testing for incorrectly specified function arguments is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect some function call issues but do not show explicit testing for incorrectly specified function arguments.\n<strong>Limitations:</strong> Explicit testing for incorrectly specified function arguments is not systematically performed [UL-008]."
               ],
               [
                 "CWE-642: External Control of Critical State Data",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service may detect state manipulation issues indirectly through business logic and injection testing, but explicit external control of critical state data validation is not systematically performed.\n<strong>Evidence:</strong> Business logic and injection testing may detect some state manipulation issues but do not show explicit external control of critical state data validation.\n<strong>Limitations:</strong> Explicit external control of critical state data validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-646: Reliance on File Name or Extension of Externally-Supplied File",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for reliance on file name or extension of externally-supplied files as file upload testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of file name or extension validation testing.\n<strong>Limitations:</strong> File upload testing is not part of the standard testing scope [UL-007]."
               ],
               [
                 "CWE-653: Improper Isolation or Compartmentalization",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service may assess isolation through design reviews, but runtime isolation and compartmentalization testing is not systematically performed in penetration tests.\n<strong>Evidence:</strong> No explicit isolation or compartmentalization testing was observed in penetration test runs.\n<strong>Limitations:</strong> Runtime isolation and compartmentalization testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-656: Reliance on Security Through Obscurity",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not explicitly test for reliance on security through obscurity as this is a design philosophy issue.\n<strong>Evidence:</strong> The tool focuses on finding exploitable vulnerabilities rather than assessing security design philosophy.\n<strong>Limitations:</strong> Explicit testing for reliance on security through obscurity is not part of the standard testing scope [UL-007]."
               ],
               [
                 "CWE-657: Violation of Secure Design Principles",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes comprehensive business logic vulnerability testing and code scanner capabilities that detect violations of secure design principles.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of multiple insecure design patterns including missing controls, insufficient validation, and improper resource management."
               ],
               [
                 "CWE-676: Use of Potentially Dangerous Function",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service may detect dangerous function usage through code scanner, but comprehensive testing for all potentially dangerous functions is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect some dangerous function usage but do not show comprehensive testing for all potentially dangerous functions.\n<strong>Limitations:</strong> Comprehensive testing for all potentially dangerous functions is not systematically performed [UL-008]."
               ],
               [
                 "CWE-693: Protection Mechanism Failure",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service detects individual protection mechanism failures through vulnerability findings, but explicit testing for protection mechanism failure as a design pattern is not systematically performed.\n<strong>Evidence:</strong> The tool detects individual protection mechanism failures but does not explicitly test for protection mechanism failure as a design pattern.\n<strong>Limitations:</strong> Explicit testing for protection mechanism failure as a design pattern is not systematically performed [UL-007]."
               ],
               [
                 "CWE-73: External Control of File Name or Path",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service may detect external control of file name or path indirectly through path traversal testing, but explicit design pattern validation is not systematically performed.\n<strong>Evidence:</strong> Path traversal action groups test for file path manipulation but do not explicitly test for external control of file name or path as a design issue.\n<strong>Limitations:</strong> Explicit design pattern validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-799: Improper Control of Interaction Frequency",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects improper control of interaction frequency through business logic vulnerability testing that identifies missing rate limiting and velocity controls.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of missing transaction limits and velocity controls in application design."
               ],
               [
                 "CWE-807: Reliance on Untrusted Inputs in a Security Decision",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects reliance on untrusted inputs in security decisions through business logic vulnerability testing that identifies insufficient validation.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of reliance on untrusted inputs including insufficient balance validation and improper trust in user-controlled inputs."
               ],
               [
                 "CWE-841: Improper Enforcement of Behavioral Workflow",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects improper enforcement of behavioral workflow through business logic vulnerability testing that identifies missing workflow controls.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of missing workflow controls, insufficient business rule enforcement, and improper state management in application design."
               ]
             ]
           }
@@ -1215,183 +1221,183 @@
             "rows": [
               [
                 "CWE-1390: Weak Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects weak authentication through authentication bypass findings, design review analysis, and protocol security testing, but explicit systematic testing for all forms of weak authentication is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass findings indicate weak authentication mechanisms, design review identifies weak password hashing and weak secrets, and protocol testing identifies weak authentication protocols.\n<strong>Limitations:</strong> Explicit systematic testing for all forms of weak authentication is not comprehensively performed [UL-007]."
               ],
               [
                 "CWE-1391: Use of Weak Credentials",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects weak credentials through credential storage findings, design review analysis, and default credential testing, but explicit systematic runtime testing for weak credential strength is not comprehensively performed.\n<strong>Evidence:</strong> Plaintext password storage findings, design review identifying lack of password complexity requirements, and default credential testing demonstrate detection of weak credentials.\n<strong>Limitations:</strong> Explicit systematic runtime testing for weak credential strength is not comprehensively performed [UL-007]."
               ],
               [
                 "CWE-1392: Use of Default Credentials",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects use of default credentials through dedicated findings that identify default credential usage in deployed applications.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive default credential testing including testing of multiple default credential pairs and validation of administrative access granted through default credentials."
               ],
               [
                 "CWE-1393: Use of Default Password",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects use of default passwords through dedicated findings that identify default password usage in deployed applications.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive default password testing including successful authentication with default passwords that provide full administrative access."
               ],
               [
                 "CWE-258: Empty Password in Configuration File",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service includes static analysis through code scanner which may detect empty passwords in configuration files, but explicit systematic validation of empty password detection is not comprehensively performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect empty passwords in configuration files through static analysis but do not show comprehensive validation of empty password detection.\n<strong>Limitations:</strong> Explicit systematic validation of empty password detection in configuration files is not comprehensively performed [UL-008]."
               ],
               [
                 "CWE-259: Use of Hard-coded Password",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects use of hard-coded passwords through findings that identify plaintext password storage in the application.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of plaintext password storage in database models and authentication logic across multiple applications."
               ],
               [
                 "CWE-287: Improper Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects improper authentication through findings that demonstrate authentication bypass vulnerabilities.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive authentication testing capabilities including SQL injection-based authentication bypass detection."
               ],
               [
                 "CWE-288: Authentication Bypass Using an Alternate Path or Channel",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects authentication bypass through alternate paths or channels via findings that demonstrate unauthorized access through non-standard authentication vectors.\n<strong>Evidence:</strong> Authentication bypass findings demonstrate detection of authentication bypass using SQL injection as an alternate path to bypass normal authentication controls."
               ],
               [
                 "CWE-289: Authentication Bypass by Alternate Name",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service performs comprehensive authentication bypass testing which may detect alternate name bypass techniques indirectly, but explicit systematic validation of authentication bypass by alternate name is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass testing action groups test various authentication bypass techniques but do not explicitly test for alternate name bypass.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by alternate name is not comprehensively performed [UL-007]."
               ],
               [
                 "CWE-290: Authentication Bypass by Spoofing",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service performs comprehensive authentication bypass testing and network scanning which may detect spoofing-based authentication bypass indirectly, but explicit systematic validation of authentication bypass by spoofing is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass testing and network scanner capabilities test various bypass techniques but do not explicitly test for spoofing-based authentication bypass.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by spoofing is not comprehensively performed [UL-007]."
               ],
               [
                 "CWE-291: Reliance on IP Address for Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for reliance on IP address for authentication through authentication bypass testing action groups that include testing for IP address-based client authentication mechanisms.\n<strong>Evidence:</strong> Authentication bypass action groups test for IP address-based client authentication bypass attempts as part of comprehensive authentication testing."
               ],
               [
                 "CWE-293: Using Referer Field for Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for use of Referer field for authentication through authentication bypass testing action groups that include testing for Referer header-based authentication mechanisms.\n<strong>Evidence:</strong> Authentication bypass action groups test for Referer field authentication bypass attempts through Referer header manipulation and validation testing."
               ],
               [
                 "CWE-294: Authentication Bypass by Capture-replay",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service performs session management testing which includes capture-replay testing of session tokens, but explicit systematic validation of authentication bypass by capture-replay of authentication tokens is not comprehensively performed.\n<strong>Evidence:</strong> Session management testing includes capture-replay testing of session tokens but does not explicitly test for authentication token replay.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by capture-replay of authentication tokens is not comprehensively performed [UL-007]."
               ],
               [
                 "CWE-295: Improper Certificate Validation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes explicit certificate validation testing via TLS scanner that tests for improper certificate validation including self-signed certificates and certificate chain validation.\n<strong>Evidence:</strong> Network scanner action groups use TLS/SSL scanning tools that perform comprehensive certificate validation including certificate chain validation and trust store validation."
               ],
               [
                 "CWE-297: Improper Validation of Certificate with Host Mismatch",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for improper validation of certificate with host mismatch via TLS scanner that validates certificate Common Name and Subject Alternative Name fields against the server hostname.\n<strong>Evidence:</strong> TLS scanner validates that certificate Common Name and Subject Alternative Name fields match the server hostname and detects hostname mismatches."
               ],
               [
                 "CWE-298: Improper Validation of Certificate Expiration",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for improper validation of certificate expiration via TLS scanner that validates certificate expiration dates and provides warnings for expiring certificates.\n<strong>Evidence:</strong> TLS scanner checks certificate expiration dates and provides warnings for certificates nearing expiration as part of standard certificate validation."
               ],
               [
                 "CWE-299: Improper Check for Certificate Revocation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for improper check for certificate revocation via TLS scanner that validates certificate revocation status using both CRL and OCSP methods.\n<strong>Evidence:</strong> TLS scanner checks certificate revocation status using Certificate Revocation List and Online Certificate Status Protocol validation."
               ],
               [
                 "CWE-300: Channel Accessible by Non-Endpoint",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect channel accessibility issues indirectly through network scanning and endpoint discovery, but explicit validation of channel accessibility by non-endpoints is not systematically performed.\n<strong>Evidence:</strong> Network scanner action groups perform endpoint discovery and port scanning which may indirectly identify channels accessible by non-endpoints.\n<strong>Limitations:</strong> Explicit validation of channel accessibility by non-endpoints is not systematically performed [UL-007]."
               ],
               [
                 "CWE-302: Authentication Bypass by Assumed-Immutable Data",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service performs comprehensive authentication bypass testing, privilege escalation testing, and IDOR testing which may detect assumed-immutable data tampering indirectly, but explicit systematic validation of authentication bypass by assumed-immutable data tampering is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass, privilege escalation, and IDOR testing may detect assumed-immutable data tampering but do not explicitly test for authentication bypass by assumed-immutable data.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by assumed-immutable data tampering is not comprehensively performed [UL-007]."
               ],
               [
                 "CWE-303: Incorrect Implementation of Authentication Algorithm",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects incorrect implementation of authentication algorithms through design review analysis that identifies weak password hashing implementations and weak secret usage.\n<strong>Evidence:</strong> Design review findings demonstrate detection of weak password hashing implementations including MD5 without salt and weak JWT secret usage."
               ],
               [
                 "CWE-304: Missing Critical Step in Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect missing critical authentication steps indirectly through authentication bypass findings, but explicit validation of authentication flow completeness is not systematically performed.\n<strong>Evidence:</strong> Authentication bypass findings may indicate missing critical authentication steps but do not explicitly test for missing critical steps in authentication.\n<strong>Limitations:</strong> Explicit validation of authentication flow completeness is not systematically performed [UL-007]."
               ],
               [
                 "CWE-305: Authentication Bypass by Primary Weakness",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects authentication bypass through primary weaknesses in authentication mechanisms, as demonstrated by SQL injection-based authentication bypass findings.\n<strong>Evidence:</strong> Authentication bypass findings demonstrate authentication bypass through a primary weakness in the authentication mechanism."
               ],
               [
                 "CWE-306: Missing Authentication for Critical Function",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects missing authentication for critical functions through dedicated findings that identify unauthenticated access to administrative interfaces and critical application functions.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive testing capabilities for missing authentication vulnerabilities including unauthenticated access to administrative functions and file management systems."
               ],
               [
                 "CWE-307: Improper Restriction of Excessive Authentication Attempts",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects improper restriction of excessive authentication attempts through dedicated testing of authentication endpoints.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive rate limiting testing including multiple failed login attempts, response header analysis, and account lockout testing."
               ],
               [
                 "CWE-308: Use of Single-factor Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for or identify single-factor authentication usage.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of MFA testing, single-factor authentication identification, or explicit validation of authentication factor count.\n<strong>Limitations:</strong> Explicit testing for single-factor authentication usage is not part of the testing scope [UL-007]."
               ],
               [
                 "CWE-309: Use of Password System for Primary Authentication",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may identify password-based authentication systems through design review and runtime testing, but explicit evaluation of the appropriateness of using password systems for primary authentication is not systematically performed.\n<strong>Evidence:</strong> Design review and runtime testing identify password-based authentication systems but do not explicitly evaluate whether password systems are appropriate for primary authentication.\n<strong>Limitations:</strong> Explicit evaluation of the appropriateness of using password systems for primary authentication is not systematically performed [UL-007]."
               ],
               [
                 "CWE-346: Origin Validation Error",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for origin validation errors through authentication bypass testing action groups that include testing for Origin header validation logic.\n<strong>Evidence:</strong> Authentication bypass action groups test for origin validation logic bypass attempts through Origin header validation and bypass testing."
               ],
               [
                 "CWE-350: Reliance on Reverse DNS Resolution for a Security-Critical Action",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect DNS resolution usage indirectly through network scanning and code analysis, but explicit validation of reliance on reverse DNS resolution for security-critical authentication actions is not systematically performed.\n<strong>Evidence:</strong> Network scanner and code scanner capabilities may identify DNS resolution usage but do not explicitly test for reliance on reverse DNS resolution for security-critical actions.\n<strong>Limitations:</strong> Explicit validation of reliance on reverse DNS resolution for security-critical authentication actions is not systematically performed [UL-007]."
               ],
               [
                 "CWE-384: Session Fixation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects session fixation vulnerabilities through findings that identify lack of session regeneration on authentication.\n<strong>Evidence:</strong> Session management findings demonstrate detection of session fixation vulnerabilities where session identifiers are not regenerated after successful authentication."
               ],
               [
                 "CWE-521: Weak Password Requirements",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect weak password requirements through design review analysis, but explicit systematic runtime testing for weak password requirements is not comprehensively performed.\n<strong>Evidence:</strong> Design review findings identify lack of password complexity requirements but do not show explicit runtime testing for weak password requirements.\n<strong>Limitations:</strong> Explicit systematic runtime testing for weak password requirements is not comprehensively performed [UL-007]."
               ],
               [
                 "CWE-613: Insufficient Session Expiration",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for insufficient session expiration through session management testing that validates session lifecycle and expiration mechanisms.\n<strong>Evidence:</strong> Session management testing demonstrates detection of insufficient session expiration including detection of non-expiring tokens and session security configuration issues."
               ],
               [
                 "CWE-620: Unverified Password Change",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for unverified password change as password change functionality testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of password change functionality testing.\n<strong>Limitations:</strong> Password change functionality testing is not part of the standard testing scope [UL-007]."
               ],
               [
                 "CWE-640: Weak Password Recovery Mechanism for Forgotten Password",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for weak password recovery mechanisms as password recovery functionality testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of password recovery functionality testing.\n<strong>Limitations:</strong> Password recovery functionality testing is not part of the standard testing scope [UL-007]."
               ],
               [
                 "CWE-798: Use of Hard-coded Credentials",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects use of hard-coded credentials through findings that identify plaintext credential storage.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of hard-coded credentials including plaintext credential storage in database models and authentication logic."
               ],
               [
                 "CWE-940: Improper Verification of Source of a Communication Channel",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect communication channel source verification issues indirectly through network scanning, session management testing, and authentication testing, but explicit validation of communication channel source verification is not systematically performed.\n<strong>Evidence:</strong> Network scanner and session management testing may identify communication channel issues but do not explicitly test for improper verification of communication channel source.\n<strong>Limitations:</strong> Explicit validation of communication channel source verification is not systematically performed [UL-007]."
               ],
               [
                 "CWE-941: Incorrectly Specified Destination in a Communication Channel",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect communication channel destination issues indirectly through network scanning and SSRF testing, but explicit validation of incorrectly specified destinations in communication channels is not systematically performed.\n<strong>Evidence:</strong> Network scanner and SSRF testing may identify destination validation issues but do not explicitly test for incorrectly specified destinations in communication channels.\n<strong>Limitations:</strong> Explicit validation of incorrectly specified destinations in communication channels is not systematically performed [UL-007]."
               ]
             ]
           }
@@ -1410,73 +1416,73 @@
             "rows": [
               [
                 "CWE-345: Insufficient Verification of Data Authenticity",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects insufficient verification of data authenticity through improper inventory management testing that validates the presence of integrity checks for downloaded code and base images.\n<strong>Evidence:</strong> Improper inventory management action groups test for missing authenticity verification when downloading components and using base images without SHA256 digest pinning."
               ],
               [
                 "CWE-353: Missing Support for Integrity Check",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect missing integrity check support indirectly through improper inventory management testing of build configurations, but explicit validation of missing integrity check support in runtime application features is not systematically performed.\n<strong>Evidence:</strong> Improper inventory management action groups test for missing integrity checks in Dockerfiles and build configurations but do not explicitly test for missing integrity check support in runtime application behavior.\n<strong>Limitations:</strong> Explicit validation of missing integrity check support in runtime application features is not systematically performed [UL-007]."
               ],
               [
                 "CWE-426: Untrusted Search Path",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for untrusted search path vulnerabilities through local file inclusion and path traversal action groups that systematically test for file access outside intended directories.\n<strong>Evidence:</strong> Local file inclusion and path traversal action groups demonstrate comprehensive testing of untrusted search path vulnerabilities including various traversal techniques and encoding methods."
               ],
               [
                 "CWE-427: Uncontrolled Search Path Element",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects uncontrolled search path elements through local file inclusion and path traversal testing that validates file access controls and directory restrictions.\n<strong>Evidence:</strong> Local file inclusion and path traversal action groups test for uncontrolled search path elements allowing access to files outside intended directories."
               ],
               [
                 "CWE-494: Download of Code Without Integrity Check",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service includes dedicated improper inventory management testing action groups that systematically test for dependency version pinning and integrity verification in Dockerfiles and build configurations.\n<strong>Evidence:</strong> Improper inventory management validator tasks demonstrate comprehensive analysis of Docker base image pinning and component checksum verification, confirming robust integrity check testing capabilities."
               ],
               [
                 "CWE-502: Deserialization of Untrusted Data",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for deserialization vulnerabilities in Java applications through dedicated insecure deserialization action groups.\n<strong>Evidence:</strong> Penetration test findings demonstrate deserialization testing for Java applications including comprehensive testing attempting to exploit Java deserialization vulnerabilities."
               ],
               [
                 "CWE-506: Embedded Malicious Code",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability requires the presence of intentionally embedded malicious code in the application.\n<strong>Evidence:</strong> The tested applications are legitimate web applications without embedded malicious code, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-509: Replicating Malicious Code (Virus or Worm)",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability requires the presence of self-replicating malicious code in the application.\n<strong>Evidence:</strong> The tested applications are legitimate web applications without self-replicating malicious code, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-565: Reliance on Cookies without Validation and Integrity Checking",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include cookie integrity checking validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of cookie integrity checking validation in runtime testing or static code analysis.\n<strong>Limitations:</strong> Explicit cookie integrity checking validation is not systematically performed [UL-007]."
               ],
               [
                 "CWE-784: Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not test for cookie integrity checking in security decision contexts.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of cookie integrity checking validation in security decision contexts.\n<strong>Limitations:</strong> Explicit cookie integrity checking validation in security decision contexts is not systematically performed [UL-007]."
               ],
               [
                 "CWE-829: Inclusion of Functionality from Untrusted Control Sphere",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect inclusion of functionality from untrusted control spheres through code scanner static analysis, but explicit runtime testing for untrusted functionality inclusion is not systematically performed.\n<strong>Evidence:</strong> Code scanner action groups perform static analysis that may detect untrusted functionality inclusion patterns but do not show explicit runtime testing for untrusted functionality inclusion.\n<strong>Limitations:</strong> Explicit runtime testing for untrusted functionality inclusion is not systematically performed [UL-007]."
               ],
               [
                 "CWE-830: Inclusion of Web Functionality from an Untrusted Source",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect inclusion of web functionality from untrusted sources through code scanner static analysis and security misconfiguration testing, but explicit testing for untrusted web functionality inclusion is not systematically performed.\n<strong>Evidence:</strong> Code scanner and security misconfiguration action groups may detect untrusted web functionality inclusion patterns but do not show explicit validation of untrusted web functionality inclusion.\n<strong>Limitations:</strong> Explicit testing for untrusted web functionality inclusion is not systematically performed [UL-007]."
               ],
               [
                 "CWE-915: Improperly Controlled Modification of Dynamically-Determined Object Attributes",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for improper modification of dynamically-determined object attributes in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of object attribute modification testing in runtime testing or static code analysis.\n<strong>Limitations:</strong> Explicit testing for improper modification of dynamically-determined object attributes is not systematically performed [UL-008]."
               ],
               [
                 "CWE-926: Improper Export of Android Application Components",
                 "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "<strong>Description:</strong> This vulnerability is Android-specific and requires Android mobile application analysis.\n<strong>Evidence:</strong> The tested applications are web applications accessed through HTTP/HTTPS interfaces, not Android mobile applications, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ]
             ]
           }
@@ -1495,28 +1501,28 @@
             "rows": [
               [
                 "CWE-117: Improper Output Neutralization for Logs",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include log injection testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of log injection testing, log encoding validation, or log injection attack simulation.\n<strong>Limitations:</strong> Explicit log injection testing is not systematically performed [UL-007]."
               ],
               [
                 "CWE-221: Information Loss or Omission",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects information loss or omission through insufficient logging findings, but explicit testing for all information loss scenarios is not systematically performed.\n<strong>Evidence:</strong> Insufficient logging findings identify missing forensic metadata in transaction logs but do not show explicit testing for all information loss scenarios.\n<strong>Limitations:</strong> Explicit testing for all information loss scenarios is not systematically performed [UL-007]."
               ],
               [
                 "CWE-223: Omission of Security-relevant Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service detects omission of security-relevant information through insufficient logging findings, but explicit testing for all types of security-relevant information omissions is not systematically performed.\n<strong>Evidence:</strong> Insufficient logging findings identify omission of security-relevant information in logs but do not show explicit testing for all types of security-relevant information omissions.\n<strong>Limitations:</strong> Explicit testing for all types of security-relevant information omissions is not systematically performed [UL-007]."
               ],
               [
                 "CWE-532: Insertion of Sensitive Information into Log File",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for sensitive information insertion into log files in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of log file content analysis or sensitive information logging validation.\n<strong>Limitations:</strong> Explicit testing for sensitive information insertion into log files is not systematically performed [UL-007]."
               ],
               [
                 "CWE-778: Insufficient Logging",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service successfully detects insufficient logging through dedicated findings that identify missing or inadequate audit logging for security-critical events.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive testing of audit logging capabilities including transaction logging validation, authentication event logging testing, and forensic metadata verification."
               ]
             ]
           }
@@ -1535,123 +1541,123 @@
             "rows": [
               [
                 "CWE-209: Generation of Error Message Containing Sensitive Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects error messages containing sensitive information through dedicated testing that identifies when applications expose detailed exception information in HTTP responses.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of improper error message generation through HTTP 500 error responses and stack trace disclosure across multiple applications."
               ],
               [
                 "CWE-215: Insertion of Sensitive Information Into Debugging Code",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for sensitive information in debugging code in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for sensitive information in debugging code.\n<strong>Limitations:</strong> Explicit testing for sensitive information in debugging code is not systematically performed [UL-008]."
               ],
               [
                 "CWE-234: Failure to Handle Missing Parameter",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect missing parameter issues indirectly through input validation and injection testing, but explicit validation of missing parameter error handling is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and injection testing action groups test for input validation but do not explicitly test for failure to handle missing parameters.\n<strong>Limitations:</strong> Explicit validation of missing parameter error handling is not systematically performed [UL-007]."
               ],
               [
                 "CWE-235: Improper Handling of Extra Parameters",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect extra parameter issues indirectly through input validation testing, but explicit validation of extra parameter error handling is not systematically performed.\n<strong>Evidence:</strong> Input validation testing may identify extra parameter issues but does not explicitly test for improper handling of extra parameters.\n<strong>Limitations:</strong> Explicit validation of extra parameter error handling is not systematically performed [UL-007]."
               ],
               [
                 "CWE-248: Uncaught Exception",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects uncaught exceptions through error response analysis and dedicated HTTP 500 error testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate that the tool identifies when applications fail to catch exceptions, resulting in unhandled error responses with stack trace disclosure."
               ],
               [
                 "CWE-252: Unchecked Return Value",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect unchecked return values through static code analysis, but explicit runtime validation of return value checking is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may identify unchecked return values through static analysis but do not show explicit runtime testing for unchecked return values.\n<strong>Limitations:</strong> Explicit runtime validation of return value checking is not systematically performed [UL-008]."
               ],
               [
                 "CWE-274: Improper Handling of Insufficient Privileges",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect privilege issues through privilege escalation testing, but explicit validation of insufficient privilege error handling is not systematically performed.\n<strong>Evidence:</strong> Privilege escalation action groups test for privilege escalation vulnerabilities but do not explicitly test for improper error handling when insufficient privileges are encountered.\n<strong>Limitations:</strong> Explicit validation of insufficient privilege error handling is not systematically performed [UL-007]."
               ],
               [
                 "CWE-280: Improper Handling of Insufficient Permissions or Privileges",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect permission issues through privilege escalation testing, but explicit validation of insufficient permission error handling is not systematically performed.\n<strong>Evidence:</strong> Privilege escalation action groups test for permission vulnerabilities but do not explicitly test for improper error handling when insufficient permissions are encountered.\n<strong>Limitations:</strong> Explicit validation of insufficient permission error handling is not systematically performed [UL-007]."
               ],
               [
                 "CWE-369: Divide By Zero",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for divide by zero vulnerabilities in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for divide by zero vulnerabilities.\n<strong>Limitations:</strong> Explicit testing for divide by zero vulnerabilities is not systematically performed [UL-007]."
               ],
               [
                 "CWE-390: Detection of Error Condition Without Action",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect error conditions without action indirectly through business logic and error handling testing, but explicit validation of this pattern is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and error handling testing may identify error conditions detected without action but do not explicitly test for this pattern.\n<strong>Limitations:</strong> Explicit validation of error conditions without action is not systematically performed [UL-007]."
               ],
               [
                 "CWE-391: Unchecked Error Condition",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect unchecked error conditions indirectly through error handling testing, but explicit validation of unchecked error condition patterns is not systematically performed.\n<strong>Evidence:</strong> Error handling testing may identify unchecked error conditions but does not explicitly test for unchecked error conditions as a specific vulnerability pattern.\n<strong>Limitations:</strong> Explicit validation of unchecked error condition patterns is not systematically performed [UL-007]."
               ],
               [
                 "CWE-394: Unexpected Status Code or Return Value",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect unexpected status codes through network scanning and HTTP testing, but explicit validation of unexpected status code handling is not systematically performed.\n<strong>Evidence:</strong> Network scanner and HTTP testing may identify unexpected status codes but do not explicitly test for improper handling of unexpected status codes from external dependencies.\n<strong>Limitations:</strong> Explicit validation of unexpected status code handling is not systematically performed [UL-007]."
               ],
               [
                 "CWE-396: Declaration of Catch for Generic Exception",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect generic exception catching through static code analysis, but explicit runtime validation of exception handling patterns is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may identify generic exception catching through static analysis but do not show explicit runtime testing for exception handling patterns.\n<strong>Limitations:</strong> Explicit runtime validation of exception handling patterns is not systematically performed [UL-008]."
               ],
               [
                 "CWE-397: Declaration of Throws for Generic Exception",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for generic exception throwing declarations in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for generic exception throwing declarations.\n<strong>Limitations:</strong> Explicit testing for generic exception throwing declarations is not systematically performed [UL-008]."
               ],
               [
                 "CWE-460: Improper Cleanup on Thrown Exception",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for improper cleanup on thrown exceptions through business logic vulnerability testing.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate testing for scenarios where exceptions during operations could leave the system in an inconsistent state."
               ],
               [
                 "CWE-476: NULL Pointer Dereference",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for NULL pointer dereference vulnerabilities in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for NULL pointer dereference vulnerabilities.\n<strong>Limitations:</strong> Explicit testing for NULL pointer dereference vulnerabilities is not systematically performed [UL-007]."
               ],
               [
                 "CWE-478: Missing Default Case in Multiple Condition Expression",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for missing default cases in multiple condition expressions in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for missing default cases in switch statements or condition expressions.\n<strong>Limitations:</strong> Explicit testing for missing default cases is not systematically performed [UL-008]."
               ],
               [
                 "CWE-484: Omitted Break Statement in Switch",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for omitted break statements in switch statements in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for omitted break statements in switch statements.\n<strong>Limitations:</strong> Explicit testing for omitted break statements is not systematically performed [UL-008]."
               ],
               [
                 "CWE-550: Server-generated Error Message Containing Sensitive Information",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects server-generated error messages containing sensitive information through SQL injection testing, error handling validation, and dedicated HTTP 500 error testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate identification of when applications expose detailed server-side exception information to users, including stack traces in HTTP 500 responses."
               ],
               [
                 "CWE-636: Not Failing Securely ('Failing Open')",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Partial",
+                "<strong>Description:</strong> The service may detect fail-open scenarios indirectly through authentication and authorization testing, but explicit validation of fail-open vs fail-closed behavior is not systematically performed.\n<strong>Evidence:</strong> Authentication and authorization testing may identify fail-open scenarios but do not explicitly test for fail-open behavior as a specific exceptional condition handling pattern.\n<strong>Limitations:</strong> Explicit validation of fail-open vs fail-closed behavior is not systematically performed [UL-007]."
               ],
               [
                 "CWE-703: Improper Check or Handling of Exceptional Conditions",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects improper exception handling through business logic testing, error response analysis, and dedicated HTTP 500 error testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate identification of when applications fail to properly check or handle exceptional conditions, as shown by unhandled exceptions resulting in HTTP 500 responses."
               ],
               [
                 "CWE-754: Improper Check for Unusual or Exceptional Conditions",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service tests for improper checks of unusual or exceptional conditions through business logic vulnerability testing.\n<strong>Evidence:</strong> Business logic vulnerability testing demonstrates the tool's capability to identify when applications fail to check for concurrent access conditions and other unusual conditions."
               ],
               [
                 "CWE-755: Improper Handling of Exceptional Conditions",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Covered",
+                "<strong>Description:</strong> The service detects improper handling of exceptional conditions through error response analysis, dedicated HTTP 500 error testing, and business logic testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate identification of when applications fail to properly handle exceptions, as shown by HTTP 500 responses with detailed error information."
               ],
               [
                 "CWE-756: Missing Custom Error Page",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Covered",
+                "<strong>Description:</strong> The service does not include testing for missing custom error pages in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for missing custom error pages.\n<strong>Limitations:</strong> Explicit testing for missing custom error pages is not systematically performed [UL-007]."
               ]
             ]
           }
