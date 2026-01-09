@@ -292,6 +292,12 @@ body {
     overflow-wrap: break-word;
 }
 
+/* Center-align the Coverage column (2nd column) in Table 3 tables (3-column tables) */
+.academic-table:has(thead tr th:nth-child(3):last-child) th:nth-child(2),
+.academic-table:has(thead tr th:nth-child(3):last-child) td:nth-child(2) {
+    text-align: center;
+}
+
 /* Override for 2-column tables only (Tables 1 and 2) - auto-width for ID column */
 .academic-table:has(thead tr th:nth-child(2):last-child) th:first-child,
 .academic-table:has(thead tr th:nth-child(2):last-child) td:first-child {

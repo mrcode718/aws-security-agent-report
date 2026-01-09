@@ -1,0 +1,191 @@
+{
+  "caption": "Table 3g - A07: Authentication Failures Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-1390: Weak Authentication",
+      "Partial",
+      "<strong>Description:</strong> The service detects weak authentication through authentication bypass findings, design review analysis, and protocol security testing, but explicit systematic testing for all forms of weak authentication is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass findings indicate weak authentication mechanisms, design review identifies weak password hashing and weak secrets, and protocol testing identifies weak authentication protocols.\n<strong>Limitations:</strong> Explicit systematic testing for all forms of weak authentication is not comprehensively performed [UL-007]."
+    ],
+    [
+      "CWE-1391: Use of Weak Credentials",
+      "Partial",
+      "<strong>Description:</strong> The service detects weak credentials through credential storage findings, design review analysis, and default credential testing, but explicit systematic runtime testing for weak credential strength is not comprehensively performed.\n<strong>Evidence:</strong> Plaintext password storage findings, design review identifying lack of password complexity requirements, and default credential testing demonstrate detection of weak credentials.\n<strong>Limitations:</strong> Explicit systematic runtime testing for weak credential strength is not comprehensively performed [UL-007]."
+    ],
+    [
+      "CWE-1392: Use of Default Credentials",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects use of default credentials through dedicated findings that identify default credential usage in deployed applications.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive default credential testing including testing of multiple default credential pairs and validation of administrative access granted through default credentials."
+    ],
+    [
+      "CWE-1393: Use of Default Password",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects use of default passwords through dedicated findings that identify default password usage in deployed applications.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive default password testing including successful authentication with default passwords that provide full administrative access."
+    ],
+    [
+      "CWE-258: Empty Password in Configuration File",
+      "Partial",
+      "<strong>Description:</strong> The service includes static analysis through code scanner which may detect empty passwords in configuration files, but explicit systematic validation of empty password detection is not comprehensively performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect empty passwords in configuration files through static analysis but do not show comprehensive validation of empty password detection.\n<strong>Limitations:</strong> Explicit systematic validation of empty password detection in configuration files is not comprehensively performed [UL-008]."
+    ],
+    [
+      "CWE-259: Use of Hard-coded Password",
+      "Covered",
+      "<strong>Description:</strong> The service detects use of hard-coded passwords through findings that identify plaintext password storage in the application.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of plaintext password storage in database models and authentication logic across multiple applications."
+    ],
+    [
+      "CWE-287: Improper Authentication",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects improper authentication through findings that demonstrate authentication bypass vulnerabilities.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive authentication testing capabilities including SQL injection-based authentication bypass detection."
+    ],
+    [
+      "CWE-288: Authentication Bypass Using an Alternate Path or Channel",
+      "Covered",
+      "<strong>Description:</strong> The service detects authentication bypass through alternate paths or channels via findings that demonstrate unauthorized access through non-standard authentication vectors.\n<strong>Evidence:</strong> Authentication bypass findings demonstrate detection of authentication bypass using SQL injection as an alternate path to bypass normal authentication controls."
+    ],
+    [
+      "CWE-289: Authentication Bypass by Alternate Name",
+      "Partial",
+      "<strong>Description:</strong> The service performs comprehensive authentication bypass testing which may detect alternate name bypass techniques indirectly, but explicit systematic validation of authentication bypass by alternate name is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass testing action groups test various authentication bypass techniques but do not explicitly test for alternate name bypass.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by alternate name is not comprehensively performed [UL-007]."
+    ],
+    [
+      "CWE-290: Authentication Bypass by Spoofing",
+      "Partial",
+      "<strong>Description:</strong> The service performs comprehensive authentication bypass testing and network scanning which may detect spoofing-based authentication bypass indirectly, but explicit systematic validation of authentication bypass by spoofing is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass testing and network scanner capabilities test various bypass techniques but do not explicitly test for spoofing-based authentication bypass.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by spoofing is not comprehensively performed [UL-007]."
+    ],
+    [
+      "CWE-291: Reliance on IP Address for Authentication",
+      "Covered",
+      "<strong>Description:</strong> The service tests for reliance on IP address for authentication through authentication bypass testing action groups that include testing for IP address-based client authentication mechanisms.\n<strong>Evidence:</strong> Authentication bypass action groups test for IP address-based client authentication bypass attempts as part of comprehensive authentication testing."
+    ],
+    [
+      "CWE-293: Using Referer Field for Authentication",
+      "Covered",
+      "<strong>Description:</strong> The service tests for use of Referer field for authentication through authentication bypass testing action groups that include testing for Referer header-based authentication mechanisms.\n<strong>Evidence:</strong> Authentication bypass action groups test for Referer field authentication bypass attempts through Referer header manipulation and validation testing."
+    ],
+    [
+      "CWE-294: Authentication Bypass by Capture-replay",
+      "Partial",
+      "<strong>Description:</strong> The service performs session management testing which includes capture-replay testing of session tokens, but explicit systematic validation of authentication bypass by capture-replay of authentication tokens is not comprehensively performed.\n<strong>Evidence:</strong> Session management testing includes capture-replay testing of session tokens but does not explicitly test for authentication token replay.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by capture-replay of authentication tokens is not comprehensively performed [UL-007]."
+    ],
+    [
+      "CWE-295: Improper Certificate Validation",
+      "Covered",
+      "<strong>Description:</strong> The service includes explicit certificate validation testing via TLS scanner that tests for improper certificate validation including self-signed certificates and certificate chain validation.\n<strong>Evidence:</strong> Network scanner action groups use TLS/SSL scanning tools that perform comprehensive certificate validation including certificate chain validation and trust store validation."
+    ],
+    [
+      "CWE-297: Improper Validation of Certificate with Host Mismatch",
+      "Covered",
+      "<strong>Description:</strong> The service tests for improper validation of certificate with host mismatch via TLS scanner that validates certificate Common Name and Subject Alternative Name fields against the server hostname.\n<strong>Evidence:</strong> TLS scanner validates that certificate Common Name and Subject Alternative Name fields match the server hostname and detects hostname mismatches."
+    ],
+    [
+      "CWE-298: Improper Validation of Certificate Expiration",
+      "Covered",
+      "<strong>Description:</strong> The service tests for improper validation of certificate expiration via TLS scanner that validates certificate expiration dates and provides warnings for expiring certificates.\n<strong>Evidence:</strong> TLS scanner checks certificate expiration dates and provides warnings for certificates nearing expiration as part of standard certificate validation."
+    ],
+    [
+      "CWE-299: Improper Check for Certificate Revocation",
+      "Covered",
+      "<strong>Description:</strong> The service tests for improper check for certificate revocation via TLS scanner that validates certificate revocation status using both CRL and OCSP methods.\n<strong>Evidence:</strong> TLS scanner checks certificate revocation status using Certificate Revocation List and Online Certificate Status Protocol validation."
+    ],
+    [
+      "CWE-300: Channel Accessible by Non-Endpoint",
+      "Partial",
+      "<strong>Description:</strong> The service may detect channel accessibility issues indirectly through network scanning and endpoint discovery, but explicit validation of channel accessibility by non-endpoints is not systematically performed.\n<strong>Evidence:</strong> Network scanner action groups perform endpoint discovery and port scanning which may indirectly identify channels accessible by non-endpoints.\n<strong>Limitations:</strong> Explicit validation of channel accessibility by non-endpoints is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-302: Authentication Bypass by Assumed-Immutable Data",
+      "Partial",
+      "<strong>Description:</strong> The service performs comprehensive authentication bypass testing, privilege escalation testing, and IDOR testing which may detect assumed-immutable data tampering indirectly, but explicit systematic validation of authentication bypass by assumed-immutable data tampering is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass, privilege escalation, and IDOR testing may detect assumed-immutable data tampering but do not explicitly test for authentication bypass by assumed-immutable data.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by assumed-immutable data tampering is not comprehensively performed [UL-007]."
+    ],
+    [
+      "CWE-303: Incorrect Implementation of Authentication Algorithm",
+      "Covered",
+      "<strong>Description:</strong> The service detects incorrect implementation of authentication algorithms through design review analysis that identifies weak password hashing implementations and weak secret usage.\n<strong>Evidence:</strong> Design review findings demonstrate detection of weak password hashing implementations including MD5 without salt and weak JWT secret usage."
+    ],
+    [
+      "CWE-304: Missing Critical Step in Authentication",
+      "Partial",
+      "<strong>Description:</strong> The service may detect missing critical authentication steps indirectly through authentication bypass findings, but explicit validation of authentication flow completeness is not systematically performed.\n<strong>Evidence:</strong> Authentication bypass findings may indicate missing critical authentication steps but do not explicitly test for missing critical steps in authentication.\n<strong>Limitations:</strong> Explicit validation of authentication flow completeness is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-305: Authentication Bypass by Primary Weakness",
+      "Covered",
+      "<strong>Description:</strong> The service detects authentication bypass through primary weaknesses in authentication mechanisms, as demonstrated by SQL injection-based authentication bypass findings.\n<strong>Evidence:</strong> Authentication bypass findings demonstrate authentication bypass through a primary weakness in the authentication mechanism."
+    ],
+    [
+      "CWE-306: Missing Authentication for Critical Function",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects missing authentication for critical functions through dedicated findings that identify unauthenticated access to administrative interfaces and critical application functions.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive testing capabilities for missing authentication vulnerabilities including unauthenticated access to administrative functions and file management systems."
+    ],
+    [
+      "CWE-307: Improper Restriction of Excessive Authentication Attempts",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects improper restriction of excessive authentication attempts through dedicated testing of authentication endpoints.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive rate limiting testing including multiple failed login attempts, response header analysis, and account lockout testing."
+    ],
+    [
+      "CWE-308: Use of Single-factor Authentication",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for or identify single-factor authentication usage.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of MFA testing, single-factor authentication identification, or explicit validation of authentication factor count.\n<strong>Limitations:</strong> Explicit testing for single-factor authentication usage is not part of the testing scope [UL-007]."
+    ],
+    [
+      "CWE-309: Use of Password System for Primary Authentication",
+      "Partial",
+      "<strong>Description:</strong> The service may identify password-based authentication systems through design review and runtime testing, but explicit evaluation of the appropriateness of using password systems for primary authentication is not systematically performed.\n<strong>Evidence:</strong> Design review and runtime testing identify password-based authentication systems but do not explicitly evaluate whether password systems are appropriate for primary authentication.\n<strong>Limitations:</strong> Explicit evaluation of the appropriateness of using password systems for primary authentication is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-346: Origin Validation Error",
+      "Covered",
+      "<strong>Description:</strong> The service tests for origin validation errors through authentication bypass testing action groups that include testing for Origin header validation logic.\n<strong>Evidence:</strong> Authentication bypass action groups test for origin validation logic bypass attempts through Origin header validation and bypass testing."
+    ],
+    [
+      "CWE-350: Reliance on Reverse DNS Resolution for a Security-Critical Action",
+      "Partial",
+      "<strong>Description:</strong> The service may detect DNS resolution usage indirectly through network scanning and code analysis, but explicit validation of reliance on reverse DNS resolution for security-critical authentication actions is not systematically performed.\n<strong>Evidence:</strong> Network scanner and code scanner capabilities may identify DNS resolution usage but do not explicitly test for reliance on reverse DNS resolution for security-critical actions.\n<strong>Limitations:</strong> Explicit validation of reliance on reverse DNS resolution for security-critical authentication actions is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-384: Session Fixation",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects session fixation vulnerabilities through findings that identify lack of session regeneration on authentication.\n<strong>Evidence:</strong> Session management findings demonstrate detection of session fixation vulnerabilities where session identifiers are not regenerated after successful authentication."
+    ],
+    [
+      "CWE-521: Weak Password Requirements",
+      "Partial",
+      "<strong>Description:</strong> The service may detect weak password requirements through design review analysis, but explicit systematic runtime testing for weak password requirements is not comprehensively performed.\n<strong>Evidence:</strong> Design review findings identify lack of password complexity requirements but do not show explicit runtime testing for weak password requirements.\n<strong>Limitations:</strong> Explicit systematic runtime testing for weak password requirements is not comprehensively performed [UL-007]."
+    ],
+    [
+      "CWE-613: Insufficient Session Expiration",
+      "Covered",
+      "<strong>Description:</strong> The service tests for insufficient session expiration through session management testing that validates session lifecycle and expiration mechanisms.\n<strong>Evidence:</strong> Session management testing demonstrates detection of insufficient session expiration including detection of non-expiring tokens and session security configuration issues."
+    ],
+    [
+      "CWE-620: Unverified Password Change",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for unverified password change as password change functionality testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of password change functionality testing.\n<strong>Limitations:</strong> Password change functionality testing is not part of the standard testing scope [UL-007]."
+    ],
+    [
+      "CWE-640: Weak Password Recovery Mechanism for Forgotten Password",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for weak password recovery mechanisms as password recovery functionality testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of password recovery functionality testing.\n<strong>Limitations:</strong> Password recovery functionality testing is not part of the standard testing scope [UL-007]."
+    ],
+    [
+      "CWE-798: Use of Hard-coded Credentials",
+      "Covered",
+      "<strong>Description:</strong> The service detects use of hard-coded credentials through findings that identify plaintext credential storage.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of hard-coded credentials including plaintext credential storage in database models and authentication logic."
+    ],
+    [
+      "CWE-940: Improper Verification of Source of a Communication Channel",
+      "Partial",
+      "<strong>Description:</strong> The service may detect communication channel source verification issues indirectly through network scanning, session management testing, and authentication testing, but explicit validation of communication channel source verification is not systematically performed.\n<strong>Evidence:</strong> Network scanner and session management testing may identify communication channel issues but do not explicitly test for improper verification of communication channel source.\n<strong>Limitations:</strong> Explicit validation of communication channel source verification is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-941: Incorrectly Specified Destination in a Communication Channel",
+      "Partial",
+      "<strong>Description:</strong> The service may detect communication channel destination issues indirectly through network scanning and SSRF testing, but explicit validation of incorrectly specified destinations in communication channels is not systematically performed.\n<strong>Evidence:</strong> Network scanner and SSRF testing may identify destination validation issues but do not explicitly test for incorrectly specified destinations in communication channels.\n<strong>Limitations:</strong> Explicit validation of incorrectly specified destinations in communication channels is not systematically performed [UL-007]."
+    ]
+  ]
+}

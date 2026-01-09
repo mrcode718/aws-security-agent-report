@@ -1,0 +1,81 @@
+{
+  "caption": "Table 3h - A08: Software or Data Integrity Failures Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-345: Insufficient Verification of Data Authenticity",
+      "Covered",
+      "<strong>Description:</strong> The service detects insufficient verification of data authenticity through improper inventory management testing that validates the presence of integrity checks for downloaded code and base images.\n<strong>Evidence:</strong> Improper inventory management action groups test for missing authenticity verification when downloading components and using base images without SHA256 digest pinning."
+    ],
+    [
+      "CWE-353: Missing Support for Integrity Check",
+      "Partial",
+      "<strong>Description:</strong> The service may detect missing integrity check support indirectly through improper inventory management testing of build configurations, but explicit validation of missing integrity check support in runtime application features is not systematically performed.\n<strong>Evidence:</strong> Improper inventory management action groups test for missing integrity checks in Dockerfiles and build configurations but do not explicitly test for missing integrity check support in runtime application behavior.\n<strong>Limitations:</strong> Explicit validation of missing integrity check support in runtime application features is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-426: Untrusted Search Path",
+      "Covered",
+      "<strong>Description:</strong> The service tests for untrusted search path vulnerabilities through local file inclusion and path traversal action groups that systematically test for file access outside intended directories.\n<strong>Evidence:</strong> Local file inclusion and path traversal action groups demonstrate comprehensive testing of untrusted search path vulnerabilities including various traversal techniques and encoding methods."
+    ],
+    [
+      "CWE-427: Uncontrolled Search Path Element",
+      "Covered",
+      "<strong>Description:</strong> The service detects uncontrolled search path elements through local file inclusion and path traversal testing that validates file access controls and directory restrictions.\n<strong>Evidence:</strong> Local file inclusion and path traversal action groups test for uncontrolled search path elements allowing access to files outside intended directories."
+    ],
+    [
+      "CWE-494: Download of Code Without Integrity Check",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated improper inventory management testing action groups that systematically test for dependency version pinning and integrity verification in Dockerfiles and build configurations.\n<strong>Evidence:</strong> Improper inventory management validator tasks demonstrate comprehensive analysis of Docker base image pinning and component checksum verification, confirming robust integrity check testing capabilities."
+    ],
+    [
+      "CWE-502: Deserialization of Untrusted Data",
+      "Covered",
+      "<strong>Description:</strong> The service tests for deserialization vulnerabilities in Java applications through dedicated insecure deserialization action groups.\n<strong>Evidence:</strong> Penetration test findings demonstrate deserialization testing for Java applications including comprehensive testing attempting to exploit Java deserialization vulnerabilities."
+    ],
+    [
+      "CWE-506: Embedded Malicious Code",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires the presence of intentionally embedded malicious code in the application.\n<strong>Evidence:</strong> The tested applications are legitimate web applications without embedded malicious code, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-509: Replicating Malicious Code (Virus or Worm)",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires the presence of self-replicating malicious code in the application.\n<strong>Evidence:</strong> The tested applications are legitimate web applications without self-replicating malicious code, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-565: Reliance on Cookies without Validation and Integrity Checking",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include cookie integrity checking validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of cookie integrity checking validation in runtime testing or static code analysis.\n<strong>Limitations:</strong> Explicit cookie integrity checking validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-784: Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for cookie integrity checking in security decision contexts.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of cookie integrity checking validation in security decision contexts.\n<strong>Limitations:</strong> Explicit cookie integrity checking validation in security decision contexts is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-829: Inclusion of Functionality from Untrusted Control Sphere",
+      "Partial",
+      "<strong>Description:</strong> The service may detect inclusion of functionality from untrusted control spheres through code scanner static analysis, but explicit runtime testing for untrusted functionality inclusion is not systematically performed.\n<strong>Evidence:</strong> Code scanner action groups perform static analysis that may detect untrusted functionality inclusion patterns but do not show explicit runtime testing for untrusted functionality inclusion.\n<strong>Limitations:</strong> Explicit runtime testing for untrusted functionality inclusion is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-830: Inclusion of Web Functionality from an Untrusted Source",
+      "Partial",
+      "<strong>Description:</strong> The service may detect inclusion of web functionality from untrusted sources through code scanner static analysis and security misconfiguration testing, but explicit testing for untrusted web functionality inclusion is not systematically performed.\n<strong>Evidence:</strong> Code scanner and security misconfiguration action groups may detect untrusted web functionality inclusion patterns but do not show explicit validation of untrusted web functionality inclusion.\n<strong>Limitations:</strong> Explicit testing for untrusted web functionality inclusion is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-915: Improperly Controlled Modification of Dynamically-Determined Object Attributes",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include testing for improper modification of dynamically-determined object attributes in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of object attribute modification testing in runtime testing or static code analysis.\n<strong>Limitations:</strong> Explicit testing for improper modification of dynamically-determined object attributes is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-926: Improper Export of Android Application Components",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability is Android-specific and requires Android mobile application analysis.\n<strong>Evidence:</strong> The tested applications are web applications accessed through HTTP/HTTPS interfaces, not Android mobile applications, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ]
+  ]
+}

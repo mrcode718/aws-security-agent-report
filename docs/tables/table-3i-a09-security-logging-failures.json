@@ -1,0 +1,36 @@
+{
+  "caption": "Table 3i - A09: Security Logging and Alerting Failures Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-117: Improper Output Neutralization for Logs",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include log injection testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of log injection testing, log encoding validation, or log injection attack simulation.\n<strong>Limitations:</strong> Explicit log injection testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-221: Information Loss or Omission",
+      "Partial",
+      "<strong>Description:</strong> The service detects information loss or omission through insufficient logging findings, but explicit testing for all information loss scenarios is not systematically performed.\n<strong>Evidence:</strong> Insufficient logging findings identify missing forensic metadata in transaction logs but do not show explicit testing for all information loss scenarios.\n<strong>Limitations:</strong> Explicit testing for all information loss scenarios is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-223: Omission of Security-relevant Information",
+      "Partial",
+      "<strong>Description:</strong> The service detects omission of security-relevant information through insufficient logging findings, but explicit testing for all types of security-relevant information omissions is not systematically performed.\n<strong>Evidence:</strong> Insufficient logging findings identify omission of security-relevant information in logs but do not show explicit testing for all types of security-relevant information omissions.\n<strong>Limitations:</strong> Explicit testing for all types of security-relevant information omissions is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-532: Insertion of Sensitive Information into Log File",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include testing for sensitive information insertion into log files in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of log file content analysis or sensitive information logging validation.\n<strong>Limitations:</strong> Explicit testing for sensitive information insertion into log files is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-778: Insufficient Logging",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects insufficient logging through dedicated findings that identify missing or inadequate audit logging for security-critical events.\n<strong>Evidence:</strong> Penetration test findings demonstrate comprehensive testing of audit logging capabilities including transaction logging validation, authentication event logging testing, and forensic metadata verification."
+    ]
+  ]
+}

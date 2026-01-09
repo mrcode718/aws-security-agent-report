@@ -1,0 +1,196 @@
+{
+  "caption": "Table 3e - A05: Injection Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-103: Struts: Incomplete validate() Method Definition",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability is Struts framework-specific.\n<strong>Evidence:</strong> The tested applications do not use Struts framework, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-104: Struts: Form Bean Does Not Extend Validation Class",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability is Struts framework-specific.\n<strong>Evidence:</strong> The tested applications do not use Struts framework, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-112: Missing XML Validation",
+      "Partial",
+      "<strong>Description:</strong> The service does not include dedicated XML validation testing in its standard testing scope.\n<strong>Evidence:</strong> XXE testing action groups test for XML injection but do not explicitly test for missing XML validation.\n<strong>Limitations:</strong> Explicit XML validation testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
+      "Partial",
+      "<strong>Description:</strong> The service does not include dedicated HTTP request/response splitting testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated HTTP request/response splitting testing.\n<strong>Limitations:</strong> Explicit HTTP request/response splitting testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-114: Process Control",
+      "Partial",
+      "<strong>Description:</strong> The service tests for process control issues through command injection testing, but does not explicitly test for process control vulnerabilities in other contexts.\n<strong>Evidence:</strong> Command injection action groups test for process control vulnerabilities where user input controls process execution.\n<strong>Limitations:</strong> Explicit process control vulnerability testing beyond command injection is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-115: Misinterpretation of Input",
+      "Covered",
+      "<strong>Description:</strong> The service detects misinterpretation of input through comprehensive injection testing that identifies where user-supplied data is incorrectly interpreted.\n<strong>Evidence:</strong> Injection testing across multiple penetration test runs identifies misinterpretation of input where user input is incorrectly interpreted as commands, queries, or code."
+    ],
+    [
+      "CWE-116: Improper Encoding or Escaping of Output",
+      "Covered",
+      "<strong>Description:</strong> The service detects improper encoding or escaping of output through XSS testing and comprehensive injection vulnerability assessment.\n<strong>Evidence:</strong> XSS action groups test for improper encoding or escaping of output across multiple penetration test runs."
+    ],
+    [
+      "CWE-129: Improper Validation of Array Index",
+      "Partial",
+      "<strong>Description:</strong> The service does not include dedicated array index validation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated array index validation testing.\n<strong>Limitations:</strong> Explicit array index validation testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-159: Improper Handling of Invalid Use of Special Elements",
+      "Covered",
+      "<strong>Description:</strong> The service detects improper handling of special elements through comprehensive injection testing that validates how applications handle special characters and injection payloads.\n<strong>Evidence:</strong> All injection action groups test for improper handling of special elements across different contexts."
+    ],
+    [
+      "CWE-20: Improper Input Validation",
+      "Covered",
+      "<strong>Description:</strong> The service detects improper input validation through comprehensive injection testing across multiple penetration test runs.\n<strong>Evidence:</strong> All injection action groups systematically test for lack of input validation by attempting various injection vectors."
+    ],
+    [
+      "CWE-470: Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
+      "Covered",
+      "<strong>Description:</strong> The service detects unsafe reflection through code injection testing that identifies where user input is used to dynamically select or execute code.\n<strong>Evidence:</strong> Code injection action groups test for unsafe reflection vulnerabilities where externally-controlled input is used to select classes or code."
+    ],
+    [
+      "CWE-493: Critical Public Variable Without Final Modifier",
+      "Not Covered",
+      "<strong>Description:</strong> This vulnerability requires static code analysis of source code to identify public variables without final modifiers.\n<strong>Evidence:</strong> The tool focuses on runtime penetration testing rather than comprehensive static code analysis of variable modifiers.\n<strong>Limitations:</strong> Detailed static code analysis of variable modifiers is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-500: Public Static Field Not Marked Final",
+      "Not Covered",
+      "<strong>Description:</strong> This vulnerability requires static code analysis of source code to identify public static fields without final modifiers.\n<strong>Evidence:</strong> The tool's code scanner focuses on important flows rather than comprehensive field modifier analysis.\n<strong>Limitations:</strong> Comprehensive static code analysis of field modifiers is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-564: SQL Injection: Hibernate",
+      "Covered",
+      "<strong>Description:</strong> The service detects SQL injection vulnerabilities regardless of the underlying ORM or database framework.\n<strong>Evidence:</strong> SQL injection action groups test for SQL injection vulnerabilities including Hibernate-specific SQL injection."
+    ],
+    [
+      "CWE-610: Externally Controlled Reference to a Resource in Another Sphere",
+      "Covered",
+      "<strong>Description:</strong> The service detects externally controlled resource references through comprehensive injection testing that identifies where user input controls resource access.\n<strong>Evidence:</strong> Resource injection testing is covered through various injection action groups including command injection and XXE testing."
+    ],
+    [
+      "CWE-643: Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires XPath query processing in the application for XML data access.\n<strong>Evidence:</strong> The tested applications process XML but do not use XPath queries, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax",
+      "Covered",
+      "<strong>Description:</strong> The service may detect improper neutralization of HTTP headers through comprehensive injection testing.\n<strong>Evidence:</strong> Injection testing across multiple penetration test runs includes HTTP header manipulation testing."
+    ],
+    [
+      "CWE-74: Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service includes comprehensive injection testing across multiple injection types that systematically test for improper neutralization of special elements.\n<strong>Evidence:</strong> Injection action groups across multiple penetration test runs test for improper neutralization of special elements across different injection types."
+    ],
+    [
+      "CWE-76: Improper Neutralization of Equivalent Special Elements",
+      "Covered",
+      "<strong>Description:</strong> The service detects improper neutralization of equivalent special elements through comprehensive injection testing that attempts various encoding and obfuscation techniques.\n<strong>Evidence:</strong> All injection action groups test for improper neutralization of special elements including equivalent representations across different injection types."
+    ],
+    [
+      "CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated command injection testing action groups that systematically test for command injection vulnerabilities.\n<strong>Evidence:</strong> Command injection action groups across multiple penetration test runs demonstrate comprehensive command injection vulnerability assessment."
+    ],
+    [
+      "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects OS command injection through dedicated command injection testing.\n<strong>Evidence:</strong> Command injection testing demonstrates comprehensive OS command injection testing including system command execution and privilege verification."
+    ],
+    [
+      "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated XSS testing action groups that systematically test for cross-site scripting vulnerabilities.\n<strong>Evidence:</strong> XSS action groups are present across multiple penetration test runs, confirming comprehensive XSS detection capabilities."
+    ],
+    [
+      "CWE-80: Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
+      "Covered",
+      "<strong>Description:</strong> Basic XSS is tested as part of the comprehensive XSS testing capabilities.\n<strong>Evidence:</strong> XSS action groups test for basic XSS vulnerabilities as part of comprehensive XSS testing."
+    ],
+    [
+      "CWE-83: Improper Neutralization of Script in Attributes in a Web Page",
+      "Covered",
+      "<strong>Description:</strong> Script injection in attributes is tested as part of the comprehensive XSS testing capabilities.\n<strong>Evidence:</strong> XSS action groups test for script injection in attributes as part of comprehensive XSS testing."
+    ],
+    [
+      "CWE-86: Improper Neutralization of Invalid Characters in Identifiers in Web Pages",
+      "Partial",
+      "<strong>Description:</strong> The service may detect identifier-based injection through XSS testing, but explicit testing for improper neutralization of invalid characters in identifiers is not systematically performed.\n<strong>Evidence:</strong> XSS action groups may test for invalid character handling, but explicit identifier-based injection testing is not documented.\n<strong>Limitations:</strong> Explicit testing for improper neutralization of invalid characters in identifiers is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
+      "Partial",
+      "<strong>Description:</strong> The service may detect argument injection through command injection testing, but explicit testing for improper neutralization of argument delimiters is not systematically performed.\n<strong>Evidence:</strong> Command injection action groups test for command injection but may not explicitly test for argument delimiter injection.\n<strong>Limitations:</strong> Explicit testing for improper neutralization of argument delimiters is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated SQL injection testing action groups that systematically test for SQL injection vulnerabilities.\n<strong>Evidence:</strong> SQL injection action groups across multiple penetration test runs demonstrate comprehensive SQL injection vulnerability assessment."
+    ],
+    [
+      "CWE-90: Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires LDAP usage in the application for authentication or directory services.\n<strong>Evidence:</strong> The tested applications do not use LDAP, making this vulnerability not applicable to the tested applications.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-91: XML Injection (aka Blind XPath Injection)",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires XPath query processing in the application for XML data access.\n<strong>Evidence:</strong> The tested applications process XML but do not use XPath queries, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-917: Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')",
+      "Partial",
+      "<strong>Description:</strong> The service includes server-side template injection testing which may cover some expression language injection, but explicit expression language injection testing is not systematically performed.\n<strong>Evidence:</strong> Server-side template injection action groups exist in some penetration test runs but do not explicitly test for expression language injection.\n<strong>Limitations:</strong> Explicit expression language injection testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')",
+      "Partial",
+      "<strong>Description:</strong> The service does not include dedicated CRLF injection testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated CRLF injection testing action groups.\n<strong>Limitations:</strong> Explicit CRLF sequence injection testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-94: Improper Control of Generation of Code ('Code Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated code injection testing action groups that systematically test for code injection vulnerabilities.\n<strong>Evidence:</strong> Code injection action groups are present across multiple penetration test runs, confirming robust code injection detection capabilities."
+    ],
+    [
+      "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service detects eval injection through code injection testing that identifies where user input is used in dynamically evaluated code contexts.\n<strong>Evidence:</strong> Code injection action groups test for eval injection vulnerabilities where user input is used in dynamically evaluated code."
+    ],
+    [
+      "CWE-96: Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service detects static code injection through code injection and template injection testing.\n<strong>Evidence:</strong> Code injection and server-side template injection action groups test for static code injection vulnerabilities."
+    ],
+    [
+      "CWE-97: Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires Server-Side Includes usage in the application.\n<strong>Evidence:</strong> The tested applications use template engines rather than SSI directives, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')",
+      "Partial",
+      "<strong>Description:</strong> The service includes local file inclusion testing but does not explicitly test for PHP remote file inclusion.\n<strong>Evidence:</strong> Local file inclusion action groups exist across multiple penetration test runs but focus on local file access rather than remote file inclusion.\n<strong>Limitations:</strong> Explicit PHP remote file inclusion testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-99: Improper Control of Resource Identifiers ('Resource Injection')",
+      "Covered",
+      "<strong>Description:</strong> The service detects resource injection through comprehensive injection testing that identifies where user input controls resource identifiers.\n<strong>Evidence:</strong> Resource injection is tested through various injection action groups including command injection and XXE testing."
+    ]
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "caption": "Table 2 - Limitations observed in the preview not documented in sources",
+  "headers": [
+    "ID",
+    "Description"
+  ],
+  "rows": [
+    [
+      "UL-001",
+      "Design review and code review require manual file uploads and cannot fetch from VPC or internal file shares."
+    ],
+    [
+      "UL-002",
+      "Only HTTP/HTTPS targets supported; custom ports and non-HTTP protocols are not supported."
+    ],
+    [
+      "UL-003",
+      "Risk of hallucinated vulnerabilities when additional exploit code is provided, potentially misattributing vulnerabilities."
+    ],
+    [
+      "UL-004",
+      "Complex exploitation scenarios requiring custom tooling or local services are unsupported. The agent runs from a Docker container with Kali Linux that has limited built-in tooling available, and internal guardrails reduce fluency, preventing support for advanced attack scenarios."
+    ],
+    [
+      "UL-005",
+      "Underlying language model and its updates are not exposed, affecting result reproducibility and determinism."
+    ],
+    [
+      "UL-006",
+      "Agent does not have access to the runtime environment of the host under test (filesystem, OS, or application runtime), limiting analysis of file system-level permissions, ownership, temporary files, operating system-specific features, and runtime memory inspection to detect cleartext storage in memory or analyze memory-based vulnerabilities."
+    ],
+    [
+      "UL-007",
+      "Missing specific vulnerability testing capabilities - certain vulnerability types are not explicitly tested (e.g., CSRF, CRLF injection, log injection, cookie integrity checking, MFA, file upload testing, HTTP request/response smuggling, browser cache security testing, window.opener vulnerability testing, log file content analysis)."
+    ],
+    [
+      "UL-008",
+      "Limited static code analysis scope - code scanner focuses on important flows and framework analysis rather than comprehensive static analysis (e.g., variable/field modifiers, exception handling patterns, debugging code, comment scanning, mass assignment patterns, generic exception declarations). Additionally, code scanner does not perform comprehensive analysis of cryptographic implementation details via static code analysis (e.g., IV generation, nonce reuse, key pair reuse, RSA padding selection) or runtime random number generator testing (entropy, seed validation, PRNG algorithm analysis)."
+    ],
+    [
+      "UL-009",
+      "No dependency vulnerability analysis - tool scans dependency manifest files (package.json, requirements.txt, pom.xml, go.mod, composer.json) for framework identification but does not check component versions against vulnerability databases (CVE scanning, SBOM generation, transitive dependency analysis, maintenance status checking)."
+    ]
+  ]
+}
+

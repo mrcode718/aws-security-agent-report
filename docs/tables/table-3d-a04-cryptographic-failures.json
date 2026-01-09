@@ -1,0 +1,181 @@
+{
+  "caption": "Table 3d - A04: Cryptographic Failures Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-1240: Use of a Cryptographic Primitive with a Risky Implementation",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires specific cryptographic implementation analysis.\n<strong>Evidence:</strong> The tested applications do not use cryptographic primitives with risky implementations, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires specific random number generator analysis.\n<strong>Evidence:</strong> The tested applications do not use predictable algorithms in random number generators, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-261: Weak Encoding for Password",
+      "Covered",
+      "<strong>Description:</strong> The service detects weak password encoding through static code analysis.\n<strong>Evidence:</strong> Code scanner capabilities detect plaintext password storage in database models and authentication logic."
+    ],
+    [
+      "CWE-296: Improper Following of a Certificate's Chain of Trust",
+      "Covered",
+      "<strong>Description:</strong> The service includes a dedicated TLS scanner that validates server certificates and trust chains.\n<strong>Evidence:</strong> TLS scanner action groups perform comprehensive TLS/SSL configuration analysis including certificate validation."
+    ],
+    [
+      "CWE-319: Cleartext Transmission of Sensitive Information",
+      "Covered",
+      "<strong>Description:</strong> The service includes TLS scanner capabilities that detect cleartext transmission of sensitive information by validating TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, identifying when sensitive information is transmitted over unencrypted connections."
+    ],
+    [
+      "CWE-320: Key Management Errors",
+      "Partial",
+      "<strong>Description:</strong> The service tests for weak keys and hardcoded keys, but does not explicitly validate comprehensive key management practices.\n<strong>Evidence:</strong> JWT vulnerabilities action groups test for weak HMAC secrets and key management vulnerabilities, and code scanner detects hardcoded keys.\n<strong>Limitations:</strong> Explicit validation of comprehensive key management practices including key rotation, secure storage, key derivation, and lifecycle management is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-321: Use of Hard-coded Cryptographic Key",
+      "Covered",
+      "<strong>Description:</strong> The service includes code scanner capabilities that detect hard-coded cryptographic keys through static analysis.\n<strong>Evidence:</strong> Code scanner identifies hardcoded secrets in application configuration files, and JWT testing validates key management practices."
+    ],
+    [
+      "CWE-322: Key Exchange without Entity Authentication",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include key exchange testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of key exchange testing or entity authentication validation during key exchange.\n<strong>Limitations:</strong> Key exchange testing is completely absent from the testing scope [UL-008]."
+    ],
+    [
+      "CWE-323: Reusing a Nonce, Key Pair in Encryption",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include nonce reuse testing or key pair reuse validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of nonce reuse testing or key pair reuse validation.\n<strong>Limitations:</strong> Nonce reuse testing and key pair reuse validation are not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-324: Use of a Key Past its Expiration Date",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include key expiration validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of key expiration validation.\n<strong>Limitations:</strong> Key expiration validation is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-325: Missing Cryptographic Step",
+      "Partial",
+      "<strong>Description:</strong> The service detects missing hashing for passwords and validates TLS configuration, but does not explicitly validate missing cryptographic steps in encryption implementations.\n<strong>Evidence:</strong> Code scanner detects missing password hashing, and TLS scanner validates TLS/SSL configuration.\n<strong>Limitations:</strong> Explicit validation of missing cryptographic steps in encryption implementations is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-326: Inadequate Encryption Strength",
+      "Partial",
+      "<strong>Description:</strong> The service validates TLS/SSL encryption strength, but does not explicitly validate encryption strength in application-level encryption implementations.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, detecting weak encryption.\n<strong>Limitations:</strong> Explicit validation of encryption strength in application-level encryption implementations is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-327: Use of a Broken or Risky Cryptographic Algorithm",
+      "Covered",
+      "<strong>Description:</strong> The service includes TLS scanner capabilities that detect broken or risky cryptographic algorithms in TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, detecting use of broken or risky algorithms, and JWT testing validates algorithm choices for token signing."
+    ],
+    [
+      "CWE-328: Use of Weak Hash",
+      "Partial",
+      "<strong>Description:</strong> The service detects plaintext password storage, but does not explicitly validate hash function strength when hashing is present.\n<strong>Evidence:</strong> Code scanner detects plaintext storage, but explicit validation of weak hash functions is not systematically performed.\n<strong>Limitations:</strong> Explicit validation of weak hash functions in application code is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-329: Generation of Predictable IV with CBC Mode",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include initialization vector testing or encryption mode validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of IV generation testing or CBC mode validation.\n<strong>Limitations:</strong> IV generation testing and encryption mode validation are not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-330: Use of Insufficiently Random Values",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include random value entropy testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of random value entropy testing or randomness validation.\n<strong>Limitations:</strong> Random value entropy testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-331: Insufficient Entropy",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include entropy measurement or validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of entropy measurement or validation.\n<strong>Limitations:</strong> Entropy measurement and validation are not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-332: Insufficient Entropy in PRNG",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include PRNG entropy testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG entropy testing or pseudo-random number generator validation.\n<strong>Limitations:</strong> PRNG entropy testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-334: Small Space of Random Values",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include random value space testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of random value space testing or validation.\n<strong>Limitations:</strong> Random value space testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-335: Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include PRNG seed testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG seed testing or seed usage validation.\n<strong>Limitations:</strong> PRNG seed testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-336: Same Seed in Pseudo-Random Number Generator (PRNG)",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include PRNG seed reuse testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG seed reuse testing or validation.\n<strong>Limitations:</strong> PRNG seed reuse testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-337: Predictable Seed in Pseudo-Random Number Generator (PRNG)",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include PRNG seed predictability testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG seed predictability testing or validation.\n<strong>Limitations:</strong> PRNG seed predictability testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include PRNG strength testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of PRNG strength testing or weak PRNG validation.\n<strong>Limitations:</strong> PRNG strength testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-340: Generation of Predictable Numbers or Identifiers",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include predictable number or identifier generation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of predictable number or identifier generation testing.\n<strong>Limitations:</strong> Predictable number or identifier generation testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-342: Predictable Exact Value from Previous Values",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include predictable value sequence testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of predictable value sequence testing or validation.\n<strong>Limitations:</strong> Predictable value sequence testing is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-347: Improper Verification of Cryptographic Signature",
+      "Covered",
+      "<strong>Description:</strong> The service includes JWT vulnerability testing that validates cryptographic signature verification.\n<strong>Evidence:</strong> JWT vulnerabilities action groups test for signature manipulation vulnerabilities and signature bypass techniques."
+    ],
+    [
+      "CWE-523: Unprotected Transport of Credentials",
+      "Covered",
+      "<strong>Description:</strong> The service includes TLS scanner capabilities that detect unprotected transport of credentials by validating TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, identifying when credentials are transmitted over unencrypted connections."
+    ],
+    [
+      "CWE-757: Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
+      "Covered",
+      "<strong>Description:</strong> The service includes TLS scanner capabilities that detect algorithm downgrade vulnerabilities in TLS/SSL configuration.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL protocol versions and cipher suites, detecting algorithm downgrade vulnerabilities."
+    ],
+    [
+      "CWE-759: Use of a One-Way Hash without a Salt",
+      "Partial",
+      "<strong>Description:</strong> The service detects plaintext password storage which indicates missing hashing entirely, but does not explicitly validate salt usage when hashing is present.\n<strong>Evidence:</strong> Code scanner detects plaintext storage but does not validate salt usage in hash implementations.\n<strong>Limitations:</strong> Explicit validation of salt usage in hash implementations is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-760: Use of a One-Way Hash with a Predictable Salt",
+      "Partial",
+      "<strong>Description:</strong> The service detects plaintext password storage, but does not explicitly validate salt predictability when hashing is implemented.\n<strong>Evidence:</strong> Code scanner detects plaintext storage but does not validate salt randomness or predictability.\n<strong>Limitations:</strong> Explicit validation of salt predictability in hash implementations is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-780: Use of RSA Algorithm without OAEP",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include RSA OAEP padding validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of RSA OAEP padding validation or RSA implementation testing.\n<strong>Limitations:</strong> RSA OAEP padding validation is not part of the testing scope [UL-008]."
+    ],
+    [
+      "CWE-916: Use of Password Hash With Insufficient Computational Effort",
+      "Partial",
+      "<strong>Description:</strong> The service detects plaintext password storage which indicates missing hashing entirely, but does not explicitly validate computational effort parameters when hashing is present.\n<strong>Evidence:</strong> Code scanner detects plaintext storage but does not validate hash algorithm strength or computational effort.\n<strong>Limitations:</strong> Explicit validation of computational effort parameters in hash implementations is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-1240: Use of a Cryptographic Primitive with a Risky Implementation",
+      "Partial",
+      "<strong>Description:</strong> The service validates TLS/SSL and JWT algorithm choices, but does not explicitly validate risky cryptographic primitive implementations in application code.\n<strong>Evidence:</strong> TLS scanner validates TLS/SSL configuration and JWT vulnerabilities action groups test for algorithm confusion and signature manipulation.\n<strong>Limitations:</strong> Explicit validation of risky cryptographic primitive implementations in application code is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
+      "Partial",
+      "<strong>Description:</strong> The service tests for weak secrets through JWT testing, but does not explicitly validate random number generator predictability or algorithm selection.\n<strong>Evidence:</strong> JWT vulnerabilities action groups test for weak secrets and key management.\n<strong>Limitations:</strong> Explicit validation of random number generator predictability and algorithm selection is not systematically performed [UL-008]."
+    ]
+  ]
+}

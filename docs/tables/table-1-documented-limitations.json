@@ -1,0 +1,54 @@
+{
+  "caption": "Table 1 - Documented limitations",
+  "headers": [
+    "ID",
+    "Description"
+  ],
+  "rows": [
+    [
+      "DL-001",
+      "Service is in preview and available only in US East (N. Virginia). AWS News Feed notes that AWS Security Agent is free during the preview and available only in the US East (N. Virginia) region [4]."
+    ],
+    [
+      "DL-002",
+      "Access is through a web-based interface with no CLI, API, or scheduling capabilities. Official AWS documentation states that the agent provides design reviews, code security reviews and multi-step penetration testing within a centralized web interface [1]. Official AWS documentation on security considerations explicitly states that \"AWS Security Agent does not have public APIs or the ability to schedule the pen test runs\" [9]. Configuration, design uploads, repository integration and test execution can only be performed via the console and external web app; there is no AWS CLI or SDK support. Tests must be triggered manually via the console; cannot integrate penetration tests into CI/CD pipelines or scheduled assessments."
+    ],
+    [
+      "DL-003",
+      "Code review analyzes GitHub pull requests rather than full repositories. AWS News Feed states that code review checks GitHub pull requests for OWASP Top Ten vulnerabilities and policy violations [4]. The preview only reviews pull requests on private repositories; it does not scan entire codebases."
+    ],
+    [
+      "DL-004",
+      "Only GitHub integration available for code review. Official AWS documentation for reviewing code security findings in GitHub states that code review is triggered when a pull request is marked as \"Ready for review\" in repositories where code review capability is enabled, and only GitHub is mentioned throughout the documentation [3]. The documentation does not mention support for other source control systems. The preview only supports GitHub integration; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available."
+    ],
+    [
+      "DL-005",
+      "Limit of 20 integrated resources per integration. Official AWS documentation on Service Quotas specifies that integrated resources per integration are limited to 20 per integration, and this quota is not adjustable [5]. Large organizations may have more repositories than allowed and must manage multiple integrations or agent spaces."
+    ],
+    [
+      "DL-006",
+      "Limit of 20 integrations per account per region. Official AWS documentation on Service Quotas specifies that integrations are limited to 20 per account per region, and this quota is not adjustable [5]. Organizations with many repositories may need to create multiple agent spaces or request quota increases."
+    ],
+    [
+      "DL-007",
+      "Limit of 20 custom security requirements per account per region. Official AWS documentation on Service Quotas specifies that custom security requirements are limited to 20 per account per region, and this quota is not adjustable [5]. Organizations with extensive security policies may need to prioritize which requirements to configure."
+    ],
+    [
+      "DL-008",
+      "Concurrent pentest runs limited to 5 per account per region. Official AWS documentation on Service Quotas specifies that concurrent pentest runs are limited to 5 per account per region, though this quota is adjustable [5]. Multiple penetration tests can run simultaneously, but the limit may require scheduling for organizations with high testing needs."
+    ],
+    [
+      "DL-009",
+      "Public repositories unsupported. Official AWS documentation on security best practices explicitly states that \"AWS Security Agent does not provide code security guidance for public repositories. It will not comment on public repositories or open-source projects where security findings would be publicly visible\" [10]. Only private repositories can be scanned, preventing open-source projects from using the service."
+    ],
+    [
+      "DL-010",
+      "VPC CIDR range 10.0.0.0/16 not supported. Official AWS documentation on connecting agent to private VPC resources explicitly states that \"For VPC penetration tests, VPC CIDR ranges that overlap with the 10.0.0.0/16 range are currently not supported\" [11]. Common corporate VPC ranges conflict with the agent; penetration tests using VPCs with this CIDR range will fail."
+    ],
+    [
+      "DL-011",
+      "VPC must have outbound internet connectivity. Official AWS documentation on infrastructure security states that \"AWS Security Agent requires internet access to perform penetration testing on target applications and for control plane operations\" [12]. Penetration tests inside a VPC fail if there is no outbound connectivity."
+    ]
+  ]
+}
+

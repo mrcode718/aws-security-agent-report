@@ -1,0 +1,211 @@
+{
+  "caption": "Table 3a - A01: Broken Access Control Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-1275: Sensitive Cookie with Improper SameSite Attribute",
+      "Partial",
+      "<strong>Description:</strong> The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n<strong>Evidence:</strong> Network scanner action groups test TLS/SSL protocol security but do not include cookie attribute validation.\n<strong>Limitations:</strong> Cookie security attributes are not part of the network scanning scope [UL-007]."
+    ],
+    [
+      "CWE-200: Exposure of Sensitive Information to an Unauthorized Actor",
+      "Covered",
+      "<strong>Description:</strong> The service detects exposure of sensitive information through information disclosure testing and IDOR findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of user enumeration and information disclosure vulnerabilities."
+    ],
+    [
+      "CWE-201: Insertion of Sensitive Information Into Sent Data",
+      "Partial",
+      "<strong>Description:</strong> The service may detect sensitive information through information disclosure testing but does not explicitly test for insertion into sent data vectors.\n<strong>Evidence:</strong> Information disclosure action groups and static analysis may detect sensitive information indirectly.\n<strong>Limitations:</strong> Explicit testing for insertion of sensitive information into sent data (headers, POST data, query parameters) is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-219: Storage of File with Sensitive Data Under Web Root",
+      "Partial",
+      "<strong>Description:</strong> The service tests for file access through path traversal but does not explicitly validate file storage locations relative to web root.\n<strong>Evidence:</strong> Path traversal and information disclosure action groups test for accessible files.\n<strong>Limitations:</strong> Explicit validation of file storage locations relative to web root directory is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated path traversal testing action groups that systematically test for directory traversal vulnerabilities.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive path traversal vulnerability assessment including framework-specific bypass techniques."
+    ],
+    [
+      "CWE-23: Relative Path Traversal",
+      "Covered",
+      "<strong>Description:</strong> Relative path traversal is tested as part of comprehensive path traversal testing capabilities.\n<strong>Evidence:</strong> Path traversal action groups test for both relative and absolute path traversal vulnerabilities."
+    ],
+    [
+      "CWE-276: Incorrect Default Permissions",
+      "Partial",
+      "<strong>Description:</strong> The service tests for privilege escalation and access control violations but does not explicitly validate default permission settings.\n<strong>Evidence:</strong> Privilege escalation action groups test for access control issues.\n<strong>Limitations:</strong> Explicit validation of default permission settings for resources, files, or database objects is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-281: Improper Preservation of Permissions",
+      "Not Covered",
+      "<strong>Description:</strong> This vulnerability requires file system-level analysis of permission preservation across file operations.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing through HTTP/HTTPS interfaces rather than file system-level permission analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer [UL-006]."
+    ],
+    [
+      "CWE-282: Improper Ownership Management",
+      "Not Covered",
+      "<strong>Description:</strong> This vulnerability requires file system-level analysis of ownership management across file operations.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing rather than file system-level ownership analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer [UL-006]."
+    ],
+    [
+      "CWE-283: Unverified Ownership",
+      "Partial",
+      "<strong>Description:</strong> The service detects IDOR vulnerabilities which may indicate missing ownership verification but does not explicitly test ownership verification mechanisms.\n<strong>Evidence:</strong> IDOR action groups test for authorization bypass through user-controlled keys.\n<strong>Limitations:</strong> Explicit validation of ownership verification mechanisms is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-284: Improper Access Control",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects improper access control violations where functionality should be restricted to specific roles but is available to any authenticated user.\n<strong>Evidence:</strong> Penetration test findings explicitly identify improper access control including privilege escalation testing demonstrating vertical and horizontal escalation."
+    ],
+    [
+      "CWE-285: Improper Authorization",
+      "Covered",
+      "<strong>Description:</strong> The service detects improper authorization through findings that demonstrate authorization bypass and privilege escalation.\n<strong>Evidence:</strong> Penetration test findings demonstrate authorization bypass including SQL injection-based authentication bypass and session manipulation testing."
+    ],
+    [
+      "CWE-352: Cross-Site Request Forgery (CSRF)",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include CSRF testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of CSRF testing, CSRF token validation, or CSRF attack simulation.\n<strong>Limitations:</strong> CSRF testing is completely absent from the tool's capabilities [UL-007]."
+    ],
+    [
+      "CWE-359: Exposure of Private Personal Information to an Unauthorized Actor",
+      "Covered",
+      "<strong>Description:</strong> The service detects exposure of private personal information through IDOR and information disclosure findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of user enumeration and cross-user data access vulnerabilities."
+    ],
+    [
+      "CWE-36: Absolute Path Traversal",
+      "Covered",
+      "<strong>Description:</strong> Absolute path traversal is tested as part of comprehensive path traversal testing capabilities.\n<strong>Evidence:</strong> Path traversal action groups test for both relative and absolute path traversal vulnerabilities."
+    ],
+    [
+      "CWE-377: Insecure Temporary File",
+      "Not Covered",
+      "<strong>Description:</strong> This vulnerability requires file system-level analysis of temporary file creation and permissions.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing through HTTP/HTTPS interfaces rather than file system-level temporary file analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer [UL-006]."
+    ],
+    [
+      "CWE-379: Creation of Temporary File in Directory with Insecure Permissions",
+      "Not Covered",
+      "<strong>Description:</strong> This vulnerability requires file system-level analysis of temporary file directory permissions.\n<strong>Evidence:</strong> The tool focuses on web application penetration testing rather than file system-level temporary file directory analysis.\n<strong>Limitations:</strong> File system operations are not part of the testing scope as the tool operates at the application layer [UL-006]."
+    ],
+    [
+      "CWE-402: Transmission of Private Resources into a New Sphere ('Resource Leak')",
+      "Partial",
+      "<strong>Description:</strong> The service may detect resource leaks indirectly through information disclosure and SSRF testing but does not explicitly test for transmission of private resources into unauthorized contexts.\n<strong>Evidence:</strong> Information disclosure and SSRF action groups test for resource access.\n<strong>Limitations:</strong> Explicit testing for transmission of private resources into unauthorized contexts is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-424: Improper Protection of Alternate Path",
+      "Covered",
+      "<strong>Description:</strong> The service tests for improper protection of alternate paths through privilege escalation and IDOR testing.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive testing of alternate access paths including session manipulation, cookie tampering, and HTTP verb tampering."
+    ],
+    [
+      "CWE-425: Direct Request ('Forced Browsing')",
+      "Covered",
+      "<strong>Description:</strong> The service tests for forced browsing through authenticated runtime testing and privilege escalation action groups.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive forced browsing testing including accessing privileged pages as standard users and systematic endpoint discovery."
+    ],
+    [
+      "CWE-441: Unintended Proxy or Intermediary ('Confused Deputy')",
+      "Partial",
+      "<strong>Description:</strong> The service may detect confused deputy issues through SSRF testing but does not explicitly test for proxy/intermediary functionality.\n<strong>Evidence:</strong> SSRF action groups test for server-side request forgery vulnerabilities.\n<strong>Limitations:</strong> Explicit validation of proxy/intermediary functionality is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-497: Exposure of Sensitive System Information to an Unauthorized Control Sphere",
+      "Covered",
+      "<strong>Description:</strong> The service detects exposure of sensitive system information through information disclosure testing.\n<strong>Evidence:</strong> Information disclosure action groups and findings demonstrate detection of system information exposure."
+    ],
+    [
+      "CWE-538: Insertion of Sensitive Information into Externally-Accessible File or Directory",
+      "Partial",
+      "<strong>Description:</strong> The service tests for file access through path traversal and information disclosure but does not explicitly test for insertion of sensitive information into externally-accessible locations.\n<strong>Evidence:</strong> Information disclosure and path traversal action groups test for accessible files.\n<strong>Limitations:</strong> Explicit testing for insertion of sensitive information into externally-accessible files is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-540: Inclusion of Sensitive Information in Source Code",
+      "Covered",
+      "<strong>Description:</strong> The service includes static analysis capabilities that detect sensitive information in source code.\n<strong>Evidence:</strong> Static analysis phase of penetration test runs analyzes source code for sensitive information."
+    ],
+    [
+      "CWE-548: Exposure of Information Through Directory Listing",
+      "Partial",
+      "<strong>Description:</strong> The service may detect directory listing indirectly through path traversal testing but does not explicitly test for directory listing behavior.\n<strong>Evidence:</strong> Information disclosure and path traversal action groups test for file access.\n<strong>Limitations:</strong> Explicit validation of directory listing behavior is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-552: Files or Directories Accessible to External Parties",
+      "Covered",
+      "<strong>Description:</strong> The service tests for files or directories accessible to external parties through path traversal and information disclosure testing.\n<strong>Evidence:</strong> Path traversal and information disclosure action groups test for accessible files and directories."
+    ],
+    [
+      "CWE-566: Authorization Bypass Through User-Controlled SQL Primary Key",
+      "Covered",
+      "<strong>Description:</strong> The service detects authorization bypass through user-controlled SQL primary keys via SQL injection findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate authorization bypass through SQL injection vulnerabilities."
+    ],
+    [
+      "CWE-59: Improper Link Resolution Before File Access ('Link Following')",
+      "Partial",
+      "<strong>Description:</strong> The service may detect link following issues indirectly through path traversal testing but does not explicitly test for symbolic link following.\n<strong>Evidence:</strong> Path traversal action groups test for file access vulnerabilities.\n<strong>Limitations:</strong> Explicit validation of symbolic link following is not systematically performed and may be limited by testing environment constraints [UL-008]."
+    ],
+    [
+      "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')",
+      "Partial",
+      "<strong>Description:</strong> The service does not include dedicated open redirect testing action groups.\n<strong>Evidence:</strong> Business logic testing may indirectly detect redirect issues but no explicit open redirect testing was observed.\n<strong>Limitations:</strong> Explicit redirect validation and open redirect attack testing is not performed [UL-008]."
+    ],
+    [
+      "CWE-61: UNIX Symbolic Link (Symlink) Following",
+      "Partial",
+      "<strong>Description:</strong> The service may detect symlink following issues indirectly through path traversal testing but does not explicitly test for UNIX symlink following.\n<strong>Evidence:</strong> Path traversal action groups test for file access vulnerabilities.\n<strong>Limitations:</strong> Explicit validation of symlink following is not systematically performed and may be limited by testing environment constraints or application platform compatibility [UL-008]."
+    ],
+    [
+      "CWE-615: Inclusion of Sensitive Information in Source Code Comments",
+      "Partial",
+      "<strong>Description:</strong> The service includes static analysis through code scanner but explicit scanning for sensitive information in source code comments may not be systematically performed.\n<strong>Evidence:</strong> Code scanner action groups scan code repositories focusing on important flows and framework analysis.\n<strong>Limitations:</strong> Code scanner focuses on flow analysis rather than comprehensive comment scanning [UL-008]."
+    ],
+    [
+      "CWE-639: Authorization Bypass Through User-Controlled Key",
+      "Covered",
+      "<strong>Description:</strong> The service detects authorization bypass through user-controlled keys via IDOR findings.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive IDOR testing including parameter manipulation, session forging, and cross-user data access validation."
+    ],
+    [
+      "CWE-65: Windows Hard Link",
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability is Windows-specific and requires operating system-level analysis of hard link creation and following.\n<strong>Evidence:</strong> The tested applications are Linux-based web applications, making this Windows-specific vulnerability not applicable.\n<strong>Limitations:</strong> "
+    ],
+    [
+      "CWE-668: Exposure of Resource to Wrong Sphere",
+      "Covered",
+      "<strong>Description:</strong> The service detects exposure of resources to wrong sphere through IDOR and information disclosure findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of cross-user resource exposure vulnerabilities."
+    ],
+    [
+      "CWE-732: Incorrect Permission Assignment for Critical Resource",
+      "Covered",
+      "<strong>Description:</strong> The service detects incorrect permission assignment for critical resources through privilege escalation findings.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of functionality accessible without proper authorization checks."
+    ],
+    [
+      "CWE-749: Exposed Dangerous Method or Function",
+      "Covered",
+      "<strong>Description:</strong> The service detects exposed dangerous methods or functions through findings that identify exposed endpoints with dangerous functionality.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of exposed endpoints with command execution and other dangerous functionality."
+    ],
+    [
+      "CWE-862: Missing Authorization",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects missing authorization through findings that identify functionality accessible without proper authorization checks.\n<strong>Evidence:</strong> Penetration test findings explicitly identify missing authorization where functionality should be restricted to specific roles."
+    ],
+    [
+      "CWE-863: Incorrect Authorization",
+      "Covered",
+      "<strong>Description:</strong> The service detects incorrect authorization through findings that demonstrate authorization bypass and privilege escalation.\n<strong>Evidence:</strong> Penetration test findings demonstrate authorization bypass including authentication bypass and privilege escalation vulnerabilities."
+    ],
+    [
+      "CWE-918: Server-Side Request Forgery (SSRF)",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated SSRF testing action groups that systematically test for server-side request forgery vulnerabilities.\n<strong>Evidence:</strong> Penetration test logs demonstrate advanced SSRF testing including chaining with command injection and lateral movement testing."
+    ],
+    [
+      "CWE-922: Insecure Storage of Sensitive Information",
+      "Covered",
+      "<strong>Description:</strong> The service detects insecure storage of sensitive information through findings that identify plaintext storage of credentials and sensitive data.\n<strong>Evidence:</strong> Penetration test findings demonstrate detection of insecure credential storage vulnerabilities."
+    ]
+  ]
+}

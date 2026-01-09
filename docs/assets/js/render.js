@@ -16,10 +16,10 @@ async function loadAndRenderReport() {
     }
 }
 
-function renderReport(content) {
+async function renderReport(content) {
     const reportContent = document.getElementById('report-content');
     
-    // Render header
+    // Render header and abstract first
     reportContent.innerHTML = `
         <header class="paper-header">
             <h1 class="paper-title">${escapeHtml(content.metadata.title)}</h1>
@@ -36,20 +36,28 @@ function renderReport(content) {
         </section>
 
         <div class="paper-content">
-            ${content.sections.map(section => renderSection(section, content.references)).join('')}
+            <p>Loading sections...</p>
         </div>
 
         <footer class="paper-footer">
             <p><em>Review completed: ${escapeHtml(content.metadata.date)} | Status: ${escapeHtml(content.metadata.status)}</em></p>
         </footer>
     `;
+    
+    // Render sections asynchronously
+    const sectionPromises = content.sections.map(section => renderSection(section, content.references));
+    const sectionHtmls = await Promise.all(sectionPromises);
+    const paperContent = reportContent.querySelector('.paper-content');
+    if (paperContent) {
+        paperContent.innerHTML = sectionHtmls.join('');
+    }
 }
 
-function renderSection(section, references) {
+async function renderSection(section, references) {
     // Check if section has tables
-    const hasTable = !!(section.table || section.tables);
+    const hasTable = !!(section.table || section.tables || section.tableFile || section.tableFiles);
     // Check if any subsections have tables or charts
-    const hasSubsectionTable = !!(section.subsections && section.subsections.some(sub => sub.table || sub.chart));
+    const hasSubsectionTable = !!(section.subsections && section.subsections.some(sub => sub.table || sub.chart || sub.tableFile));
     // Section 6 should use full width (no columns) like sections with tables
     const isSection6 = section.number === 6;
     // Sections with tables should use full width (no columns)
@@ -76,7 +84,9 @@ function renderSection(section, references) {
     
     // Render subsections before tables
     if (section.subsections) {
-        html += section.subsections.map(subsection => renderSubsection(subsection, references)).join('');
+        const subsectionPromises = section.subsections.map(subsection => renderSubsection(subsection, references));
+        const subsectionResults = await Promise.all(subsectionPromises);
+        html += subsectionResults.join('');
     }
     
     // Render chart if present (section-level chart)
@@ -89,9 +99,32 @@ function renderSection(section, references) {
         html += renderTable(section.table, references);
     }
     
+    // Render table from file if present
+    if (section.tableFile) {
+        try {
+            const table = await loadTableFromFile(section.tableFile);
+            html += renderTable(table, references);
+        } catch (error) {
+            console.error(`Error loading table from ${section.tableFile}:`, error);
+            html += `<p style="color: red;">Error loading table from ${section.tableFile}</p>`;
+        }
+    }
+    
     // Render tables array if present
     if (section.tables) {
         html += section.tables.map(table => renderTable(table, references)).join('');
+    }
+    
+    // Render tables from files if present
+    if (section.tableFiles) {
+        try {
+            const tablePromises = section.tableFiles.map(file => loadTableFromFile(file));
+            const tables = await Promise.all(tablePromises);
+            html += tables.map(table => renderTable(table, references)).join('');
+        } catch (error) {
+            console.error(`Error loading tables from files:`, error);
+            html += `<p style="color: red;">Error loading tables from files</p>`;
+        }
     }
     
     // Render paragraphs after lists
@@ -108,7 +141,7 @@ function renderSection(section, references) {
     return html;
 }
 
-function renderSubsection(subsection, references) {
+async function renderSubsection(subsection, references) {
     let html = `<h3>${subsection.number} ${escapeHtml(subsection.title)}</h3>`;
     
     if (subsection.paragraphs) {
@@ -121,6 +154,17 @@ function renderSubsection(subsection, references) {
     
     if (subsection.table) {
         html += renderTable(subsection.table, references);
+    }
+    
+    // Render table from file if present
+    if (subsection.tableFile) {
+        try {
+            const table = await loadTableFromFile(subsection.tableFile);
+            html += renderTable(table, references);
+        } catch (error) {
+            console.error(`Error loading table from ${subsection.tableFile}:`, error);
+            html += `<p style="color: red;">Error loading table from ${subsection.tableFile}</p>`;
+        }
     }
     
     if (subsection.chart) {
@@ -323,6 +367,20 @@ function processCitations(text, references) {
         // Join multiple citations with commas
         return `<sup class="citation">[${citationLinks.join(', ')}]</sup>`;
     });
+}
+
+async function loadTableFromFile(filePath) {
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`Failed to load table from ${filePath}: ${response.statusText}`);
+        }
+        const table = await response.json();
+        return table;
+    } catch (error) {
+        console.error(`Error loading table from ${filePath}:`, error);
+        throw error;
+    }
 }
 
 function escapeHtml(text) {

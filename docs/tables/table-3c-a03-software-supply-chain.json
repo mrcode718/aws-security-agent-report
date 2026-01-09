@@ -1,0 +1,41 @@
+{
+  "caption": "Table 3c - A03: Software Supply Chain Failures Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-1035: OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities",
+      "Partial",
+      "<strong>Description:</strong> The service tests for dependency version pinning and integrity verification, which indirectly helps identify when components may have known vulnerabilities by ensuring proper version tracking.\n<strong>Evidence:</strong> Improper inventory management action groups test for dependency version pinning and integrity verification in Dockerfiles and build configurations.\n<strong>Limitations:</strong> Explicit CVE scanning and vulnerability database lookups are not performed, limiting the ability to identify known vulnerabilities in components [UL-009]."
+    ],
+    [
+      "CWE-1104: Use of Unmaintained Third Party Components",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for unmaintained third-party components.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for component maintenance status, end-of-life dates, or deprecation notices.\n<strong>Limitations:</strong> Maintenance status checking is completely absent from the testing scope [UL-009]."
+    ],
+    [
+      "CWE-1329: Reliance on Component That is Not Updateable",
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated testing for dependency version pinning and integrity verification that systematically identifies when components are not properly pinned.\n<strong>Evidence:</strong> Improper inventory management action groups test for Docker base image version pinning using SHA256 digest and component integrity verification through checksum validation."
+    ],
+    [
+      "CWE-1395: Dependency on Vulnerable Third-Party Component",
+      "Partial",
+      "<strong>Description:</strong> The service tests for dependency version pinning and integrity verification, which helps identify when third-party components are not properly tracked.\n<strong>Evidence:</strong> Improper inventory management action groups test for dependency version pinning and integrity verification in Dockerfiles and build configurations.\n<strong>Limitations:</strong> Explicit vulnerability scanning of third-party components and checking against vulnerability databases are not performed [UL-009]."
+    ],
+    [
+      "CWE-447: Unimplemented or Unsupported Feature in UI",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for unimplemented or unsupported UI features.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for UI feature completeness.\n<strong>Limitations:</strong> UI feature completeness testing is not included in the testing scope [UL-007]."
+    ],
+    [
+      "CWE-477: Use of Obsolete Function",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for obsolete function usage.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for obsolete function usage in code.\n<strong>Limitations:</strong> Obsolete function detection is not included in the testing scope [UL-008]."
+    ]
+  ]
+}

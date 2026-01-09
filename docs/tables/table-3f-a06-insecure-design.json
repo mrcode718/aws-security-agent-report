@@ -1,0 +1,206 @@
+{
+  "caption": "Table 3f - A06: Insecure Design Coverage by AWS Security Agent*",
+  "note": "* The evaluation was conducted against a sample simplified applications with known vulnerabilities. As a result, additional weaknesses or architectural limitations commonly observed in real-world, large-scale applications may not be represented. Analysis of such scenarios is outside the scope of this research.",
+  "headers": [
+    "CWE",
+    "Coverage by AWS Security Agent",
+    "Comments"
+  ],
+  "rows": [
+    [
+      "CWE-1021: Improper Restriction of Rendered UI Layers or Frames",
+      "Covered",
+      "<strong>Description:</strong> The service includes frame and UI layer restriction testing through X-Frame-Options header validation and CSP frame-src directive analysis.\n<strong>Evidence:</strong> Penetration test logs demonstrate X-Frame-Options header checking and CSP frame-src directive validation across multiple applications."
+    ],
+    [
+      "CWE-1022: Use of Web Link to Untrusted Target with window.opener Access",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include window.opener vulnerability testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of window.opener or untrusted link testing.\n<strong>Limitations:</strong> Explicit window.opener vulnerability testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-1125: Excessive Attack Surface",
+      "Covered",
+      "<strong>Description:</strong> The service detects excessive attack surface through business logic vulnerability testing that identifies unbounded queries and missing resource limits.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of unbounded queries without pagination and missing resource consumption controls."
+    ],
+    [
+      "CWE-183: Permissive List of Allowed Inputs",
+      "Partial",
+      "<strong>Description:</strong> The service may detect permissive allow lists indirectly through injection and validation testing, but explicit allow list validation is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and injection testing action groups test for input validation issues but do not explicitly test for permissive allow lists.\n<strong>Limitations:</strong> Explicit allow list validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-256: Plaintext Storage of a Password",
+      "Covered",
+      "<strong>Description:</strong> The service includes code scanner capabilities that detect plaintext password storage through static analysis.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of plaintext password storage in database models and authentication logic across multiple applications."
+    ],
+    [
+      "CWE-266: Incorrect Privilege Assignment",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects incorrect privilege assignment through privilege escalation testing and access control findings.\n<strong>Evidence:</strong> Privilege escalation action groups and findings demonstrate detection of functionality accessible without proper privilege checks."
+    ],
+    [
+      "CWE-269: Improper Privilege Management",
+      "Covered",
+      "<strong>Description:</strong> The service detects improper privilege management through privilege escalation testing that identifies privilege management flaws.\n<strong>Evidence:</strong> Privilege escalation action groups test for improper privilege management in application design."
+    ],
+    [
+      "CWE-286: Incorrect User Management",
+      "Partial",
+      "<strong>Description:</strong> The service detects some user management issues through business logic and privilege escalation testing, but comprehensive user management validation is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities action groups include testing for user management issues but do not comprehensively test all user management aspects.\n<strong>Limitations:</strong> Comprehensive user management validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-311: Missing Encryption of Sensitive Data",
+      "Partial",
+      "<strong>Description:</strong> The service detects missing encryption for password storage, but comprehensive encryption validation for all sensitive data types and contexts is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities detect plaintext storage but do not comprehensively test for missing encryption of all sensitive data types.\n<strong>Limitations:</strong> Comprehensive encryption validation for all sensitive data types and contexts is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-312: Cleartext Storage of Sensitive Information",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects cleartext storage of sensitive information through code scanner capabilities that analyze source code.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of cleartext storage of sensitive information including passwords across multiple applications."
+    ],
+    [
+      "CWE-313: Cleartext Storage in a File or on Disk",
+      "Covered",
+      "<strong>Description:</strong> The service detects cleartext storage in files or on disk through code scanner analysis of database models and file storage implementations.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of cleartext storage in database models and file storage patterns."
+    ],
+    [
+      "CWE-316: Cleartext Storage of Sensitive Information in Memory",
+      "Partial",
+      "<strong>Description:</strong> The service may detect cleartext storage in memory indirectly through code analysis, but explicit memory inspection and validation is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities detect cleartext storage in files and databases but do not show explicit testing for cleartext storage in memory.\n<strong>Limitations:</strong> Explicit memory inspection and validation is not systematically performed [UL-006]."
+    ],
+    [
+      "CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
+      "Covered",
+      "<strong>Description:</strong> The service includes business logic vulnerability testing that detects race conditions through atomicity failure detection.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of race conditions including registration atomicity failures and transaction synchronization problems."
+    ],
+    [
+      "CWE-382: J2EE Bad Practices: Use of System.exit()",
+      "Partial",
+      "<strong>Description:</strong> The service may detect dangerous function usage through code scanner, but J2EE-specific bad practices like System.exit() are not explicitly tested, even for Java applications.\n<strong>Evidence:</strong> Code scanner capabilities may detect dangerous function usage but do not show explicit J2EE-specific bad practices testing.\n<strong>Limitations:</strong> J2EE-specific bad practices testing is not systematically performed, even for Java applications [UL-007]."
+    ],
+    [
+      "CWE-419: Unprotected Primary Channel",
+      "Partial",
+      "<strong>Description:</strong> The service scans for TLS/SSL protocol vulnerabilities but does not include explicit unprotected primary channel testing.\n<strong>Evidence:</strong> Network scanner action groups include TLS scanner that validates TLS/SSL protocol versions but do not explicitly test for unprotected primary channels.\n<strong>Limitations:</strong> Explicit unprotected primary channel testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-434: Unrestricted Upload of File with Dangerous Type",
+      "Partial",
+      "<strong>Description:</strong> The service does not include explicit file upload testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit file upload testing action groups.\n<strong>Limitations:</strong> Explicit file upload testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-436: Interpretation Conflict",
+      "Partial",
+      "<strong>Description:</strong> The service does not include explicit interpretation conflict testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit interpretation conflict testing.\n<strong>Limitations:</strong> Explicit interpretation conflict testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
+      "Partial",
+      "<strong>Description:</strong> The service does not include explicit HTTP request/response smuggling testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit HTTP smuggling testing action groups.\n<strong>Limitations:</strong> Explicit HTTP request/response smuggling testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-451: User Interface (UI) Misrepresentation of Critical Information",
+      "Partial",
+      "<strong>Description:</strong> The service includes UI security testing through browser automation but explicit UI misrepresentation validation is not systematically performed.\n<strong>Evidence:</strong> Browser automation demonstrates UI security testing through form field testing and UI element discovery but does not explicitly validate that critical information is accurately represented.\n<strong>Limitations:</strong> Explicit UI misrepresentation validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-454: External Initialization of Trusted Variables or Data Stores",
+      "Partial",
+      "<strong>Description:</strong> The service may detect external initialization issues indirectly through code scanner and injection testing, but explicit external initialization validation is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect external initialization issues but do not show explicit external initialization validation.\n<strong>Limitations:</strong> Explicit external initialization validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-472: External Control of Assumed-Immutable Web Parameter",
+      "Partial",
+      "<strong>Description:</strong> The service may detect external control of assumed-immutable parameters indirectly through parameter manipulation testing, but explicit immutable parameter validation is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and injection testing action groups test for parameter manipulation but do not explicitly test for assumed-immutable parameter control.\n<strong>Limitations:</strong> Explicit immutable parameter validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-501: Trust Boundary Violation",
+      "Partial",
+      "<strong>Description:</strong> The service may detect trust boundary violations indirectly through privilege escalation and access control testing, but explicit trust boundary validation is not systematically performed.\n<strong>Evidence:</strong> Privilege escalation and business logic testing may detect trust boundary violations but do not show explicit trust boundary validation.\n<strong>Limitations:</strong> Explicit trust boundary validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-522: Insufficiently Protected Credentials",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects insufficiently protected credentials through code scanner capabilities that identify plaintext password storage and weak credential protection mechanisms.\n<strong>Evidence:</strong> Code scanner findings demonstrate detection of insufficiently protected credentials including plaintext password storage."
+    ],
+    [
+      "CWE-525: Use of Web Browser Cache Containing Sensitive Information",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include browser cache security testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit Cache-Control header validation or cache directive testing.\n<strong>Limitations:</strong> Explicit browser cache security testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-539: Use of Persistent Cookies Containing Sensitive Information",
+      "Partial",
+      "<strong>Description:</strong> The service may detect persistent cookie issues indirectly through session token and JWT testing, but explicit persistent cookie security validation is not systematically performed.\n<strong>Evidence:</strong> Session token vulnerabilities and JWT testing action groups may detect cookie security issues but do not explicitly test for persistent cookies containing sensitive information.\n<strong>Limitations:</strong> Explicit persistent cookie security validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-598: Use of GET Request Method With Sensitive Query Strings",
+      "Partial",
+      "<strong>Description:</strong> The service may detect GET request method issues with sensitive query strings indirectly through information disclosure and HTTP method testing, but explicit GET method security validation is not systematically performed.\n<strong>Evidence:</strong> Information disclosure and business logic testing may detect sensitive information in query strings but do not explicitly test for GET request method usage with sensitive data.\n<strong>Limitations:</strong> Explicit GET method security validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-602: Client-Side Enforcement of Server-Side Security",
+      "Covered",
+      "<strong>Description:</strong> The service includes client-side enforcement testing through CSP header validation, Content-Type header validation, and JavaScript execution verification.\n<strong>Evidence:</strong> Penetration test logs demonstrate comprehensive CSP policy analysis and testing including browser-based validation of client-side security policies."
+    ],
+    [
+      "CWE-628: Function Call with Incorrectly Specified Arguments",
+      "Not Covered",
+      "<strong>Description:</strong> The service may detect function call issues indirectly through code scanner, but explicit testing for incorrectly specified function arguments is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect some function call issues but do not show explicit testing for incorrectly specified function arguments.\n<strong>Limitations:</strong> Explicit testing for incorrectly specified function arguments is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-642: External Control of Critical State Data",
+      "Not Covered",
+      "<strong>Description:</strong> The service may detect state manipulation issues indirectly through business logic and injection testing, but explicit external control of critical state data validation is not systematically performed.\n<strong>Evidence:</strong> Business logic and injection testing may detect some state manipulation issues but do not show explicit external control of critical state data validation.\n<strong>Limitations:</strong> Explicit external control of critical state data validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-646: Reliance on File Name or Extension of Externally-Supplied File",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not test for reliance on file name or extension of externally-supplied files as file upload testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of file name or extension validation testing.\n<strong>Limitations:</strong> File upload testing is not part of the standard testing scope [UL-007]."
+    ],
+    [
+      "CWE-653: Improper Isolation or Compartmentalization",
+      "Not Covered",
+      "<strong>Description:</strong> The service may assess isolation through design reviews, but runtime isolation and compartmentalization testing is not systematically performed in penetration tests.\n<strong>Evidence:</strong> No explicit isolation or compartmentalization testing was observed in penetration test runs.\n<strong>Limitations:</strong> Runtime isolation and compartmentalization testing is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-656: Reliance on Security Through Obscurity",
+      "Not Covered",
+      "<strong>Description:</strong> The service does not explicitly test for reliance on security through obscurity as this is a design philosophy issue.\n<strong>Evidence:</strong> The tool focuses on finding exploitable vulnerabilities rather than assessing security design philosophy.\n<strong>Limitations:</strong> Explicit testing for reliance on security through obscurity is not part of the standard testing scope [UL-007]."
+    ],
+    [
+      "CWE-657: Violation of Secure Design Principles",
+      "Covered",
+      "<strong>Description:</strong> The service includes comprehensive business logic vulnerability testing and code scanner capabilities that detect violations of secure design principles.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of multiple insecure design patterns including missing controls, insufficient validation, and improper resource management."
+    ],
+    [
+      "CWE-676: Use of Potentially Dangerous Function",
+      "Not Covered",
+      "<strong>Description:</strong> The service may detect dangerous function usage through code scanner, but comprehensive testing for all potentially dangerous functions is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect some dangerous function usage but do not show comprehensive testing for all potentially dangerous functions.\n<strong>Limitations:</strong> Comprehensive testing for all potentially dangerous functions is not systematically performed [UL-008]."
+    ],
+    [
+      "CWE-693: Protection Mechanism Failure",
+      "Not Covered",
+      "<strong>Description:</strong> The service detects individual protection mechanism failures through vulnerability findings, but explicit testing for protection mechanism failure as a design pattern is not systematically performed.\n<strong>Evidence:</strong> The tool detects individual protection mechanism failures but does not explicitly test for protection mechanism failure as a design pattern.\n<strong>Limitations:</strong> Explicit testing for protection mechanism failure as a design pattern is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-73: External Control of File Name or Path",
+      "Not Covered",
+      "<strong>Description:</strong> The service may detect external control of file name or path indirectly through path traversal testing, but explicit design pattern validation is not systematically performed.\n<strong>Evidence:</strong> Path traversal action groups test for file path manipulation but do not explicitly test for external control of file name or path as a design issue.\n<strong>Limitations:</strong> Explicit design pattern validation is not systematically performed [UL-007]."
+    ],
+    [
+      "CWE-799: Improper Control of Interaction Frequency",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects improper control of interaction frequency through business logic vulnerability testing that identifies missing rate limiting and velocity controls.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of missing transaction limits and velocity controls in application design."
+    ],
+    [
+      "CWE-807: Reliance on Untrusted Inputs in a Security Decision",
+      "Covered",
+      "<strong>Description:</strong> The service detects reliance on untrusted inputs in security decisions through business logic vulnerability testing that identifies insufficient validation.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of reliance on untrusted inputs including insufficient balance validation and improper trust in user-controlled inputs."
+    ],
+    [
+      "CWE-841: Improper Enforcement of Behavioral Workflow",
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects improper enforcement of behavioral workflow through business logic vulnerability testing that identifies missing workflow controls.\n<strong>Evidence:</strong> Business logic vulnerability findings demonstrate detection of missing workflow controls, insufficient business rule enforcement, and improper state management in application design."
+    ]
+  ]
+}
