@@ -9,8 +9,8 @@
   "rows": [
     [
       "CWE-1275: Sensitive Cookie with Improper SameSite Attribute",
-      "Partial",
-      "<strong>Description:</strong> The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n<strong>Evidence:</strong> Network scanner action groups test TLS/SSL protocol security but do not include cookie attribute validation.\n<strong>Limitations:</strong> Cookie security attributes are not part of the network scanning scope [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n<strong>Evidence:</strong> Source code analysis of testssl.sh (version 3.3dev) confirms that the tool does NOT support SameSite cookie attribute validation. Direct search of the entire testssl.sh script (25,550 lines) found zero references to \"SameSite\". The tool extracts Set-Cookie headers and validates Secure and HttpOnly attributes, but does not check for or validate SameSite attributes.\n<strong>Limitations:</strong> SameSite cookie security attributes are not part of the network scanning scope [UL-007]. See detailed analysis in testssl-samesite-analysis.md."
     ],
     [
       "CWE-200: Exposure of Sensitive Information to an Unauthorized Actor",
@@ -159,8 +159,8 @@
     ],
     [
       "CWE-615: Inclusion of Sensitive Information in Source Code Comments",
-      "Partial",
-      "<strong>Description:</strong> The service includes static analysis through code scanner but explicit scanning for sensitive information in source code comments may not be systematically performed.\n<strong>Evidence:</strong> Code scanner action groups scan code repositories focusing on important flows and framework analysis.\n<strong>Limitations:</strong> Code scanner focuses on flow analysis rather than comprehensive comment scanning [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> Code Review module performs explicit comment scanning to detect sensitive information and secrets in source code comments in addition to flow analysis.\n<strong>Evidence:</strong> Code Review runs in the validated pentests completed comment-level scanning and surfaced comment-based sensitive data when present, confirming systematic coverage."
     ],
     [
       "CWE-639: Authorization Bypass Through User-Controlled Key",
