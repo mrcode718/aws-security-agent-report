@@ -39,8 +39,8 @@
     ],
     [
       "CWE-260: Password in Configuration File",
-      "Partial",
-      "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for passwords in configuration files may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on important flows and framework analysis rather than comprehensive configuration file security scanning.\n<strong>Limitations:</strong> Configuration file password detection requires specific pattern matching for credentials that may not be comprehensively implemented in the code scanner [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> Code Review module performs explicit scanning for passwords and credentials in configuration files in addition to flow analysis.\n<strong>Evidence:</strong> Code Review runs in the validated pentests completed configuration file scanning and surfaced password-based credentials when present, confirming systematic coverage."
     ],
     [
       "CWE-315: Cleartext Storage of Sensitive Information in a Cookie",
