@@ -10,7 +10,7 @@
     [
       "CWE-1275: Sensitive Cookie with Improper SameSite Attribute",
       "Not Covered",
-      "<strong>Description:</strong> The service scans endpoints for TLS/SSL vulnerabilities but does not explicitly validate SameSite cookie attributes.\n<strong>Evidence:</strong> Source code analysis of testssl.sh (version 3.3dev) confirms that the tool does NOT support SameSite cookie attribute validation. Direct search of the entire testssl.sh script (25,550 lines) found zero references to \"SameSite\". The tool extracts Set-Cookie headers and validates Secure and HttpOnly attributes, but does not check for or validate SameSite attributes.\n<strong>Limitations:</strong> SameSite cookie security attributes are not part of the network scanning scope [UL-007]. See detailed analysis in testssl-samesite-analysis.md."
+      "<strong>Description:</strong> The tool extracts Set-Cookie headers and validates Secure and HttpOnly attributes, but does not check for or validate SameSite attributes.\n<strong>Limitations:</strong> SameSite cookie security attributes are not part of the network scanning scope [UL-007]. See detailed analysis in testssl-samesite-analysis.md."
     ],
     [
       "CWE-200: Exposure of Sensitive Information to an Unauthorized Actor",
