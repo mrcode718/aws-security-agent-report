@@ -228,6 +228,7 @@ function renderChart(chart) {
     const caption = chart.caption ? `<p class="chart-caption">${escapeHtml(chart.caption)}</p>` : '';
     
     // Store chart config for initialization after DOM is ready
+    // Use a longer timeout to ensure DOM is fully updated after async rendering
     setTimeout(() => {
         const ctx = document.getElementById(chartId);
         if (ctx && typeof Chart !== 'undefined') {
@@ -272,7 +273,7 @@ function renderChart(chart) {
                 options: mergedOptions
             });
         }
-    }, 100);
+    }, 200);
     
     return `<div class="chart-container">${canvas}${caption}</div>`;
 }
