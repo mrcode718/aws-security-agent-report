@@ -431,7 +431,7 @@
               ],
               [
                 "CWE-65: Windows Hard Link",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability is Windows-specific and requires operating system-level analysis of hard link creation and following.\n<strong>Evidence:</strong> The tested applications are Linux-based web applications, making this Windows-specific vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
@@ -491,17 +491,17 @@
               ],
               [
                 "CWE-11: ASP.NET Misconfiguration: Creating Debug Binary",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific analysis of debug binary creation.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1174: ASP.NET Misconfiguration: Improper Model Validation",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires framework-specific model validation analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-13: ASP.NET Misconfiguration: Password in Configuration File",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability is ASP.NET-specific and requires ASP.NET framework analysis.\n<strong>Evidence:</strong> The tested applications are not ASP.NET-based, making this vulnerability not applicable to the test scenarios.\n<strong>Limitations:</strong> "
               ],
               [
@@ -626,13 +626,13 @@
             "rows": [
               [
                 "CWE-1240: Use of a Cryptographic Primitive with a Risky Implementation",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Tested",
+                "<strong>Description:</strong> This vulnerability requires specific cryptographic implementation analysis.\n<strong>Evidence:</strong> The tested applications do not use cryptographic primitives with risky implementations, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
-                "",
-                "<strong>Description:</strong> \n<strong>Evidence:</strong> \n<strong>Limitations:</strong> "
+                "Not Tested",
+                "<strong>Description:</strong> This vulnerability requires specific random number generator analysis.\n<strong>Evidence:</strong> The tested applications do not use predictable algorithms in random number generators, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-261: Weak Encoding for Password",
@@ -811,12 +811,12 @@
             "rows": [
               [
                 "CWE-103: Struts: Incomplete validate() Method Definition",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability is Struts framework-specific.\n<strong>Evidence:</strong> The tested applications do not use Struts framework, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-104: Struts: Form Bean Does Not Extend Validation Class",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability is Struts framework-specific.\n<strong>Evidence:</strong> The tested applications do not use Struts framework, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
@@ -886,7 +886,7 @@
               ],
               [
                 "CWE-643: Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability requires XPath query processing in the application for XML data access.\n<strong>Evidence:</strong> The tested applications process XML but do not use XPath queries, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
@@ -946,12 +946,12 @@
               ],
               [
                 "CWE-90: Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability requires LDAP usage in the application for authentication or directory services.\n<strong>Evidence:</strong> The tested applications do not use LDAP, making this vulnerability not applicable to the tested applications.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-91: XML Injection (aka Blind XPath Injection)",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability requires XPath query processing in the application for XML data access.\n<strong>Evidence:</strong> The tested applications process XML but do not use XPath queries, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
@@ -981,7 +981,7 @@
               ],
               [
                 "CWE-97: Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability requires Server-Side Includes usage in the application.\n<strong>Evidence:</strong> The tested applications use template engines rather than SSI directives, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
@@ -1446,12 +1446,12 @@
               ],
               [
                 "CWE-506: Embedded Malicious Code",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability requires the presence of intentionally embedded malicious code in the application.\n<strong>Evidence:</strong> The tested applications are legitimate web applications without embedded malicious code, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
                 "CWE-509: Replicating Malicious Code (Virus or Worm)",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability requires the presence of self-replicating malicious code in the application.\n<strong>Evidence:</strong> The tested applications are legitimate web applications without self-replicating malicious code, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ],
               [
@@ -1481,7 +1481,7 @@
               ],
               [
                 "CWE-926: Improper Export of Android Application Components",
-                "",
+                "Not Tested",
                 "<strong>Description:</strong> This vulnerability is Android-specific and requires Android mobile application analysis.\n<strong>Evidence:</strong> The tested applications are web applications accessed through HTTP/HTTPS interfaces, not Android mobile applications, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
               ]
             ]

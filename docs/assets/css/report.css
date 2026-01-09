@@ -279,6 +279,14 @@ body {
     white-space: nowrap;
 }
 
+/* Allow word wrap for first column in Table 3 tables (3-column tables) */
+.academic-table:has(thead tr th:nth-child(3):last-child) th:first-child,
+.academic-table:has(thead tr th:nth-child(3):last-child) td:first-child {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Override for 2-column tables only (Tables 1 and 2) - auto-width for ID column */
 .academic-table:has(thead tr th:nth-child(2):last-child) th:first-child,
 .academic-table:has(thead tr th:nth-child(2):last-child) td:first-child {
