@@ -279,9 +279,14 @@ body {
     white-space: nowrap;
 }
 
-/* Allow word wrap for first column in Table 3 tables (3-column tables) */
+/* Equal width columns for Table 3 tables (3-column tables) */
 .academic-table:has(thead tr th:nth-child(3):last-child) th:first-child,
-.academic-table:has(thead tr th:nth-child(3):last-child) td:first-child {
+.academic-table:has(thead tr th:nth-child(3):last-child) td:first-child,
+.academic-table:has(thead tr th:nth-child(3):last-child) th:nth-child(2),
+.academic-table:has(thead tr th:nth-child(3):last-child) td:nth-child(2),
+.academic-table:has(thead tr th:nth-child(3):last-child) th:nth-child(3),
+.academic-table:has(thead tr th:nth-child(3):last-child) td:nth-child(3) {
+    width: 33.33%;
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
