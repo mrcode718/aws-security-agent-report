@@ -40,30 +40,9 @@
     </div>
 
     <script>
-        // Load appendix-content.json instead of content.json
-        async function loadAndRenderReport() {
-            try {
-                const response = await fetch('appendix-content.json');
-                if (!response.ok) {
-                    throw new Error('Failed to load appendix-content.json');
-                }
-                const content = await response.json();
-                renderReport(content);
-            } catch (error) {
-                console.error('Error loading appendix content:', error);
-                document.getElementById('report-content').innerHTML = 
-                    '<p style="color: red; padding: 20px;">Error loading appendix content. Please ensure appendix-content.json exists.</p>';
-            }
-        }
-        
-        // Load and execute the main render.js script
-        const script = document.createElement('script');
-        script.src = 'assets/js/render.js';
-        script.onload = function() {
-            // Override the loadAndRenderReport function to use appendix-content.json
-            loadAndRenderReport();
-        };
-        document.head.appendChild(script);
+        // Set a flag to tell render.js to load appendix content
+        window.CONTENT_FILE = 'appendix-content.json';
     </script>
+    <script src="assets/js/render.js"></script>
 </body>
 </html>

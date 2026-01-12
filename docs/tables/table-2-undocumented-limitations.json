@@ -11,7 +11,7 @@
     ],
     [
       "UL-002",
-      "Only HTTP/HTTPS targets supported; custom ports and non-HTTP protocols are not supported."
+      "Only HTTP/HTTPS targets supported; tests against custom ports are not working and non-HTTP protocols are not supported "
     ],
     [
       "UL-003",
@@ -19,7 +19,7 @@
     ],
     [
       "UL-004",
-      "Complex exploitation scenarios requiring custom tooling or local services are unsupported. The agent runs from a Docker container with Kali Linux that has limited built-in tooling available, and internal guardrails reduce fluency, preventing support for advanced attack scenarios."
+      "Complex exploitation scenarios requiring custom tooling or local services are unsupported. The agent runs as is with limited built-in tooling available, and internal guardrails reduce fluency, preventing support for advanced attack scenarios."
     ],
     [
       "UL-005",
@@ -35,7 +35,7 @@
     ],
     [
       "UL-008",
-      "Limited static code analysis scope - code scanner focuses on important flows and framework analysis rather than comprehensive static analysis (e.g., variable/field modifiers, exception handling patterns, debugging code, comment scanning, mass assignment patterns, generic exception declarations). Additionally, code scanner does not perform comprehensive analysis of cryptographic implementation details via static code analysis (e.g., IV generation, nonce reuse, key pair reuse, RSA padding selection) or runtime random number generator testing (entropy, seed validation, PRNG algorithm analysis)."
+      "Limited static code analysis functionality and scope -  code review module has limited capabilities, code scanner focuses on important flows and framework analysis rather than comprehensive static analysis (e.g., variable/field modifiers, exception handling patterns, debugging code, comment scanning, mass assignment patterns, generic exception declarations). Additionally, code scanner does not perform comprehensive analysis of cryptographic implementation details via static code analysis (e.g., IV generation, nonce reuse, key pair reuse, RSA padding selection) or runtime random number generator testing (entropy, seed validation, PRNG algorithm analysis)."
     ],
     [
       "UL-009",
@@ -43,4 +43,3 @@
     ]
   ]
 }
-

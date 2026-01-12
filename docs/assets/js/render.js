@@ -3,16 +3,19 @@
 
 async function loadAndRenderReport() {
     try {
-        const response = await fetch('content.json');
+        // Check if a custom content file is specified (e.g., for appendix page)
+        const contentFile = window.CONTENT_FILE || 'content.json';
+        const response = await fetch(contentFile);
         if (!response.ok) {
-            throw new Error('Failed to load content.json');
+            throw new Error(`Failed to load ${contentFile}`);
         }
         const content = await response.json();
         renderReport(content);
     } catch (error) {
         console.error('Error loading report content:', error);
+        const contentFile = window.CONTENT_FILE || 'content.json';
         document.getElementById('report-content').innerHTML = 
-            '<p style="color: red; padding: 20px;">Error loading report content. Please ensure content.json exists.</p>';
+            `<p style="color: red; padding: 20px;">Error loading report content. Please ensure ${contentFile} exists.</p>`;
     }
 }
 
