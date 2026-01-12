@@ -14,8 +14,8 @@
     ],
     [
       "CWE-215: Insertion of Sensitive Information Into Debugging Code",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include testing for sensitive information in debugging code in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for sensitive information in debugging code.\n<strong>Limitations:</strong> Explicit testing for sensitive information in debugging code is not systematically performed [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects sensitive information in debugging code through static code analysis that identifies debugging patterns with potential security concerns.\n<strong>Evidence:</strong> SAST testing (Issue #75) demonstrated detection of debugging code patterns that may expose sensitive information, with recommendations for proper logging practices."
     ],
     [
       "CWE-234: Failure to Handle Missing Parameter",
@@ -69,8 +69,8 @@
     ],
     [
       "CWE-396: Declaration of Catch for Generic Exception",
-      "Partial",
-      "<strong>Description:</strong> The service may detect generic exception catching through static code analysis, but explicit runtime validation of exception handling patterns is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may identify generic exception catching through static analysis but do not show explicit runtime testing for exception handling patterns.\n<strong>Limitations:</strong> Explicit runtime validation of exception handling patterns is not systematically performed [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects generic exception catching through static code analysis that identifies patterns like bare 'except:' or 'except Exception:' with pass statements.\n<strong>Evidence:</strong> SAST testing (Issue #74) demonstrated detection of generic exception handlers that silently pass without any action, with recommendations to catch specific exception types or use logging.exception() for visibility."
     ],
     [
       "CWE-397: Declaration of Throws for Generic Exception",
