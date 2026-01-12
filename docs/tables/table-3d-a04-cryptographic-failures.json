@@ -49,8 +49,8 @@
     ],
     [
       "CWE-323: Reusing a Nonce, Key Pair in Encryption",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include nonce reuse testing or key pair reuse validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of pubbank-tls, adminer, and azaz pentest runs found no evidence of nonce reuse testing or key pair reuse validation. TLS scanner validates TLS/SSL configuration but does not test for nonce reuse in application-level encryption implementations. Code scanner focuses on credential detection rather than encryption implementation analysis.\n<strong>Limitations:</strong> Nonce reuse testing and key pair reuse validation are not part of the testing scope [UL-008]. This requires analyzing application-level encryption implementation details which are outside the scope of TLS protocol testing."
+      "Not Tested",
+      "<strong>Description:</strong> The vulnerability requires nonce-based encryption or key pair reuse in encryption implementations, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code (pubbank-tls, adminer, azaz) confirmed no nonce-based encryption (AES-GCM, ChaCha20, etc.) or key pair reuse functionality exists. The test applications only use password hashing (Werkzeug) and basic session management, with no application-level encryption implementations.\n<strong>Limitations:</strong> Nonce reuse and key pair reuse vulnerabilities are not present in test applications [UL-008]."
     ],
     [
       "CWE-324: Use of a Key Past its Expiration Date",
@@ -159,8 +159,8 @@
     ],
     [
       "CWE-780: Use of RSA Algorithm without OAEP",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include RSA OAEP padding validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of RSA OAEP padding validation or RSA implementation testing.\n<strong>Limitations:</strong> RSA OAEP padding validation is not part of the testing scope [UL-008]."
+      "Not Tested",
+      "<strong>Description:</strong> The vulnerability requires RSA encryption implementation, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code (pubbank-tls, adminer, azaz) confirmed no RSA encryption or decryption functionality exists. The test applications do not implement asymmetric encryption algorithms or RSA operations.\n<strong>Limitations:</strong> RSA encryption is not present in test applications [UL-008]."
     ],
     [
       "CWE-916: Use of Password Hash With Insufficient Computational Effort",
