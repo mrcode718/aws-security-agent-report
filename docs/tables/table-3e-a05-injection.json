@@ -159,8 +159,8 @@
     ],
     [
       "CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')",
-      "Partial",
-      "<strong>Description:</strong> The service does not include dedicated CRLF injection testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated CRLF injection testing action groups.\n<strong>Limitations:</strong> Explicit CRLF sequence injection testing is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include CRLF injection testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of all pentest runs (pubbank-tls, adminer, azaz, openfire, activemq) found no evidence of dedicated CRLF injection testing. No dedicated CRLF injection action groups exist in any of the pentest runs. No evidence of indirect CRLF injection testing through header manipulation or other testing methods was found.\n<strong>Limitations:</strong> CRLF injection testing is not performed [UL-007]. CRLF injection should be applicable to all web applications that process HTTP headers, regardless of technology stack."
     ],
     [
       "CWE-94: Improper Control of Generation of Code ('Code Injection')",
