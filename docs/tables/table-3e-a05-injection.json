@@ -44,8 +44,8 @@
     ],
     [
       "CWE-129: Improper Validation of Array Index",
-      "Partial",
-      "<strong>Description:</strong> The service does not include dedicated array index validation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated array index validation testing.\n<strong>Limitations:</strong> Explicit array index validation testing is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include dedicated array index validation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of all pentest runs (pubbank-tls, adminer, azaz, openfire, activemq) found no evidence of dedicated array index validation testing. No dedicated array index validation action groups exist in any of the pentest runs. The tool does not systematically test for improper array index validation vulnerabilities where user-controlled input is used to access array or list elements without proper bounds checking.\n<strong>Limitations:</strong> Explicit array index validation testing is not systematically performed [UL-007]. The tool should test for improper array index validation even when applications use secure implementations (e.g., dictionary access with .get()), as this is a standard security testing requirement."
     ],
     [
       "CWE-159: Improper Handling of Invalid Use of Special Elements",

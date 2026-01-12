@@ -45,17 +45,17 @@
     [
       "CWE-322: Key Exchange without Entity Authentication",
       "Partial",
-      "<strong>Description:</strong> The service includes TLS scanner capabilities that validate certificate-based entity authentication during TLS key exchange, but does not explicitly test for key exchange without entity authentication scenarios.\n<strong>Evidence:</strong> TLS scanner action groups (testssl.sh) in pubbank-tls, adminer, and azaz pentest runs perform certificate validation and trust chain verification, which validates entity authentication during TLS handshake. TLS scanner tests key exchange methods (RSA, ECDHE, DHE) and validates that certificates are properly authenticated. However, explicit testing for key exchange without entity authentication scenarios is not systematically performed.\n<strong>Limitations:</strong> While TLS certificate validation provides entity authentication during key exchange, explicit testing for key exchange without entity authentication scenarios is not part of the testing scope [UL-008]."
+      "<strong>Description:</strong> The service includes TLS scanner capabilities that validate certificate-based entity authentication during TLS key exchange, but does not explicitly test for key exchange without entity authentication scenarios.\n<strong>Evidence:</strong> TLS scanner action groups perform certificate validation and trust chain verification, which validates entity authentication during TLS handshake. TLS scanner tests key exchange methods (RSA, ECDHE, DHE) and validates that certificates are properly authenticated. However, explicit testing for key exchange without entity authentication scenarios is not systematically performed.\n<strong>Limitations:</strong> While TLS certificate validation provides entity authentication during key exchange, explicit testing for key exchange without entity authentication scenarios is not part of the testing scope [UL-008]."
     ],
     [
       "CWE-323: Reusing a Nonce, Key Pair in Encryption",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires nonce-based encryption or key pair reuse in encryption implementations, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code (pubbank-tls, adminer, azaz) confirmed no nonce-based encryption (AES-GCM, ChaCha20, etc.) or key pair reuse functionality exists. The test applications only use password hashing (Werkzeug) and basic session management, with no application-level encryption implementations.\n<strong>Limitations:</strong> Nonce reuse and key pair reuse vulnerabilities are not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires nonce-based encryption or key pair reuse in encryption implementations, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no nonce-based encryption (AES-GCM, ChaCha20, etc.) or key pair reuse functionality exists. The test applications only use password hashing and basic session management, with no application-level encryption implementations.\n<strong>Limitations:</strong> Nonce reuse and key pair reuse vulnerabilities are not present in test applications [UL-008]."
     ],
     [
       "CWE-324: Use of a Key Past its Expiration Date",
       "Partial",
-      "<strong>Description:</strong> The service includes TLS scanner capabilities that validate TLS certificate expiration dates, but does not validate expiration of application-level cryptographic keys.\n<strong>Evidence:</strong> TLS scanner action groups (testssl.sh) in pubbank-tls, adminer, and azaz pentest runs perform certificate expiration validation, checking for expired certificates and providing warnings for certificates nearing expiration. However, validation of application-level cryptographic key expiration dates (e.g., API keys, encryption keys used in application code) is not performed.\n<strong>Limitations:</strong> While TLS certificate expiration is validated, explicit validation of application-level cryptographic key expiration dates is not part of the testing scope [UL-008]."
+      "<strong>Description:</strong> The service includes TLS scanner capabilities that validate TLS certificate expiration dates, but does not validate expiration of application-level cryptographic keys.\n<strong>Evidence:</strong> TLS scanner action groups perform certificate expiration validation, checking for expired certificates and providing warnings for certificates nearing expiration. However, validation of application-level cryptographic key expiration dates (e.g., API keys, encryption keys used in application code) is not performed.\n<strong>Limitations:</strong> While TLS certificate expiration is validated, explicit validation of application-level cryptographic key expiration dates is not part of the testing scope [UL-008]."
     ],
     [
       "CWE-325: Missing Cryptographic Step",
@@ -85,12 +85,12 @@
     [
       "CWE-330: Use of Insufficiently Random Values",
       "Not Covered",
-      "<strong>Description:</strong> The service does not include random value entropy testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of random value entropy testing or randomness validation.\n<strong>Limitations:</strong> Random value entropy testing is not part of the testing scope [UL-008]."
+      "<strong>Description:</strong> The service does not include random value entropy testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of test results found no evidence of random value entropy testing or randomness validation.\n<strong>Limitations:</strong> Random value entropy testing is not part of the testing scope [UL-008]."
     ],
     [
       "CWE-331: Insufficient Entropy",
       "Not Covered",
-      "<strong>Description:</strong> The service does not include entropy measurement or validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of entropy measurement or validation.\n<strong>Limitations:</strong> Entropy measurement and validation are not part of the testing scope [UL-008]."
+      "<strong>Description:</strong> The service does not include entropy measurement or validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of test results found no evidence of entropy measurement or validation.\n<strong>Limitations:</strong> Entropy measurement and validation are not part of the testing scope [UL-008]."
     ],
     [
       "CWE-332: Insufficient Entropy in PRNG",
@@ -125,12 +125,12 @@
     [
       "CWE-340: Generation of Predictable Numbers or Identifiers",
       "Not Covered",
-      "<strong>Description:</strong> The service does not include predictable number or identifier generation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of predictable number or identifier generation testing.\n<strong>Limitations:</strong> Predictable number or identifier generation testing is not part of the testing scope [UL-008]."
+      "<strong>Description:</strong> The service does not include predictable number or identifier generation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of test results found no evidence of predictable number or identifier generation testing.\n<strong>Limitations:</strong> Predictable number or identifier generation testing is not part of the testing scope [UL-008]."
     ],
     [
       "CWE-342: Predictable Exact Value from Previous Values",
       "Not Covered",
-      "<strong>Description:</strong> The service does not include predictable value sequence testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of predictable value sequence testing or validation.\n<strong>Limitations:</strong> Predictable value sequence testing is not part of the testing scope [UL-008]."
+      "<strong>Description:</strong> The service does not include predictable value sequence testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of test results found no evidence of predictable value sequence testing or validation.\n<strong>Limitations:</strong> Predictable value sequence testing is not part of the testing scope [UL-008]."
     ],
     [
       "CWE-347: Improper Verification of Cryptographic Signature",
@@ -160,7 +160,7 @@
     [
       "CWE-780: Use of RSA Algorithm without OAEP",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires RSA encryption implementation, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code (pubbank-tls, adminer, azaz) confirmed no RSA encryption or decryption functionality exists. The test applications do not implement asymmetric encryption algorithms or RSA operations.\n<strong>Limitations:</strong> RSA encryption is not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires RSA encryption implementation, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no RSA encryption or decryption functionality exists. The test applications do not implement asymmetric encryption algorithms or RSA operations.\n<strong>Limitations:</strong> RSA encryption is not present in test applications [UL-008]."
     ],
     [
       "CWE-916: Use of Password Hash With Insufficient Computational Effort",
@@ -175,7 +175,7 @@
     [
       "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires random number generator analysis, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no custom random number generation functionality exists. Password hashing uses Werkzeug's secure internal functions.\n<strong>Limitations:</strong> Random number generator implementations are not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires random number generator analysis, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no custom random number generation functionality exists. Password hashing uses standard secure internal functions.\n<strong>Limitations:</strong> Random number generator implementations are not present in test applications [UL-008]."
     ]
   ]
 }
