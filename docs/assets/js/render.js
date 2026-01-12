@@ -69,7 +69,7 @@ async function renderSection(section, references) {
         sectionClass += ' section-references';
     }
     
-    let html = `<section class="${sectionClass}">
+    let html = `<section class="${sectionClass}" id="section-${section.number}">
         <h2>${section.number}. ${escapeHtml(section.title)}</h2>`;
     
     // Render paragraphs
@@ -177,13 +177,26 @@ async function renderSubsection(subsection, references) {
 function renderList(list, references) {
     const tag = list.type === 'ul' ? 'ul' : 'ol';
     const items = list.items.map(item => {
+        // Check if item contains a link marker [text](url)
+        let processedItem = item;
+        const linkPattern = /\[([^\]]+)\]\(([^\)]+)\)/g;
+        processedItem = processedItem.replace(linkPattern, (match, text, url) => {
+            return `<a href="${url}">${text}</a>`;
+        });
+        
         // Check if item contains bold text (format: "Text: description")
-        if (item.includes(':')) {
-            const parts = item.split(':');
+        if (processedItem.includes(':') && !processedItem.includes('<a')) {
+            const parts = processedItem.split(':');
             if (parts.length === 2) {
                 return `<li><strong>${processCitations(escapeHtml(parts[0].trim()), references)}:</strong> ${processCitations(escapeHtml(parts[1].trim()), references)}</li>`;
             }
         }
+        
+        // If we added links, don't escape the HTML
+        if (processedItem !== item) {
+            return `<li>${processCitations(processedItem, references)}</li>`;
+        }
+        
         return `<li>${processCitations(escapeHtml(item), references)}</li>`;
     }).join('');
     return `<${tag}>${items}</${tag}>`;

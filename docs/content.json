@@ -93,7 +93,9 @@
     {
       "number": 5,
       "title": "OWASP Top 10 Coverage Evaluation",
-      "paragraphs": [],
+      "paragraphs": [
+        "This section evaluates AWS Security Agent's coverage of the OWASP Top 10 (2025) application security risks. Detailed coverage tables for each risk category are provided in the Appendix for reference."
+      ],
       "subsections": [
         {
           "number": "5.1",
@@ -163,53 +165,27 @@
         },
         {
           "number": "5.2",
-          "title": "A01: Broken Access Control",
-          "tableFile": "tables/table-3a-a01-broken-access-control.json"
-        },
-        {
-          "number": "5.3",
-          "title": "A02: Security Misconfiguration",
-          "tableFile": "tables/table-3b-a02-security-misconfiguration.json"
-        },
-        {
-          "number": "5.4",
-          "title": "A03: Software Supply Chain Failures",
-          "tableFile": "tables/table-3c-a03-software-supply-chain.json"
-        },
-        {
-          "number": "5.5",
-          "title": "A04: Cryptographic Failures",
-          "tableFile": "tables/table-3d-a04-cryptographic-failures.json"
-        },
-        {
-          "number": "5.6",
-          "title": "A05: Injection",
-          "tableFile": "tables/table-3e-a05-injection.json"
-        },
-        {
-          "number": "5.7",
-          "title": "A06: Insecure Design",
-          "tableFile": "tables/table-3f-a06-insecure-design.json"
-        },
-        {
-          "number": "5.8",
-          "title": "A07: Authentication Failures",
-          "tableFile": "tables/table-3g-a07-authentication-failures.json"
-        },
-        {
-          "number": "5.9",
-          "title": "A08: Software or Data Integrity Failures",
-          "tableFile": "tables/table-3h-a08-data-integrity-failures.json"
-        },
-        {
-          "number": "5.10",
-          "title": "A09: Security Logging and Alerting Failures",
-          "tableFile": "tables/table-3i-a09-security-logging-failures.json"
-        },
-        {
-          "number": "5.11",
-          "title": "A10: Mishandling of Exceptional Conditions",
-          "tableFile": "tables/table-3j-a10-exceptional-conditions.json"
+          "title": "Coverage Summary",
+          "paragraphs": [
+            "The following OWASP Top 10 (2025) risk categories were evaluated for coverage across AWS Security Agent's three core capabilities (design review, code review, and penetration testing). Detailed coverage analysis tables documenting specific vulnerability classes, detection mechanisms, and testing results for each category are provided in the Appendix (see Section 7)."
+          ],
+          "lists": [
+            {
+              "type": "ul",
+              "items": [
+                "A01: Broken Access Control - [See Appendix Section 1](appendix.html#section-1)",
+                "A02: Security Misconfiguration - [See Appendix Section 2](appendix.html#section-2)",
+                "A03: Software Supply Chain Failures - [See Appendix Section 3](appendix.html#section-3)",
+                "A04: Cryptographic Failures - [See Appendix Section 4](appendix.html#section-4)",
+                "A05: Injection - [See Appendix Section 5](appendix.html#section-5)",
+                "A06: Insecure Design - [See Appendix Section 6](appendix.html#section-6)",
+                "A07: Authentication Failures - [See Appendix Section 7](appendix.html#section-7)",
+                "A08: Software or Data Integrity Failures - [See Appendix Section 8](appendix.html#section-8)",
+                "A09: Security Logging and Alerting Failures - [See Appendix Section 9](appendix.html#section-9)",
+                "A10: Mishandling of Exceptional Conditions - [See Appendix Section 10](appendix.html#section-10)"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -218,11 +194,26 @@
       "title": "Conclusion and Recommendations",
       "paragraphs": [
         "AWS Security Agent represents a shift toward continuous, embedded application security. It automates design and code reviews, runs realistic multi-step penetration tests and centralizes findings, enabling teams to identify issues earlier and reduce manual effort. The service's context-aware approach, custom security requirements and multi-step attack simulations are valuable features.",
-        "However, the preview version has notable limitations: it is available only in one region, requires manual configuration through a web interface, supports only private GitHub repositories, lacks scheduling and API automation (scheduled testing is explicitly documented as unavailable [9]), and cannot handle complex exploitation scenarios or non-HTTP protocols. Only GitHub integration is supported; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available [3]. The service provides strong coverage for injection vulnerabilities and access control, moderate coverage for security misconfiguration and insecure design, but has significant gaps in software supply chain security, cryptographic validation beyond TLS checks, logging and alerting, and data integrity failures. To fully secure their applications, organizations should use AWS Security Agent as a complementary control alongside additional tools and processes (e.g., dependency scanning, secrets management, infrastructure‑as‑code security, and runtime monitoring) and maintain human expertise for nuanced assessments."
+        "However, the preview version has notable limitations: it is available only in one region, requires manual configuration through a web interface, supports only private GitHub repositories, lacks scheduling and API automation (scheduled testing is explicitly documented as unavailable [9]), and cannot handle complex exploitation scenarios or non-HTTP protocols. Only GitHub integration is supported; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available [3]. The service provides strong coverage for injection vulnerabilities and access control, moderate coverage for security misconfiguration and insecure design, but has significant gaps in software supply chain security, cryptographic validation beyond TLS checks, logging and alerting, and data integrity failures. Detailed coverage analysis for each OWASP Top 10 category is provided in the Appendix. To fully secure their applications, organizations should use AWS Security Agent as a complementary control alongside additional tools and processes (e.g., dependency scanning, secrets management, infrastructure‑as‑code security, and runtime monitoring) and maintain human expertise for nuanced assessments."
       ]
     },
     {
       "number": 7,
+      "title": "Appendix",
+      "paragraphs": [
+        "Detailed OWASP Top 10 coverage analysis tables are available in the separate Appendix document:"
+      ],
+      "lists": [
+        {
+          "type": "ul",
+          "items": [
+            "[Appendix: OWASP Top 10 Coverage Analysis - Detailed Tables](appendix.html)"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
       "title": "References",
       "references": true
     }

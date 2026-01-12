@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "title": "Appendix: OWASP Top 10 Coverage Analysis - Detailed Tables",
+    "author": "Ivan Bylina",
+    "affiliation": "GenAI Security Research",
+    "date": "2025-12-29",
+    "status": "Draft"
+  },
+  "abstract": "This appendix provides detailed coverage analysis tables for each OWASP Top 10 (2025) risk category, documenting AWS Security Agent's capabilities in detecting, testing, and remediating specific vulnerability classes across design review, code review, and penetration testing capabilities.",
+  "sections": [
+    {
+      "number": 1,
+      "title": "A01: Broken Access Control",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for broken access control vulnerabilities."
+      ],
+      "tableFile": "tables/table-3a-a01-broken-access-control.json"
+    },
+    {
+      "number": 2,
+      "title": "A02: Security Misconfiguration",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for security misconfiguration vulnerabilities."
+      ],
+      "tableFile": "tables/table-3b-a02-security-misconfiguration.json"
+    },
+    {
+      "number": 3,
+      "title": "A03: Software Supply Chain Failures",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for software supply chain vulnerabilities."
+      ],
+      "tableFile": "tables/table-3c-a03-software-supply-chain.json"
+    },
+    {
+      "number": 4,
+      "title": "A04: Cryptographic Failures",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for cryptographic failure vulnerabilities."
+      ],
+      "tableFile": "tables/table-3d-a04-cryptographic-failures.json"
+    },
+    {
+      "number": 5,
+      "title": "A05: Injection",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for injection vulnerabilities."
+      ],
+      "tableFile": "tables/table-3e-a05-injection.json"
+    },
+    {
+      "number": 6,
+      "title": "A06: Insecure Design",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for insecure design vulnerabilities."
+      ],
+      "tableFile": "tables/table-3f-a06-insecure-design.json"
+    },
+    {
+      "number": 7,
+      "title": "A07: Authentication Failures",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for authentication failure vulnerabilities."
+      ],
+      "tableFile": "tables/table-3g-a07-authentication-failures.json"
+    },
+    {
+      "number": 8,
+      "title": "A08: Software or Data Integrity Failures",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for software and data integrity failure vulnerabilities."
+      ],
+      "tableFile": "tables/table-3h-a08-data-integrity-failures.json"
+    },
+    {
+      "number": 9,
+      "title": "A09: Security Logging and Alerting Failures",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for security logging and alerting failure vulnerabilities."
+      ],
+      "tableFile": "tables/table-3i-a09-security-logging-failures.json"
+    },
+    {
+      "number": 10,
+      "title": "A10: Mishandling of Exceptional Conditions",
+      "paragraphs": [
+        "This section provides detailed coverage analysis for exceptional condition handling vulnerabilities."
+      ],
+      "tableFile": "tables/table-3j-a10-exceptional-conditions.json"
+    }
+  ],
+  "references": []
+}

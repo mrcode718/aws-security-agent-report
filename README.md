@@ -25,17 +25,28 @@ All findings are based on actual console exploration conducted in December 2025.
 .
 ├── docs/                   # GitHub Pages source
 │   ├── index.html         # Main report page
+│   ├── appendix.html      # Appendix page (OWASP Top 10 detailed tables)
+│   ├── content.json       # Main report content
+│   ├── appendix-content.json  # Appendix content
 │   ├── .nojekyll          # Disable Jekyll
+│   ├── tables/            # Individual table JSON files
+│   │   ├── table-1-documented-limitations.json
+│   │   ├── table-2-undocumented-limitations.json
+│   │   ├── table-3a-a01-broken-access-control.json
+│   │   ├── table-3b-a02-security-misconfiguration.json
+│   │   └── ...            # Other OWASP tables (3c-3j)
 │   └── assets/
 │       ├── css/
 │       │   └── report.css # Report styling
 │       └── js/
-│           └── export.js   # Export functionality
+│           └── render.js  # Content rendering engine
 ├── .github/
 │   └── workflows/
 │       └── pages.yml      # GitHub Pages deployment
 └── README.md              # This file
 ```
+
+**Note**: The long OWASP Top 10 coverage tables (Tables 3a-3j) have been moved to a separate [Appendix page](docs/appendix.html) to improve readability of the main report. The main report now includes a summary with links to the detailed tables in the Appendix.
 
 ## Review Date
 
