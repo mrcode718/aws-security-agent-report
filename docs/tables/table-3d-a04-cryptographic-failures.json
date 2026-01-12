@@ -174,8 +174,8 @@
     ],
     [
       "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
-      "Partial",
-      "<strong>Description:</strong> The service tests for weak secrets through JWT testing, but does not explicitly validate random number generator predictability or algorithm selection.\n<strong>Evidence:</strong> JWT vulnerabilities action groups test for weak secrets and key management.\n<strong>Limitations:</strong> Explicit validation of random number generator predictability and algorithm selection is not systematically performed [UL-008]."
+      "Not Tested",
+      "<strong>Description:</strong> The vulnerability requires random number generator analysis, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no custom random number generation functionality exists. Password hashing uses Werkzeug's secure internal functions.\n<strong>Limitations:</strong> Random number generator implementations are not present in test applications [UL-008]."
     ]
   ]
 }

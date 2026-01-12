@@ -373,8 +373,8 @@
         ],
         [
           "CWE-1241: Use of Predictable Algorithm in Random Number Generator - Predictable RNG algorithm",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires random number generator analysis, which is not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no custom random number generation functionality exists.\nLimitations: Random number generator implementations are not present in test applications [UL-008]."
         ],
         [
           "CWE-261: Weak Encoding for Password - Weak password encoding",
