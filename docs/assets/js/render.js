@@ -412,3 +412,16 @@ if (document.readyState === 'loading') {
 } else {
     loadAndRenderReport();
 }
+
+// Handle hash navigation after content is loaded
+window.addEventListener('load', function() {
+    // Give render time to complete
+    setTimeout(function() {
+        if (window.location.hash) {
+            const element = document.querySelector(window.location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }, 300);
+});
