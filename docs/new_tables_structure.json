@@ -438,8 +438,8 @@
         ],
         [
           "CWE-329: Generation of Predictable IV with CBC Mode - Predictable IV in CBC mode",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires CBC mode encryption with IV generation, which is not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no CBC mode encryption or IV generation functionality exists.\nLimitations: CBC mode encryption with IV generation is not present in test applications [UL-008]."
         ],
         [
           "CWE-330: Use of Insufficiently Random Values - Insufficient randomness",
@@ -453,33 +453,33 @@
         ],
         [
           "CWE-332: Insufficient Entropy in PRNG - Low entropy in PRNG",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires PRNG usage with entropy issues, which is not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no PRNG usage or pseudo-random number generation functionality exists.\nLimitations: PRNG usage is not present in test applications [UL-008]."
         ],
         [
           "CWE-334: Small Space of Random Values - Small random value space",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires random value generation with constrained space, which is not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no random value generation with space constraints exists.\nLimitations: Random value generation with space constraints is not present in test applications [UL-008]."
         ],
         [
           "CWE-335: Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG) - Incorrect PRNG seed usage",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no PRNG seeding functionality exists.\nLimitations: PRNG seeding operations are not present in test applications [UL-008]."
         ],
         [
           "CWE-336: Same Seed in Pseudo-Random Number Generator (PRNG) - Same seed reused in PRNG",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no PRNG seeding functionality exists.\nLimitations: PRNG seeding operations are not present in test applications [UL-008]."
         ],
         [
           "CWE-337: Predictable Seed in Pseudo-Random Number Generator (PRNG) - Predictable PRNG seed",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no PRNG seeding functionality exists.\nLimitations: PRNG seeding operations are not present in test applications [UL-008]."
         ],
         [
           "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG) - Weak PRNG used",
-          "",
-          "Description: \nEvidence: \nLimitations: "
+          "Not Tested",
+          "Description: The vulnerability requires PRNG usage, which is not implemented in the test applications.\nEvidence: Analysis of test application code confirmed no PRNG usage functionality exists.\nLimitations: PRNG usage is not present in test applications [UL-008]."
         ],
         [
           "CWE-340: Generation of Predictable Numbers or Identifiers - Predictable number/ID generation",
