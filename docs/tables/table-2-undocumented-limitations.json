@@ -35,7 +35,7 @@
     ],
     [
       "UL-008",
-      "Limited static code analysis functionality and scope - code review module has limited capabilities. The code scanner successfully detects security issues in important flows including generic exception handling patterns (e.g., bare except: pass), debugging code with sensitive information, and command injection vulnerabilities. However, it does not perform comprehensive analysis of all code quality patterns (e.g., variable/field modifiers, comment scanning, mass assignment patterns in all contexts). Additionally, code scanner does not perform comprehensive analysis of cryptographic implementation details via static code analysis (e.g., IV generation, nonce reuse, key pair reuse, RSA padding selection) or runtime random number generator testing (entropy, seed validation, PRNG algorithm analysis)."
+      "Limited static code analysis functionality and scope - code review module does not perform comprehensive analysis of all code quality patterns (e.g., variable/field modifiers, comment scanning, mass assignment patterns in all contexts). Additionally, code scanner does not perform comprehensive analysis of cryptographic implementation details via static code analysis (e.g., IV generation, nonce reuse, key pair reuse, RSA padding selection) or runtime random number generator testing (entropy, seed validation, PRNG algorithm analysis)."
     ],
     [
       "UL-009",
