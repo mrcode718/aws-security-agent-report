@@ -240,7 +240,7 @@ function renderTable(table, references) {
 
 function renderChart(chart) {
     const chartId = `chart-${Math.random().toString(36).substr(2, 9)}`;
-    const canvas = `<canvas id="${chartId}"></canvas>`;
+    const canvas = `<canvas id="${chartId}" style="min-height: 400px;"></canvas>`;
     const caption = chart.caption ? `<p class="chart-caption">${escapeHtml(chart.caption)}</p>` : '';
     
     // Store chart config for initialization after DOM is ready
@@ -288,8 +288,10 @@ function renderChart(chart) {
                 },
                 options: mergedOptions
             });
+        } else {
+            console.error(`Chart.js not loaded or canvas element #${chartId} not found in DOM`);
         }
-    }, 200);
+    }, 500);
     
     return `<div class="chart-container">${canvas}${caption}</div>`;
 }
