@@ -164,13 +164,13 @@
     ],
     [
       "CWE-620: Unverified Password Change",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not test for unverified password change as password change functionality testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of password change functionality testing.\n<strong>Limitations:</strong> Password change functionality testing is not part of the standard testing scope [UL-007]."
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires password change functionality in the application.\n<strong>Evidence:</strong> Analysis of tested applications (demo_app/banking_app, adminer, openfire, activemq, druid) confirmed none of them implement password change functionality. The banking_app only has login, register, account, transfer, and admin routes with no password change endpoints. Adminer is a database management tool without user accounts. Openfire, ActiveMQ, and Druid are server applications without password change features.\n<strong>Limitations:</strong> "
     ],
     [
       "CWE-640: Weak Password Recovery Mechanism for Forgotten Password",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not test for weak password recovery mechanisms as password recovery functionality testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of password recovery functionality testing.\n<strong>Limitations:</strong> Password recovery functionality testing is not part of the standard testing scope [UL-007]."
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability requires password recovery functionality in the application.\n<strong>Evidence:</strong> Analysis of tested applications (demo_app/banking_app, adminer, openfire, activemq, druid) confirmed none of them implement password recovery functionality. The banking_app only has login, register, and admin_login routes with no password recovery endpoints. Adminer is a database management tool without user accounts. Openfire, ActiveMQ, and Druid are server applications without password recovery features.\n<strong>Limitations:</strong> "
     ],
     [
       "CWE-798: Use of Hard-coded Credentials",

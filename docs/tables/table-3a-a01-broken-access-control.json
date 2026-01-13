@@ -129,8 +129,8 @@
     ],
     [
       "CWE-548: Exposure of Information Through Directory Listing",
-      "Partial",
-      "<strong>Description:</strong> The service may detect directory listing indirectly through path traversal testing but does not explicitly test for directory listing behavior.\n<strong>Evidence:</strong> Information disclosure and path traversal action groups test for file access.\n<strong>Limitations:</strong> Explicit validation of directory listing behavior is not systematically performed [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects directory listing vulnerabilities through path traversal testing that identifies when directory listing exposes sensitive information or allows unauthorized file access.\n<strong>Evidence:</strong> Path traversal testing successfully detected directory listing vulnerability in vuln_08_directory_listing.py where unsanitized user input in file paths allowed directory traversal attacks. The tool identified the path traversal vulnerability where user input is used to construct file paths without proper validation.\n<strong>Limitations:</strong> None - directory listing detection is now covered."
     ],
     [
       "CWE-552: Files or Directories Accessible to External Parties",
