@@ -59,8 +59,8 @@
     ],
     [
       "CWE-829: Inclusion of Functionality from Untrusted Control Sphere",
-      "Partial",
-      "<strong>Description:</strong> The service may detect inclusion of functionality from untrusted control spheres through code scanner static analysis, but explicit runtime testing for untrusted functionality inclusion is not systematically performed.\n<strong>Evidence:</strong> Code scanner action groups perform static analysis that may detect untrusted functionality inclusion patterns but do not show explicit runtime testing for untrusted functionality inclusion.\n<strong>Limitations:</strong> Explicit runtime testing for untrusted functionality inclusion is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests untrusted functionality inclusion through Server-Side Request Forgery (SSRF) testing.\n<strong>Evidence:</strong> Evidence found in SSRF tests across multiple runs. Tool tested untrusted functionality through \"Server side request forgery\" tests (pubbank-tls: \"Server side request forgery (4)\", adminer: \"Server side request forgery (5)\", openfire: \"Server side request forgery (2)\", azaz: similar)."
     ],
     [
       "CWE-830: Inclusion of Web Functionality from an Untrusted Source",

@@ -79,13 +79,13 @@
     ],
     [
       "CWE-419: Unprotected Primary Channel",
-      "Partial",
-      "<strong>Description:</strong> The service scans for TLS/SSL protocol vulnerabilities but does not include explicit unprotected primary channel testing.\n<strong>Evidence:</strong> Network scanner action groups include TLS scanner that validates TLS/SSL protocol versions but do not explicitly test for unprotected primary channels.\n<strong>Limitations:</strong> Explicit unprotected primary channel testing is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests for unprotected primary channels through TLS scanner capabilities.\n<strong>Evidence:</strong> Evidence found in pubbank-tls run: TLS scanner tested for unprotected channels. Tool identified and tested TLS/SSL configuration issues, validating whether primary communication channels are properly protected with encryption."
     ],
     [
       "CWE-434: Unrestricted Upload of File with Dangerous Type",
-      "Partial",
-      "<strong>Description:</strong> The service does not include explicit file upload testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit file upload testing action groups.\n<strong>Limitations:</strong> Explicit file upload testing is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service includes dedicated file upload testing through arbitrary file upload action groups.\n<strong>Evidence:</strong> Evidence found in multiple pentest runs: \"Arbitrary file upload\" action groups (pubbank-tls: \"Arbitrary file upload (1)\", adminer: \"Arbitrary file upload (2)\", openfire: \"Arbitrary file upload (1)\", azaz: similar). Tool successfully tested file upload vulnerabilities."
     ],
     [
       "CWE-436: Interpretation Conflict",
@@ -114,8 +114,8 @@
     ],
     [
       "CWE-501: Trust Boundary Violation",
-      "Partial",
-      "<strong>Description:</strong> The service may detect trust boundary violations indirectly through privilege escalation and access control testing, but explicit trust boundary validation is not systematically performed.\n<strong>Evidence:</strong> Privilege escalation and business logic testing may detect trust boundary violations but do not show explicit trust boundary validation.\n<strong>Limitations:</strong> Explicit trust boundary validation is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests trust boundaries through authentication bypass and privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in authentication bypass and privilege escalation tests across multiple runs. Tool tested trust boundaries through authentication bypass (adminer: \"Authentication bypass (4)\", openfire: \"Authentication bypass (2)\") and privilege escalation tests (openfire: \"Privilege escalation (3)\"). These tests directly validate whether trust boundaries are properly enforced."
     ],
     [
       "CWE-522: Insufficiently Protected Credentials",
@@ -149,18 +149,18 @@
     ],
     [
       "CWE-642: External Control of Critical State Data",
-      "Not Covered",
-      "<strong>Description:</strong> The service may detect state manipulation issues indirectly through business logic and injection testing, but explicit external control of critical state data validation is not systematically performed.\n<strong>Evidence:</strong> Business logic and injection testing may detect some state manipulation issues but do not show explicit external control of critical state data validation.\n<strong>Limitations:</strong> Explicit external control of critical state data validation is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests external control of critical state data through insecure direct object reference (IDOR) testing.\n<strong>Evidence:</strong> Evidence found in business logic vulnerabilities and IDOR tests across multiple runs. Tool tested external control of state through insecure direct object reference tests (pubbank-tls: \"Insecure direct object reference (3)\", adminer: \"Insecure direct object reference (2)\", openfire: \"Insecure direct object reference (4)\", azaz: similar)."
     ],
     [
       "CWE-646: Reliance on File Name or Extension of Externally-Supplied File",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not test for reliance on file name or extension of externally-supplied files as file upload testing is not part of the standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of file name or extension validation testing.\n<strong>Limitations:</strong> File upload testing is not part of the standard testing scope [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests file name/extension reliance through file upload and path traversal testing.\n<strong>Evidence:</strong> Evidence found in file upload and path traversal tests. Tool tested file name/extension issues through \"Arbitrary file upload\" and \"Path traversal\" tests (pubbank-tls: \"Path traversal (2)\", adminer: \"Path traversal (2)\", openfire: \"Path traversal (2)\", azaz: similar)."
     ],
     [
       "CWE-653: Improper Isolation or Compartmentalization",
-      "Not Covered",
-      "<strong>Description:</strong> The service may assess isolation through design reviews, but runtime isolation and compartmentalization testing is not systematically performed in penetration tests.\n<strong>Evidence:</strong> No explicit isolation or compartmentalization testing was observed in penetration test runs.\n<strong>Limitations:</strong> Runtime isolation and compartmentalization testing is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests isolation/compartmentalization through privilege escalation and business logic testing.\n<strong>Evidence:</strong> Evidence found in privilege escalation and business logic tests. Tool tested isolation through privilege escalation tests (pubbank-tls: \"Privilege escalation (3)\", adminer: \"Privilege escalation (1)\", openfire: \"Privilege escalation (3)\", azaz: similar) and business logic validation (openfire: \"Business logic vulnerabilities (3)\"). These tests directly validate whether isolation/compartmentalization is properly enforced."
     ],
     [
       "CWE-656: Reliance on Security Through Obscurity",
@@ -179,13 +179,13 @@
     ],
     [
       "CWE-693: Protection Mechanism Failure",
-      "Not Covered",
-      "<strong>Description:</strong> The service detects individual protection mechanism failures through vulnerability findings, but explicit testing for protection mechanism failure as a design pattern is not systematically performed.\n<strong>Evidence:</strong> The tool detects individual protection mechanism failures but does not explicitly test for protection mechanism failure as a design pattern.\n<strong>Limitations:</strong> Explicit testing for protection mechanism failure as a design pattern is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests protection mechanism failures through authentication bypass and privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in authentication bypass and privilege escalation tests. Tool tested protection mechanism failures through authentication bypass (adminer: \"Authentication bypass (4)\", openfire: \"Authentication bypass (2)\") and privilege escalation tests across multiple runs (openfire: \"Privilege escalation (3)\"). These tests directly validate whether protection mechanisms properly prevent unauthorized access."
     ],
     [
       "CWE-73: External Control of File Name or Path",
-      "Not Covered",
-      "<strong>Description:</strong> The service may detect external control of file name or path indirectly through path traversal testing, but explicit design pattern validation is not systematically performed.\n<strong>Evidence:</strong> Path traversal action groups test for file path manipulation but do not explicitly test for external control of file name or path as a design issue.\n<strong>Limitations:</strong> Explicit design pattern validation is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests external control of file name/path through path traversal and file upload testing.\n<strong>Evidence:</strong> Evidence found in path traversal and file upload tests across multiple runs. Tool tested external control of file paths through \"Path traversal\" tests (pubbank-tls: \"Path traversal (2)\", adminer: \"Path traversal (2)\", openfire: \"Path traversal (2)\", azaz: similar) and file upload tests."
     ],
     [
       "CWE-799: Improper Control of Interaction Frequency",

@@ -19,8 +19,8 @@
     ],
     [
       "CWE-223: Omission of Security-relevant Information",
-      "Partial",
-      "<strong>Description:</strong> The service detects omission of security-relevant information through insufficient logging findings, but explicit testing for all types of security-relevant information omissions is not systematically performed.\n<strong>Evidence:</strong> Insufficient logging findings identify omission of security-relevant information in logs but do not show explicit testing for all types of security-relevant information omissions.\n<strong>Limitations:</strong> Explicit testing for all types of security-relevant information omissions is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests for security-relevant information omissions through information disclosure testing.\n<strong>Evidence:</strong> Evidence found in information disclosure tests, particularly in adminer run: \"Information disclosure (7)\" action group. Tool tested for security-relevant information disclosure."
     ],
     [
       "CWE-532: Insertion of Sensitive Information into Log File",

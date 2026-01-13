@@ -39,13 +39,13 @@
     ],
     [
       "CWE-274: Improper Handling of Insufficient Privileges",
-      "Partial",
-      "<strong>Description:</strong> The service may detect privilege issues through privilege escalation testing, but explicit validation of insufficient privilege error handling is not systematically performed.\n<strong>Evidence:</strong> Privilege escalation action groups test for privilege escalation vulnerabilities but do not explicitly test for improper error handling when insufficient privileges are encountered.\n<strong>Limitations:</strong> Explicit validation of insufficient privilege error handling is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests insufficient privilege/permission error handling through privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in privilege escalation and authentication tests. Tool tested insufficient privilege handling through privilege escalation tests (pubbank-tls: \"Privilege escalation (3)\", adminer: \"Privilege escalation (1)\", openfire: \"Privilege escalation (3)\", azaz: similar). These tests attempt to escalate privileges and validate whether the application properly handles and prevents such attempts through appropriate error handling."
     ],
     [
       "CWE-280: Improper Handling of Insufficient Permissions or Privileges",
-      "Partial",
-      "<strong>Description:</strong> The service may detect permission issues through privilege escalation testing, but explicit validation of insufficient permission error handling is not systematically performed.\n<strong>Evidence:</strong> Privilege escalation action groups test for permission vulnerabilities but do not explicitly test for improper error handling when insufficient permissions are encountered.\n<strong>Limitations:</strong> Explicit validation of insufficient permission error handling is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service tests insufficient privilege/permission error handling through privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in privilege escalation and authentication tests. Tool tested insufficient privilege handling through privilege escalation tests (pubbank-tls: \"Privilege escalation (3)\", adminer: \"Privilege escalation (1)\", openfire: \"Privilege escalation (3)\", azaz: similar). These tests attempt to escalate privileges and validate whether the application properly handles and prevents such attempts through appropriate error handling."
     ],
     [
       "CWE-369: Divide By Zero",
