@@ -50,7 +50,7 @@
     [
       "CWE-323: Reusing a Nonce, Key Pair in Encryption",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires nonce-based encryption or key pair reuse in encryption implementations, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no nonce-based encryption (AES-GCM, ChaCha20, etc.) or key pair reuse functionality exists. The test applications only use password hashing and basic session management, with no application-level encryption implementations.\n<strong>Limitations:</strong> Nonce reuse and key pair reuse vulnerabilities are not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires nonce-based encryption or key pair reuse in encryption implementations, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no nonce-based encryption (AES-GCM, ChaCha20, etc.) or key pair reuse functionality exists. The test applications only use password hashing and basic session management, with no application-level encryption implementations.\n<strong>Limitations:</strong> Nonce reuse and key pair reuse vulnerabilities are not present in test applications."
     ],
     [
       "CWE-324: Use of a Key Past its Expiration Date",
@@ -80,7 +80,7 @@
     [
       "CWE-329: Generation of Predictable IV with CBC Mode",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires CBC mode encryption with IV generation, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no CBC mode encryption or IV generation functionality exists.\n<strong>Limitations:</strong> CBC mode encryption with IV generation is not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires CBC mode encryption with IV generation, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no CBC mode encryption or IV generation functionality exists.\n<strong>Limitations:</strong> CBC mode encryption with IV generation is not present in test applications."
     ],
     [
       "CWE-330: Use of Insufficiently Random Values",
@@ -95,32 +95,32 @@
     [
       "CWE-332: Insufficient Entropy in PRNG",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires PRNG usage with entropy issues, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG usage or pseudo-random number generation functionality exists.\n<strong>Limitations:</strong> PRNG usage is not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires PRNG usage with entropy issues, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG usage or pseudo-random number generation functionality exists.\n<strong>Limitations:</strong> PRNG usage is not present in test applications."
     ],
     [
       "CWE-334: Small Space of Random Values",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires random value generation with constrained space, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no random value generation with space constraints exists.\n<strong>Limitations:</strong> Random value generation with space constraints is not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires random value generation with constrained space, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no random value generation with space constraints exists.\n<strong>Limitations:</strong> Random value generation with space constraints is not present in test applications."
     ],
     [
       "CWE-335: Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG seeding functionality exists.\n<strong>Limitations:</strong> PRNG seeding operations are not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG seeding functionality exists.\n<strong>Limitations:</strong> PRNG seeding operations are not present in test applications."
     ],
     [
       "CWE-336: Same Seed in Pseudo-Random Number Generator (PRNG)",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG seeding functionality exists.\n<strong>Limitations:</strong> PRNG seeding operations are not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG seeding functionality exists.\n<strong>Limitations:</strong> PRNG seeding operations are not present in test applications."
     ],
     [
       "CWE-337: Predictable Seed in Pseudo-Random Number Generator (PRNG)",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG seeding functionality exists.\n<strong>Limitations:</strong> PRNG seeding operations are not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires PRNG seeding operations, which are not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG seeding functionality exists.\n<strong>Limitations:</strong> PRNG seeding operations are not present in test applications."
     ],
     [
       "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires PRNG usage, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG usage functionality exists.\n<strong>Limitations:</strong> PRNG usage is not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires PRNG usage, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no PRNG usage functionality exists.\n<strong>Limitations:</strong> PRNG usage is not present in test applications."
     ],
     [
       "CWE-340: Generation of Predictable Numbers or Identifiers",
@@ -160,7 +160,7 @@
     [
       "CWE-780: Use of RSA Algorithm without OAEP",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires RSA encryption implementation, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no RSA encryption or decryption functionality exists. The test applications do not implement asymmetric encryption algorithms or RSA operations.\n<strong>Limitations:</strong> RSA encryption is not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires RSA encryption implementation, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no RSA encryption or decryption functionality exists. The test applications do not implement asymmetric encryption algorithms or RSA operations.\n<strong>Limitations:</strong> RSA encryption is not present in test applications."
     ],
     [
       "CWE-916: Use of Password Hash With Insufficient Computational Effort",
@@ -175,7 +175,7 @@
     [
       "CWE-1241: Use of Predictable Algorithm in Random Number Generator",
       "Not Tested",
-      "<strong>Description:</strong> The vulnerability requires random number generator analysis, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no custom random number generation functionality exists. Password hashing uses standard secure internal functions.\n<strong>Limitations:</strong> Random number generator implementations are not present in test applications [UL-008]."
+      "<strong>Description:</strong> The vulnerability requires random number generator analysis, which is not implemented in the test applications.\n<strong>Evidence:</strong> Analysis of test application code confirmed no custom random number generation functionality exists. Password hashing uses standard secure internal functions.\n<strong>Limitations:</strong> Random number generator implementations are not present in test applications."
     ]
   ]
 }
