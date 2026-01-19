@@ -69,8 +69,8 @@
     ],
     [
       "CWE-915: Improperly Controlled Modification of Dynamically-Determined Object Attributes",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include testing for improper modification of dynamically-determined object attributes in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of object attribute modification testing in runtime testing or static code analysis.\n<strong>Limitations:</strong> Explicit testing for improper modification of dynamically-determined object attributes is not systematically performed [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects improper modification of object attributes through code scanner and business logic testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate Mass Assignment Vulnerability finding with explicit detection of object attribute modification."
     ],
     [
       "CWE-926: Improper Export of Android Application Components",

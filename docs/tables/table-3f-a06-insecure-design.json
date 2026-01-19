@@ -174,8 +174,8 @@
     ],
     [
       "CWE-676: Use of Potentially Dangerous Function",
-      "Not Covered",
-      "<strong>Description:</strong> The service may detect dangerous function usage through code scanner, but comprehensive testing for all potentially dangerous functions is not systematically performed.\n<strong>Evidence:</strong> Code scanner capabilities may detect some dangerous function usage but do not show comprehensive testing for all potentially dangerous functions.\n<strong>Limitations:</strong> Comprehensive testing for all potentially dangerous functions is not systematically performed [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects potentially dangerous function usage through code scanner and penetration testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate eval() Code Execution finding with explicit detection of dangerous function usage."
     ],
     [
       "CWE-693: Protection Mechanism Failure",

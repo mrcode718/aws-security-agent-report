@@ -19,8 +19,8 @@
     ],
     [
       "CWE-201: Insertion of Sensitive Information Into Sent Data",
-      "Partial",
-      "<strong>Description:</strong> The service may detect sensitive information through information disclosure testing but does not explicitly test for insertion into sent data vectors.\n<strong>Evidence:</strong> Information disclosure action groups and static analysis may detect sensitive information indirectly.\n<strong>Limitations:</strong> Explicit testing for insertion of sensitive information into sent data (headers, POST data, query parameters) is not systematically performed [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects insertion of sensitive information into sent data through information disclosure testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate Sensitive Information Exposure in API Responses finding."
     ],
     [
       "CWE-219: Storage of File with Sensitive Data Under Web Root",

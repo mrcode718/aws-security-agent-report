@@ -49,8 +49,8 @@
     ],
     [
       "CWE-489: Active Debug Code",
-      "Partial",
-      "<strong>Description:</strong> The service includes static analysis capabilities through code scanner, but explicit scanning for active debug code may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive debug code detection through pattern matching for debug statements and development-only code.\n<strong>Limitations:</strong> Debug code detection requires specific pattern matching for debug statements, logging, and development-only code that may not be comprehensively implemented [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects active debug code through code scanner and penetration testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate Debug Endpoints finding with explicit detection of debug code."
     ],
     [
       "CWE-5: J2EE Misconfiguration: Data Transmission Without Encryption",
@@ -64,8 +64,8 @@
     ],
     [
       "CWE-547: Use of Hard-coded, Security-relevant Constants",
-      "Partial",
-      "<strong>Description:</strong> The service includes static analysis through code scanner, but explicit scanning for hard-coded security-relevant constants may not be systematically performed.\n<strong>Evidence:</strong> Code scanner focuses on flow analysis rather than comprehensive credential and constant scanning through pattern matching.\n<strong>Limitations:</strong> Hard-coded security-relevant constant detection requires specific pattern matching for credentials, API keys, and cryptographic material that may not be comprehensively implemented [UL-008]."
+      "Covered",
+      "<strong>Description:</strong> The service detects hard-coded security-relevant constants through code scanner and penetration testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate Debug Endpoints finding with explicit detection of hardcoded AWS keys, API keys, and passwords."
     ],
     [
       "CWE-611: Improper Restriction of XML External Entity Reference",
