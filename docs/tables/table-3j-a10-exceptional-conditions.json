@@ -15,17 +15,17 @@
     [
       "CWE-215: Insertion of Sensitive Information Into Debugging Code",
       "Covered",
-      "<strong>Description:</strong> The service detects sensitive information in debugging code through static code analysis that identifies debugging patterns with potential security concerns.\n<strong>Evidence:</strong> SAST testing (Issue #75) demonstrated detection of debugging code patterns that may expose sensitive information, with recommendations for proper logging practices."
+      "<strong>Description:</strong> The service detects sensitive information in debugging code through static code analysis that identifies debugging patterns with potential security concerns.\n<strong>Evidence:</strong> SAST testing demonstrated detection of debugging code patterns that may expose sensitive information, with recommendations for proper logging practices."
     ],
     [
       "CWE-234: Failure to Handle Missing Parameter",
-      "Partial",
-      "<strong>Description:</strong> The service may detect missing parameter issues indirectly through input validation and injection testing, but explicit validation of missing parameter error handling is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and injection testing action groups test for input validation but do not explicitly test for failure to handle missing parameters.\n<strong>Limitations:</strong> Explicit validation of missing parameter error handling is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit testing for missing parameter error handling.\n<strong>Evidence:</strong> Extended penetration testing confirmed Business logic vulnerabilities and injection testing do not explicitly test for missing parameter handling. Error handling for missing parameters is not systematically tested.\n<strong>Limitations:</strong> Missing parameter error handling testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-235: Improper Handling of Extra Parameters",
-      "Partial",
-      "<strong>Description:</strong> The service may detect extra parameter issues indirectly through input validation testing, but explicit validation of extra parameter error handling is not systematically performed.\n<strong>Evidence:</strong> Input validation testing may identify extra parameter issues but does not explicitly test for improper handling of extra parameters.\n<strong>Limitations:</strong> Explicit validation of extra parameter error handling is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit testing for extra parameter error handling.\n<strong>Evidence:</strong> Extended penetration testing confirmed input validation testing does not explicitly test for extra parameter handling. Error handling for extra parameters is not systematically tested.\n<strong>Limitations:</strong> Extra parameter error handling testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-248: Uncaught Exception",
@@ -40,37 +40,37 @@
     [
       "CWE-274: Improper Handling of Insufficient Privileges",
       "Covered",
-      "<strong>Description:</strong> The service tests insufficient privilege/permission error handling through privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in privilege escalation and authentication tests. Tool tested insufficient privilege handling through privilege escalation tests (pubbank-tls: \"Privilege escalation (3)\", adminer: \"Privilege escalation (1)\", openfire: \"Privilege escalation (3)\", azaz: similar). These tests attempt to escalate privileges and validate whether the application properly handles and prevents such attempts through appropriate error handling."
+      "<strong>Description:</strong> The service tests insufficient privilege/permission error handling through privilege escalation testing.\n<strong>Evidence:</strong> Penetration testing demonstrated privilege escalation validation across multiple test applications. These tests attempt to escalate privileges and validate whether the application properly handles and prevents such attempts through appropriate error handling."
     ],
     [
       "CWE-280: Improper Handling of Insufficient Permissions or Privileges",
       "Covered",
-      "<strong>Description:</strong> The service tests insufficient privilege/permission error handling through privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in privilege escalation and authentication tests. Tool tested insufficient privilege handling through privilege escalation tests (pubbank-tls: \"Privilege escalation (3)\", adminer: \"Privilege escalation (1)\", openfire: \"Privilege escalation (3)\", azaz: similar). These tests attempt to escalate privileges and validate whether the application properly handles and prevents such attempts through appropriate error handling."
+      "<strong>Description:</strong> The service tests insufficient privilege/permission error handling through privilege escalation testing.\n<strong>Evidence:</strong> Penetration testing demonstrated privilege escalation validation across multiple test applications. These tests attempt to escalate privileges and validate whether the application properly handles and prevents such attempts through appropriate error handling."
     ],
     [
       "CWE-369: Divide By Zero",
       "Not Covered",
-      "<strong>Description:</strong> The service does not include testing for divide by zero vulnerabilities in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for divide by zero vulnerabilities.\n<strong>Limitations:</strong> Explicit testing for divide by zero vulnerabilities is not systematically performed [UL-007]."
+      "<strong>Description:</strong> The service does not include explicit testing for divide by zero vulnerabilities in its standard testing scope.\n<strong>Evidence:</strong> Extended penetration testing confirmed no dedicated divide by zero testing was performed. Numeric validation errors may be indirectly detected through error handling testing but explicit divide by zero attack patterns are not tested.\n<strong>Limitations:</strong> Explicit divide by zero testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-390: Detection of Error Condition Without Action",
-      "Partial",
-      "<strong>Description:</strong> The service may detect error conditions without action indirectly through business logic and error handling testing, but explicit validation of this pattern is not systematically performed.\n<strong>Evidence:</strong> Business logic vulnerabilities and error handling testing may identify error conditions detected without action but do not explicitly test for this pattern.\n<strong>Limitations:</strong> Explicit validation of error conditions without action is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service detects error conditions without action through dedicated Server error 500 testing and information disclosure testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate error handling validation including sensitive information exposure in API responses and error messages. Server error 500 action groups validate error condition handling."
     ],
     [
       "CWE-391: Unchecked Error Condition",
-      "Partial",
-      "<strong>Description:</strong> The service may detect unchecked error conditions indirectly through error handling testing, but explicit validation of unchecked error condition patterns is not systematically performed.\n<strong>Evidence:</strong> Error handling testing may identify unchecked error conditions but does not explicitly test for unchecked error conditions as a specific vulnerability pattern.\n<strong>Limitations:</strong> Explicit validation of unchecked error condition patterns is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service detects unchecked error conditions through dedicated information disclosure testing and error response analysis.\n<strong>Evidence:</strong> Penetration test findings demonstrate unchecked error condition detection including sensitive information exposure in API responses and error messages, and user enumeration via verbose error messages."
     ],
     [
       "CWE-394: Unexpected Status Code or Return Value",
-      "Partial",
-      "<strong>Description:</strong> The service may detect unexpected status codes through network scanning and HTTP testing, but explicit validation of unexpected status code handling is not systematically performed.\n<strong>Evidence:</strong> Network scanner and HTTP testing may identify unexpected status codes but do not explicitly test for improper handling of unexpected status codes from external dependencies.\n<strong>Limitations:</strong> Explicit validation of unexpected status code handling is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service detects unexpected status code handling through dedicated Server error 500 testing and error response analysis.\n<strong>Evidence:</strong> Penetration test action groups include dedicated server error testing that validates how applications handle and respond to error conditions including SQL injection-induced error responses."
     ],
     [
       "CWE-396: Declaration of Catch for Generic Exception",
       "Covered",
-      "<strong>Description:</strong> The service detects generic exception catching through static code analysis that identifies patterns like bare 'except:' or 'except Exception:' with pass statements.\n<strong>Evidence:</strong> SAST testing (Issue #74) demonstrated detection of generic exception handlers that silently pass without any action, with recommendations to catch specific exception types or use logging.exception() for visibility."
+      "<strong>Description:</strong> The service detects generic exception catching through static code analysis that identifies patterns like bare 'except:' or 'except Exception:' with pass statements.\n<strong>Evidence:</strong> SAST testing demonstrated detection of generic exception handlers that silently pass without any action, with recommendations to catch specific exception types or use logging.exception() for visibility."
     ],
     [
       "CWE-397: Declaration of Throws for Generic Exception",
@@ -104,8 +104,8 @@
     ],
     [
       "CWE-636: Not Failing Securely ('Failing Open')",
-      "Partial",
-      "<strong>Description:</strong> The service may detect fail-open scenarios indirectly through authentication and authorization testing, but explicit validation of fail-open vs fail-closed behavior is not systematically performed.\n<strong>Evidence:</strong> Authentication and authorization testing may identify fail-open scenarios but do not explicitly test for fail-open behavior as a specific exceptional condition handling pattern.\n<strong>Limitations:</strong> Explicit validation of fail-open vs fail-closed behavior is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service detects fail-open scenarios through dedicated information disclosure testing that identifies debug endpoints and insecure configurations.\n<strong>Evidence:</strong> Penetration test findings demonstrate fail-open detection including debug endpoints exposing sensitive credentials and system information without authentication."
     ],
     [
       "CWE-703: Improper Check or Handling of Exceptional Conditions",
@@ -124,8 +124,8 @@
     ],
     [
       "CWE-756: Missing Custom Error Page",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include testing for missing custom error pages in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of testing for missing custom error pages.\n<strong>Limitations:</strong> Explicit testing for missing custom error pages is not systematically performed [UL-007]."
+      "Partial",
+      "<strong>Description:</strong> The service detects security misconfiguration issues including missing security headers through dedicated Security misconfiguration testing, which partially addresses error page configuration issues.\n<strong>Evidence:</strong> Penetration test findings demonstrate security misconfiguration detection including missing Content Security Policy headers.\n<strong>Limitations:</strong> While security header misconfiguration is tested, explicit validation of custom error page presence is not comprehensively performed."
     ]
   ]
 }

@@ -10,7 +10,7 @@
     [
       "CWE-1275: Sensitive Cookie with Improper SameSite Attribute",
       "Not Covered",
-      "<strong>Description:</strong> The tool extracts Set-Cookie headers and validates Secure and HttpOnly attributes, but does not check for or validate SameSite attributes.\n<strong>Limitations:</strong> SameSite cookie security attributes are not part of the network scanning scope [UL-007]. See detailed analysis in testssl-samesite-analysis.md."
+      "<strong>Description:</strong> The tool extracts Set-Cookie headers and validates Secure and HttpOnly attributes, but does not check for or validate SameSite attributes.\n<strong>Evidence:</strong> Extended penetration testing confirmed TLS scanner analyzes cookie attributes but no explicit SameSite attribute validation was performed.\n<strong>Limitations:</strong> SameSite cookie security attributes are not part of the network scanning scope [UL-007]."
     ],
     [
       "CWE-200: Exposure of Sensitive Information to an Unauthorized Actor",
@@ -69,8 +69,8 @@
     ],
     [
       "CWE-352: Cross-Site Request Forgery (CSRF)",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include CSRF testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of CSRF testing, CSRF token validation, or CSRF attack simulation.\n<strong>Limitations:</strong> CSRF testing is completely absent from the tool's capabilities [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects CSRF vulnerabilities through dedicated privilege escalation testing that includes CSRF attack simulation and token validation testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate CSRF detection through missing token protection on state-changing endpoints. Privilege escalation action groups include CSRF vulnerability chaining validation."
     ],
     [
       "CWE-359: Exposure of Private Personal Information to an Unauthorized Actor",
@@ -130,7 +130,7 @@
     [
       "CWE-548: Exposure of Information Through Directory Listing",
       "Covered",
-      "<strong>Description:</strong> The service detects directory listing vulnerabilities through path traversal testing that identifies when directory listing exposes sensitive information or allows unauthorized file access.\n<strong>Evidence:</strong> Path traversal testing successfully detected directory listing vulnerability in vuln_08_directory_listing.py where unsanitized user input in file paths allowed directory traversal attacks. The tool identified the path traversal vulnerability where user input is used to construct file paths without proper validation.\n<strong>Limitations:</strong> None - directory listing detection is now covered."
+      "<strong>Description:</strong> The service detects directory listing vulnerabilities through path traversal testing that identifies when directory listing exposes sensitive information or allows unauthorized file access.\n<strong>Evidence:</strong> Path traversal testing successfully detected directory listing vulnerabilities where unsanitized user input in file paths allowed directory traversal attacks."
     ],
     [
       "CWE-552: Files or Directories Accessible to External Parties",

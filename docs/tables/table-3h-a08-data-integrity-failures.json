@@ -14,8 +14,8 @@
     ],
     [
       "CWE-353: Missing Support for Integrity Check",
-      "Partial",
-      "<strong>Description:</strong> The service may detect missing integrity check support indirectly through improper inventory management testing of build configurations, but explicit validation of missing integrity check support in runtime application features is not systematically performed.\n<strong>Evidence:</strong> Improper inventory management action groups test for missing integrity checks in Dockerfiles and build configurations but do not explicitly test for missing integrity check support in runtime application behavior.\n<strong>Limitations:</strong> Explicit validation of missing integrity check support in runtime application features is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit testing for missing integrity check support in runtime application features.\n<strong>Evidence:</strong> Extended penetration testing confirmed no runtime integrity check testing was performed. Improper inventory management action groups test build configurations but protocol-level integrity check support testing is outside the web application penetration testing scope.\n<strong>Limitations:</strong> Integrity check support testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-426: Untrusted Search Path",
@@ -49,18 +49,18 @@
     ],
     [
       "CWE-565: Reliance on Cookies without Validation and Integrity Checking",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include cookie integrity checking validation in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of cookie integrity checking validation in runtime testing or static code analysis.\n<strong>Limitations:</strong> Explicit cookie integrity checking validation is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service detects cookie validation and integrity issues through dedicated Session token vulnerabilities and Privilege escalation testing.\n<strong>Evidence:</strong> Penetration test action groups include session token vulnerability testing that validates cookie handling and integrity. Testing includes client-side cookie manipulation for privilege escalation and session fixation vulnerability detection."
     ],
     [
       "CWE-784: Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not test for cookie integrity checking in security decision contexts.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of cookie integrity checking validation in security decision contexts.\n<strong>Limitations:</strong> Explicit cookie integrity checking validation in security decision contexts is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service detects cookie integrity issues in security decision contexts through dedicated Privilege escalation testing that validates cookie manipulation for authorization bypass.\n<strong>Evidence:</strong> Penetration test action groups include privilege escalation and session token vulnerability testing. Testing validates whether applications properly verify cookie integrity before making security decisions."
     ],
     [
       "CWE-829: Inclusion of Functionality from Untrusted Control Sphere",
       "Covered",
-      "<strong>Description:</strong> The service tests untrusted functionality inclusion through Server-Side Request Forgery (SSRF) testing.\n<strong>Evidence:</strong> Evidence found in SSRF tests across multiple runs. Tool tested untrusted functionality through \"Server side request forgery\" tests (pubbank-tls: \"Server side request forgery (4)\", adminer: \"Server side request forgery (5)\", openfire: \"Server side request forgery (2)\", azaz: similar)."
+      "<strong>Description:</strong> The service tests untrusted functionality inclusion through Server-Side Request Forgery (SSRF) testing.\n<strong>Evidence:</strong> Penetration test action groups demonstrate SSRF testing across multiple applications. Tool tests untrusted functionality inclusion through server-side request forgery validation."
     ],
     [
       "CWE-830: Inclusion of Web Functionality from an Untrusted Source",

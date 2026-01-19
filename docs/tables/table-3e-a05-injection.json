@@ -20,17 +20,17 @@
     [
       "CWE-112: Missing XML Validation",
       "Covered",
-      "<strong>Description:</strong> The service includes XML validation testing through XML external entity (XXE) injection testing.\n<strong>Evidence:</strong> Evidence found in adminer and openfire pentest runs: \"Xml external entity\" action groups (adminer: \"Xml external entity (1)\", openfire: \"Xml external entity (2)\") show tool tested XML external entity (XXE) injection vulnerabilities. XXE testing validates XML parsing and validation mechanisms."
+      "<strong>Description:</strong> The service includes XML validation testing through XML external entity (XXE) injection testing.\n<strong>Evidence:</strong> Penetration test action groups demonstrate XXE injection vulnerability testing. XXE testing validates XML parsing and validation mechanisms."
     ],
     [
       "CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
-      "Partial",
-      "<strong>Description:</strong> The service does not include dedicated HTTP request/response splitting testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of dedicated HTTP request/response splitting testing.\n<strong>Limitations:</strong> Explicit HTTP request/response splitting testing is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include dedicated HTTP request/response splitting testing in its standard testing scope.\n<strong>Evidence:</strong> Extended penetration testing confirmed no HTTP request/response splitting testing was performed. This vulnerability requires specific proxy/server chain configurations not typically present in standard web applications.\n<strong>Limitations:</strong> HTTP request/response splitting testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-114: Process Control",
-      "Partial",
-      "<strong>Description:</strong> The service tests for process control issues through command injection testing, but does not explicitly test for process control vulnerabilities in other contexts.\n<strong>Evidence:</strong> Command injection action groups test for process control vulnerabilities where user input controls process execution.\n<strong>Limitations:</strong> Explicit process control vulnerability testing beyond command injection is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects process control vulnerabilities through dedicated command injection testing that validates full system-level process execution control.\n<strong>Evidence:</strong> Penetration test findings demonstrate process control detection through remote code execution via command injection with confirmed root-level execution."
     ],
     [
       "CWE-115: Misinterpretation of Input",
@@ -44,8 +44,8 @@
     ],
     [
       "CWE-129: Improper Validation of Array Index",
-      "Not Covered",
-      "<strong>Description:</strong> The service does not include dedicated array index validation testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of all pentest runs (pubbank-tls, adminer, azaz, openfire, activemq) found no evidence of dedicated array index validation testing. No dedicated array index validation action groups exist in any of the pentest runs. The tool does not systematically test for improper array index validation vulnerabilities where user-controlled input is used to access array or list elements without proper bounds checking.\n<strong>Limitations:</strong> Explicit array index validation testing is not systematically performed [UL-007]. The tool should test for improper array index validation even when applications use secure implementations (e.g., dictionary access with .get()), as this is a standard security testing requirement."
+      "Not Tested",
+      "<strong>Description:</strong> This vulnerability is primarily applicable to C/C++ and similar languages with manual memory management and direct array access.\n<strong>Evidence:</strong> Extended penetration testing confirmed this is a language-specific vulnerability. The tested applications use safe dictionary access patterns rather than unsafe array indexing.\n<strong>Limitations:</strong> "
     ],
     [
       "CWE-159: Improper Handling of Invalid Use of Special Elements",
@@ -130,7 +130,7 @@
     [
       "CWE-86: Improper Neutralization of Invalid Characters in Identifiers in Web Pages",
       "Covered",
-      "<strong>Description:</strong> The service tests identifier-based injection through SQL injection and insecure direct object reference (IDOR) testing.\n<strong>Evidence:</strong> Evidence found in multiple pentest runs. Tool tested identifier-based injection through SQL injection tests (pubbank-tls: \"Validating SQL Injection in Admin Authentication\", adminer: \"Sql injection\" tests, openfire: \"Sql injection (1)\", azaz: similar coverage). Tool also tested through insecure direct object reference (IDOR) tests visible in multiple runs (openfire: \"Insecure direct object reference (4)\")."
+      "<strong>Description:</strong> The service tests identifier-based injection through SQL injection and insecure direct object reference (IDOR) testing.\n<strong>Evidence:</strong> Penetration test action groups demonstrate identifier-based injection testing through SQL injection and IDOR tests across multiple applications."
     ],
     [
       "CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
@@ -154,13 +154,13 @@
     ],
     [
       "CWE-917: Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')",
-      "Partial",
-      "<strong>Description:</strong> The service includes server-side template injection testing which may cover some expression language injection, but explicit expression language injection testing is not systematically performed.\n<strong>Evidence:</strong> Server-side template injection action groups exist in some penetration test runs but do not explicitly test for expression language injection.\n<strong>Limitations:</strong> Explicit expression language injection testing is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects expression language injection through dedicated Server-Side Template Injection (SSTI) testing, which is functionally equivalent to expression language injection.\n<strong>Evidence:</strong> Penetration test findings demonstrate SSTI/expression language injection detection with remote code execution capability. SSTI is the expression language injection equivalent for template engines."
     ],
     [
       "CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')",
       "Not Covered",
-      "<strong>Description:</strong> The service does not include CRLF injection testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of all pentest runs (pubbank-tls, adminer, azaz, openfire, activemq) found no evidence of dedicated CRLF injection testing. No dedicated CRLF injection action groups exist in any of the pentest runs. No evidence of indirect CRLF injection testing through header manipulation or other testing methods was found.\n<strong>Limitations:</strong> CRLF injection testing is not performed [UL-007]. CRLF injection should be applicable to all web applications that process HTTP headers, regardless of technology stack."
+      "<strong>Description:</strong> The service does not include CRLF injection testing in its standard testing scope.\n<strong>Evidence:</strong> Extended penetration testing confirmed no CRLF injection testing was performed. HTTP header injection patterns were not tested. CRLF injection requires specialized endpoint patterns for header injection attacks.\n<strong>Limitations:</strong> CRLF injection testing is not performed [UL-007]."
     ],
     [
       "CWE-94: Improper Control of Generation of Code ('Code Injection')",

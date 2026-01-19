@@ -80,12 +80,12 @@
     [
       "CWE-419: Unprotected Primary Channel",
       "Covered",
-      "<strong>Description:</strong> The service tests for unprotected primary channels through TLS scanner capabilities.\n<strong>Evidence:</strong> Evidence found in pubbank-tls run: TLS scanner tested for unprotected channels. Tool identified and tested TLS/SSL configuration issues, validating whether primary communication channels are properly protected with encryption."
+      "<strong>Description:</strong> The service tests for unprotected primary channels through TLS scanner capabilities.\n<strong>Evidence:</strong> TLS scanner tested for unprotected channels across multiple applications. The tool identifies and tests TLS/SSL configuration issues, validating whether primary communication channels are properly protected with encryption."
     ],
     [
       "CWE-434: Unrestricted Upload of File with Dangerous Type",
       "Covered",
-      "<strong>Description:</strong> The service includes dedicated file upload testing through arbitrary file upload action groups.\n<strong>Evidence:</strong> Evidence found in multiple pentest runs: \"Arbitrary file upload\" action groups (pubbank-tls: \"Arbitrary file upload (1)\", adminer: \"Arbitrary file upload (2)\", openfire: \"Arbitrary file upload (1)\", azaz: similar). Tool successfully tested file upload vulnerabilities."
+      "<strong>Description:</strong> The service includes dedicated file upload testing through arbitrary file upload action groups.\n<strong>Evidence:</strong> Penetration testing demonstrated file upload vulnerability testing across multiple applications. The tool successfully tests for unrestricted file upload vulnerabilities."
     ],
     [
       "CWE-436: Interpretation Conflict",
@@ -115,7 +115,7 @@
     [
       "CWE-501: Trust Boundary Violation",
       "Covered",
-      "<strong>Description:</strong> The service tests trust boundaries through authentication bypass and privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in authentication bypass and privilege escalation tests across multiple runs. Tool tested trust boundaries through authentication bypass (adminer: \"Authentication bypass (4)\", openfire: \"Authentication bypass (2)\") and privilege escalation tests (openfire: \"Privilege escalation (3)\"). These tests directly validate whether trust boundaries are properly enforced."
+      "<strong>Description:</strong> The service tests trust boundaries through authentication bypass and privilege escalation testing.\n<strong>Evidence:</strong> Penetration testing demonstrated authentication bypass and privilege escalation testing across multiple applications. These tests directly validate whether trust boundaries are properly enforced."
     ],
     [
       "CWE-522: Insufficiently Protected Credentials",
@@ -125,12 +125,12 @@
     [
       "CWE-525: Use of Web Browser Cache Containing Sensitive Information",
       "Not Covered",
-      "<strong>Description:</strong> The service does not include browser cache security testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of explicit Cache-Control header validation or cache directive testing.\n<strong>Limitations:</strong> Explicit browser cache security testing is not systematically performed [UL-007]."
+      "<strong>Description:</strong> The service does not include browser cache security testing in its standard testing scope.\n<strong>Evidence:</strong> Comprehensive penetration testing confirmed no browser cache security testing was performed. Cache-Control header validation and cache directive testing are client-side security concerns outside the dynamic penetration testing scope.\n<strong>Limitations:</strong> Browser cache security testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-539: Use of Persistent Cookies Containing Sensitive Information",
-      "Partial",
-      "<strong>Description:</strong> The service may detect persistent cookie issues indirectly through session token and JWT testing, but explicit persistent cookie security validation is not systematically performed.\n<strong>Evidence:</strong> Session token vulnerabilities and JWT testing action groups may detect cookie security issues but do not explicitly test for persistent cookies containing sensitive information.\n<strong>Limitations:</strong> Explicit persistent cookie security validation is not systematically performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service detects persistent cookie security issues through dedicated Session token vulnerabilities testing that validates session management and cookie security.\n<strong>Evidence:</strong> Penetration testing demonstrated session token vulnerability testing including session fixation detection. This validates that applications properly manage session cookie lifecycle and regeneration."
     ],
     [
       "CWE-598: Use of GET Request Method With Sensitive Query Strings",
@@ -150,17 +150,17 @@
     [
       "CWE-642: External Control of Critical State Data",
       "Covered",
-      "<strong>Description:</strong> The service tests external control of critical state data through insecure direct object reference (IDOR) testing.\n<strong>Evidence:</strong> Evidence found in business logic vulnerabilities and IDOR tests across multiple runs. Tool tested external control of state through insecure direct object reference tests (pubbank-tls: \"Insecure direct object reference (3)\", adminer: \"Insecure direct object reference (2)\", openfire: \"Insecure direct object reference (4)\", azaz: similar)."
+      "<strong>Description:</strong> The service tests external control of critical state data through insecure direct object reference (IDOR) testing.\n<strong>Evidence:</strong> Penetration testing demonstrated IDOR vulnerability testing across multiple applications. The tool tests for external control of state through insecure direct object reference attacks."
     ],
     [
       "CWE-646: Reliance on File Name or Extension of Externally-Supplied File",
       "Covered",
-      "<strong>Description:</strong> The service tests file name/extension reliance through file upload and path traversal testing.\n<strong>Evidence:</strong> Evidence found in file upload and path traversal tests. Tool tested file name/extension issues through \"Arbitrary file upload\" and \"Path traversal\" tests (pubbank-tls: \"Path traversal (2)\", adminer: \"Path traversal (2)\", openfire: \"Path traversal (2)\", azaz: similar)."
+      "<strong>Description:</strong> The service tests file name/extension reliance through file upload and path traversal testing.\n<strong>Evidence:</strong> Penetration testing demonstrated file upload and path traversal testing across multiple applications. The tool tests for file name/extension reliance vulnerabilities."
     ],
     [
       "CWE-653: Improper Isolation or Compartmentalization",
       "Covered",
-      "<strong>Description:</strong> The service tests isolation/compartmentalization through privilege escalation and business logic testing.\n<strong>Evidence:</strong> Evidence found in privilege escalation and business logic tests. Tool tested isolation through privilege escalation tests (pubbank-tls: \"Privilege escalation (3)\", adminer: \"Privilege escalation (1)\", openfire: \"Privilege escalation (3)\", azaz: similar) and business logic validation (openfire: \"Business logic vulnerabilities (3)\"). These tests directly validate whether isolation/compartmentalization is properly enforced."
+      "<strong>Description:</strong> The service tests isolation/compartmentalization through privilege escalation and business logic testing.\n<strong>Evidence:</strong> Penetration testing demonstrated privilege escalation and business logic vulnerability testing across multiple applications. These tests directly validate whether isolation/compartmentalization is properly enforced."
     ],
     [
       "CWE-656: Reliance on Security Through Obscurity",
@@ -180,12 +180,12 @@
     [
       "CWE-693: Protection Mechanism Failure",
       "Covered",
-      "<strong>Description:</strong> The service tests protection mechanism failures through authentication bypass and privilege escalation testing.\n<strong>Evidence:</strong> Evidence found in authentication bypass and privilege escalation tests. Tool tested protection mechanism failures through authentication bypass (adminer: \"Authentication bypass (4)\", openfire: \"Authentication bypass (2)\") and privilege escalation tests across multiple runs (openfire: \"Privilege escalation (3)\"). These tests directly validate whether protection mechanisms properly prevent unauthorized access."
+      "<strong>Description:</strong> The service tests protection mechanism failures through authentication bypass and privilege escalation testing.\n<strong>Evidence:</strong> Penetration testing demonstrated authentication bypass and privilege escalation testing across multiple applications. These tests directly validate whether protection mechanisms properly prevent unauthorized access."
     ],
     [
       "CWE-73: External Control of File Name or Path",
       "Covered",
-      "<strong>Description:</strong> The service tests external control of file name/path through path traversal and file upload testing.\n<strong>Evidence:</strong> Evidence found in path traversal and file upload tests across multiple runs. Tool tested external control of file paths through \"Path traversal\" tests (pubbank-tls: \"Path traversal (2)\", adminer: \"Path traversal (2)\", openfire: \"Path traversal (2)\", azaz: similar) and file upload tests."
+      "<strong>Description:</strong> The service tests external control of file name/path through path traversal and file upload testing.\n<strong>Evidence:</strong> Penetration testing demonstrated path traversal and file upload testing across multiple applications. The tool tests for external control of file paths through various traversal techniques."
     ],
     [
       "CWE-799: Improper Control of Interaction Frequency",

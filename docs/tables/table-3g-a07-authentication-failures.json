@@ -9,13 +9,13 @@
   "rows": [
     [
       "CWE-1390: Weak Authentication",
-      "Partial",
-      "<strong>Description:</strong> The service detects weak authentication through authentication bypass findings, design review analysis, and protocol security testing, but explicit systematic testing for all forms of weak authentication is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass findings indicate weak authentication mechanisms, design review identifies weak password hashing and weak secrets, and protocol testing identifies weak authentication protocols.\n<strong>Limitations:</strong> Explicit systematic testing for all forms of weak authentication is not comprehensively performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects weak authentication through dedicated authentication bypass testing that includes weak authentication validation.\n<strong>Evidence:</strong> Penetration test findings demonstrate weak authentication detection including user enumeration via verbose error messages. Authentication bypass action groups validate weak authentication scenarios."
     ],
     [
       "CWE-1391: Use of Weak Credentials",
-      "Partial",
-      "<strong>Description:</strong> The service detects weak credentials through credential storage findings, design review analysis, and default credential testing, but explicit systematic runtime testing for weak credential strength is not comprehensively performed.\n<strong>Evidence:</strong> Plaintext password storage findings, design review identifying lack of password complexity requirements, and default credential testing demonstrate detection of weak credentials.\n<strong>Limitations:</strong> Explicit systematic runtime testing for weak credential strength is not comprehensively performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects weak credentials through dedicated cryptographic vulnerability testing and information disclosure testing.\n<strong>Evidence:</strong> Penetration test findings demonstrate weak credential detection including plaintext password storage and debug endpoints exposing sensitive credentials without authentication. Cryptographic vulnerability testing validates credential protection."
     ],
     [
       "CWE-1392: Use of Default Credentials",
@@ -54,8 +54,8 @@
     ],
     [
       "CWE-290: Authentication Bypass by Spoofing",
-      "Partial",
-      "<strong>Description:</strong> The service performs comprehensive authentication bypass testing and network scanning which may detect spoofing-based authentication bypass indirectly, but explicit systematic validation of authentication bypass by spoofing is not comprehensively performed.\n<strong>Evidence:</strong> Authentication bypass testing and network scanner capabilities test various bypass techniques but do not explicitly test for spoofing-based authentication bypass.\n<strong>Limitations:</strong> Explicit systematic validation of authentication bypass by spoofing is not comprehensively performed [UL-007]."
+      "Covered",
+      "<strong>Description:</strong> The service successfully detects authentication bypass by spoofing through dedicated authentication bypass testing that includes header spoofing validation.\n<strong>Evidence:</strong> Penetration test findings demonstrate spoofing-based authentication bypass detection through header manipulation. Authentication bypass action groups test for trusted client header spoofing."
     ],
     [
       "CWE-291: Reliance on IP Address for Authentication",
@@ -94,8 +94,8 @@
     ],
     [
       "CWE-300: Channel Accessible by Non-Endpoint",
-      "Partial",
-      "<strong>Description:</strong> The service may detect channel accessibility issues indirectly through network scanning and endpoint discovery, but explicit validation of channel accessibility by non-endpoints is not systematically performed.\n<strong>Evidence:</strong> Network scanner action groups perform endpoint discovery and port scanning which may indirectly identify channels accessible by non-endpoints.\n<strong>Limitations:</strong> Explicit validation of channel accessibility by non-endpoints is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit testing for channel accessibility by non-endpoints.\n<strong>Evidence:</strong> Extended penetration testing confirmed Network scanner performs endpoint discovery but does not test for channels accessible by non-endpoints. This is a network architecture testing concern outside the web application penetration testing scope.\n<strong>Limitations:</strong> Channel accessibility testing by non-endpoints is not systematically performed [UL-007]."
     ],
     [
       "CWE-302: Authentication Bypass by Assumed-Immutable Data",
@@ -130,7 +130,7 @@
     [
       "CWE-308: Use of Single-factor Authentication",
       "Not Covered",
-      "<strong>Description:</strong> The service does not test for or identify single-factor authentication usage.\n<strong>Evidence:</strong> Comprehensive review of penetration test runs found no evidence of MFA testing, single-factor authentication identification, or explicit validation of authentication factor count.\n<strong>Limitations:</strong> Explicit testing for single-factor authentication usage is not part of the testing scope [UL-007]."
+      "<strong>Description:</strong> The service does not test for or identify single-factor authentication usage.\n<strong>Evidence:</strong> Extended penetration testing confirmed no MFA testing, single-factor authentication identification, or authentication factor count validation was performed. Single-factor authentication is an authentication design decision, not a testable vulnerability.\n<strong>Limitations:</strong> Single-factor authentication testing is not part of the testing scope [UL-007]."
     ],
     [
       "CWE-309: Use of Password System for Primary Authentication",
@@ -144,8 +144,8 @@
     ],
     [
       "CWE-350: Reliance on Reverse DNS Resolution for a Security-Critical Action",
-      "Partial",
-      "<strong>Description:</strong> The service may detect DNS resolution usage indirectly through network scanning and code analysis, but explicit validation of reliance on reverse DNS resolution for security-critical authentication actions is not systematically performed.\n<strong>Evidence:</strong> Network scanner and code scanner capabilities may identify DNS resolution usage but do not explicitly test for reliance on reverse DNS resolution for security-critical actions.\n<strong>Limitations:</strong> Explicit validation of reliance on reverse DNS resolution for security-critical authentication actions is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit testing for reliance on reverse DNS resolution for security-critical actions.\n<strong>Evidence:</strong> Extended penetration testing confirmed Network scanner and Code scanner do not test for reverse DNS resolution reliance. This is a network configuration testing concern outside the web application penetration testing scope.\n<strong>Limitations:</strong> Reverse DNS resolution reliance testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-384: Session Fixation",
@@ -154,8 +154,8 @@
     ],
     [
       "CWE-521: Weak Password Requirements",
-      "Partial",
-      "<strong>Description:</strong> The service may detect weak password requirements through design review analysis, but explicit systematic runtime testing for weak password requirements is not comprehensively performed.\n<strong>Evidence:</strong> Design review findings identify lack of password complexity requirements but do not show explicit runtime testing for weak password requirements.\n<strong>Limitations:</strong> Explicit systematic runtime testing for weak password requirements is not comprehensively performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit runtime testing for weak password requirements.\n<strong>Evidence:</strong> Extended penetration testing confirmed no password policy testing was performed. Design review may identify lack of password complexity requirements but explicit runtime testing for weak password requirements is policy testing, not penetration testing.\n<strong>Limitations:</strong> Password requirement policy testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-613: Insufficient Session Expiration",
@@ -165,12 +165,12 @@
     [
       "CWE-620: Unverified Password Change",
       "Not Tested",
-      "<strong>Description:</strong> This vulnerability requires password change functionality in the application.\n<strong>Evidence:</strong> Analysis of tested applications (demo_app/banking_app, adminer, openfire, activemq, druid) confirmed none of them implement password change functionality. The banking_app only has login, register, account, transfer, and admin routes with no password change endpoints. Adminer is a database management tool without user accounts. Openfire, ActiveMQ, and Druid are server applications without password change features.\n<strong>Limitations:</strong> "
+      "<strong>Description:</strong> This vulnerability requires password change functionality in the application.\n<strong>Evidence:</strong> Analysis of tested applications confirmed none of them implement password change functionality, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
     ],
     [
       "CWE-640: Weak Password Recovery Mechanism for Forgotten Password",
       "Not Tested",
-      "<strong>Description:</strong> This vulnerability requires password recovery functionality in the application.\n<strong>Evidence:</strong> Analysis of tested applications (demo_app/banking_app, adminer, openfire, activemq, druid) confirmed none of them implement password recovery functionality. The banking_app only has login, register, and admin_login routes with no password recovery endpoints. Adminer is a database management tool without user accounts. Openfire, ActiveMQ, and Druid are server applications without password recovery features.\n<strong>Limitations:</strong> "
+      "<strong>Description:</strong> This vulnerability requires password recovery functionality in the application.\n<strong>Evidence:</strong> Analysis of tested applications confirmed none of them implement password recovery functionality, making this vulnerability not applicable.\n<strong>Limitations:</strong> "
     ],
     [
       "CWE-798: Use of Hard-coded Credentials",
@@ -179,13 +179,13 @@
     ],
     [
       "CWE-940: Improper Verification of Source of a Communication Channel",
-      "Partial",
-      "<strong>Description:</strong> The service may detect communication channel source verification issues indirectly through network scanning, session management testing, and authentication testing, but explicit validation of communication channel source verification is not systematically performed.\n<strong>Evidence:</strong> Network scanner and session management testing may identify communication channel issues but do not explicitly test for improper verification of communication channel source.\n<strong>Limitations:</strong> Explicit validation of communication channel source verification is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit testing for improper verification of communication channel source.\n<strong>Evidence:</strong> Extended penetration testing confirmed Network scanner and Session token vulnerabilities testing do not test for communication channel source verification. This is a network security testing concern outside the web application penetration testing scope.\n<strong>Limitations:</strong> Communication channel source verification testing is not systematically performed [UL-007]."
     ],
     [
       "CWE-941: Incorrectly Specified Destination in a Communication Channel",
-      "Partial",
-      "<strong>Description:</strong> The service may detect communication channel destination issues indirectly through network scanning and SSRF testing, but explicit validation of incorrectly specified destinations in communication channels is not systematically performed.\n<strong>Evidence:</strong> Network scanner and SSRF testing may identify destination validation issues but do not explicitly test for incorrectly specified destinations in communication channels.\n<strong>Limitations:</strong> Explicit validation of incorrectly specified destinations in communication channels is not systematically performed [UL-007]."
+      "Not Covered",
+      "<strong>Description:</strong> The service does not include explicit testing for incorrectly specified destinations in communication channels.\n<strong>Evidence:</strong> Extended penetration testing confirmed Network scanner and SSRF testing do not test for communication channel destination verification. This is a network security testing concern outside the web application penetration testing scope.\n<strong>Limitations:</strong> Communication channel destination verification testing is not systematically performed [UL-007]."
     ]
   ]
 }
