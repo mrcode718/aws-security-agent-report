@@ -180,55 +180,34 @@
         },
         {
           "number": "5.2",
-          "title": "Coverage Summary",
+          "title": "CWE Coverage Heatmap",
           "paragraphs": [
-            "The following OWASP Top 10 (2025) risk categories were evaluated for coverage across AWS Security Agent's three core capabilities (design review, code review, and penetration testing). Detailed coverage analysis tables documenting specific vulnerability classes, detection mechanisms, and testing results for each category are provided in the Appendix (see Section 7)."
+            "Figure 2 provides a detailed heatmap visualization of individual CWE coverage across all OWASP Top 10 categories. Each cell represents a specific CWE identifier, with color coding indicating coverage status: green for covered vulnerabilities, amber for partial coverage, orange for not covered, and grey for not tested (typically framework-specific vulnerabilities not applicable to the test environment). Hover over any cell to view detailed information including the full CWE description, coverage status, and assessment comments."
           ],
-          "lists": [
-            {
-              "type": "ul",
-              "items": [
-                "A01: Broken Access Control - [See Appendix Section 1](appendix.html#section-1)",
-                "A02: Security Misconfiguration - [See Appendix Section 2](appendix.html#section-2)",
-                "A03: Software Supply Chain Failures - [See Appendix Section 3](appendix.html#section-3)",
-                "A04: Cryptographic Failures - [See Appendix Section 4](appendix.html#section-4)",
-                "A05: Injection - [See Appendix Section 5](appendix.html#section-5)",
-                "A06: Insecure Design - [See Appendix Section 6](appendix.html#section-6)",
-                "A07: Authentication Failures - [See Appendix Section 7](appendix.html#section-7)",
-                "A08: Software or Data Integrity Failures - [See Appendix Section 8](appendix.html#section-8)",
-                "A09: Security Logging and Alerting Failures - [See Appendix Section 9](appendix.html#section-9)",
-                "A10: Mishandling of Exceptional Conditions - [See Appendix Section 10](appendix.html#section-10)"
-              ]
-            }
-          ]
+          "heatmap": {
+            "caption": "Figure 2 - CWE Coverage Heatmap by OWASP Top 10 Category"
+          }
         }
       ]
     },
     {
       "number": 6,
-      "title": "Conclusion and Recommendations",
-      "paragraphs": [
-        "AWS Security Agent represents a shift toward continuous, embedded application security. It automates design and code reviews, runs realistic multi-step penetration tests and centralizes findings, enabling teams to identify issues earlier and reduce manual effort. The service's context-aware approach, custom security requirements and multi-step attack simulations are valuable features.",
-        "However, the preview version has notable limitations: it is available only in one region, requires manual configuration through a web interface, supports only private GitHub repositories, lacks scheduling and API automation (scheduled testing is explicitly documented as unavailable [9]), and cannot handle complex exploitation scenarios or non-HTTP protocols. Only GitHub integration is supported; other SCM systems (GitLab, Bitbucket, CodeCommit) are not available [3]. The service provides strong coverage for injection vulnerabilities and access control, moderate coverage for security misconfiguration and insecure design, but has significant gaps in software supply chain security, cryptographic validation beyond TLS checks, logging and alerting, and data integrity failures. Detailed coverage analysis for each OWASP Top 10 category is provided in the Appendix. To fully secure their applications, organizations should use AWS Security Agent as a complementary control alongside additional tools and processes (e.g., dependency scanning, secrets management, infrastructure‑as‑code security, and runtime monitoring) and maintain human expertise for nuanced assessments."
-      ]
-    },
-    {
-      "number": 7,
-      "title": "Appendix",
-      "paragraphs": [
-        "Detailed OWASP Top 10 coverage analysis tables are available in the separate Appendix document:"
-      ],
+      "title": "Conclusions",
       "lists": [
         {
-          "type": "ul",
+          "type": "ol",
           "items": [
-            "[Appendix: OWASP Top 10 Coverage Analysis - Detailed Tables](appendix.html)"
+            "AWS Security Agent achieves 72.7% average OWASP Top 10 coverage—this broad vulnerability detection is the main benefit AI brings to application security. Actual results will vary based on application context added. Security Misconfiguration shows strongest coverage (92.3%) while Software Supply Chain Failures has critical gaps (33.3%).",
+            "Key limitations that may surprise teams: only private GitHub repositories are supported (no GitLab, Bitbucket, or CodeCommit) [3], no API or CLI access for CI/CD integration, scheduled testing is unavailable [9], and the service is restricted to a single AWS region.",
+            "While coverage metrics are promising, false positive and false negative rates were not evaluated during this initial assessment—organizations should validate detection accuracy in their specific environments.",
+            "Supply chain security (CVE/dependency scanning) and cryptographic implementation validation have minimal coverage—organizations should supplement with AWS Inspector or OWASP Dependency-Check for vulnerable dependency detection.",
+            "The agent exhibits hallucinations when attempting prompt engineering to customize behavior, and complex exploitation scenarios are not supported. Detailed per-CWE coverage is available in the [Appendix](appendix.html)."
           ]
         }
       ]
     },
     {
-      "number": 8,
+      "number": 7,
       "title": "References",
       "references": true
     }

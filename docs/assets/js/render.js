@@ -59,12 +59,14 @@ async function renderReport(content) {
 async function renderSection(section, references) {
     // Check if section has tables
     const hasTable = !!(section.table || section.tables || section.tableFile || section.tableFiles);
-    // Check if any subsections have tables or charts
-    const hasSubsectionTable = !!(section.subsections && section.subsections.some(sub => sub.table || sub.chart || sub.tableFile));
+    // Check if any subsections have tables, charts, or heatmaps
+    const hasSubsectionTable = !!(section.subsections && section.subsections.some(sub => sub.table || sub.chart || sub.tableFile || sub.heatmap));
+    // Check if section itself has chart or heatmap
+    const hasChartOrHeatmap = !!(section.chart || section.heatmap);
     // Section 6 should use full width (no columns) like sections with tables
     const isSection6 = section.number === 6;
     // Sections with tables should use full width (no columns)
-    const useFullWidth = hasTable || hasSubsectionTable || isSection6;
+    const useFullWidth = hasTable || hasSubsectionTable || isSection6 || hasChartOrHeatmap;
     // Section 7 (References) should be breakable across columns
     const isReferences = section.references === true;
     let sectionClass = useFullWidth ? 'section section-with-table' : 'section';
@@ -95,6 +97,11 @@ async function renderSection(section, references) {
     // Render chart if present (section-level chart)
     if (section.chart) {
         html += renderChart(section.chart);
+    }
+    
+    // Render heatmap if present (section-level heatmap)
+    if (section.heatmap) {
+        html += renderHeatmap(section.heatmap);
     }
     
     // Render table if present
@@ -174,6 +181,11 @@ async function renderSubsection(subsection, references) {
         html += renderChart(subsection.chart);
     }
     
+    // Render heatmap if present (subsection-level heatmap)
+    if (subsection.heatmap) {
+        html += renderHeatmap(subsection.heatmap);
+    }
+    
     return html;
 }
 
@@ -236,6 +248,234 @@ function renderTable(table, references) {
         html += `<p class="table-note">${processCitations(escapeHtml(table.note), references)}</p>`;
     }
     return html;
+}
+
+// Heatmap configuration - OWASP categories with their table files
+const OWASP_CATEGORIES = [
+    { id: 'A01', title: 'Broken Access Control', tableFile: 'tables/table-3a-a01-broken-access-control.json' },
+    { id: 'A02', title: 'Security Misconfiguration', tableFile: 'tables/table-3b-a02-security-misconfiguration.json' },
+    { id: 'A03', title: 'Supply Chain', tableFile: 'tables/table-3c-a03-software-supply-chain.json' },
+    { id: 'A04', title: 'Cryptographic Failures', tableFile: 'tables/table-3d-a04-cryptographic-failures.json' },
+    { id: 'A05', title: 'Injection', tableFile: 'tables/table-3e-a05-injection.json' },
+    { id: 'A06', title: 'Insecure Design', tableFile: 'tables/table-3f-a06-insecure-design.json' },
+    { id: 'A07', title: 'Authentication Failures', tableFile: 'tables/table-3g-a07-authentication-failures.json' },
+    { id: 'A08', title: 'Data Integrity Failures', tableFile: 'tables/table-3h-a08-data-integrity-failures.json' },
+    { id: 'A09', title: 'Logging Failures', tableFile: 'tables/table-3i-a09-security-logging-failures.json' },
+    { id: 'A10', title: 'Exceptional Conditions', tableFile: 'tables/table-3j-a10-exceptional-conditions.json' }
+];
+
+// Coverage status to color mapping
+const COVERAGE_COLORS = {
+    'Covered': '#4CAF50',      // Green
+    'Partial': '#FFC107',       // Amber/Yellow
+    'Not Covered': '#FF9800',   // Orange
+    'Not Tested': '#9E9E9E'     // Grey
+};
+
+function renderHeatmap(heatmap) {
+    const heatmapId = `heatmap-${Math.random().toString(36).substr(2, 9)}`;
+    const caption = heatmap.caption ? `<p class="chart-caption">${escapeHtml(heatmap.caption)}</p>` : '';
+    
+    // Create placeholder that will be filled with data
+    const placeholder = `
+        <div class="heatmap-container" id="${heatmapId}">
+            <div class="heatmap-loading">Loading heatmap data...</div>
+        </div>
+        ${caption}
+    `;
+    
+    // Load data and render heatmap after DOM is ready
+    setTimeout(async () => {
+        const container = document.getElementById(heatmapId);
+        if (!container) return;
+        
+        try {
+            const heatmapData = await loadHeatmapData();
+            renderHeatmapContent(container, heatmapData);
+        } catch (error) {
+            console.error('Error loading heatmap data:', error);
+            container.innerHTML = '<p style="color: red;">Error loading heatmap data</p>';
+        }
+    }, 100);
+    
+    return placeholder;
+}
+
+async function loadHeatmapData() {
+    const categories = [];
+    
+    for (const category of OWASP_CATEGORIES) {
+        try {
+            const response = await fetch(category.tableFile);
+            if (!response.ok) throw new Error(`Failed to load ${category.tableFile}`);
+            const table = await response.json();
+            
+            const cwes = table.rows.map(row => {
+                // Extract CWE number from first column (e.g., "CWE-1275: Description" -> "1275")
+                const cweMatch = row[0].match(/CWE-(\d+)/);
+                const cweNumber = cweMatch ? cweMatch[1] : row[0];
+                const fullCwe = row[0]; // Full CWE text
+                const coverage = row[1]; // Coverage status
+                const comments = row[2]; // Comments with description, evidence, limitations
+                
+                return {
+                    number: cweNumber,
+                    fullText: fullCwe,
+                    coverage: coverage,
+                    comments: comments
+                };
+            });
+            
+            categories.push({
+                id: category.id,
+                title: category.title,
+                cwes: cwes
+            });
+        } catch (error) {
+            console.error(`Error loading ${category.tableFile}:`, error);
+            categories.push({
+                id: category.id,
+                title: category.title,
+                cwes: []
+            });
+        }
+    }
+    
+    return categories;
+}
+
+function renderHeatmapContent(container, categories) {
+    // Create legend
+    const legendHtml = `
+        <div class="heatmap-legend">
+            <span class="heatmap-legend-title">Legend (CWE-IDs):</span>
+            <span class="heatmap-legend-item">
+                <span class="heatmap-legend-color" style="background-color: ${COVERAGE_COLORS['Covered']};"></span>
+                Covered
+            </span>
+            <span class="heatmap-legend-item">
+                <span class="heatmap-legend-color" style="background-color: ${COVERAGE_COLORS['Partial']};"></span>
+                Partial
+            </span>
+            <span class="heatmap-legend-item">
+                <span class="heatmap-legend-color" style="background-color: ${COVERAGE_COLORS['Not Covered']};"></span>
+                Not Covered
+            </span>
+            <span class="heatmap-legend-item">
+                <span class="heatmap-legend-color" style="background-color: ${COVERAGE_COLORS['Not Tested']};"></span>
+                Not Tested
+            </span>
+        </div>
+    `;
+    
+    // Create heatmap grid - each category is a row
+    let gridHtml = '<div class="heatmap-grid">';
+    
+    for (const category of categories) {
+        gridHtml += `
+            <div class="heatmap-row">
+                <div class="heatmap-category-label">${escapeHtml(category.id)}: ${escapeHtml(category.title)}</div>
+                <div class="heatmap-cells">
+        `;
+        
+        for (const cwe of category.cwes) {
+            const color = COVERAGE_COLORS[cwe.coverage] || COVERAGE_COLORS['Not Tested'];
+            const tooltipData = encodeURIComponent(JSON.stringify({
+                cwe: cwe.fullText,
+                coverage: cwe.coverage,
+                comments: cwe.comments
+            }));
+            
+            gridHtml += `
+                <div class="heatmap-cell" 
+                     style="background-color: ${color};"
+                     data-tooltip="${tooltipData}"
+                     onmouseenter="showHeatmapTooltip(event, this)"
+                     onmouseleave="hideHeatmapTooltip()">
+                    ${escapeHtml(cwe.number)}
+                </div>
+            `;
+        }
+        
+        gridHtml += `
+                </div>
+            </div>
+        `;
+    }
+    
+    gridHtml += '</div>';
+    
+    // Create tooltip container (hidden by default)
+    const tooltipHtml = '<div id="heatmap-tooltip" class="heatmap-tooltip"></div>';
+    
+    container.innerHTML = legendHtml + gridHtml + tooltipHtml;
+}
+
+// Global tooltip functions
+function showHeatmapTooltip(event, element) {
+    const tooltip = document.getElementById('heatmap-tooltip');
+    if (!tooltip) return;
+    
+    try {
+        const data = JSON.parse(decodeURIComponent(element.getAttribute('data-tooltip')));
+        
+        // Parse comments to extract sections
+        let tooltipContent = `
+            <div class="heatmap-tooltip-header">
+                <strong>${escapeHtmlForTooltip(data.cwe)}</strong>
+            </div>
+            <div class="heatmap-tooltip-coverage">
+                <span class="heatmap-tooltip-status" style="background-color: ${COVERAGE_COLORS[data.coverage] || '#9E9E9E'};">
+                    ${escapeHtmlForTooltip(data.coverage)}
+                </span>
+            </div>
+        `;
+        
+        // Parse the comments (HTML formatted with <strong> tags)
+        if (data.comments) {
+            const commentsHtml = data.comments
+                .replace(/\\n/g, '\n')
+                .replace(/\n/g, '<br>');
+            tooltipContent += `<div class="heatmap-tooltip-comments">${commentsHtml}</div>`;
+        }
+        
+        tooltip.innerHTML = tooltipContent;
+        tooltip.style.display = 'block';
+        
+        // Position tooltip near the mouse
+        const rect = element.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        
+        let left = event.clientX + 15;
+        let top = event.clientY + 15;
+        
+        // Adjust if tooltip would go off screen
+        if (left + tooltipRect.width > window.innerWidth) {
+            left = event.clientX - tooltipRect.width - 15;
+        }
+        if (top + tooltipRect.height > window.innerHeight) {
+            top = event.clientY - tooltipRect.height - 15;
+        }
+        
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+    } catch (error) {
+        console.error('Error showing tooltip:', error);
+    }
+}
+
+function hideHeatmapTooltip() {
+    const tooltip = document.getElementById('heatmap-tooltip');
+    if (tooltip) {
+        tooltip.style.display = 'none';
+    }
+}
+
+function escapeHtmlForTooltip(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 function renderChart(chart) {
