@@ -201,7 +201,7 @@
             "Key limitations that may surprise teams: only private GitHub repositories are supported (no GitLab, Bitbucket, or CodeCommit) [3], no API or CLI access for CI/CD integration, scheduled testing is unavailable [9], and the service is restricted to a single AWS region.",
             "While coverage metrics are promising, false positive and false negative rates were not evaluated during this initial assessment—organizations should validate detection accuracy in their specific environments.",
             "Supply chain security (CVE/dependency scanning) and cryptographic implementation validation have minimal coverage—organizations should supplement with AWS Inspector or OWASP Dependency-Check for vulnerable dependency detection.",
-            "The agent exhibits hallucinations when attempting prompt engineering to customize behavior, and complex exploitation scenarios are not supported. Detailed per-CWE coverage is available in the [Appendix](appendix.html)."
+            "The agent exhibits hallucinations when attempting prompt engineering to customize behavior, and complex exploitation scenarios are not supported."
           ]
         }
       ]
